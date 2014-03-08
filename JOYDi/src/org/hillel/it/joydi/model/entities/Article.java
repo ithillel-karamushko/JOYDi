@@ -6,6 +6,5 @@ public class Article {
 	private String themeOfTheArticle;
 	private double addingDate;
 	private double addingTime;
-    private int ratingOfTheArticle;
-// 
+    private int ratingOfTheArticle; 
 }
