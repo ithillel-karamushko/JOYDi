@@ -1,5 +1,5 @@
 package org.hillel.it.joydi.model.entities;
 
-public class Admins extends Persons {
+public class Admin extends Person {
 
 }
