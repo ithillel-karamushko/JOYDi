@@ -1,5 +1,5 @@
 package org.hillel.it.joydi.model.entities;
 
-public class Users extends Persons {
+public class User extends Person {
 
 }
