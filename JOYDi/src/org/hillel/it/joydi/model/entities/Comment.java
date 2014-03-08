@@ -1,7 +1,8 @@
 package org.hillel.it.joydi.model.entities;
+import java.util.Date;
 
 public class Comment {
-	private double addingDate;
+	private Date addingDate;
 	private double addingTime;
 	private String authorName;
 	private int likes;
@@ -9,11 +10,11 @@ public class Comment {
     private String commentText;
     
 	//I dont know if we need this part
-	public double getAddingDate() {
+	public Date getAddingDate() {
 		return addingDate;
 	}
 
-	public void setAddingDate(double addingDate) {
+	public void setAddingDate(Date addingDate) {
 		this.addingDate = addingDate;
 	}
 	//I dont know if we need this part

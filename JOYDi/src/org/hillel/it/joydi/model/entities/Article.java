@@ -1,10 +1,10 @@
 package org.hillel.it.joydi.model.entities;
-
+import java.util.Date;
 public class Article {
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;
-	private double addingDate;
+	private Date addingDate;
 	private double addingTime;
     private int ratingOfTheArticle;
 	
@@ -26,10 +26,10 @@ public class Article {
 	public void setThemeOfTheArticle(String themeOfTheArticle) {
 		this.themeOfTheArticle = themeOfTheArticle;
 	}
-	public double getAddingDate() {
+	public Date getAddingDate() {
 		return addingDate;
 	}
-	public void setAddingDate(double addingDate) {
+	public void setAddingDate(Date addingDate) {
 		this.addingDate = addingDate;
 	}
 	public double getAddingTime() {
