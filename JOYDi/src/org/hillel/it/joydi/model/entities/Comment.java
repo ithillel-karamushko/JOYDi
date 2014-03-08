@@ -9,17 +9,17 @@ public class Comment {
     private String commentText;
     
 	//I dont know if we need this part
-	/*public double getAddingDate() {
+	public double getAddingDate() {
 		return addingDate;
-	}*/
+	}
 
 	public void setAddingDate(double addingDate) {
 		this.addingDate = addingDate;
 	}
 	//I dont know if we need this part
-	/*public double getAddingTime() {
+	public double getAddingTime() {
 		return addingTime;
-	}*/
+	}
 
 	public void setAddingTime(double addingTime) {
 		this.addingTime = addingTime;
