@@ -1,6 +1,6 @@
 package org.hillel.it.joydi.model.entities;
 import java.util.Date;
-public class Article {
+public class Article extends BaseEntity{
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;

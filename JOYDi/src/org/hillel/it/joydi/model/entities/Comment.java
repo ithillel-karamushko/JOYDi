@@ -1,7 +1,7 @@
 package org.hillel.it.joydi.model.entities;
 import java.util.Date;
 
-public class Comment {
+public class Comment extends BaseEntity{
 	private Date addingDate;
 	private double addingTime;
 	private String authorName;

@@ -1,7 +1,7 @@
 package org.hillel.it.joydi.model.entities;
 import java.util.*;
 
-public class Picture {
+public class Picture extends BaseEntity{
 	private Date creatingDate;
 
 	public Date getCreatingDate() {

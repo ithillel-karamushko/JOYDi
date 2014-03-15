@@ -2,7 +2,7 @@ package org.hillel.it.joydi.model.entities;
 
 // суррогатный класс
 
-abstract public class Person {
+abstract public class Person extends BaseEntity{
 	protected String name;
 	protected String eMail;
 	protected String country;
