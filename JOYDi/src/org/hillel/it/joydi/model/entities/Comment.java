@@ -9,7 +9,7 @@ public class Comment extends BaseEntity{
 	private int dislikes;
     private String commentText;
     
-	//I dont know if we need this part
+	//I don`t know if we need this part
 	public Date getAddingDate() {
 		return addingDate;
 	}

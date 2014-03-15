@@ -6,7 +6,7 @@ public class BaseEntity {
 	protected Date created;
 	protected Date modified;
 	protected User createdBy;
-	protected User modifiedBy;
+	protected Person modifiedBy;
 	
 
 }
