@@ -5,7 +5,7 @@ public class BaseEntity {
 	protected int id;
 	protected Date created;
 	protected Date modified;
-	protected User createdBy;
+	protected Person createdBy;
 	protected Person modifiedBy;
 	
 
