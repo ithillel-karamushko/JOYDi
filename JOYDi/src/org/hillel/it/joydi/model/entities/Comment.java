@@ -17,7 +17,7 @@ public class Comment extends BaseEntity{
 	public void setAddingDate(Date addingDate) {
 		this.addingDate = addingDate;
 	}
-	//I dont know if we need this part
+	//I don`t know if we need this part
 	public double getAddingTime() {
 		return addingTime;
 	}
