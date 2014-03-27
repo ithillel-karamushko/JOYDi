@@ -11,4 +11,13 @@ public class Picture extends BaseEntity{
 	public void setCreatingDate(Date creatingDate) {
 		this.creatingDate = creatingDate;
 	}
+	
+	Picture addPicture(){
+
+		return null;
+	}
+	
+	void deletePicture(){
+		
+	}
 }
