@@ -1,7 +1,9 @@
 package org.hillel.it.joydi.model.entities;
 import java.util.Date;
 
-public class Comment extends BaseEntity{
+import org.hillel.id.joydi.persistance.repository.TextRepository;
+
+public class Comment extends BaseEntity implements TextRepository <Comment> {
 	private Date addingDate;
 	private double addingTime;
 	private String authorName;
@@ -48,6 +50,18 @@ public class Comment extends BaseEntity{
 
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;
+	}
+	
+	public Comment addText(String text){
+		return null;
+	}
+	
+	public Comment modifyText(Comment text){
+		return null;
+	}
+	
+	public void deleteText(Comment text){
+		
 	}
 
 
