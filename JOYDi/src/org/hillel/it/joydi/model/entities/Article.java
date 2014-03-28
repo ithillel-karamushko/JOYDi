@@ -1,18 +1,26 @@
 package org.hillel.it.joydi.model.entities;
 import java.util.Date;
+import java.util.List;
 
 import org.hillel.id.joydi.persistance.repository.TextRepository;
 
 
-public class Article extends BaseEntity implements TextRepository <Article> {
+public class Article extends BaseEntity implements TextRepository {
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;
 	private Date addingDate;
 	private double addingTime;
     private int ratingOfTheArticle;
+    private List tags;
 	
-    public String getTextOfTheArticle() {
+    public List getTags() {
+		return tags;
+	}
+	public void setTags(List tags) {
+		this.tags = tags;
+	}
+	public String getTextOfTheArticle() {
 		return textOfTheArticle;
 	}
 	public void setTextOfTheArticle(String textOfTheArticle) {

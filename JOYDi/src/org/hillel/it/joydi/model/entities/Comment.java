@@ -3,7 +3,7 @@ import java.util.Date;
 
 import org.hillel.id.joydi.persistance.repository.TextRepository;
 
-public class Comment extends BaseEntity implements TextRepository <Comment> {
+public class Comment extends BaseEntity implements TextRepository{
 	private Date addingDate;
 	private double addingTime;
 	private String authorName;

@@ -7,7 +7,7 @@ abstract public class Person extends BaseEntity {
 	protected String name;
 	protected String eMail;
 	protected String country;
-	protected String sex;
+	protected Sex sex;
 	protected int age; 
 	
 	public String getName() {
@@ -28,10 +28,10 @@ abstract public class Person extends BaseEntity {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String getSex() {
+	public Sex getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 	public int getAge() {

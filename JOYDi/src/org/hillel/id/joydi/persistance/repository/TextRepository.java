@@ -1,7 +1,7 @@
 package org.hillel.id.joydi.persistance.repository;
 
-public interface TextRepository <T> {
-	T addText(String text);
-	T modifyText(T text);
-	void deleteText(T text);
+public interface TextRepository{
+	//void saveText(String text);
+	//String modifyText(String text);
+	//void deleteText(String text);
 }
