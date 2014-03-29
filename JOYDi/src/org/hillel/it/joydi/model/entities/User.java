@@ -14,9 +14,8 @@ public class User extends Person implements PersonRepository {
 		this.country = country;
 		this.gender = gender;
 		this.age = age;
-
-	}
-
+	} 
+	
 	public void saveUser(User user) {
 		inMemory.saveUser(user);
 	}
