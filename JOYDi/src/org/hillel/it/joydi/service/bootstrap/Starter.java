@@ -7,13 +7,13 @@ import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 
 public class Starter {
 	
-	public Starter (DiaryServiceImpl diaryServiseImpl){
-		DiaryServiceImpl dsi = new DiaryServiceImpl();
-	}
+//	public Starter (DiaryServiceImpl diaryServiseImpl){
+//		DiaryServiceImpl dsi = new DiaryServiceImpl();
+//	} 
+// ”знать дл€ чего надо передавать в конструктор экземпл€р класса DiaryServiceImpl ???
 	
 	public static void main(String[] args) {
 		DiaryServiceImpl ds = new DiaryServiceImpl();
-//		Starter start = new Starter(ds);
 		User user1 = new User("John", "email", "ukraine", "male", 22);
 		User user2= new User("John", "email", "ukraine", "male", 22);
 		User user3 = new User("Andrew", "email", "ukraine", "male", 25);
@@ -27,6 +27,7 @@ public class Starter {
 		ds.saveAdmin(admin2);
 		System.out.println(InMemory.user);
 		System.out.println(InMemory.admin);
-		
+		ds.deleteUser(user3);
+		System.out.println(InMemory.user);
 	}
 }

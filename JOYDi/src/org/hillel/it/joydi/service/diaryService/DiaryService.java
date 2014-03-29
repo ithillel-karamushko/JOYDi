@@ -1,6 +1,5 @@
 package org.hillel.it.joydi.service.diaryService;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.hillel.it.joydi.model.entities.Article;
@@ -18,5 +17,9 @@ public interface DiaryService {
 	void saveUser(Person person);
 
 	void saveAdmin(Person person);
+
+	void deleteUser(Person person);
+
+	void deleteAdmin(Person person);
 
 }

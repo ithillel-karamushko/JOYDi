@@ -11,10 +11,8 @@ import org.hillel.it.joydi.persistance.inmemory.InMemory;
 import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 public class DiaryServiceImpl implements DiaryService {
-	private TextRepository articleRepository;
-	private TextRepository commentRepository;
-	private PersonRepository userRepository;
-	private PersonRepository adminRepository;
+	private TextRepository TextRepository;
+	private PersonRepository PersonRepository; // Узнать зачем нужны эти поля ???
 
 	@Override
 	public void saveArticle(Article article) {
@@ -37,7 +35,19 @@ public class DiaryServiceImpl implements DiaryService {
 	public void saveUser(Person person) {
 		InMemory.user.add(person);
 	}
+
 	public void saveAdmin(Person person) {
 		InMemory.admin.add(person);
 	}
+
+	public void deleteUser(Person person) {
+		InMemory.user.remove(person);
+
+	}
+
+	public void deleteAdmin(Person person) {
+		InMemory.admin.remove(person);
+
+	}
+
 }
