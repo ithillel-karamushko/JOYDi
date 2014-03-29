@@ -1,7 +1,10 @@
 package org.hillel.id.joydi.persistance.repository;
 
-public interface PersonRepository{
-	//void savePerson();
-	//void modifyPerson();
-	//void deletePerson();
+import org.hillel.it.joydi.model.entities.Person;
+import org.hillel.it.joydi.model.entities.User;
+
+public interface PersonRepository {
+	void saveUser(User user);
+
+	void deleteUser(User user);
 }
