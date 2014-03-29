@@ -1,33 +1,40 @@
 package org.hillel.it.joydi.model.entities;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.hillel.id.joydi.persistance.repository.TextRepository;
 
 public class Comment extends BaseEntity implements TextRepository{
-	private Date addingDate;
-	private double addingTime;
+	//private Date addingDate = new Date();
+	//private double addingTime;
 	private String authorName;
 	private int likes;
 	private int dislikes;
     private String commentText;
+    Date date;
     
+    public Date getDate() {
+		return date;
+	}
+
+
+
+	SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+    
+    public Comment (String authorName, String commentText){
+    	    	this.authorName=authorName;
+    	this.commentText=commentText;
+    	date = new Date();
+    	    	
+    }
+
+
+	
+	
 	//I don`t know if we need this part
-	public Date getAddingDate() {
-		return addingDate;
-	}
-
-	public void setAddingDate(Date addingDate) {
-		this.addingDate = addingDate;
-	}
-	//I don`t know if we need this part
-	public double getAddingTime() {
-		return addingTime;
-	}
-
-	public void setAddingTime(double addingTime) {
-		this.addingTime = addingTime;
-	}
-
+	
     public String getAuthorName(){
     	return authorName;
     }
@@ -63,11 +70,4 @@ public class Comment extends BaseEntity implements TextRepository{
 	public void deleteText(Comment text){
 		
 	}
-
-
-	
-
-	
-	
-	
 }

@@ -1,6 +1,10 @@
 package org.hillel.it.joydi.service.bootstrap;
 
+import java.util.Date;
+
 import org.hillel.it.joydi.model.entities.Admin;
+import org.hillel.it.joydi.model.entities.Article;
+import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.inmemory.InMemory;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
@@ -29,5 +33,18 @@ public class Starter {
 		System.out.println(InMemory.admin);
 		ds.deleteUser(user3);
 		System.out.println(InMemory.user);
-	}
+		Comment comment = new Comment("John", "I like it!");
+		ds.saveComment(comment);
+		System.out.println(comment.getDate());
+		Comment comment1 = new Comment("Hanna", "I don't like it!");
+		ds.saveComment(comment1);
+		System.out.println(comment1.getDate());
+		System.out.println(comment1.getAuthorName()+" - " + comment1.getCommentText());
+		System.out.println(InMemory.comment);
+		Article article = new Article("Hanna", "Java" , "Java is good.");
+		ds.saveArticle(article);
+		System.out.println(InMemory.article);
+		System.out.println(article.getTextOfTheArticle());
+		
+	} 
 }

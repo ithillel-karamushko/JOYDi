@@ -9,10 +9,26 @@ public class Article extends BaseEntity implements TextRepository {
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;
-	private Date addingDate;
-	private double addingTime;
-    private int ratingOfTheArticle;
+	//private Date addingDate;
+	//private double addingTime;
+	Date date;
+    public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	private int ratingOfTheArticle;
     private List tags;
+    
+   public Article (String authorName,String themeOfTheArticle, String textOfTheArticle){
+    	date = new Date();
+    	this.authorName=authorName;
+    	this.themeOfTheArticle=themeOfTheArticle;
+    	this.textOfTheArticle=textOfTheArticle; 
+    }
 	
     public List getTags() {
 		return tags;
@@ -38,18 +54,7 @@ public class Article extends BaseEntity implements TextRepository {
 	public void setThemeOfTheArticle(String themeOfTheArticle) {
 		this.themeOfTheArticle = themeOfTheArticle;
 	}
-	public Date getAddingDate() {
-		return addingDate;
-	}
-	public void setAddingDate(Date addingDate) {
-		this.addingDate = addingDate;
-	}
-	public double getAddingTime() {
-		return addingTime;
-	}
-	public void setAddingTime(double addingTime) {
-		this.addingTime = addingTime;
-	}
+	
 	public int getRatingOfTheArticle() {
 		return ratingOfTheArticle;
 	}
