@@ -5,7 +5,7 @@ import java.util.List;
 import org.hillel.id.joydi.persistance.repository.TextRepository;
 
 
-public class Article extends BaseEntity implements TextRepository {
+public class Article extends BaseEntity {
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;

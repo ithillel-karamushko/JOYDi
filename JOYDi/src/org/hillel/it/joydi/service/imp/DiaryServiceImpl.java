@@ -13,13 +13,11 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 public class DiaryServiceImpl implements DiaryService {
 	private TextRepository TextRepository;
-	private PersonRepository PersonRepository; // Узнать зачем нужны эти поля ???
-
-
+	private PersonRepository PersonRepository; // Узнать зачем нужны эти поля
+												// ???
 
 	@Override
 	public Set findArticles(ArticleCriteria criteria) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -40,6 +38,7 @@ public class DiaryServiceImpl implements DiaryService {
 		InMemory.admin.remove(person);
 
 	}
+
 	public void saveArticle(Article article) {
 		InMemory.article.add(article);
 
