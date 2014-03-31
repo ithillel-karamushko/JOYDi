@@ -1,7 +1,18 @@
 package org.hillel.id.joydi.persistance.repository;
 
-public interface TextRepository{
-	//public void saveText(String text);
-	//String modifyText(String text);
-	//public void deleteText(String text);
+import org.hillel.it.joydi.model.entities.Article;
+import org.hillel.it.joydi.model.entities.Comment;
+
+public interface TextRepository {
+	public void saveArticle(Article article);
+
+	public void deleteArticle(Article article);
+
+	public void saveComment(Comment comment);
+
+	public void deleteComment(Comment comment);
+
+	void getArticle();
+
+	void getComment();
 }

@@ -1,6 +1,7 @@
 package org.hillel.it.joydi.model.entities;
 
 public class Admin extends Person {
+
 	public Admin(String name, String eMail, String country, String gender,
 			int age) {
 		this.name = name;
@@ -9,5 +10,4 @@ public class Admin extends Person {
 		this.gender = gender;
 		this.age = age;
 	}
-
 }

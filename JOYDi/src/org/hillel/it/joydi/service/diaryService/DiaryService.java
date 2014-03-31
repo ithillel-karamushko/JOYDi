@@ -2,11 +2,11 @@ package org.hillel.it.joydi.service.diaryService;
 
 import java.util.Set;
 
+import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
-import org.hillel.it.joydi.model.entities.Person;
+import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
-import org.hillel.it.joydi.persistance.inmemory.InMemory;
 
 public interface DiaryService {
 
@@ -14,13 +14,13 @@ public interface DiaryService {
 
 	void deleteArticle(Article article);
 
-	void saveUser(Person person);
+	void saveUser(User person);
 
-	void saveAdmin(Person person);
+	void deleteUser(User person);
 
-	void deleteUser(Person person);
+	void saveAdmin(Admin person);
 
-	void deleteAdmin(Person person);
+	void deleteAdmin(Admin person);
 
 	void saveComment(Comment comment);
 
