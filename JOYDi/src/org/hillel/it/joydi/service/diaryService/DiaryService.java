@@ -5,6 +5,7 @@ import java.util.Set;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 
@@ -17,6 +18,9 @@ public interface DiaryService {
 	void saveUser(User person);
 
 	void deleteUser(User person);
+	
+	void modifyUser(User person,  String name, String eMail, String country,
+			Gender gender, int age);
 
 	void saveAdmin(Admin person);
 

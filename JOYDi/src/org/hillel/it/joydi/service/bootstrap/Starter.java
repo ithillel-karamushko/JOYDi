@@ -1,5 +1,4 @@
 package org.hillel.it.joydi.service.bootstrap;
-
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -27,6 +26,10 @@ public class Starter {
 		ds.getPersonsList();
 		ds.deleteUser(user3);
 		ds.getPersonsList();
+		System.out.println("user1 "+ user1.getName() + " is from " + user1.getCountry());
+
+		ds.modifyUser(user1, "Masha", "eMail", "Russia", Gender.FEMALE, 25);
+		System.out.println("user1 "+user1.getName() + " is from " + user1.getCountry());
 		Comment comment = new Comment("John", "I like it!");
 		ds.saveComment(comment);
 		System.out.println(comment.getDate());
