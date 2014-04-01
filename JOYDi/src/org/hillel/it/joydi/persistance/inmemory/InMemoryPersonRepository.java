@@ -49,4 +49,10 @@ public class InMemoryPersonRepository implements PersonRepository {
 		System.out.println(user);
 	}
 
+	@Override
+	public void modifyUser(User person) {
+		user.remove(person);
+		user.add(person);
+	}
+
 }

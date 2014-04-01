@@ -31,7 +31,7 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 	
 	public void modifyArticle(Article article, String textOfTheArticle,	String themeOfTheArticle){
-		textRepository.deleteArticle(article);
+		
 		if (textOfTheArticle != null){
 		article.setTextOfTheArticle(textOfTheArticle);
 		}
@@ -39,7 +39,7 @@ public class DiaryServiceImpl implements DiaryService {
 		if (themeOfTheArticle != null){
 		article.setThemeOfTheArticle(themeOfTheArticle);}
 		
-		textRepository.saveArticle(article);
+		textRepository.modifyArticle(article);
 	}
 
 	@Override
@@ -62,7 +62,6 @@ public class DiaryServiceImpl implements DiaryService {
 	
 	public void modifyUser(User person, String name, String eMail, String country,
 			Gender gender, int age){
-		personRepository.deleteUser(person);
 		if (name != null){
 		person.setName(name);
 		}
@@ -78,9 +77,7 @@ public class DiaryServiceImpl implements DiaryService {
 		}
 		
 		person.setAge(age);
-		
-		
-		personRepository.saveUser(person);
+		personRepository.modifyUser(person);
 		System.out.println("Users List: ");
 		personRepository.getUser();
 	}
@@ -100,13 +97,11 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public void deleteComment(Comment comment) {
 		textRepository.deleteComment(comment);
-
 	}
 	
 	public void modifyComment(Comment comment, String commentText){
-		textRepository.deleteComment(comment);
 		comment.setCommentText(commentText);
-		textRepository.saveComment(comment);
+		textRepository.modifyComment(comment);
 	}
 
 

@@ -22,6 +22,12 @@ public class InMemoryTextRepository implements TextRepository {
 		this.article.add(article);
 
 	}
+	public void modifyArticle(Article article){
+		this.article.remove(article);
+		this.article.add(article);
+		
+	}
+	
 
 	@Override
 	public void deleteArticle(Article article) {
@@ -39,6 +45,11 @@ public class InMemoryTextRepository implements TextRepository {
 	public void deleteComment(Comment comment) {
 		this.comment.remove(comment);
 
+	}
+	
+	public void modifyComment(Comment comment){
+		this.comment.remove(comment);
+		this.comment.add(comment);
 	}
 	
 	public void getComment() {

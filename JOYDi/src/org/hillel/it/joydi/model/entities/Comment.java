@@ -51,15 +51,4 @@ public class Comment extends BaseEntity {
 		this.commentText = commentText;
 	}
 
-	public Comment addText(String text) {
-		return null;
-	}
-
-	public Comment modifyText(Comment text) {
-		return null;
-	}
-
-	public void deleteText(Comment text) {
-
-	}
 }

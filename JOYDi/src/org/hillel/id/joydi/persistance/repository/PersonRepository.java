@@ -1,10 +1,12 @@
 package org.hillel.id.joydi.persistance.repository;
 
 import org.hillel.it.joydi.model.entities.Admin;
+import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 
 public interface PersonRepository {
 	void saveUser(User person);
+	void modifyUser(User person);
 
 	void deleteUser(User person);
 

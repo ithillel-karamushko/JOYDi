@@ -67,15 +67,4 @@ public class Article extends BaseEntity {
 		this.ratingOfTheArticle = ratingOfTheArticle;
 	}
 
-	public Article addText(String text) {
-		return null;
-	}
-
-	public Article modifyText(Article text) {
-		return null;
-	}
-
-	public void deleteText(Article text) {
-
-	}
 }
