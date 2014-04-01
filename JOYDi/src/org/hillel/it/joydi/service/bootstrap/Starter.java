@@ -5,17 +5,19 @@ import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
+import org.hillel.it.joydi.model.entities.Gender;
 
 public class Starter {
 	public static void main(String[] args) {
 		DiaryServiceImpl ds = new DiaryServiceImpl();
 
-		User user1 = new User("John", "email", "ukraine", "male", 22);
-		User user2 = new User("John", "email", "ukraine", "male", 22);
-		User user3 = new User("Andrew", "email", "ukraine", "male", 25);
-		Admin admin1 = new Admin("Hanna", "email", "poland", "female", 15);
-		Admin admin2 = new Admin("Helen", "email", "poland", "female", 23);
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 22);
+		User user2 = new User("John", "email", "ukraine", Gender.MALE, 22);
+		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 25);
+		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.MALE, 15);
+		Admin admin2 = new Admin("Helen", "email", "poland", Gender.MALE, 23);
 		System.out.println(user1.getName() + " is from " + user1.getCountry());
+		System.out.println("The gender of "+user1.getName() +" is "+user1.getGender().getText());
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);

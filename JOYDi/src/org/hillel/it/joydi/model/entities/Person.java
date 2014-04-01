@@ -7,8 +7,15 @@ abstract public class Person extends BaseEntity {
 	protected String name;
 	protected String eMail;
 	protected String country;
-	protected String gender;
+	protected Gender gender;
 	protected int age; 
+	
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 		
 	public String getName() {
 		return name;
