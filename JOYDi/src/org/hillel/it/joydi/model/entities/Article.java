@@ -9,8 +9,6 @@ public class Article extends BaseEntity {
 	private String themeOfTheArticle;
 	private int ratingOfTheArticle;
 	private List tags;
-	// private Date addingDate;
-	// private double addingTime;
 	Date date;
 
 	public Date getDate() {

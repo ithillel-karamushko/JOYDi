@@ -28,7 +28,7 @@ public class Starter {
 		ds.getPersonsList();
 		System.out.println("user1 "+ user1.getName() + " is from " + user1.getCountry());
 
-		ds.modifyUser(user1, "Masha", "eMail", "Russia", Gender.FEMALE, 25);
+		ds.modifyUser(user1, null, "eMail", "Russia", Gender.FEMALE, 25);
 		System.out.println("user1 "+user1.getName() + " is from " + user1.getCountry());
 		Comment comment = new Comment("John", "I like it!");
 		ds.saveComment(comment);
@@ -38,9 +38,14 @@ public class Starter {
 		System.out.println(comment1.getDate());
 		System.out.println(comment1.getAuthorName() + " - "
 				+ comment1.getCommentText());
-		Article article = new Article("Hanna", "Java", "Java is good.");
+		ds.modifyComment(comment1, "I like it!");
+		System.out.println(comment1.getAuthorName() + " - "
+				+ comment1.getCommentText());
+		Article article = new Article("Hanna", "Java", "Java is bad.");
 		ds.saveArticle(article);
-		System.out.println(article.getTextOfTheArticle());
+		System.out.println(article.getAuthorName()+ " " + article.getThemeOfTheArticle() + " " + article.getTextOfTheArticle() );
+		ds.modifyArticle (article, "Java is good", null);
+		System.out.println(article.getAuthorName() + " " + article.getThemeOfTheArticle()+ " " + article.getTextOfTheArticle() );
 		ds.getTextsList();
 	}
 }

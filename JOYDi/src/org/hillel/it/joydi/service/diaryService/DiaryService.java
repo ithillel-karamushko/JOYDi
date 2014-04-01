@@ -14,6 +14,8 @@ public interface DiaryService {
 	void saveArticle(Article article);
 
 	void deleteArticle(Article article);
+	
+	public void modifyArticle(Article article, String textOfTheArticle,	String themeOfTheArticle);
 
 	void saveUser(User person);
 
@@ -30,5 +32,7 @@ public interface DiaryService {
 
 	void deleteComment(Comment comment);
 
+	void modifyComment(Comment comment, String commentText);
+	
 	Set findArticles(ArticleCriteria criteria);
 }
