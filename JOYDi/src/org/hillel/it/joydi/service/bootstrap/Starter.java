@@ -1,7 +1,5 @@
 package org.hillel.it.joydi.service.bootstrap;
 
-import java.util.Date;
-
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;

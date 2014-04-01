@@ -1,9 +1,6 @@
 package org.hillel.id.joydi.persistance.repository;
 
-import java.util.List;
-
 import org.hillel.it.joydi.model.entities.Admin;
-import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 
 public interface PersonRepository {

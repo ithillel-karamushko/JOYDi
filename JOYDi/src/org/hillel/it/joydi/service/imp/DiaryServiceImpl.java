@@ -1,6 +1,5 @@
 package org.hillel.it.joydi.service.imp;
 
-import java.util.List;
 import java.util.Set;
 
 import org.hillel.id.joydi.persistance.repository.PersonRepository;
@@ -8,15 +7,15 @@ import org.hillel.id.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
-import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
-import org.hillel.it.joydi.persistance.inmemory.InMemory;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 public class DiaryServiceImpl implements DiaryService {
-	private TextRepository textRepository = new InMemory();
-	private PersonRepository personRepository = new InMemory();
+	private TextRepository textRepository = new InMemoryTextRepository();
+	private PersonRepository personRepository = new InMemoryPersonRepository();
 
 	@Override
 	public void saveArticle(Article article) {

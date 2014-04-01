@@ -7,6 +7,8 @@ public class Article extends BaseEntity {
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;
+	private int ratingOfTheArticle;
+	private List tags;
 	// private Date addingDate;
 	// private double addingTime;
 	Date date;
@@ -18,9 +20,6 @@ public class Article extends BaseEntity {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	private int ratingOfTheArticle;
-	private List tags;
 
 	public Article(String authorName, String themeOfTheArticle,
 			String textOfTheArticle) {
