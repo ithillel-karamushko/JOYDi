@@ -14,9 +14,10 @@ public class Starter {
 		User user1 = new User("John", "email", "ukraine", Gender.MALE, 22);
 		User user2 = new User("John", "email", "ukraine", Gender.MALE, 22);
 		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 25);
-		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.MALE, 15);
-		Admin admin2 = new Admin("Helen", "email", "poland", Gender.MALE, 23);
+		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE, 15);
+		Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		System.out.println(user1.getName() + " is from " + user1.getCountry());
+		System.out.println("The gender of "+admin1.getName() +" is "+admin1.getGender().getText());
 		System.out.println("The gender of "+user1.getName() +" is "+user1.getGender().getText());
 		ds.saveUser(user1);
 		ds.saveUser(user2);
