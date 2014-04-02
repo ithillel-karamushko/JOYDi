@@ -11,7 +11,7 @@ public class InMemoryTextRepository implements TextRepository {
 
 	private List<Article> article;
 	private List<Comment> comment;
-	
+
 	public InMemoryTextRepository() {
 		this.article = new ArrayList<Article>();
 		this.comment = new ArrayList<Comment>();
@@ -22,12 +22,12 @@ public class InMemoryTextRepository implements TextRepository {
 		this.article.add(article);
 
 	}
-	public void modifyArticle(Article article){
+
+	public void modifyArticle(Article article) {
 		this.article.remove(article);
 		this.article.add(article);
-		
+
 	}
-	
 
 	@Override
 	public void deleteArticle(Article article) {
@@ -46,17 +46,17 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment.remove(comment);
 
 	}
-	
-	public void modifyComment(Comment comment){
+
+	public void modifyComment(Comment comment) {
 		this.comment.remove(comment);
 		this.comment.add(comment);
 	}
-	
+
 	public void getComment() {
 		System.out.println(comment);
-		
+
 	}
-	
+
 	public void getArticle() {
 		System.out.println(article);
 	}

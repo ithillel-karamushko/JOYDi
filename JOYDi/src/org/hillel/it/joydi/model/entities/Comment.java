@@ -12,18 +12,18 @@ public class Comment extends BaseEntity {
 	private String commentText;
 	Date date;
 
-	public Date getDate() {
-		return date;
-	}
-
-	SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-
 	public Comment(String authorName, String commentText) {
 		this.authorName = authorName;
 		this.commentText = commentText;
 		date = new Date();
 
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
 	// I don`t know if we need this part
 

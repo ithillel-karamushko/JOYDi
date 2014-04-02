@@ -29,16 +29,18 @@ public class DiaryServiceImpl implements DiaryService {
 		textRepository.deleteArticle(article);
 
 	}
-	
-	public void modifyArticle(Article article, String textOfTheArticle,	String themeOfTheArticle){
-		
-		if (textOfTheArticle != null){
-		article.setTextOfTheArticle(textOfTheArticle);
+
+	public void modifyArticle(Article article, String textOfTheArticle,
+			String themeOfTheArticle) {
+
+		if (textOfTheArticle != null) {
+			article.setTextOfTheArticle(textOfTheArticle);
 		}
-		
-		if (themeOfTheArticle != null){
-		article.setThemeOfTheArticle(themeOfTheArticle);}
-		
+
+		if (themeOfTheArticle != null) {
+			article.setThemeOfTheArticle(themeOfTheArticle);
+		}
+
 		textRepository.modifyArticle(article);
 	}
 
@@ -59,29 +61,31 @@ public class DiaryServiceImpl implements DiaryService {
 		personRepository.deleteUser(person);
 
 	}
-	
-	public void modifyUser(User person, String name, String eMail, String country,
-			Gender gender, int age){
-		if (name != null){
-		person.setName(name);
+
+	public void modifyUser(User person, String name, String eMail,
+			String country, Gender gender, int age) {
+		if (name != null) {
+			person.setName(name);
 		}
-		
-		if (eMail != null){
-		person.seteMail(eMail);}
-		
-		if (country != null){
-		person.setCountry(country);}
-		
-		if (gender != null){
-		person.setGender(gender);
+
+		if (eMail != null) {
+			person.seteMail(eMail);
 		}
-		
+
+		if (country != null) {
+			person.setCountry(country);
+		}
+
+		if (gender != null) {
+			person.setGender(gender);
+		}
+
 		person.setAge(age);
 		personRepository.modifyUser(person);
 		System.out.println("Users List: ");
 		personRepository.getUser();
 	}
-	
+
 	@Override
 	public void deleteAdmin(Admin person) {
 		personRepository.deleteAdmin(person);
@@ -98,12 +102,11 @@ public class DiaryServiceImpl implements DiaryService {
 	public void deleteComment(Comment comment) {
 		textRepository.deleteComment(comment);
 	}
-	
-	public void modifyComment(Comment comment, String commentText){
+
+	public void modifyComment(Comment comment, String commentText) {
 		comment.setCommentText(commentText);
 		textRepository.modifyComment(comment);
 	}
-
 
 	public void getPersonsList() {
 		System.out.println("Admins List: ");

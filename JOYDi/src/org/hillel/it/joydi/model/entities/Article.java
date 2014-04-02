@@ -11,20 +11,20 @@ public class Article extends BaseEntity {
 	private List tags;
 	Date date;
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	public Article(String authorName, String themeOfTheArticle,
 			String textOfTheArticle) {
 		date = new Date();
 		this.authorName = authorName;
 		this.themeOfTheArticle = themeOfTheArticle;
 		this.textOfTheArticle = textOfTheArticle;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public List getTags() {
