@@ -121,7 +121,16 @@ public class DiaryServiceImpl implements DiaryService {
 		System.out.println("Comments List: ");
 		textRepository.getComment();
 	}
-
+    
+	public void pushLike(Article article){
+		article.setLike(article.getLike()+1);
+		
+	}
+	
+	public void pushDisLike(Article article){
+		article.setDisLike(article.getDisLike()+1);
+	}
+	
 	@Override
 	public Set findArticles(ArticleCriteria criteria) {
 		// TODO Auto-generated method stub

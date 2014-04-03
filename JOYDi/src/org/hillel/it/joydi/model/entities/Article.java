@@ -9,7 +9,9 @@ public class Article extends BaseEntity {
 	private String themeOfTheArticle;
 	private int ratingOfTheArticle;
 	private List tags;
-	Date date;
+	private Date date;
+	private int like;
+	private int disLike;
 
 	public Article(String authorName, String themeOfTheArticle,
 			String textOfTheArticle) {
@@ -17,6 +19,8 @@ public class Article extends BaseEntity {
 		this.authorName = authorName;
 		this.themeOfTheArticle = themeOfTheArticle;
 		this.textOfTheArticle = textOfTheArticle;
+		this.setLike(0);
+		this.setDisLike(0);
 	}
 
 	public Date getDate() {
@@ -65,6 +69,22 @@ public class Article extends BaseEntity {
 
 	public void setRatingOfTheArticle(int ratingOfTheArticle) {
 		this.ratingOfTheArticle = ratingOfTheArticle;
+	}
+
+	public int getLike() {
+		return like;
+	}
+
+	public void setLike(int like) {
+		this.like = like;
+	}
+	
+	public int getDisLike() {
+		return disLike;
+	}
+
+	public void setDisLike(int disLike) {
+		this.disLike = disLike;
 	}
 
 }

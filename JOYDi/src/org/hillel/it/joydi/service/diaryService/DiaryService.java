@@ -35,5 +35,9 @@ public interface DiaryService {
 
 	void modifyComment(Comment comment, String commentText);
 
+	void pushLike(Article article);
+
+	void pushDisLike(Article article);
+
 	Set findArticles(ArticleCriteria criteria);
 }

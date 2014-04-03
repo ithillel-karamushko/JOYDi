@@ -43,9 +43,15 @@ public class Starter {
 				+ comment1.getCommentText());
 		Article article = new Article("Hanna", "Java", "Java is bad.");
 		ds.saveArticle(article);
+		ds.pushLike(article);
+		ds.pushLike(article);
+		ds.pushDisLike(article);
 		System.out.println(article.getAuthorName()+ " " + article.getThemeOfTheArticle() + " " + article.getTextOfTheArticle() );
 		ds.modifyArticle (article, "Java is good", null);
 		System.out.println(article.getAuthorName() + " " + article.getThemeOfTheArticle()+ " " + article.getTextOfTheArticle() );
 		ds.getTextsList();
+		System.out.println(article.getLike());
+		System.out.println(article.getDisLike());
+		
 	}
 }
