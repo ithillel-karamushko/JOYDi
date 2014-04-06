@@ -6,6 +6,7 @@ import org.hillel.it.joydi.model.entities.User;
 
 public interface PersonRepository {
 	void saveUser(User person);
+	
 	void modifyUser(User person);
 
 	void deleteUser(User person);

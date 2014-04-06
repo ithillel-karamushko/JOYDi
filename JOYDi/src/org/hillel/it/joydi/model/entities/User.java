@@ -10,4 +10,8 @@ public class User extends Person {
 		this.gender = gender;
 		this.age = age;
 	}
+	
+	public User() {
+		
+	}
 }
