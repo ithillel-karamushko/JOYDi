@@ -1,4 +1,4 @@
-package org.hillel.id.joydi.persistance.repository;
+package org.hillel.it.joydi.persistance.repository;
 
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;

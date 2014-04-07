@@ -3,9 +3,9 @@ package org.hillel.it.joydi.persistance.inmemory;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hillel.id.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.persistance.repository.TextRepository;
 
 public class InMemoryTextRepository implements TextRepository {
 

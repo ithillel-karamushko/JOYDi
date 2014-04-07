@@ -2,8 +2,6 @@ package org.hillel.it.joydi.service.imp;
 
 import java.util.Set;
 
-import org.hillel.id.joydi.persistance.repository.PersonRepository;
-import org.hillel.id.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -12,6 +10,8 @@ import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
+import org.hillel.it.joydi.persistance.repository.PersonRepository;
+import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 public class DiaryServiceImpl implements DiaryService {
@@ -121,18 +121,18 @@ public class DiaryServiceImpl implements DiaryService {
 		System.out.println("Comments List: ");
 		textRepository.getComment();
 	}
-    
-	public void pushLike(Article article){
-		article.setLike(article.getLike()+1);
-		
+
+	public void pushLike(Article article) {
+		article.setLike(article.getLike() + 1);
+
 	}
-	
-	public void pushDisLike(Article article){
-		article.setDisLike(article.getDisLike()+1);
+
+	public void pushDisLike(Article article) {
+		article.setDisLike(article.getDisLike() + 1);
 	}
-	
+
 	@Override
-	public Set findArticles(ArticleCriteria criteria) {
+	public Set<Article> findArticles(ArticleCriteria criteria) {
 		// TODO Auto-generated method stub
 		return null;
 	}

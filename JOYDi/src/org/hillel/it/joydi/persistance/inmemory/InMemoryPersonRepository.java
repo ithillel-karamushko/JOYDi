@@ -3,9 +3,9 @@ package org.hillel.it.joydi.persistance.inmemory;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hillel.id.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.User;
+import org.hillel.it.joydi.persistance.repository.PersonRepository;
 
 public class InMemoryPersonRepository implements PersonRepository {
 
