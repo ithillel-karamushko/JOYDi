@@ -41,7 +41,7 @@ public class Starter {
 		ds.saveComment(comment1);
 		System.out.println(comment1.getDate());
 		System.out.println(comment1.getAuthorName() + " - "
-				+ comment1.getCommentText());
+				+ comment1.getCommentText()); 
 		ds.modifyComment(comment1, "I like it!");
 		System.out.println(comment1.getAuthorName() + " - "
 				+ comment1.getCommentText());
