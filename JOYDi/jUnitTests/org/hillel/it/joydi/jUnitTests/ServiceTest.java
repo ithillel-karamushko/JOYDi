@@ -17,22 +17,18 @@ import org.junit.Test;
 
 public class ServiceTest {
 	private static Article article;
-	private static TextRepository tr;
 	private static Comment comment;
 	private static int i;
 	private static DiaryServiceImpl ds;
 	private static Admin admin;
-	private static PersonRepository pr;
 	private static User user;
 
 	@BeforeClass
 	public static void before() {
 		article = new Article("Hanna", "Java", "I like Java.");
-		tr = new InMemoryTextRepository();
 		ds = new DiaryServiceImpl();
 		comment = new Comment("Hanna", "Nice words");
 		user = new User("John", "email", "ukraine", Gender.MALE, 22);
-		pr = new InMemoryPersonRepository();
 		admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 
 	}
@@ -123,12 +119,12 @@ public class ServiceTest {
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
 	}
 
-//	@Test
-//	public void testModifyComment() {
-//		i = ds.getTextRepository().getComment().size();
-//		ds.modifyComment(comment, "Bad words");
-//		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
-//	}
+	@Test
+	public void testModifyComment() {
+		i = ds.getTextRepository().getComment().size();
+		ds.modifyComment(comment, "Bad words");
+		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
+	}
 
 	@Test
 	public void testPushLike() {
