@@ -1,5 +1,7 @@
 package org.hillel.it.joydi.persistance.repository;
 
+import java.util.List;
+
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.User;
 
@@ -14,7 +16,7 @@ public interface PersonRepository {
 
 	void deleteAdmin(Admin person);
 
-	void getAdmin();
+	List<Admin> getAdmin();
 
-	void getUser();
+	List<User> getUser();
 }

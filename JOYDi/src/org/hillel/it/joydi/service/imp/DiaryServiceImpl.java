@@ -21,7 +21,7 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public void saveArticle(Article article) {
 		textRepository.saveArticle(article);
-
+		
 	}
 
 	@Override
@@ -110,16 +110,16 @@ public class DiaryServiceImpl implements DiaryService {
 
 	public void getPersonsList() {
 		System.out.println("Admins List: ");
-		personRepository.getAdmin();
+		System.out.println(personRepository.getAdmin());
 		System.out.println("Users List: ");
-		personRepository.getUser();
+		System.out.println(personRepository.getUser());
 	}
 
 	public void getTextsList() {
 		System.out.println("Articles List: ");
-		textRepository.getArticle();
+		System.out.println(textRepository.getArticle());
 		System.out.println("Comments List: ");
-		textRepository.getComment();
+		System.out.println(textRepository.getComment());
 	}
 
 	public void pushLike(Article article) {

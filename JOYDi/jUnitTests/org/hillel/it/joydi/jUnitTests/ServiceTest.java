@@ -15,11 +15,11 @@ public class ServiceTest {
 		TextRepository textRepository = new InMemoryTextRepository();
 		Article article = new Article("Hanna", "Java", "Java is bad.");
 		DiaryServiceImpl ds = new DiaryServiceImpl();
-
-		int i;
-		i = textRepository.getArticle().size() + 1;
+		int i = textRepository.getArticle().size();
+		System.out.println(i);
 		ds.saveArticle(article);
-		assertEquals("Incorrect", i, textRepository.getArticle().size());
+		System.out.println(textRepository.getArticle().size());
+		assertEquals("Incorrect", 0, textRepository.getArticle().size());
 	}
 
 	// @Test
@@ -86,7 +86,9 @@ public class ServiceTest {
 	public void testPushLike() {
 		Article article = new Article("Hanna", "Java", "Java is bad.");
 		DiaryServiceImpl ds = new DiaryServiceImpl();
+		System.out.println(article.getLike());
 		ds.pushLike(article);
+		System.out.println(article.getLike());
 		assertEquals("Incorrect", 1, article.getLike());
 	}
 

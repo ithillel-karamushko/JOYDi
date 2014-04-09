@@ -9,6 +9,14 @@ import org.hillel.it.joydi.persistance.repository.PersonRepository;
 
 public class InMemoryPersonRepository implements PersonRepository {
 
+	public List<Admin> getAdmin() {
+		return admin;
+	}
+
+	public List<User> getUser() {
+		return user;
+	}
+
 	private List<Admin> admin;
 	private List<User> user;
 
@@ -39,14 +47,6 @@ public class InMemoryPersonRepository implements PersonRepository {
 	public void deleteAdmin(Admin person) {
 		admin.remove(person);
 
-	}
-
-	public void getAdmin() {
-		System.out.println(admin);
-	}
-
-	public void getUser() {
-		System.out.println(user);
 	}
 
 	@Override
