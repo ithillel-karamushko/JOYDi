@@ -2,9 +2,14 @@ package org.hillel.it.joydi.jUnitTests;
 
 import static org.junit.Assert.*;
 
+import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Gender;
+import org.hillel.it.joydi.model.entities.User;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
+import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.junit.BeforeClass;
@@ -16,6 +21,9 @@ public class ServiceTest {
 	private static Comment comment ;
 	private static int i;
 	private static DiaryServiceImpl ds;
+	private static Admin admin;
+	private static PersonRepository pr ;
+	private static User user ;
 	
 	@BeforeClass
 	public static void before() {
@@ -23,52 +31,75 @@ public class ServiceTest {
 		tr = new InMemoryTextRepository();
 		ds = new DiaryServiceImpl();
 		comment = new Comment("Hanna", "Nice words");
+		user = new User("John",  "email", "ukraine", Gender.MALE, 22);
+		pr = new InMemoryPersonRepository();
+		admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
+		
 	}
 
 	@Test
 	public void testSaveArticle() {
 		i = ds.getTextRepository().getArticle().size()+1;
-		System.out.println(i);
 		ds.saveArticle(article);
-		System.out.println(ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository().getArticle().contains(article));
 	}
 
-	// @Test
-	// public void testDeleteArticle() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testModifyArticle() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testSaveUser() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testSaveAdmin() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testDeleteUser() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testModifyUser() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testDeleteAdmin() {
-	// fail("Not yet implemented");
-	// }
+	 @Test
+	public void testDeleteArticle() {
+		i = ds.getTextRepository().getArticle().size()-1;
+		ds.deleteArticle(article);
+		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
+		assertEquals("Incorrect value", false, ds.getTextRepository().getArticle().contains(article));
+		}
+	
+	@Test
+	public void testModifyArticle() {
+		i = ds.getTextRepository().getArticle().size();
+		ds.modifyArticle(article, "Java", "Java");
+		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
+		}
+	   @Test
+	   public void testSaveUser() {
+		  i=ds.getPersonRepository().getUser().size()+1;
+		  ds.saveUser(user);
+		  assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
+		  assertEquals("Incorrect value", true, ds.getPersonRepository().getUser().contains(user));
+	   }
+	
+	@Test
+	public void testSaveAdmin() {
+		i=ds.getPersonRepository().getAdmin().size()+1;
+		  ds.saveAdmin(admin);
+		  assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
+		  
+	   }
+	
+	 @Test
+	public void testDeleteUser() {
+		 i=ds.getPersonRepository().getUser().size()-1;
+		  ds.deleteUser(user);
+		  assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
+		  assertEquals("Incorrect value", false, ds.getPersonRepository().getUser().contains(user));
+	   
+	}
+	
+	 @Test
+	public void testModifyUser() {
+		 i=ds.getPersonRepository().getUser().size();
+		  ds.modifyUser(user, "Masha",  "email", "ukraine", Gender.MALE, 22);
+		  assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
+		  
+	}
+	
+	 @Test
+	public void testDeleteAdmin() {
+		 ds.saveAdmin(admin);
+		 i=ds.getPersonRepository().getAdmin().size()-1;
+		  ds.deleteAdmin(admin);
+		  assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
+		  
+	}
 	//
 	// @Test
 	// public void testSaveComment() {
@@ -84,16 +115,7 @@ public class ServiceTest {
 	// public void testModifyComment() {
 	// fail("Not yet implemented");
 	// }
-	//
-	// @Test
-	// public void testGetPersonsList() {
-	// fail("Not yet implemented");
-	// }
-	//
-	// @Test
-	// public void testGetTextsList() {
-	// fail("Not yet implemented");
-	// }
+
 
 	@Test
 	public void testPushLike() {
