@@ -121,6 +121,7 @@ public class ServiceTest {
 
 	@Test
 	public void testModifyComment() {
+		ds.saveComment(comment);
 		i = ds.getTextRepository().getComment().size();
 		ds.modifyComment(comment, "Bad words");
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
