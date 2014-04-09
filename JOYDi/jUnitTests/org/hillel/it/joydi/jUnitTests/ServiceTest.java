@@ -1,14 +1,8 @@
 package org.hillel.it.joydi.jUnitTests;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hillel.it.joydi.model.entities.Article;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
-import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.junit.Test;
