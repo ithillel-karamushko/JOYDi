@@ -16,6 +16,14 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 public class DiaryServiceImpl implements DiaryService {
 	private TextRepository textRepository = new InMemoryTextRepository();
+	public TextRepository getTextRepository() {
+		return textRepository;
+	}
+
+	public PersonRepository getPersonRepository() {
+		return personRepository;
+	}
+
 	private PersonRepository personRepository = new InMemoryPersonRepository();
  
 	@Override

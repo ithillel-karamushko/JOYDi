@@ -1,25 +1,38 @@
 package org.hillel.it.joydi.jUnitTests;
 
 import static org.junit.Assert.*;
+
 import org.hillel.it.joydi.model.entities.Article;
+import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ServiceTest {
+	private static Article article;
+	private static TextRepository tr ;
+	private static Comment comment ;
+	private static int i;
+	private static DiaryServiceImpl ds;
+	
+	@BeforeClass
+	public static void before() {
+		article = new Article("Hanna", "Java", "I like Java.");
+		tr = new InMemoryTextRepository();
+		ds = new DiaryServiceImpl();
+		comment = new Comment("Hanna", "Nice words");
+	}
 
 	@Test
 	public void testSaveArticle() {
-
-		TextRepository textRepository = new InMemoryTextRepository();
-		Article article = new Article("Hanna", "Java", "Java is bad.");
-		DiaryServiceImpl ds = new DiaryServiceImpl();
-		int i = textRepository.getArticle().size();
+		i = ds.getTextRepository().getArticle().size()+1;
 		System.out.println(i);
 		ds.saveArticle(article);
-		System.out.println(textRepository.getArticle().size());
-		assertEquals("Incorrect", 0, textRepository.getArticle().size());
+		System.out.println(ds.getTextRepository().getArticle().size());
+		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
+		assertEquals("Incorrect value", true, ds.getTextRepository().getArticle().contains(article));
 	}
 
 	// @Test
@@ -84,18 +97,12 @@ public class ServiceTest {
 
 	@Test
 	public void testPushLike() {
-		Article article = new Article("Hanna", "Java", "Java is bad.");
-		DiaryServiceImpl ds = new DiaryServiceImpl();
-		System.out.println(article.getLike());
 		ds.pushLike(article);
-		System.out.println(article.getLike());
 		assertEquals("Incorrect", 1, article.getLike());
 	}
 
 	@Test
 	public void testPushDisLike() {
-		Article article = new Article("Hanna", "Java", "Java is bad.");
-		DiaryServiceImpl ds = new DiaryServiceImpl();
 		ds.pushDisLike(article);
 		assertEquals("Incorrect", 1, article.getDisLike());
 	}
