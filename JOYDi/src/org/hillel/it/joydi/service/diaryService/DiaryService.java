@@ -1,5 +1,7 @@
 package org.hillel.it.joydi.service.diaryService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.hillel.it.joydi.model.entities.Admin;
@@ -39,5 +41,5 @@ public interface DiaryService {
 
 	void pushDisLike(Article article);
 
-	Set findArticles(ArticleCriteria criteria);
+	List<Article> findArticles(ArticleCriteria criteria);
 }

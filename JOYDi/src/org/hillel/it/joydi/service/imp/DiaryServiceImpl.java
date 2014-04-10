@@ -1,5 +1,7 @@
 package org.hillel.it.joydi.service.imp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.hillel.it.joydi.model.entities.Admin;
@@ -17,7 +19,10 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 public class DiaryServiceImpl implements DiaryService {
 	private TextRepository textRepository = new InMemoryTextRepository();
 	private PersonRepository personRepository = new InMemoryPersonRepository();
- 
+	private InMemoryTextRepository tr;
+
+	// private ArticleCriteria criteria = new ArticleCriteria(null, null, null);
+
 	public TextRepository getTextRepository() {
 		return textRepository;
 	}
@@ -25,10 +30,11 @@ public class DiaryServiceImpl implements DiaryService {
 	public PersonRepository getPersonRepository() {
 		return personRepository;
 	}
+
 	@Override
 	public void saveArticle(Article article) {
 		textRepository.saveArticle(article);
-		
+
 	}
 
 	@Override
@@ -139,8 +145,28 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public Set<Article> findArticles(ArticleCriteria criteria) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Article> findArticles(ArticleCriteria criteria) {
+		String author = criteria.getAuthor();
+		String tag = criteria.getTag();
+		String theme = criteria.getThemeOfArticle();
+		List<Article> result = new ArrayList<Article>();
+
+		if (author == null && tag == null && theme == null) {
+			System.out.println("ytyt1");
+			return null;
+		} else {
+			result = textRepository.getArticle();
+			for (int i = 0; i<result.size(); i++) {
+				if (result.get(i).getAuthorName() != author) {
+					result.remove(result.get(i));
+					System.out.println(result + "after remove");
+
+				} else {
+					System.out.println(result + "in else");
+				}
+			}
+
+		}
+		return result;
 	}
 }
