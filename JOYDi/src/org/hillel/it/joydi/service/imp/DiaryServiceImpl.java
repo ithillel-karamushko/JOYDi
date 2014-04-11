@@ -259,8 +259,11 @@ public class DiaryServiceImpl implements DiaryService {
 		List<Article> result = new ArrayList<Article>();
 
 		if (author == null && tag == null && theme == null) {
-			System.out.println("ytyt1");
-			return null;
+			try {
+				throw new Exception ("Please, type your criteria");
+			} catch (Exception e){
+				e.getMessage();
+			}
 		} else {
 			result = textRepository.getArticle();
 			for (int i = 0; i < result.size(); i++) {

@@ -64,11 +64,8 @@ public class Starter {
 		Article article = new Article("Hanna", "Java", "Java is bad.");
 		ds.saveArticle(article1);
 		ds.saveArticle(article);
-		
 
-		ArticleCriteria ac = new ArticleCriteria(null, "Helen", null);
-
+		ArticleCriteria ac = new ArticleCriteria(null, "Hanna", null);
 		ds.findArticles(ac);
-
 	}
 }
