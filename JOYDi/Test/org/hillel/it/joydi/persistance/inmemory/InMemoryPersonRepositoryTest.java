@@ -1,4 +1,4 @@
-package org.hillel.it.joydi.jUnitTests;
+package org.hillel.it.joydi.persistance.inmemory;
 
 import static org.junit.Assert.*;
 

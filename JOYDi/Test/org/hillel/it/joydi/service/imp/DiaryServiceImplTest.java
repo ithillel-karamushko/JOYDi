@@ -1,4 +1,4 @@
-package org.hillel.it.joydi.jUnitTests;
+package org.hillel.it.joydi.service.imp;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ServiceTest {
+public class DiaryServiceImplTest {
 	private static Article article;
 	private static Comment comment;
 	private static int i;
