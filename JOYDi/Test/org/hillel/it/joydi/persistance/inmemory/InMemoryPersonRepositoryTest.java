@@ -12,21 +12,18 @@ import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.junit.BeforeClass;
 
 public class InMemoryPersonRepositoryTest {
-	private static Admin admin;
-	private static PersonRepository pr ;
-	private static User user ;
-	private static int i;
-	
+
+	private static PersonRepository pr;
+
 	@BeforeClass
 	public static void before() {
-		user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr = new InMemoryPersonRepository();
-		admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 	}
-	
+
 	@Test
 	public void saveUserTest() {
-		i = pr.getUser().size()+1;
+		int i = pr.getUser().size() + 1;
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr.saveUser(user);
 		assertEquals("Incorrect value", i, pr.getUser().size());
 		assertEquals("Incorrect value", true, pr.getUser().contains(user));
@@ -35,15 +32,19 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void deleteUserTest() {
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr.saveUser(user);
-		i = pr.getUser().size()-1;
+		int i = pr.getUser().size() - 1;
 		pr.deleteUser(user);
 		assertEquals("Incorrect value", i, pr.getUser().size());
+		assertEquals("Incorrect value", false, pr.getUser().contains(user));
+
 	}
 
 	@Test
 	public void saveAdminTest() {
-		i = pr.getAdmin().size()+1;
+		int i = pr.getAdmin().size() + 1;
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		pr.saveAdmin(admin);
 		assertEquals("Incorrect value", i, pr.getAdmin().size());
 		assertEquals("Incorrect value", true, pr.getAdmin().contains(admin));
@@ -51,19 +52,23 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void deleteAdminTest() {
-		i = pr.getAdmin().size()-1;
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
+		pr.saveAdmin(admin);
+		int i = pr.getAdmin().size() - 1;
 		pr.deleteAdmin(admin);
 		assertEquals("Incorrect value", i, pr.getAdmin().size());
 		assertEquals("Incorrect value", false, pr.getAdmin().contains(admin));
 	}
-	
+
 	@Test
 	public void modifyUserTest() {
-		i = pr.getUser().size();
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
+		pr.saveUser(user);
+		int i = pr.getUser().size();
 		pr.modifyUser(user);
 		assertEquals("Incorrect value", i, pr.getUser().size());
 		assertEquals("Incorrect value", true, pr.getUser().contains(user));
-		
+
 	}
 
 }

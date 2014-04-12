@@ -16,26 +16,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DiaryServiceImplTest {
-	private static Article article;
-	private static Comment comment;
-	private static int i;
 	private static DiaryServiceImpl ds;
-	private static Admin admin;
-	private static User user;
 
 	@BeforeClass
 	public static void before() {
-		article = new Article("Hanna", "Java", "I like Java.");
 		ds = new DiaryServiceImpl();
-		comment = new Comment("Hanna", "Nice words");
-		user = new User("John", "email", "ukraine", Gender.MALE, 22);
-		admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
-
 	}
 
 	@Test
 	public void testSaveArticle() {
-		i = ds.getTextRepository().getArticle().size() + 1;
+		int i = ds.getTextRepository().getArticle().size() + 1;
+		Article article = new Article("Hanna", "Java", "I like Java.");
 		ds.saveArticle(article);
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
@@ -44,7 +35,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteArticle() {
-		i = ds.getTextRepository().getArticle().size() - 1;
+		Article article = new Article("Mary", "Java", "I like Java.");
+		ds.saveArticle(article);
+		int i = ds.getTextRepository().getArticle().size() - 1;
 		ds.deleteArticle(article);
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", false, ds.getTextRepository()
@@ -53,14 +46,20 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyArticle() {
-		i = ds.getTextRepository().getArticle().size();
-		ds.modifyArticle(article, "Java", "Java");
+		Article article = new Article("Mike", "Java", "I like Java.");
+		ds.saveArticle(article);
+		int i = ds.getTextRepository().getArticle().size();
+		ds.modifyArticle(article, "Java", "I don't like Java");
+		System.out.println(article.getThemeOfTheArticle());
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
+		assertEquals("Incorrect value", true, ds.getTextRepository()
+				.getArticle().contains(article));
 	}
 
 	@Test
 	public void testSaveUser() {
-		i = ds.getPersonRepository().getUser().size() + 1;
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
+		int i = ds.getPersonRepository().getUser().size() + 1;
 		ds.saveUser(user);
 		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
 		assertEquals("Incorrect value", true, ds.getPersonRepository()
@@ -69,15 +68,19 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveAdmin() {
-		i = ds.getPersonRepository().getAdmin().size() + 1;
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
+		int i = ds.getPersonRepository().getAdmin().size() + 1;
 		ds.saveAdmin(admin);
 		assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
-
+		assertEquals("Incorrect value", true, ds.getPersonRepository()
+				.getAdmin().contains(admin));
 	}
 
 	@Test
 	public void testDeleteUser() {
-		i = ds.getPersonRepository().getUser().size() - 1;
+		User user = new User("Mike", "email", "ukraine", Gender.MALE, 25);
+		ds.saveUser(user);
+		int i = ds.getPersonRepository().getUser().size() - 1;
 		ds.deleteUser(user);
 		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
 		assertEquals("Incorrect value", false, ds.getPersonRepository()
@@ -87,24 +90,32 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyUser() {
-		i = ds.getPersonRepository().getUser().size();
-		ds.modifyUser(user, "Masha", "email", "ukraine", Gender.MALE, 22);
+		User user = new User("Mary", "email", "ukraine", Gender.FEMALE, 22);
+		ds.saveUser(user);
+		int i = ds.getPersonRepository().getUser().size();
+		ds.modifyUser(user, "Masha", "email", "ukraine", Gender.FEMALE, 22);
 		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
+		assertEquals("Incorrect value", true, ds.getPersonRepository()
+				.getUser().contains(user));
 
 	}
 
 	@Test
 	public void testDeleteAdmin() {
+		Admin admin = new Admin("Suzy", "email", "poland", Gender.FEMALE, 28);
 		ds.saveAdmin(admin);
-		i = ds.getPersonRepository().getAdmin().size() - 1;
+		int i = ds.getPersonRepository().getAdmin().size() - 1;
 		ds.deleteAdmin(admin);
 		assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
+		assertEquals("Incorrect value", false, ds.getPersonRepository()
+				.getAdmin().contains(admin));
 
 	}
 
 	@Test
 	public void testSaveComment() {
-		i = ds.getTextRepository().getComment().size() + 1;
+		 Comment comment = new Comment("Hanna", "Nice words");
+		int i = ds.getTextRepository().getComment().size() + 1;
 		ds.saveComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
@@ -113,28 +124,36 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteComment() {
+		Comment comment = new Comment("Suzy", "Nice words");
 		ds.saveComment(comment);
-		i = ds.getTextRepository().getComment().size() - 1;
+		int i = ds.getTextRepository().getComment().size() - 1;
 		ds.deleteComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
+		assertEquals("Incorrect", false, ds.getTextRepository().getComment().contains(comment));
 	}
 
 	@Test
 	public void testModifyComment() {
+		Comment comment = new Comment("Frank", "Nice words");
 		ds.saveComment(comment);
-		i = ds.getTextRepository().getComment().size();
+		int i = ds.getTextRepository().getComment().size();
 		ds.modifyComment(comment, "Bad words");
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
+		assertEquals("Incorrect", true, ds.getTextRepository().getComment().contains(comment));
 	}
 
 	@Test
 	public void testPushLike() {
+		Article article = new Article("Frank", "Java", "I like Java.");
+		ds.saveArticle(article);
 		ds.pushLike(article);
 		assertEquals("Incorrect", 1, article.getLike());
 	}
 
 	@Test
 	public void testPushDisLike() {
+		Article article = new Article("John", "Java", "I like Java.");
+		ds.saveArticle(article);
 		ds.pushDisLike(article);
 		assertEquals("Incorrect", 1, article.getDisLike());
 	}

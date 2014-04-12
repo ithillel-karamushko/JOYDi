@@ -9,22 +9,17 @@ import org.junit.Test;
 import org.junit.BeforeClass;
 
 public class InMemoryTextRepositoryTest {
+	private static TextRepository tr;
 
-	private static Article article;
-	private static TextRepository tr ;
-	private static Comment comment ;
-	private static int i;
-	
 	@BeforeClass
 	public static void before() {
-		article = new Article("Hanna", "Java", "I like Java.");
 		tr = new InMemoryTextRepository();
-		comment = new Comment("Hanna", "Nice words");
 	}
-	
+
 	@Test
-	public void testSaveArticle() {		
-		i = tr.getArticle().size()+1;
+	public void testSaveArticle() {
+		int i = tr.getArticle().size() + 1;
+		Article article = new Article("Hanna", "Java", "I like Java.");
 		tr.saveArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
 		assertEquals("Incorrect value", true, tr.getArticle().contains(article));
@@ -32,7 +27,8 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testModifyArticle() {
-		i = tr.getArticle().size()+1;
+		int i = tr.getArticle().size() + 1;
+		Article article = new Article("Mary", "Java", "I like Java.");
 		tr.saveArticle(article);
 		tr.modifyArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
@@ -41,15 +37,19 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteArticle() {
+		Article article = new Article("Mary", "Java", "I like Java.");
 		tr.saveArticle(article);
-		i = tr.getArticle().size()-1;
+		int i = tr.getArticle().size() - 1;
 		tr.deleteArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
+		assertEquals("Incorrect value", false, tr.getArticle()
+				.contains(article));
 	}
 
 	@Test
 	public void testSaveComment() {
-		i = tr.getComment().size()+1;
+		int i = tr.getComment().size() + 1;
+		Comment comment = new Comment("Hanna", "Nice words");
 		tr.saveComment(comment);
 		assertEquals("Incorrect value", i, tr.getComment().size());
 		assertEquals("Incorrect value", true, tr.getComment().contains(comment));
@@ -57,17 +57,20 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteComment() {
+		Comment comment = new Comment("Hanna", "Nice words");
 		tr.saveComment(comment);
-		i = tr.getComment().size()-1;
+		int i = tr.getComment().size() - 1;
 		tr.deleteComment(comment);
 		assertEquals("Incorrect value", i, tr.getComment().size());
-		assertEquals("Incorrect value", false, tr.getComment().contains(comment));
+		assertEquals("Incorrect value", false, tr.getComment()
+				.contains(comment));
 	}
 
 	@Test
-	public void testModifyComment() { 
+	public void testModifyComment() {
+		Comment comment = new Comment("Hanna", "Nice words");
 		tr.saveComment(comment);
-		i = tr.getComment().size();
+		int i = tr.getComment().size();
 		tr.modifyComment(comment);
 		assertEquals("Incorrect value", i, tr.getComment().size());
 		assertEquals("Incorrect value", true, tr.getComment().contains(comment));
