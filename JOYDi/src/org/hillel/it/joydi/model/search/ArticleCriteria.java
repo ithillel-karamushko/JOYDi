@@ -1,4 +1,7 @@
 package org.hillel.it.joydi.model.search;
+/**
+ * @author Þëÿ
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,27 +20,48 @@ public class ArticleCriteria {
 		this.author = author;
 		this.themeOfArticle = themeOfArticle;
 	}
-
+ /**
+  * Getter for field tag;
+  * @return tag;
+  */
 	public String getTag() {
 		return tag;
 	}
-
+/**
+ * Setter for field tag;
+ * modify field tag;
+ * @param tag;
+ */
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-
+/**
+ * Getter for field author;
+ * @return author;
+ */
 	public String getAuthor() {
 		return author;
 	}
-
+/**
+ * Setter for field author;;
+ * modify field author;
+ * @param author
+ */
+	
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-
+/**
+ * Getter for field ThemeOfArticle;
+ * @return themeOfArticle;
+ */
 	public String getThemeOfArticle() {
 		return themeOfArticle;
 	}
-
+/**
+ * Setter for field themeOfArticle;
+ * @param themeOfArticle
+ */
 	public void setThemeOfArticle(String themeOfArticle) {
 		this.themeOfArticle = themeOfArticle;
 	}
