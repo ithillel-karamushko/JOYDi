@@ -21,8 +21,14 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
  * 
  */
 public class DiaryServiceImpl implements DiaryService {
-	private TextRepository textRepository = new InMemoryTextRepository();
-	private PersonRepository personRepository = new InMemoryPersonRepository();
+	private TextRepository textRepository;
+	private PersonRepository personRepository;
+	
+	public DiaryServiceImpl (TextRepository textRepository,PersonRepository personRepository){
+		this.textRepository = textRepository;
+		this.personRepository = personRepository;
+		
+	}
 
 	/**
 	 * Getter for field textRepository

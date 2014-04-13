@@ -17,10 +17,14 @@ import org.junit.Test;
 
 public class DiaryServiceImplTest {
 	private static DiaryServiceImpl ds;
+	private static TextRepository textRepository;
+	private static PersonRepository personRepository;
 
 	@BeforeClass
 	public static void before() {
-		ds = new DiaryServiceImpl();
+		textRepository = new InMemoryTextRepository();
+		personRepository = new InMemoryPersonRepository();
+		ds = new DiaryServiceImpl(textRepository, personRepository);
 	}
 
 	@Test
