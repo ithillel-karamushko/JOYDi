@@ -15,11 +15,13 @@ public class ArticleCriteria {
 	private String themeOfArticle;
 	private TextRepository textRepository;
 
-	public ArticleCriteria(String tag, String author, String themeOfArticle, TextRepository tr) {
+	public ArticleCriteria(String tag, String author, String themeOfArticle,
+			TextRepository tr) {
 		this.textRepository = tr;
 		this.author = author;
 		this.themeOfArticle = themeOfArticle;
 		this.tag = tag;
+
 	}
 
 	/**
@@ -78,7 +80,7 @@ public class ArticleCriteria {
 		this.themeOfArticle = themeOfArticle;
 	}
 
-	public List<Article> match (ArticleCriteria criteria){
+	public List<Article> match(ArticleCriteria criteria) {
 		List<Article> allArticles = textRepository.getArticle();
 		List<Article> result = new ArrayList<Article>();
 		for (Article article : allArticles) {

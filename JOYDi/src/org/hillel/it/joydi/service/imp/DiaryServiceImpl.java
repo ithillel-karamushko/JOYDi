@@ -256,31 +256,6 @@ public class DiaryServiceImpl implements DiaryService {
 		article.setDisLike(article.getDisLike() + 1);
 	}
 
-	// @Override
-	// public List<Article> findArticles(ArticleCriteria criteria) {
-	// String author = criteria.getAuthor();
-	// String tag = criteria.getTag();
-	// String theme = criteria.getThemeOfArticle();
-	// List<Article> result = new ArrayList<Article>();
-	//
-	// if (author == null && tag == null && theme == null) {
-	// throw new RuntimeException ("Please, type your criteria");
-	// } else {
-	// result = textRepository.getArticle();
-	// for (int i = 0; i < result.size(); i++) {
-	// if (result.get(i).getAuthorName() != author) {
-	// result.remove(result.get(i));
-	// System.out.println(result + "after remove");
-	//
-	// } else {
-	// System.out.println(result + "in else");
-	// }
-	// }
-	//
-	// }
-	// return result;
-	// }
-
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
 		List<Article> result = criteria.match(criteria);
