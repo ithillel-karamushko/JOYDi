@@ -14,7 +14,7 @@ public class Article extends BaseEntity {
 	private String authorName;
 	private String themeOfTheArticle;
 	private int ratingOfTheArticle;
-	private List tags;
+	private String tags;
 	private Date date;
 	private int like;
 	private int disLike;
@@ -65,7 +65,7 @@ public class Article extends BaseEntity {
 	 * @return field tags
 	 */
 	
-	public List getTags() {
+	public String getTags() {
 		return tags;
 	}
 
@@ -75,7 +75,7 @@ public class Article extends BaseEntity {
 	 * @param tags
 	 */
 	
-	public void setTags(List tags) {
+	public void setTags(String tags) {
 		this.tags = tags;
 	}
 

@@ -9,8 +9,6 @@ import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.diaryService.DiaryService;
@@ -23,11 +21,12 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 public class DiaryServiceImpl implements DiaryService {
 	private TextRepository textRepository;
 	private PersonRepository personRepository;
-	
-	public DiaryServiceImpl (TextRepository textRepository,PersonRepository personRepository){
+
+	public DiaryServiceImpl(TextRepository textRepository,
+			PersonRepository personRepository) {
 		this.textRepository = textRepository;
 		this.personRepository = personRepository;
-		
+
 	}
 
 	/**
@@ -257,32 +256,35 @@ public class DiaryServiceImpl implements DiaryService {
 		article.setDisLike(article.getDisLike() + 1);
 	}
 
+	// @Override
+	// public List<Article> findArticles(ArticleCriteria criteria) {
+	// String author = criteria.getAuthor();
+	// String tag = criteria.getTag();
+	// String theme = criteria.getThemeOfArticle();
+	// List<Article> result = new ArrayList<Article>();
+	//
+	// if (author == null && tag == null && theme == null) {
+	// throw new RuntimeException ("Please, type your criteria");
+	// } else {
+	// result = textRepository.getArticle();
+	// for (int i = 0; i < result.size(); i++) {
+	// if (result.get(i).getAuthorName() != author) {
+	// result.remove(result.get(i));
+	// System.out.println(result + "after remove");
+	//
+	// } else {
+	// System.out.println(result + "in else");
+	// }
+	// }
+	//
+	// }
+	// return result;
+	// }
+
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
-		String author = criteria.getAuthor();
-		String tag = criteria.getTag();
-		String theme = criteria.getThemeOfArticle();
-		List<Article> result = new ArrayList<Article>();
-
-		if (author == null && tag == null && theme == null) {
-			try {
-				throw new Exception ("Please, type your criteria");
-			} catch (Exception e){
-				e.getMessage();
-			}
-		} else {
-			result = textRepository.getArticle();
-			for (int i = 0; i < result.size(); i++) {
-				if (result.get(i).getAuthorName() != author) {
-					result.remove(result.get(i));
-					System.out.println(result + "after remove");
-
-				} else {
-					System.out.println(result + "in else");
-				}
-			}
-
-		}
+		List<Article> result = criteria.match(criteria);
 		return result;
+
 	}
 }
