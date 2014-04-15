@@ -255,7 +255,9 @@ public class DiaryServiceImpl implements DiaryService {
 	public void pushDisLike(Article article) {
 		article.setDisLike(article.getDisLike() + 1);
 	}
-
+/**
+ * This method add to list all the articles, that match to definite criteria.
+ */
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
 		List<Article> result = criteria.match(criteria);

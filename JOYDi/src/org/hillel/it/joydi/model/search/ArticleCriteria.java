@@ -21,7 +21,6 @@ public class ArticleCriteria {
 		this.author = author;
 		this.themeOfArticle = themeOfArticle;
 		this.tag = tag;
-
 	}
 
 	/**
@@ -79,15 +78,19 @@ public class ArticleCriteria {
 	public void setThemeOfArticle(String themeOfArticle) {
 		this.themeOfArticle = themeOfArticle;
 	}
-
+/**
+ * This method looks for the articles, that match the definite criteria. 
+ * @param criteria
+ * @return list of articles
+ */
 	public List<Article> match(ArticleCriteria criteria) {
 		List<Article> allArticles = textRepository.getArticle();
 		List<Article> result = new ArrayList<Article>();
 		for (Article article : allArticles) {
 			boolean containsTags = article.getTags().contains(criteria.tag);
 			if (article.getAuthorName() == criteria.getAuthor()
-					&& article.getThemeOfTheArticle() == criteria
-							.getThemeOfArticle() && (containsTags)) {
+					&& article.getThemeOfTheArticle() == criteria.getThemeOfArticle()
+					&& (containsTags)) {
 				result.add(article);
 			}
 		}
