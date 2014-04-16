@@ -2,11 +2,14 @@ package org.hillel.it.joydi.service.imp;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
+import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
@@ -30,7 +33,7 @@ public class DiaryServiceImplTest {
 	@Test
 	public void testSaveArticle() {
 		int i = ds.getTextRepository().getArticle().size() + 1;
-		Article article = new Article("Hanna", "Java", "I like Java.");
+		Article article = new Article("Hanna", "Java", "I like Java.","Java");
 		ds.saveArticle(article);
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
@@ -39,7 +42,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteArticle() {
-		Article article = new Article("Mary", "Java", "I like Java.");
+		Article article = new Article("Mary", "Java", "I like Java.","Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size() - 1;
 		ds.deleteArticle(article);
@@ -50,11 +53,10 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyArticle() {
-		Article article = new Article("Mike", "Java", "I like Java.");
+		Article article = new Article("Mike", "Java", "I like Java.","Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size();
 		ds.modifyArticle(article, "Java", "I don't like Java");
-		System.out.println(article.getThemeOfTheArticle());
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
 				.getArticle().contains(article));
@@ -148,7 +150,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushLike() {
-		Article article = new Article("Frank", "Java", "I like Java.");
+		Article article = new Article("Frank", "Java", "I like Java.","Java");
 		ds.saveArticle(article);
 		ds.pushLike(article);
 		assertEquals("Incorrect", 1, article.getLike());
@@ -156,15 +158,24 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushDisLike() {
-		Article article = new Article("John", "Java", "I like Java.");
+		Article article = new Article("John", "Java", "I like Java.","Java");
 		ds.saveArticle(article);
 		ds.pushDisLike(article);
 		assertEquals("Incorrect", 1, article.getDisLike());
 	}
 
-	// @Test
-	// public void testFindArticles() {
-	// fail("Not yet implemented");
-	// }
-	//
+	@Test
+	public void findArticles() {
+		Article article = new Article("John", "Java", "I  don't like Java.","Java");
+		ds.saveArticle(article);
+		Article article2 = new Article("John", "Java", "I  don't like Java.","Java 2");
+		ds.saveArticle(article2);
+		ArticleCriteria ac = new ArticleCriteria("Java", "John", "Java", textRepository);
+		for (Article art : ds.findArticles(ac)){
+		assertEquals("Incorrect", art.getAuthorName(), ac.getAuthor());
+		assertEquals("Incorrect", art.getThemeOfTheArticle(), ac.getThemeOfArticle());
+		assertEquals("Incorrect", true, art.getTags().contains(ac.getTag()));
+		assertEquals("Incorrect", true, ds.getTextRepository().getArticle().contains(art));
+		}
+}
 }

@@ -32,13 +32,14 @@ public class Article extends BaseEntity {
 	 */
 	
 	public Article(String authorName, String themeOfTheArticle,
-			String textOfTheArticle) {
+			String textOfTheArticle, String tags) {
 		date = new Date();
 		this.authorName = authorName;
 		this.themeOfTheArticle = themeOfTheArticle;
 		this.textOfTheArticle = textOfTheArticle;
 		this.setLike(0);
 		this.setDisLike(0);
+		this.tags = tags;
 	}
 
 	/**

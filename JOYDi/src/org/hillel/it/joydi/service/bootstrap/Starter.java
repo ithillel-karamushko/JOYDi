@@ -23,12 +23,10 @@ public class Starter {
 		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 25);
 		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE, 15);
 		Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
-		Article article1 = new Article("John", "Java", "Java is good.");
-		Article article = new Article("John", "IT", "Java is bad.");
-		article.setTags("Java IT Hillel");
+		Article article1 = new Article("John", "Java", "Java is good.","Java");
+		Article article = new Article("John", "IT", "Java is bad.","Java IT Hillel");	
 		ds.saveArticle(article1);
 		ds.saveArticle(article);
-		article1.setTags("Java IT Hillel");
 		// System.out.println(user1.getName() + " is from " +
 		// user1.getCountry());
 		// System.out.println("The gender of " + admin1.getName() + " is "

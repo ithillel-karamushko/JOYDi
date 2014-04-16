@@ -19,7 +19,7 @@ public class InMemoryTextRepositoryTest {
 	@Test
 	public void testSaveArticle() {
 		int i = tr.getArticle().size() + 1;
-		Article article = new Article("Hanna", "Java", "I like Java.");
+		Article article = new Article("Hanna", "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
 		assertEquals("Incorrect value", true, tr.getArticle().contains(article));
@@ -28,7 +28,7 @@ public class InMemoryTextRepositoryTest {
 	@Test
 	public void testModifyArticle() {
 		int i = tr.getArticle().size() + 1;
-		Article article = new Article("Mary", "Java", "I like Java.");
+		Article article = new Article("Mary", "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		tr.modifyArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
@@ -37,7 +37,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteArticle() {
-		Article article = new Article("Mary", "Java", "I like Java.");
+		Article article = new Article("Mary", "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		int i = tr.getArticle().size() - 1;
 		tr.deleteArticle(article);
