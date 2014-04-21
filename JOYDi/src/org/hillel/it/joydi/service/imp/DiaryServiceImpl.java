@@ -1,5 +1,7 @@
 package org.hillel.it.joydi.service.imp;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,9 +103,11 @@ public class DiaryServiceImpl implements DiaryService {
 	 * 
 	 * @param person
 	 *            is a reference to the Object Person
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
 	@Override
-	public void saveUser(User person) {
+	public void saveUser(User person) throws FileNotFoundException, IOException {
 		personRepository.saveUser(person);
 
 	}
@@ -113,9 +117,12 @@ public class DiaryServiceImpl implements DiaryService {
 	 * 
 	 * @param person
 	 *            is a reference to the Object Admin
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
 	@Override
-	public void saveAdmin(Admin person) {
+	public void saveAdmin(Admin person) throws FileNotFoundException,
+			IOException {
 		personRepository.saveAdmin(person);
 
 	}
@@ -147,9 +154,14 @@ public class DiaryServiceImpl implements DiaryService {
 	 *            is a new age of the User
 	 * @param gender
 	 *            is a reference to the Gender Object
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
 	public void modifyUser(User person, String name, String eMail,
-			String country, Gender gender, int age) {
+			String country, Gender gender, int age)
+			throws FileNotFoundException, IOException {
+		deleteUser(person);
+
 		if (name != null) {
 			person.setName(name);
 		}
@@ -168,8 +180,6 @@ public class DiaryServiceImpl implements DiaryService {
 
 		person.setAge(age);
 		personRepository.modifyUser(person);
-		System.out.println("Users List: ");
-		personRepository.getUser();
 	}
 
 	/**
@@ -221,20 +231,6 @@ public class DiaryServiceImpl implements DiaryService {
 		textRepository.modifyComment(comment);
 	}
 
-	public void getPersonsList() {
-		System.out.println("Admins List: ");
-		System.out.println(personRepository.getAdmin());
-		System.out.println("Users List: ");
-		System.out.println(personRepository.getUser());
-	}
-
-	public void getTextsList() {
-		System.out.println("Articles List: ");
-		System.out.println(textRepository.getArticle());
-		System.out.println("Comments List: ");
-		System.out.println(textRepository.getComment());
-	}
-
 	/**
 	 * Method that counts number of likes
 	 * 
@@ -255,9 +251,11 @@ public class DiaryServiceImpl implements DiaryService {
 	public void pushDisLike(Article article) {
 		article.setDisLike(article.getDisLike() + 1);
 	}
-/**
- * This method add to list all the articles, that match to definite criteria.
- */
+
+	/**
+	 * This method add to list all the articles, that match to definite
+	 * criteria.
+	 */
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
 		List<Article> result = criteria.match(criteria);

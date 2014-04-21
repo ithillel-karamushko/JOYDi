@@ -2,6 +2,9 @@ package org.hillel.it.joydi.persistance.inmemory;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
@@ -21,7 +24,7 @@ public class InMemoryPersonRepositoryTest {
 	}
 
 	@Test
-	public void saveUserTest() {
+	public void saveUserTest() throws FileNotFoundException, IOException {
 		int i = pr.getUser().size() + 1;
 		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr.saveUser(user);
@@ -31,7 +34,7 @@ public class InMemoryPersonRepositoryTest {
 	}
 
 	@Test
-	public void deleteUserTest() {
+	public void deleteUserTest() throws FileNotFoundException, IOException {
 		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr.saveUser(user);
 		int i = pr.getUser().size() - 1;
@@ -42,7 +45,7 @@ public class InMemoryPersonRepositoryTest {
 	}
 
 	@Test
-	public void saveAdminTest() {
+	public void saveAdminTest() throws FileNotFoundException, IOException {
 		int i = pr.getAdmin().size() + 1;
 		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		pr.saveAdmin(admin);
@@ -51,7 +54,7 @@ public class InMemoryPersonRepositoryTest {
 	}
 
 	@Test
-	public void deleteAdminTest() {
+	public void deleteAdminTest() throws FileNotFoundException, IOException {
 		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		pr.saveAdmin(admin);
 		int i = pr.getAdmin().size() - 1;
@@ -61,7 +64,7 @@ public class InMemoryPersonRepositoryTest {
 	}
 
 	@Test
-	public void modifyUserTest() {
+	public void modifyUserTest() throws FileNotFoundException, IOException {
 		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		pr.saveUser(user);
 		int i = pr.getUser().size();

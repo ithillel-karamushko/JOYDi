@@ -7,6 +7,10 @@ package org.hillel.it.joydi.model.entities;
 
 
 // ЯСППНЦЮРМШИ ЙКЮЯЯ
+/* мюдн ядекюрэ лернд, йнрнпши асдер нрнапюфюрэ х явхрюрэ йнкхвеярбн кер юбрнлюрхвеяйх, йнцдю лш
+ * ббндхл цнд пнфдемхъ, ю ме охяюрэ ецн яюлнярнърекэмн
+ */
+
 
 abstract public class Person extends BaseEntity {
 	protected String name;

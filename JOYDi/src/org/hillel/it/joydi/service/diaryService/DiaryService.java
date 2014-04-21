@@ -1,8 +1,8 @@
 package org.hillel.it.joydi.service.diaryService;
 
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
@@ -20,14 +20,14 @@ public interface DiaryService {
 
 	void deleteArticle(Article article);
 
-	void saveUser(User person);
+	void saveUser(User person) throws FileNotFoundException, IOException;
 
 	void modifyUser(User person, String name, String eMail, String country,
-			Gender gender, int age);
+			Gender gender, int age) throws FileNotFoundException, IOException;
 
 	void deleteUser(User person);
 
-	void saveAdmin(Admin person);
+	void saveAdmin(Admin person) throws FileNotFoundException, IOException;
 
 	void deleteAdmin(Admin person);
 

@@ -1,5 +1,10 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,33 +31,45 @@ public class InMemoryPersonRepository implements PersonRepository {
 	}
 
 	@Override
-	public void saveUser(User person) {
-		user.add(person);
+	public void saveUser(User person) throws FileNotFoundException, IOException {
+		String name = person.getName();
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(
+				"D://" + name + ".txt"));
+		oos.writeObject(person);
+		oos.close();
 
 	}
 
 	@Override
 	public void deleteUser(User person) {
-		user.remove(person);
+		String name = person.getName();
+		File file = new File("D://" + name + ".txt");
+		file.delete();
 
 	}
 
 	@Override
-	public void saveAdmin(Admin person) {
-		admin.add(person);
+	public void saveAdmin(Admin person) throws FileNotFoundException, IOException {
+		String name = person.getName();
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(
+				"D://" + name + ".txt"));
+		oos.writeObject(person);
+		oos.close();
 
 	}
 
 	@Override
 	public void deleteAdmin(Admin person) {
-		admin.remove(person);
+		String name = person.getName();
+		File file = new File("D://" + name + ".txt");
+		file.delete();
 
 	}
 
 	@Override
-	public void modifyUser(User person) {
-		user.remove(person);
-		user.add(person);
+	public void modifyUser(User person) throws FileNotFoundException, IOException {
+		saveUser(person);
+
 	}
 
 }

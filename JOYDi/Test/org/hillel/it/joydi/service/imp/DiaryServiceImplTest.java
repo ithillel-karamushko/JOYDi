@@ -2,6 +2,8 @@ package org.hillel.it.joydi.service.imp;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
@@ -63,7 +65,7 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testSaveUser() {
+	public void testSaveUser() throws FileNotFoundException, IOException {
 		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		int i = ds.getPersonRepository().getUser().size() + 1;
 		ds.saveUser(user);
@@ -73,7 +75,7 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testSaveAdmin() {
+	public void testSaveAdmin() throws FileNotFoundException, IOException {
 		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		int i = ds.getPersonRepository().getAdmin().size() + 1;
 		ds.saveAdmin(admin);
@@ -83,7 +85,7 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testDeleteUser() {
+	public void testDeleteUser() throws FileNotFoundException, IOException {
 		User user = new User("Mike", "email", "ukraine", Gender.MALE, 25);
 		ds.saveUser(user);
 		int i = ds.getPersonRepository().getUser().size() - 1;
@@ -95,7 +97,7 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testModifyUser() {
+	public void testModifyUser() throws FileNotFoundException, IOException {
 		User user = new User("Mary", "email", "ukraine", Gender.FEMALE, 22);
 		ds.saveUser(user);
 		int i = ds.getPersonRepository().getUser().size();
@@ -107,7 +109,7 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testDeleteAdmin() {
+	public void testDeleteAdmin() throws FileNotFoundException, IOException {
 		Admin admin = new Admin("Suzy", "email", "poland", Gender.FEMALE, 28);
 		ds.saveAdmin(admin);
 		int i = ds.getPersonRepository().getAdmin().size() - 1;
