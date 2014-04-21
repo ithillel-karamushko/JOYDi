@@ -2,7 +2,6 @@ package org.hillel.it.joydi.service.imp;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
@@ -17,7 +16,7 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 
 /**
  * 
- * @author Æåíÿ, Îëÿ, Þëÿ
+ * @author team JOYdi
  * 
  */
 public class DiaryServiceImpl implements DiaryService {

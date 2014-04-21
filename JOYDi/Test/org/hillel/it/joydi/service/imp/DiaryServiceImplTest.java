@@ -2,6 +2,7 @@ package org.hillel.it.joydi.service.imp;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -67,56 +68,54 @@ public class DiaryServiceImplTest {
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
 		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
-		int i = ds.getPersonRepository().getUser().size() + 1;
 		ds.saveUser(user);
-		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
-		assertEquals("Incorrect value", true, ds.getPersonRepository()
-				.getUser().contains(user));
+		File file = new File("D://" + user.getName() + ".txt");
+		boolean isExist = file.exists();
+		assertTrue(isExist);
 	}
 
 	@Test
 	public void testSaveAdmin() throws FileNotFoundException, IOException {
 		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
-		int i = ds.getPersonRepository().getAdmin().size() + 1;
 		ds.saveAdmin(admin);
-		assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
-		assertEquals("Incorrect value", true, ds.getPersonRepository()
-				.getAdmin().contains(admin));
+		File file = new File("D://" + admin.getName() + ".txt");
+		boolean isExist = file.exists();
+		assertTrue(isExist);
 	}
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User("Mike", "email", "ukraine", Gender.MALE, 25);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		ds.saveUser(user);
-		int i = ds.getPersonRepository().getUser().size() - 1;
 		ds.deleteUser(user);
-		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
-		assertEquals("Incorrect value", false, ds.getPersonRepository()
-				.getUser().contains(user));
+		File file = new File("D://" + user.getName() + ".txt");
+		boolean isExist = file.exists();
+		assertFalse(isExist);
 
 	}
 
 	@Test
 	public void testModifyUser() throws FileNotFoundException, IOException {
-		User user = new User("Mary", "email", "ukraine", Gender.FEMALE, 22);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
 		ds.saveUser(user);
-		int i = ds.getPersonRepository().getUser().size();
-		ds.modifyUser(user, "Masha", "email", "ukraine", Gender.FEMALE, 22);
-		assertEquals("Incorrect", i, ds.getPersonRepository().getUser().size());
-		assertEquals("Incorrect value", true, ds.getPersonRepository()
-				.getUser().contains(user));
+		ds.modifyUser(user, "Leo", "mail", null, null, 20);
+		File file = new File("D://" + user.getName() + ".txt");
+		boolean isExist = file.exists();
+		assertTrue(isExist);
+		assertEquals("Incorrect", "Leo", user.getName());
+		assertEquals("Incorrect", "ukraine", user.getCountry());
+		
 
 	}
 
 	@Test
 	public void testDeleteAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Suzy", "email", "poland", Gender.FEMALE, 28);
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		ds.saveAdmin(admin);
-		int i = ds.getPersonRepository().getAdmin().size() - 1;
 		ds.deleteAdmin(admin);
-		assertEquals("Incorrect", i, ds.getPersonRepository().getAdmin().size());
-		assertEquals("Incorrect value", false, ds.getPersonRepository()
-				.getAdmin().contains(admin));
+		File file = new File("D://" + admin.getName() + ".txt");
+		boolean isExist = file.exists();
+		assertFalse(isExist);
 
 	}
 
