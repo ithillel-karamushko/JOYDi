@@ -28,12 +28,13 @@ public class Starter {
 		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE, 15);
 		Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		Article article1 = new Article("John", "Java", "Java is good.", "Java");
-		Article article = new Article("John", "IT", "Java is bad.",
+		Article article = new Article("John", "IT", "Damned, shitty C++.",
 				"Java IT Hillel");
 		// ds.saveArticle(article1);
-		// ds.saveArticle(article);
-		ds.saveUser(user1);
-		ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
+		ds.saveArticle(article);
+		System.out.println(article.getTextOfTheArticle());
+		// ds.saveUser(user1);
+		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
 		// ds.saveUser(user2);
 		// ds.saveUser(user3);
 		// ds.deleteUser(user1);

@@ -2,6 +2,8 @@ package org.hillel.it.joydi.persistance.inmemory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -11,7 +13,7 @@ public class InMemoryTextRepository implements TextRepository {
 
 	private List<Article> article;
 	private List<Comment> comment;
- 
+
 	public InMemoryTextRepository() {
 		this.article = new ArrayList<Article>();
 		this.comment = new ArrayList<Comment>();
@@ -27,6 +29,7 @@ public class InMemoryTextRepository implements TextRepository {
 
 	@Override
 	public void saveArticle(Article article) {
+		article.setTextOfTheArticle(censoring(article));
 		this.article.add(article);
 
 	}
@@ -60,4 +63,16 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment.add(comment);
 	}
 
+	public String censoring(Article article) {
+		String[] words = { "shit", "fuck", "damn", "bitch" };
+		String text = article.getTextOfTheArticle();
+		for (String word : words) {
+			Pattern pattern = Pattern.compile("(?i)" + word + "*");
+			Matcher matcher = pattern.matcher(text);
+			while (matcher.find()) {
+				text = text.replaceAll("(?i)" + matcher.group(), "***");
+			}
+		}
+		return text;
+	}
 }
