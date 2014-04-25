@@ -64,7 +64,11 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment.remove(comment);
 		this.comment.add(comment);
 	}
-
+/**
+ * This method finds the words, that must be censored, and chanches them for the symbols "***".
+ * @param object
+ * @return chanched text
+ */
 	public <T extends TextEntity> String censoring(T object) {
 		String[] words = { "shit", "fuck", "damn", "bitch" };
 		String text = object.getText();
