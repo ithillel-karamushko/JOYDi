@@ -82,8 +82,12 @@ public class Starter {
 		// System.out.println(article.getLike());
 		// System.out.println(article.getDisLike());
 		//
-		 ArticleCriteria ac = new ArticleCriteria(null, "John", null,
-		 textRepository);
-		 System.out.println(ds.findArticles(ac));
+		// ArticleCriteria ac = new ArticleCriteria(null, "John", null,
+		// textRepository);
+		// System.out.println(ds.findArticles(ac));
+		Comment comment = new Comment("John", "Nice shit");
+		ds.saveComment(comment);
+		System.out.println(article.getTextOfTheArticle());
+		System.out.println(comment.getCommentText());
 	}
 }

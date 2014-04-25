@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.TextEntity;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
 public class InMemoryTextRepository implements TextRepository {
@@ -48,6 +49,7 @@ public class InMemoryTextRepository implements TextRepository {
 
 	@Override
 	public void saveComment(Comment comment) {
+		comment.setCommentText(censoring(comment));
 		this.comment.add(comment);
 
 	}
@@ -63,9 +65,9 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment.add(comment);
 	}
 
-	public String censoring(Article article) {
+	public <T extends TextEntity> String censoring(T object) {
 		String[] words = { "shit", "fuck", "damn", "bitch" };
-		String text = article.getTextOfTheArticle();
+		String text = object.getText();
 		for (String word : words) {
 			Pattern pattern = Pattern.compile("(?i)" + word + "*");
 			Matcher matcher = pattern.matcher(text);

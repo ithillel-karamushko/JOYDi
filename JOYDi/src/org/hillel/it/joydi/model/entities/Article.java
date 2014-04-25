@@ -1,7 +1,6 @@
 package org.hillel.it.joydi.model.entities;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * 
@@ -9,7 +8,11 @@ import java.util.List;
  *
  */
 
-public class Article extends BaseEntity {
+public class Article extends TextEntity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1020794148833096658L;
 	private String textOfTheArticle;
 	private String authorName;
 	private String themeOfTheArticle;
@@ -194,4 +197,8 @@ public class Article extends BaseEntity {
 		this.disLike = disLike;
 	}
 
+	public String getText (){
+		String result = getTextOfTheArticle();
+		return result;
+	}
 }
