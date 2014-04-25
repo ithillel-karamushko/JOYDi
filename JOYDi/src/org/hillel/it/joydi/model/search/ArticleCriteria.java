@@ -90,15 +90,40 @@ public class ArticleCriteria {
 	 */
 	public List<Article> match(ArticleCriteria criteria) {
 		List<Article> allArticles = textRepository.getArticle();
-		List<Article> result = new ArrayList<Article>();
-		for (Article article : allArticles) {
-			boolean containsTags = article.getTags().contains(criteria.tag);
-			if (article.getAuthorName() == criteria.getAuthor()
-					&& article.getThemeOfTheArticle() == criteria
-							.getThemeOfArticle() && (containsTags)) {
-				result.add(article);
+		List<Article> resultAuthor = new ArrayList<Article>();
+		List<Article> resultTheme = new ArrayList<Article>();
+		List<Article> resultFinal = new ArrayList<Article>();
+
+		if (criteria.getAuthor() != null) {
+			for (Article article : allArticles) {
+				if (article.getAuthorName() == criteria.getAuthor()) {
+					resultAuthor.add(article);
+				}
 			}
+		} else {
+			resultAuthor = allArticles;
 		}
-		return result;
+
+		if (criteria.getThemeOfArticle() != null) {
+			for (Article article : resultAuthor) {
+				if (article.getThemeOfTheArticle() == criteria.getThemeOfArticle()) {
+					resultTheme.add(article);
+				}
+			}
+		} else {
+			resultTheme = resultAuthor;
+		}
+
+		if (criteria.getTag() != null) {
+			for (Article article : resultTheme) {
+				boolean containsTags = article.getTags().contains(criteria.tag);
+				if ((containsTags)) {
+					resultFinal.add(article);
+				}
+			}
+		} else {
+			resultFinal = resultTheme;
+		}
+		return resultFinal;
 	}
 }

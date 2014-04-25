@@ -82,7 +82,7 @@ public class Starter {
 		// System.out.println(article.getLike());
 		// System.out.println(article.getDisLike());
 		//
-		 ArticleCriteria ac = new ArticleCriteria("Java", "John", null,
+		 ArticleCriteria ac = new ArticleCriteria(null, "John", null,
 		 textRepository);
 		 System.out.println(ds.findArticles(ac));
 	}
