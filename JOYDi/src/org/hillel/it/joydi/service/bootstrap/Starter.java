@@ -29,10 +29,10 @@ public class Starter {
 		Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
 		Article article1 = new Article("John", "Java", "Java is good.", "Java");
 		Article article = new Article("John", "IT", "Damned, shitty C++.",
-				"Java IT Hillel");
-		// ds.saveArticle(article1);
+				"IT Hillel");
+		ds.saveArticle(article1);
 		ds.saveArticle(article);
-		System.out.println(article.getTextOfTheArticle());
+		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
 		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
 		// ds.saveUser(user2);
@@ -82,8 +82,8 @@ public class Starter {
 		// System.out.println(article.getLike());
 		// System.out.println(article.getDisLike());
 		//
-		// ArticleCriteria ac = new ArticleCriteria("Java", "John", "Java",
-		// textRepository);
-		// System.out.println(ds.findArticles(ac));
+		 ArticleCriteria ac = new ArticleCriteria("Java", "John", null,
+		 textRepository);
+		 System.out.println(ds.findArticles(ac));
 	}
 }
