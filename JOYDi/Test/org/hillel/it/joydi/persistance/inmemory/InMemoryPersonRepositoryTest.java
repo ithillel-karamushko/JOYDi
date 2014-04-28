@@ -10,7 +10,7 @@ import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 import org.junit.Test;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.junit.BeforeClass;
 
@@ -20,7 +20,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@BeforeClass
 	public static void before() {
-		pr = new InMemoryPersonRepository();
+		pr = new InMemoryPersonFileRepository();
 	}
 
 	@Test

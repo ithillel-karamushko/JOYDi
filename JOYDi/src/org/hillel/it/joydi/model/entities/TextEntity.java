@@ -1,6 +1,6 @@
 package org.hillel.it.joydi.model.entities;
 
-public class TextEntity extends BaseEntity {
+public abstract class TextEntity extends BaseEntity {
 	/**
 	 * 
 	 */

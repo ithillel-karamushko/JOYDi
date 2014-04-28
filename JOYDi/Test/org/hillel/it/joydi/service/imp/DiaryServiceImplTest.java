@@ -13,7 +13,7 @@ import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
@@ -29,7 +29,7 @@ public class DiaryServiceImplTest {
 	@BeforeClass
 	public static void before() {
 		textRepository = new InMemoryTextRepository();
-		personRepository = new InMemoryPersonRepository();
+		personRepository = new InMemoryPersonFileRepository();
 		ds = new DiaryServiceImpl(textRepository, personRepository);
 	}
 

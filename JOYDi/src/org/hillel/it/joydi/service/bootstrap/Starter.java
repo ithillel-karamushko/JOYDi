@@ -3,6 +3,9 @@ package org.hillel.it.joydi.service.bootstrap;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.naming.ConfigurationException;
+
+import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -10,7 +13,7 @@ import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
@@ -19,19 +22,25 @@ public class Starter {
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException {
 		TextRepository textRepository = new InMemoryTextRepository();
-		PersonRepository personRepository = new InMemoryPersonRepository();
+		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
 		User user1 = new User("John", "email", "ukraine", Gender.MALE, 22);
 		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 22);
 		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 25);
-		Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE, 15);
-		Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
-		Article article1 = new Article("John", "Java", "Java is good.", "Java");
-		Article article = new Article("John", "IT", "Damned, shitty C++.",
-				"IT Hillel");
-		ds.saveArticle(article1);
-		ds.saveArticle(article);
+		ds.saveUser(user1);
+		ds.saveUser(user2);
+		ds.saveUser(user3);
+		// Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE,
+		// 15);
+		// Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE,
+		// 23);
+		// Article article1 = new Article("John", "Java", "Java is good.",
+		// "Java");
+		// Article article = new Article("John", "IT", "Damned, shitty C++.",
+		// "IT Hillel");
+		// ds.saveArticle(article1);
+		// ds.saveArticle(article);
 		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
 		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
@@ -85,9 +94,9 @@ public class Starter {
 		// ArticleCriteria ac = new ArticleCriteria(null, "John", null,
 		// textRepository);
 		// System.out.println(ds.findArticles(ac));
-		Comment comment = new Comment("John", "Nice shit");
-		ds.saveComment(comment);
-		System.out.println(article.getTextOfTheArticle());
-		System.out.println(comment.getCommentText());
+		// Comment comment = new Comment("John", "Nice shit");
+		// ds.saveComment(comment);
+		// System.out.println(article.getTextOfTheArticle());
+		// System.out.println(comment.getCommentText());
 	}
 }
