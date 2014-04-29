@@ -15,7 +15,7 @@ public class ArticleCriteria {
 	private String themeOfArticle;
 	private TextRepository textRepository;
 
-	public ArticleCriteria(String tag, String author, String themeOfArticle,
+	public ArticleCriteria(String author, String themeOfArticle, String tag, 
 			TextRepository tr) {
 		if (tag == null && author == null && themeOfArticle == null) {
 			throw new RuntimeException("You need a criteria for searching");
@@ -88,42 +88,42 @@ public class ArticleCriteria {
 	 * @param criteria
 	 * @return list of articles
 	 */
-	public List<Article> match(ArticleCriteria criteria) {
-		List<Article> allArticles = textRepository.getArticle();
-		List<Article> resultAuthor = new ArrayList<Article>();
-		List<Article> resultTheme = new ArrayList<Article>();
-		List<Article> resultFinal = new ArrayList<Article>();
-
-		if (criteria.getAuthor() != null) {
-			for (Article article : allArticles) {
-				if (article.getAuthorName() == criteria.getAuthor()) {
-					resultAuthor.add(article);
-				}
-			}
-		} else {
-			resultAuthor = allArticles;
-		}
-
-		if (criteria.getThemeOfArticle() != null) {
-			for (Article article : resultAuthor) {
-				if (article.getThemeOfTheArticle() == criteria.getThemeOfArticle()) {
-					resultTheme.add(article);
-				}
-			}
-		} else {
-			resultTheme = resultAuthor;
-		}
-
-		if (criteria.getTag() != null) {
-			for (Article article : resultTheme) {
-				boolean containsTags = article.getTags().contains(criteria.tag);
-				if ((containsTags)) {
-					resultFinal.add(article);
-				}
-			}
-		} else {
-			resultFinal = resultTheme;
-		}
-		return resultFinal;
-	}
+//	public List<Article> match(ArticleCriteria criteria) {
+//		List<Article> allArticles = textRepository.getArticle();
+//		List<Article> resultAuthor = new ArrayList<Article>();
+//		List<Article> resultTheme = new ArrayList<Article>();
+//		List<Article> resultFinal = new ArrayList<Article>();
+//
+//		if (criteria.getAuthor() != null) {
+//			for (Article article : allArticles) {
+//				if (article.getAuthorName() == criteria.getAuthor()) {
+//					resultAuthor.add(article);
+//				}
+//			}
+//		} else {
+//			resultAuthor = allArticles;
+//		}
+//
+//		if (criteria.getThemeOfArticle() != null) {
+//			for (Article article : resultAuthor) {
+//				if (article.getThemeOfTheArticle() == criteria.getThemeOfArticle()) {
+//					resultTheme.add(article);
+//				}
+//			}
+//		} else {
+//			resultTheme = resultAuthor;
+//		}
+//
+//		if (criteria.getTag() != null) {
+//			for (Article article : resultTheme) {
+//				boolean containsTags = article.getTags().contains(criteria.tag);
+//				if ((containsTags)) {
+//					resultFinal.add(article);
+//				}
+//			}
+//		} else {
+//			resultFinal = resultTheme;
+//		}
+//		return resultFinal;
+//	}
 }

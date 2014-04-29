@@ -1,6 +1,5 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +9,6 @@ import java.util.List;
 
 import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Admin;
-import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
@@ -18,7 +16,6 @@ import org.hillel.it.joydi.persistance.repository.PersonRepository;
 public class InMemoryPersonFileRepository implements PersonRepository {
 	
 	private List <Person> persons;
-	private Configuration config;
 	private List <String> initProperties;
 	
 	public InMemoryPersonFileRepository (){
@@ -38,12 +35,14 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 			IOException {
 		this.persons.remove(person);
 		this.persons.add(person);
+		serialize(this.persons);
 		
 	}
 
 	@Override
-	public void deleteUser(User person) {
+	public void deleteUser(User person) throws IOException{
 		this.persons.remove(person);
+		serialize(this.persons);
 		
 	}
 
@@ -51,18 +50,20 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	public void saveAdmin(Admin person) throws FileNotFoundException,
 			IOException {
 		this.persons.add(person);
+		serialize(this.persons);
 		
 	}
 
 	@Override
-	public void deleteAdmin(Admin person) {
+	public void deleteAdmin(Admin person) throws IOException {
 		this.persons.remove(person);
+		serialize(this.persons);
 		
 	}
 
 	public void serialize (List <Person> person) throws FileNotFoundException, IOException{
 		Configuration config = Configuration.getInstance();
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(config.getPropertie("file.path1")));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(config.getPropertie("file.path")));
 		oos.writeObject(person);
 		oos.close();
 	}

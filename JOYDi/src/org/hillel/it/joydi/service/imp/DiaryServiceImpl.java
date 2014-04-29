@@ -2,6 +2,7 @@ package org.hillel.it.joydi.service.imp;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
@@ -131,9 +132,10 @@ public class DiaryServiceImpl implements DiaryService {
 	 * 
 	 * @param user
 	 *            is a reference to the Object Person
+	 * @throws IOException
 	 */
 	@Override
-	public void deleteUser(User person) {
+	public void deleteUser(User person) throws IOException {
 		personRepository.deleteUser(person);
 
 	}
@@ -186,9 +188,10 @@ public class DiaryServiceImpl implements DiaryService {
 	 * 
 	 * @param person
 	 *            is a reference to the Object Person
+	 * @throws IOException
 	 */
 	@Override
-	public void deleteAdmin(Admin person) {
+	public void deleteAdmin(Admin person) throws IOException {
 		personRepository.deleteAdmin(person);
 
 	}
@@ -257,8 +260,21 @@ public class DiaryServiceImpl implements DiaryService {
 	 */
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
-		List<Article> result = criteria.match(criteria);
+		List <Article> allArticles = textRepository.getArticle();
+		List <Article> result = new ArrayList<Article>();
+		for (Article article : allArticles){
+			if (article.match(criteria)){
+			result.add(article);
+			}
+		}
 		return result;
 
 	}
+
+	// неправильно реализованный метод
+	// public List<Article> findArticles(ArticleCriteria criteria) {
+	// List<Article> result = criteria.match(criteria);
+	// return result;
+	//
+	// }
 }

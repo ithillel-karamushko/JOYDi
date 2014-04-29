@@ -11,9 +11,9 @@ public interface PersonRepository {
 
 	void modifyUser(User person) throws FileNotFoundException, IOException;
 
-	void deleteUser(User person);
+	void deleteUser(User person) throws IOException;
 
 	void saveAdmin(Admin person) throws FileNotFoundException, IOException;
 
-	void deleteAdmin(Admin person);
+	void deleteAdmin(Admin person) throws IOException;
 }

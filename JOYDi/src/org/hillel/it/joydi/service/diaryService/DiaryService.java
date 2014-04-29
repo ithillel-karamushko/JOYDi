@@ -25,11 +25,11 @@ public interface DiaryService {
 	void modifyUser(User person, String name, String eMail, String country,
 			Gender gender, int age) throws FileNotFoundException, IOException;
 
-	void deleteUser(User person);
+	void deleteUser(User person) throws IOException;
 
 	void saveAdmin(Admin person) throws FileNotFoundException, IOException;
 
-	void deleteAdmin(Admin person);
+	void deleteAdmin(Admin person) throws IOException;
 
 	void saveComment(Comment comment);
 
