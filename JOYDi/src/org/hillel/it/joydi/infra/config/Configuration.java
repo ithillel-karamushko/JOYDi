@@ -6,13 +6,15 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.io.IOUtils;
 
 public class Configuration {
 	private static Configuration instance;
+	Map<String, String> properties;
+	InputStream stream;
 
 	private Configuration() {
+		this.properties = new HashMap<String, String>();
 	}
 
 	public static Configuration getInstance() {
@@ -23,11 +25,10 @@ public class Configuration {
 	}
 
 	public String getPropertie(String key) throws IOException {
-		Map<String, String> properties = new HashMap<String, String>();
-		InputStream stream = Configuration.class.getClassLoader()
-				.getResourceAsStream("application.properties");
-		List<String> lines = IOUtils
-				.readLines(stream, Charset.defaultCharset());
+		stream = Configuration.class.getClassLoader().getResourceAsStream(
+				"application.properties");
+		List<String> lines = IOUtils.readLines(this.stream,
+				Charset.defaultCharset());
 		for (String line : lines) {
 			String[] propertie = line.split("=");
 			properties.put(propertie[0], propertie[1]);
@@ -35,4 +36,5 @@ public class Configuration {
 		IOUtils.closeQuietly(stream);
 		return properties.get(key);
 	}
+
 }

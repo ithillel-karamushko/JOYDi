@@ -3,8 +3,6 @@ package org.hillel.it.joydi.service.bootstrap;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.naming.ConfigurationException;
-
 import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
@@ -35,13 +33,14 @@ public class Starter {
 		// 15);
 		// Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE,
 		// 23);
-		Article article1 = new Article("John", "IT", "Java is good.", "Java");
-		Article article = new Article("John", "IT", "Shitty C++.", "Java");
-		ds.saveArticle(article1);
-		ds.saveArticle(article);
-		ArticleCriteria ac = new ArticleCriteria("John", "IT", null,
-				textRepository);
-		System.out.println(ds.findArticles(ac));
+		// Article article1 = new Article("John", "IT", "Java is good.",
+		// "Java");
+		// Article article = new Article("John", "IT", "Shitty C++.", "Java");
+		// ds.saveArticle(article1);
+		// ds.saveArticle(article);
+		// ArticleCriteria ac = new ArticleCriteria("John", "IT", null,
+		// textRepository);
+		// System.out.println(ds.findArticles(ac));
 		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
 		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
