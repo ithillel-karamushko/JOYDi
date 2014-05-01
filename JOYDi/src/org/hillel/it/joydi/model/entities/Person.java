@@ -13,6 +13,10 @@ package org.hillel.it.joydi.model.entities;
 
 
 abstract public class Person extends BaseEntity {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 371819977920264704L;
 	protected String name;
 	protected String eMail;
 	protected String country;
