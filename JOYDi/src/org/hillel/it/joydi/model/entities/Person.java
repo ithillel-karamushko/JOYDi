@@ -29,6 +29,7 @@ abstract public class Person extends BaseEntity {
 	protected Gender gender;
 	protected GregorianCalendar dateOfBirth;
 	protected int age; 
+	protected String password;
 	
 	public GregorianCalendar getDateOfBirth() {
 		return dateOfBirth;
