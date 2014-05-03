@@ -14,7 +14,7 @@ public class UserTest {
 	public void testUser() {
 
 		User u = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect name", "Yulia", u.getName());
 		assertEquals("Incorrect email", "yulia@google.com", u.geteMail());
@@ -29,9 +29,9 @@ public class UserTest {
 	public void testGetGender() {
 
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		User u2 = new User("Yulia", "yulia@google.com", "Ukraine", Gender.MALE,
-				1990, Months.March ,07);
+				1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get gender", Gender.FEMALE, u1.getGender());
 		assertEquals("Incorrect get gender", Gender.MALE, u2.getGender());
@@ -49,7 +49,7 @@ public class UserTest {
 	@Test
 	public void testGetName() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get name", "Yulia", u1.getName());
 
@@ -66,7 +66,7 @@ public class UserTest {
 	@Test
 	public void testGeteMail() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get email", "yulia@google.com", u1.geteMail());
 
@@ -83,7 +83,7 @@ public class UserTest {
 	@Test
 	public void testGetCountry() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get country", "Ukraine", u1.getCountry());
 	}
@@ -100,7 +100,7 @@ public class UserTest {
 	@Test
 	public void testGetDateOfBirth() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 1990, Months.March ,07);
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		
 		assertEquals("Incorrect year", 1990, u1.getDateOfBirth().get(Calendar.YEAR));
 		assertEquals("Incorrect month", Months.March.getMonth(), u1.getDateOfBirth().get(Calendar.MONTH));

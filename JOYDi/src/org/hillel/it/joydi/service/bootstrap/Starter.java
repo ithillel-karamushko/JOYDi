@@ -28,9 +28,9 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
-		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990, Months.May, 2);
-		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990, Months.June,22);
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "rretert");
+		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990, Months.May,8, "rre");
+		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990, Months.June, 3,"rretert");
 		
 		ds.saveUser(user1);
 		ds.saveUser(user2);

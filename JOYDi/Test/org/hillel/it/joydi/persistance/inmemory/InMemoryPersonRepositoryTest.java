@@ -26,7 +26,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void saveUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		pr.saveUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
 		boolean isExist = file.exists();
@@ -36,7 +36,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void deleteUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		pr.saveUser(user);
 		pr.deleteUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
@@ -67,7 +67,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void modifyUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		pr.saveUser(user);
 		pr.modifyUser(user);
 		File file = new File("D://" + user.getName() + ".txt");

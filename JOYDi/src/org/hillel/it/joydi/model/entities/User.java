@@ -1,9 +1,12 @@
 package org.hillel.it.joydi.model.entities;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class User extends Person {
 
@@ -13,13 +16,22 @@ public class User extends Person {
 	private static final long serialVersionUID = 1L;
 
 	public User(String name, String eMail, String country, Gender gender,
-			int yearOfBirth, Months monthOfBirth, int dayOfBirth) {
+			int yearOfBirth, Months monthOfBirth, int dayOfBirth, String password){
 		this.name = name;
 		this.eMail = eMail;
 		this.country = country;
 		this.gender = gender;
 		this.dateOfBirth = new GregorianCalendar(yearOfBirth, monthOfBirth.getMonth(), dayOfBirth);
 		this.age = this.Age(dateOfBirth);
+		Pattern p = Pattern.compile("[a-z0-9]{4,10}");
+		Matcher m = p.matcher(password);
+		boolean b = m.matches();
+		if (b ==true){
+			this.password=password;}
+		else{
+			System.out.println("The password may contains only digits and letters and it length should be >=4 && <= 10");
+		}
+		
 	}
 	
 	public User() {

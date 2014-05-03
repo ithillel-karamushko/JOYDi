@@ -68,7 +68,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		ds.saveUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
 		boolean isExist = file.exists();
@@ -86,7 +86,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		ds.saveUser(user);
 		ds.deleteUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
@@ -97,7 +97,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "asf45");
 		ds.saveUser(user);
 		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March ,07);
 		File file = new File("D://" + user.getName() + ".txt");
