@@ -11,6 +11,7 @@ import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Gender;
+import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
@@ -67,7 +68,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
 		ds.saveUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
 		boolean isExist = file.exists();
@@ -76,7 +77,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 1990, Months.March ,07);
 		ds.saveAdmin(admin);
 		File file = new File("D://" + admin.getName() + ".txt");
 		boolean isExist = file.exists();
@@ -85,7 +86,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
 		ds.saveUser(user);
 		ds.deleteUser(user);
 		File file = new File("D://" + user.getName() + ".txt");
@@ -96,9 +97,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", "ukraine", Gender.MALE, 22);
+		User user = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
 		ds.saveUser(user);
-		ds.modifyUser(user, "Leo", "mail", null, null, 20);
+		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March ,07);
 		File file = new File("D://" + user.getName() + ".txt");
 		boolean isExist = file.exists();
 		assertTrue(isExist);
@@ -110,7 +111,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 23);
+		Admin admin = new Admin("Helen", "email", "poland", Gender.FEMALE, 1990, Months.March ,07);
 		ds.saveAdmin(admin);
 		ds.deleteAdmin(admin);
 		File file = new File("D://" + admin.getName() + ".txt");

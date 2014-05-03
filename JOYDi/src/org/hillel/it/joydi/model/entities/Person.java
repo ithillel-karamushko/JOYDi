@@ -1,4 +1,10 @@
 package org.hillel.it.joydi.model.entities;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  * 
  * @author Þëÿ
@@ -21,7 +27,15 @@ abstract public class Person extends BaseEntity {
 	protected String eMail;
 	protected String country;
 	protected Gender gender;
+	protected GregorianCalendar dateOfBirth;
 	protected int age; 
+	
+	public GregorianCalendar getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(int yearOfBirth, Months monthOfBirth, int dayOfBirth) {
+		this.dateOfBirth = new GregorianCalendar(yearOfBirth, monthOfBirth.getMonth(), dayOfBirth);}
+		
 	/**
 	 * Getter for field gender;
 	 * @return gender;
@@ -87,6 +101,7 @@ abstract public class Person extends BaseEntity {
 	 * @return age;
 	 */
 	public int getAge() {
+		age = Age(dateOfBirth);
 		return age;
 	}
 	/**
@@ -94,7 +109,19 @@ abstract public class Person extends BaseEntity {
 	 * modify the field age;
 	 * @param age
 	 */
-	public void setAge(int age) {
-		this.age = age;
+
+	
+	protected int Age(GregorianCalendar dateOfBirth){
+		GregorianCalendar today = new GregorianCalendar(); 
+		if ((today.get(Calendar.MONTH) > dateOfBirth.get(Calendar.MONTH)) ||
+		((today.get(Calendar.MONTH) == dateOfBirth.get(Calendar.MONTH)&&
+				(today.get(Calendar.DATE) >= dateOfBirth.get(Calendar.DATE))))){
+			return (today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR));
+			
+		}
+		else {
+			return (today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR)-1);}
+		
+
 	}
 }

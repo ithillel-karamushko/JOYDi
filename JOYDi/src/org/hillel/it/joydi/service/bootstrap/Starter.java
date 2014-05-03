@@ -2,11 +2,16 @@ package org.hillel.it.joydi.service.bootstrap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.hillel.it.joydi.model.entities.Gender;
@@ -23,12 +28,20 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User("John", "email", "ukraine", Gender.MALE, 22);
-		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 22);
-		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 25);
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07);
+		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990, Months.May, 2);
+		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990, Months.June,22);
+		
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
+		
+		
+		System.out.println("user1 "+user1.getAge()); 
+		System.out.println("user2 "+user2.getAge());
+		System.out.println("user3 "+user3.getAge());
+
+		//user1.getDateOfBirth();
 		// Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE,
 		// 15);
 		// Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE,

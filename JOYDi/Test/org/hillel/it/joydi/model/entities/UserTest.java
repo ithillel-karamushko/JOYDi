@@ -2,6 +2,8 @@ package org.hillel.it.joydi.model.entities;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.User;
 import org.junit.Test;
@@ -12,22 +14,24 @@ public class UserTest {
 	public void testUser() {
 
 		User u = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
+				Gender.FEMALE, 1990, Months.March ,07);
 
 		assertEquals("Incorrect name", "Yulia", u.getName());
 		assertEquals("Incorrect email", "yulia@google.com", u.geteMail());
 		assertEquals("Incorrect country", "Ukraine", u.getCountry());
 		assertEquals("Incorrect gender", Gender.FEMALE, u.getGender());
-		assertEquals("Incorrect age", 28, u.getAge());
+		assertEquals("Incorrect year", 1990, u.getDateOfBirth().get(Calendar.YEAR));
+		assertEquals("Incorrect month", Months.March.getMonth(), u.getDateOfBirth().get(Calendar.MONTH));
+		assertEquals("Incorrect day", 07, u.getDateOfBirth().get(Calendar.DATE));
 	}
 
 	@Test
 	public void testGetGender() {
 
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
+				Gender.FEMALE, 1990, Months.March ,07);
 		User u2 = new User("Yulia", "yulia@google.com", "Ukraine", Gender.MALE,
-				28);
+				1990, Months.March ,07);
 
 		assertEquals("Incorrect get gender", Gender.FEMALE, u1.getGender());
 		assertEquals("Incorrect get gender", Gender.MALE, u2.getGender());
@@ -45,7 +49,7 @@ public class UserTest {
 	@Test
 	public void testGetName() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
+				Gender.FEMALE, 1990, Months.March ,07);
 
 		assertEquals("Incorrect get name", "Yulia", u1.getName());
 
@@ -62,7 +66,7 @@ public class UserTest {
 	@Test
 	public void testGeteMail() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
+				Gender.FEMALE, 1990, Months.March ,07);
 
 		assertEquals("Incorrect get email", "yulia@google.com", u1.geteMail());
 
@@ -79,7 +83,7 @@ public class UserTest {
 	@Test
 	public void testGetCountry() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
+				Gender.FEMALE, 1990, Months.March ,07);
 
 		assertEquals("Incorrect get country", "Ukraine", u1.getCountry());
 	}
@@ -94,20 +98,23 @@ public class UserTest {
 	}
 
 	@Test
-	public void testGetAge() {
+	public void testGetDateOfBirth() {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
-				Gender.FEMALE, 28);
-
-		assertEquals("Incorrect get age", 28, u1.getAge());
+				Gender.FEMALE, 1990, Months.March ,07);
+		
+		assertEquals("Incorrect year", 1990, u1.getDateOfBirth().get(Calendar.YEAR));
+		assertEquals("Incorrect month", Months.March.getMonth(), u1.getDateOfBirth().get(Calendar.MONTH));
+		assertEquals("Incorrect day", 07, u1.getDateOfBirth().get(Calendar.DATE));
 	}
 
 	@Test
-	public void testSetAge() {
+	public void testSetDateOfBirth() {
 		User u2 = new User();
-		u2.setAge(28);
+		u2.setDateOfBirth(1995, Months.March, 15);
 
-		assertEquals("Incorrect set age", 28, u2.getAge());
-
+		assertEquals("Incorrect set year", 1995, u2.getDateOfBirth().get(Calendar.YEAR));
+		assertEquals("Incorrect set month", Months.March.getMonth(), u2.getDateOfBirth().get(Calendar.MONTH));
+		assertEquals("Incorrect set day", 15, u2.getDateOfBirth().get(Calendar.DATE));
 	}
 
 }
