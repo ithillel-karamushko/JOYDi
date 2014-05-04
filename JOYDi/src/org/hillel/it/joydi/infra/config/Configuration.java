@@ -24,17 +24,21 @@ public class Configuration {
 		return instance;
 	}
 
-	public String getPropertie(String key) throws IOException {
+	public String getPropertie(String key) {
 		stream = Configuration.class.getClassLoader().getResourceAsStream(
 				"application.properties");
-		List<String> lines = IOUtils.readLines(this.stream,
-				Charset.defaultCharset());
-		for (String line : lines) {
-			String[] propertie = line.split("=");
-			properties.put(propertie[0], propertie[1]);
+		try {
+			List<String> lines = IOUtils.readLines(this.stream,
+					Charset.defaultCharset());
+			for (String line : lines) {
+				String[] propertie = line.split("=");
+				properties.put(propertie[0], propertie[1]);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			IOUtils.closeQuietly(stream);
 		}
-		IOUtils.closeQuietly(stream);
 		return properties.get(key);
 	}
-
 }

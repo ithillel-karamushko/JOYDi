@@ -219,7 +219,7 @@ public class Article extends TextEntity {
 	 * @param criteria
 	 * @return result of matching
 	 */
-	public boolean match(ArticleCriteria criteria) {
+	public boolean matchUncorrect(ArticleCriteria criteria) {
 		boolean match = false;
 		String author;
 		String theme;
@@ -241,6 +241,23 @@ public class Article extends TextEntity {
 		}
 		if (authorName == author && themeOfTheArticle == theme
 				&& (tags.contains(tag))) {
+			match = true;
+		} else {
+			match = false;
+		}
+		return match;
+	}
+
+	public boolean match(ArticleCriteria criteria) {
+		boolean match = false;
+		boolean author = criteria.getAuthor() == null
+				|| authorName.equalsIgnoreCase(criteria.getAuthor());
+		boolean theme = criteria.getThemeOfArticle() == null
+				|| themeOfTheArticle.equalsIgnoreCase(criteria
+						.getThemeOfArticle());
+		boolean tag = criteria.getTag() == null
+				|| tags.contains(criteria.getTag());
+		if ((author) && (theme) && (tag)) {
 			match = true;
 		} else {
 			match = false;

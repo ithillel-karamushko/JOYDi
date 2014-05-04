@@ -28,32 +28,39 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990, Months.March ,07, "rretert");
-		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990, Months.May,8, "rre");
-		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990, Months.June, 3,"rretert");
-		
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990,
+				Months.March, 07, "rretert");
+		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990,
+				Months.May, 8, "rre");
+		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990,
+				Months.June, 3, "rretert");
+
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
-		
-		
-		System.out.println("user1 "+user1.getAge()); 
-		System.out.println("user2 "+user2.getAge());
-		System.out.println("user3 "+user3.getAge());
+		//
+		//
+		// System.out.println("user1 "+user1.getAge());
+		// System.out.println("user2 "+user2.getAge());
+		// System.out.println("user3 "+user3.getAge());
 
-		//user1.getDateOfBirth();
+		// user1.getDateOfBirth();
 		// Admin admin1 = new Admin("Hanna", "email", "poland", Gender.FEMALE,
 		// 15);
 		// Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE,
 		// 23);
-		// Article article1 = new Article("John", "IT", "Java is good.",
-		// "Java");
-		// Article article = new Article("John", "IT", "Shitty C++.", "Java");
-		// ds.saveArticle(article1);
-		// ds.saveArticle(article);
-		// ArticleCriteria ac = new ArticleCriteria("John", "IT", null,
-		// textRepository);
-		// System.out.println(ds.findArticles(ac));
+		Article article1 = new Article("John", "Java", "Java is good.", "Java");
+		Article article = new Article("John", "IT", "Shitty C++.", "Java");
+		ds.saveArticle(article1);
+		ds.saveArticle(article);
+
+		Comment comment = new Comment("John", "Nice shit");
+		ds.saveComment(comment);
+//		System.out.println(article.getTextOfTheArticle());
+//		System.out.println(comment.getCommentText());
+		ArticleCriteria ac = new ArticleCriteria(null, null, "Java",
+				textRepository);
+		System.out.println(ds.findArticles(ac));
 		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
 		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
@@ -105,9 +112,5 @@ public class Starter {
 		// System.out.println(article.getDisLike());
 		//
 
-		// Comment comment = new Comment("John", "Nice shit");
-		// ds.saveComment(comment);
-		// System.out.println(article.getTextOfTheArticle());
-		// System.out.println(comment.getCommentText());
 	}
 }
