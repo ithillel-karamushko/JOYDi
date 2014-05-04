@@ -17,9 +17,9 @@ public class Configuration {
 	private Configuration() {
 		this.properties = new HashMap<String, String>();
 		try {
-			this.lines = IOUtils.readLines(Configuration.class.getClassLoader()
-					.getResourceAsStream("application.properties"), Charset
-					.defaultCharset());
+			this.stream = Configuration.class.getClassLoader()
+					.getResourceAsStream("application.properties");
+			this.lines = IOUtils.readLines(stream, Charset.defaultCharset());
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
