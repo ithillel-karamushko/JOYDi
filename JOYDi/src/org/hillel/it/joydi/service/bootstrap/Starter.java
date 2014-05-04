@@ -2,13 +2,6 @@ package org.hillel.it.joydi.service.bootstrap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
-import org.hillel.it.joydi.infra.config.Configuration;
-import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Months;
@@ -38,8 +31,6 @@ public class Starter {
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
-		//
-		//
 		// System.out.println("user1 "+user1.getAge());
 		// System.out.println("user2 "+user2.getAge());
 		// System.out.println("user3 "+user3.getAge());

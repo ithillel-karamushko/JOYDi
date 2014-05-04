@@ -12,9 +12,19 @@ public class Configuration {
 	private static Configuration instance;
 	Map<String, String> properties;
 	InputStream stream;
+	List<String> lines;
 
 	private Configuration() {
 		this.properties = new HashMap<String, String>();
+		try {
+			this.lines = IOUtils.readLines(Configuration.class.getClassLoader()
+					.getResourceAsStream("application.properties"), Charset
+					.defaultCharset());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			IOUtils.closeQuietly(stream);
+		}
 	}
 
 	public static Configuration getInstance() {
@@ -25,19 +35,9 @@ public class Configuration {
 	}
 
 	public String getPropertie(String key) {
-		stream = Configuration.class.getClassLoader().getResourceAsStream(
-				"application.properties");
-		try {
-			List<String> lines = IOUtils.readLines(this.stream,
-					Charset.defaultCharset());
-			for (String line : lines) {
-				String[] propertie = line.split("=");
-				properties.put(propertie[0], propertie[1]);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			IOUtils.closeQuietly(stream);
+		for (String line : lines) {
+			String[] propertie = line.split("=");
+			properties.put(propertie[0], propertie[1]);
 		}
 		return properties.get(key);
 	}
