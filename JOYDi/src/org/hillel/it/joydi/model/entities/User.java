@@ -22,6 +22,7 @@ public class User extends Person {
 		this.eMail = eMail;
 		this.country = country;
 		this.gender = gender;
+		GregorianCalendar cal = new GregorianCalendar();
 
 		try {
 			test(yearOfBirth, 1925, 2004);
@@ -40,8 +41,13 @@ public class User extends Person {
 			case 8:
 			case 10:
 				test(dayOfBirth, 1, 31);
-			case 1:
-				test(dayOfBirth, 1, 29);
+			case 1: {
+				if (cal.isLeapYear(yearOfBirth)) {
+					test(dayOfBirth, 1, 29);
+				} else {
+					test(dayOfBirth, 1, 28);
+				}
+			}
 			}
 
 		} catch (InputException ce) {
@@ -65,7 +71,4 @@ public class User extends Person {
 
 	}
 
-	public User() {
-
-	}
 }

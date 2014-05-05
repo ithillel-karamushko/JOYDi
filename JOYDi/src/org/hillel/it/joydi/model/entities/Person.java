@@ -146,7 +146,7 @@ abstract public class Person extends BaseEntity {
 	protected void test(int value, int theLowestLimit, int theHighestLimit)
 			throws InputException {
 
-		if (value <= theLowestLimit || value >= theHighestLimit)
+		if (value < theLowestLimit || value > theHighestLimit)
 			throw new InputException();
 
 	}

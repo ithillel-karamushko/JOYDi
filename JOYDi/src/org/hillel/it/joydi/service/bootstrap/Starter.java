@@ -21,10 +21,10 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User("John", "email", "ukraine", Gender.MALE, 2003,
-				Months.March, 07, "rretert");
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 2004,
+				Months.February, 29, "rretert");
 		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990,
-				Months.February, 30, "rre56");
+				Months.February, 39, "rre56");
 		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990,
 				Months.June, 3, "rretert");
 
