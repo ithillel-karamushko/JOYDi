@@ -139,7 +139,7 @@ public enum Countries {
 	Oman	("Oman"),
 	Pakistan	("Pakistan"),
 	Palau	("Palau"),
-	Panama	("Panama",
+	Panama	("Panama"),
 	Papua_New_Guinea ("Papua New Guinea"),
 	Paraguay	("Paraguay"),
 	Peru	("Peru"),

@@ -49,14 +49,13 @@ public class User extends Person {
 				}
 			}
 			}
-
+			this.dateOfBirth = new GregorianCalendar(yearOfBirth,
+					monthOfBirth.getMonth(), dayOfBirth);
+			this.age = this.Age(dateOfBirth);
 		} catch (InputException ce) {
 
 			System.out.println("Enter the real date of birth! " + ce);
 		}
-		this.dateOfBirth = new GregorianCalendar(yearOfBirth,
-				monthOfBirth.getMonth(), dayOfBirth);
-		this.age = this.Age(dateOfBirth);
 
 		Pattern p = Pattern.compile("[a-z0-9]{4,10}");
 

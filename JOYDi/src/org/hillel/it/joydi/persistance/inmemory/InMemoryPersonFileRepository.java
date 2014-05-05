@@ -16,6 +16,7 @@ import org.hillel.it.joydi.model.entities.InputException;
 import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
+import org.hillel.it.joydi.model.entities.InputException;
 
 public class InMemoryPersonFileRepository implements PersonRepository {
 
@@ -28,7 +29,14 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	@Override
 	public void saveUser(User person) throws FileNotFoundException, IOException {
 		this.persons.add(person);
-		serialize(this.persons);
+		try {test(person);
+			serialize(this.persons);
+		} catch (InputException ce) {
+			deleteUser(person);
+			System.out.println("Please, complete all fields and try register again! " + ce);
+			
+		}
+
 	}
 
 	@Override
@@ -51,8 +59,13 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	public void saveAdmin(Admin person) throws FileNotFoundException,
 			IOException {
 		this.persons.add(person);
+		try {test(person);
 		serialize(this.persons);
-
+	} catch (InputException ce) {
+		deleteAdmin(person);
+		System.out.println("Please, complete all fields and try register again! " + ce);
+		
+	}
 	}
 
 	@Override
@@ -78,4 +91,12 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 		SerializationUtils.deserialize(fis);
 	}
 
+	protected void test(Person person) throws InputException {
+
+		if (person.getCountry() == null || person.getDateOfBirth() == null
+				|| person.geteMail() == null || person.getGender() == null
+				|| person.getName() == null) {
+			throw new InputException();
+		}
+	}
 }
