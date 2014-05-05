@@ -1,7 +1,6 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,9 +8,11 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.commons.lang3.SerializationUtils;
 import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Admin;
+import org.hillel.it.joydi.model.entities.InputException;
 import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
@@ -28,7 +29,6 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	public void saveUser(User person) throws FileNotFoundException, IOException {
 		this.persons.add(person);
 		serialize(this.persons);
-
 	}
 
 	@Override

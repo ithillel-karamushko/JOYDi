@@ -21,16 +21,18 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User("John", "email", "ukraine", Gender.MALE, 1990,
+		User user1 = new User("John", "email", "ukraine", Gender.MALE, 2003,
 				Months.March, 07, "rretert");
 		User user2 = new User("Johny", "email", "ukraine", Gender.MALE, 1990,
-				Months.May, 8, "rre");
+				Months.February, 30, "rre56");
 		User user3 = new User("Andrew", "email", "ukraine", Gender.MALE, 1990,
 				Months.June, 3, "rretert");
 
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
+
+
 		// System.out.println("user1 "+user1.getAge());
 		// System.out.println("user2 "+user2.getAge());
 		// System.out.println("user3 "+user3.getAge());
@@ -47,8 +49,8 @@ public class Starter {
 
 		Comment comment = new Comment("John", "Nice shit");
 		ds.saveComment(comment);
-//		System.out.println(article.getTextOfTheArticle());
-//		System.out.println(comment.getCommentText());
+		// System.out.println(article.getTextOfTheArticle());
+		// System.out.println(comment.getCommentText());
 		ArticleCriteria ac = new ArticleCriteria(null, null, "Java",
 				textRepository);
 		System.out.println(ds.findArticles(ac));
