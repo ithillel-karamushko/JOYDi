@@ -24,7 +24,7 @@ abstract public class Person extends BaseEntity {
 	private static final long serialVersionUID = 371819977920264704L;
 	protected String name;
 	protected String eMail;
-	protected String country;
+	protected Countries country;
 	protected Gender gender;
 	protected GregorianCalendar dateOfBirth;
 	protected int age;
@@ -100,7 +100,7 @@ abstract public class Person extends BaseEntity {
 	 * 
 	 * @return country;
 	 */
-	public String getCountry() {
+	public Countries getCountry() {
 		return country;
 	}
 
@@ -109,7 +109,7 @@ abstract public class Person extends BaseEntity {
 	 * 
 	 * @param country
 	 */
-	public void setCountry(String country) {
+	public void setCountry(Countries country) {
 		this.country = country;
 	}
 
