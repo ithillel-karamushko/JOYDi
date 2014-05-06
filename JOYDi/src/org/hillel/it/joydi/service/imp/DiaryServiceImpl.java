@@ -8,6 +8,7 @@ import java.util.List;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
@@ -160,7 +161,7 @@ public class DiaryServiceImpl implements DiaryService {
 	 * @throws FileNotFoundException
 	 */
 	public void modifyUser(User person, String name, String eMail,
-			String country, Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
+			Countries country, Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
 			throws FileNotFoundException, IOException {
 		deleteUser(person);
 
