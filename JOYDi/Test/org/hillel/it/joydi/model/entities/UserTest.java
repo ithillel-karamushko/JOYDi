@@ -13,12 +13,12 @@ public class UserTest {
 	@Test
 	public void testUser() {
 
-		User u = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect name", "Yulia", u.getName());
 		assertEquals("Incorrect email", "yulia@google.com", u.geteMail());
-		assertEquals("Incorrect country", "Ukraine", u.getCountry());
+		assertEquals("Incorrect country", Countries.Ukraine, u.getCountry());
 		assertEquals("Incorrect gender", Gender.FEMALE, u.getGender());
 		assertEquals("Incorrect year", 1990, u.getDateOfBirth().get(Calendar.YEAR));
 		assertEquals("Incorrect month", Months.March.getMonth(), u.getDateOfBirth().get(Calendar.MONTH));
@@ -28,9 +28,9 @@ public class UserTest {
 	@Test
 	public void testGetGender() {
 
-		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
-		User u2 = new User("Yulia", "yulia@google.com", "Ukraine", Gender.MALE,
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine, Gender.MALE,
 				1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get gender", Gender.FEMALE, u1.getGender());
@@ -40,7 +40,8 @@ public class UserTest {
 
 	@Test
 	public void testSetGender() {
-		User u2 = new User();
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		u2.setGender(Gender.FEMALE);
 		assertEquals("Incorrect set gender", Gender.FEMALE, u2.getGender());
 
@@ -48,7 +49,7 @@ public class UserTest {
 
 	@Test
 	public void testGetName() {
-		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get name", "Yulia", u1.getName());
@@ -57,7 +58,8 @@ public class UserTest {
 
 	@Test
 	public void testSetName() {
-		User u2 = new User();
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		u2.setName("Yulia");
 
 		assertEquals("Incorrect set name", "Yulia", u2.getName());
@@ -65,7 +67,7 @@ public class UserTest {
 
 	@Test
 	public void testGeteMail() {
-		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
 		assertEquals("Incorrect get email", "yulia@google.com", u1.geteMail());
@@ -74,7 +76,8 @@ public class UserTest {
 
 	@Test
 	public void testSeteMail() {
-		User u2 = new User();
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		u2.seteMail("yulia@google.com");
 
 		assertEquals("Incorrect set email", "yulia@google.com", u2.geteMail());
@@ -82,24 +85,25 @@ public class UserTest {
 
 	@Test
 	public void testGetCountry() {
-		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 
-		assertEquals("Incorrect get country", "Ukraine", u1.getCountry());
+		assertEquals("Incorrect get country", Countries.Ukraine, u1.getCountry());
 	}
 
 	@Test
 	public void testSetCountry() {
-		User u2 = new User();
-		u2.setCountry("Ukraine");
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
+		u2.setCountry(Countries.Ukraine);
 
-		assertEquals("Incorrect set country", "Ukraine", u2.getCountry());
+		assertEquals("Incorrect set country", Countries.Ukraine, u2.getCountry());
 
 	}
 
 	@Test
 	public void testGetDateOfBirth() {
-		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
+		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
 				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		
 		assertEquals("Incorrect year", 1990, u1.getDateOfBirth().get(Calendar.YEAR));
@@ -109,7 +113,8 @@ public class UserTest {
 
 	@Test
 	public void testSetDateOfBirth() {
-		User u2 = new User();
+		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March ,07, "asf45");
 		u2.setDateOfBirth(1995, Months.March, 15);
 
 		assertEquals("Incorrect set year", 1995, u2.getDateOfBirth().get(Calendar.YEAR));
