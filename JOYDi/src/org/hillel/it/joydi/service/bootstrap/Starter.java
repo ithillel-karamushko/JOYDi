@@ -23,16 +23,19 @@ public class Starter {
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository);
-		User user1 = new User(null, "email", Countries.Albania, Gender.MALE, 2004,
-				Months.February, 29, "rretert");
-		User user2 = new User("Johny", "email", Countries.Armenia, Gender.MALE, 1990,
-				Months.February, 29, "rre56");
-		User user3 = new User("Andrew", "email",Countries.Haiti, Gender.MALE, 1990,
-				Months.June, 3, "rretert");
+		User user1 = new User(null, "email", Countries.Albania, Gender.MALE,
+				2004, Months.February, 29, "rretert");
+		User user2 = new User("Johny", "email", Countries.Armenia, Gender.MALE,
+				1990, Months.February, 29, "rre56");
+		User user3 = new User("Andrew", "email", Countries.Haiti, Gender.MALE,
+				1990, Months.May, 7, "rretert");
+		User user4 = new User("Mary", "email", Countries.Haiti, Gender.FEMALE,
+				1995, Months.May, 7, "rretert");
 
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
+		ds.saveUser(user4);
 
 		// System.out.println("user1 "+user1.getAge());
 		// System.out.println("user2 "+user2.getAge());
@@ -105,6 +108,7 @@ public class Starter {
 		// System.out.println(article.getLike());
 		// System.out.println(article.getDisLike());
 		//
-
+		
+		personRepository.birthday();
 	}
 }

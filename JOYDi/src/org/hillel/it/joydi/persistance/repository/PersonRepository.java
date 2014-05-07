@@ -2,6 +2,7 @@ package org.hillel.it.joydi.persistance.repository;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.User;
@@ -16,4 +17,6 @@ public interface PersonRepository {
 	void saveAdmin(Admin person) throws FileNotFoundException, IOException;
 
 	void deleteAdmin(Admin person) throws IOException;
+	
+	void birthday();
 }

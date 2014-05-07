@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.lang3.SerializationUtils;
@@ -29,12 +30,15 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	@Override
 	public void saveUser(User person) throws FileNotFoundException, IOException {
 		this.persons.add(person);
-		try {test(person);
+		try {
+			test(person);
 			serialize(this.persons);
 		} catch (InputException ce) {
 			deleteUser(person);
-			System.out.println("Please, complete all fields and try register again! " + ce);
-			
+			System.out
+					.println("Please, complete all fields and try register again! "
+							+ ce);
+
 		}
 
 	}
@@ -59,13 +63,16 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	public void saveAdmin(Admin person) throws FileNotFoundException,
 			IOException {
 		this.persons.add(person);
-		try {test(person);
-		serialize(this.persons);
-	} catch (InputException ce) {
-		deleteAdmin(person);
-		System.out.println("Please, complete all fields and try register again! " + ce);
-		
-	}
+		try {
+			test(person);
+			serialize(this.persons);
+		} catch (InputException ce) {
+			deleteAdmin(person);
+			System.out
+					.println("Please, complete all fields and try register again! "
+							+ ce);
+
+		}
 	}
 
 	@Override
@@ -98,5 +105,21 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 				|| person.getName() == null) {
 			throw new InputException();
 		}
+	}
+
+	public void birthday() {
+		GregorianCalendar today = new GregorianCalendar();
+		List<String> bDayPersons = new ArrayList<>();
+		for (Person person : persons) {
+			if (person.getDateOfBirth().DATE == today.DATE
+					&& person.getDateOfBirth().MONTH == today.MONTH) {
+				bDayPersons.add(person.getName());
+			}
+		}
+		System.out.print("The administration of JOYdi wishing ");
+		for (String bDayPerson : bDayPersons) {
+			System.out.print(bDayPerson + ", ");
+		}
+		System.out.print("all the best. \n May all your dreams come true! Happy Birthday! \n ");
 	}
 }

@@ -150,4 +150,6 @@ abstract public class Person extends BaseEntity {
 			throw new InputException();
 
 	}
+	
+	
 }
