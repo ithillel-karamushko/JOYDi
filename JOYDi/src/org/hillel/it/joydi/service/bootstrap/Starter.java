@@ -28,14 +28,17 @@ public class Starter {
 		User user2 = new User("Johny", "email", Countries.Armenia, Gender.MALE,
 				1990, Months.February, 29, "rre56");
 		User user3 = new User("Andrew", "email", Countries.Haiti, Gender.MALE,
-				1990, Months.May, 7, "rretert");
+				1990, Months.May, 8, "rretert");
 		User user4 = new User("Mary", "email", Countries.Haiti, Gender.FEMALE,
-				1995, Months.May, 7, "rretert");
+				1995, Months.May, 8, "rretert");
+		User user5 = new User("Lily", "email", Countries.Haiti, Gender.FEMALE,
+				1995, Months.May, 8, "rretert");
 
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);
 		ds.saveUser(user4);
+		ds.saveUser(user5);
 
 		// System.out.println("user1 "+user1.getAge());
 		// System.out.println("user2 "+user2.getAge());

@@ -116,10 +116,22 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 				bDayPersons.add(person.getName());
 			}
 		}
-		System.out.print("The administration of JOYdi wishing ");
+		System.out.print("\n The administration of JOYdi wishing ");
+		int i = -1;
 		for (String bDayPerson : bDayPersons) {
-			System.out.print(bDayPerson + ", ");
+			i++;
+			System.out.print(bDayPerson);
+			
+			if (i < bDayPersons.size()-2) {
+				System.out.print(", ");
+			}
+			else if (i == bDayPersons.size()-2) {
+				System.out.print(" and ");
+			}
+			
+			
 		}
-		System.out.print("all the best. \n May all your dreams come true! Happy Birthday! \n ");
+		System.out
+				.print(" all the best. \n May all your dreams come true! Happy Birthday! \n ");
 	}
 }
