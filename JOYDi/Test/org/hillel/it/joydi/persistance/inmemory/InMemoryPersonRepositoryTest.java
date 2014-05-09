@@ -3,8 +3,10 @@ package org.hillel.it.joydi.persistance.inmemory;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Countries;
@@ -23,57 +25,76 @@ public class InMemoryPersonRepositoryTest {
 	@BeforeClass
 	public static void before() {
 		pr = new InMemoryPersonFileRepository();
+
 	}
 
 	@Test
-	public void saveUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Ukraine, Gender.MALE, 1990, Months.March ,07, "asf45");
+	public void saveUserTest() throws FileNotFoundException, IOException,
+			ClassNotFoundException {
+		long lengthBeforeSave;
+		long lengthAfterSave;
+		File file = new File("d:\\test\\user.dat");
+		User user = new User("John", "email", Countries.Ukraine, Gender.MALE,
+				1990, Months.March, 07, "asf45");
+		lengthBeforeSave = file.length();
 		pr.saveUser(user);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
-
+		lengthAfterSave = file.length();
+		assertTrue(lengthBeforeSave < lengthAfterSave);
 	}
 
 	@Test
 	public void deleteUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Ukraine, Gender.MALE, 1990, Months.March ,07, "asf45");
-		pr.saveUser(user);
-		pr.deleteUser(user);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertFalse(isExist);
-
+		long lengthBeforeDelete;
+		long lengthAfterDelete;
+		File file = new File("d:\\test\\user.dat");
+		User user1 = new User("John", "email", Countries.Ukraine, Gender.MALE,
+				1990, Months.March, 07, "asf45");
+		pr.saveUser(user1);
+		lengthBeforeDelete = file.length();
+		pr.deleteUser(user1);
+		lengthAfterDelete = file.length();
+		assertTrue(lengthBeforeDelete > lengthAfterDelete);
 	}
 
 	@Test
 	public void saveAdminTest() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", Countries.Ukraine, Gender.FEMALE, 1990, Months.March, 07, "asf45");
+		long lengthBeforeSave;
+		long lengthAfterSave;
+		File file = new File("d:\\test\\user.dat");
+		Admin admin = new Admin("Helen", "email", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March, 07, "asf45");
+		lengthBeforeSave = file.length();
 		pr.saveAdmin(admin);
-		File file = new File("D://" + admin.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
-
+		lengthAfterSave = file.length();
+		assertTrue(lengthBeforeSave != lengthAfterSave);
 	}
 
 	@Test
 	public void deleteAdminTest() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", Countries.Ukraine, Gender.FEMALE, 1990, Months.March ,07, "asf45");
-		pr.saveAdmin(admin);
-		pr.deleteAdmin(admin);
-		File file = new File("D://" + admin.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertFalse(isExist);
+		long lengthBeforeDelete;
+		long lengthAfterDelete;
+		File file = new File("d:\\test\\user.dat");
+		Admin admin1 = new Admin("Helen", "email", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March, 07, "asf45");
+		pr.saveAdmin(admin1);
+		lengthBeforeDelete = file.length();
+		pr.deleteAdmin(admin1);
+		lengthAfterDelete = file.length();
+		assertTrue(lengthBeforeDelete > lengthAfterDelete);
 	}
 
 	@Test
 	public void modifyUserTest() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Ukraine, Gender.MALE, 1990, Months.March ,07, "asf45");
-		pr.saveUser(user);
-		pr.modifyUser(user);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
+		long lengthBeforeModify;
+		long lengthAfterModify;
+		File file = new File("d:\\test\\user.dat");
+		User user3 = new User("John", "email", Countries.Ukraine, Gender.MALE,
+				1990, Months.March, 07, "asf45");
+		pr.saveUser(user3);
+		lengthBeforeModify = file.length();
+		pr.modifyUser(user3);
+		lengthAfterModify = file.length();
+		assertTrue(lengthBeforeModify != lengthAfterModify);
 
 	}
 

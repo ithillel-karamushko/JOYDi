@@ -66,7 +66,8 @@ public class Starter {
 		System.out.println(ds.findArticles(ac));
 		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
-		// ds.modifyUser(user1, "Leo", null, "Russia", Gender.FEMALE, 25);
+		// ds.modifyUser(user2, "Andrew", "email", Countries.Haiti, Gender.MALE,
+					//1990, Months.May, 8);
 		// ds.saveUser(user2);
 		// ds.saveUser(user3);
 		// ds.deleteUser(user1);
