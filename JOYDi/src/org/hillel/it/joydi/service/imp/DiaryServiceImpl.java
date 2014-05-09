@@ -2,6 +2,7 @@ package org.hillel.it.joydi.service.imp;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,11 @@ import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
+import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
+import org.hillel.it.joydi.persistance.repository.PictureRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.diaryService.DiaryService;
 
@@ -25,11 +28,14 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
 public class DiaryServiceImpl implements DiaryService {
 	private TextRepository textRepository;
 	private PersonRepository personRepository;
+	private PictureRepository pictureRepository;
 
 	public DiaryServiceImpl(TextRepository textRepository,
-			PersonRepository personRepository) {
+			PersonRepository personRepository,
+			PictureRepository pictureRepository) {
 		this.textRepository = textRepository;
 		this.personRepository = personRepository;
+		this.pictureRepository = pictureRepository;
 
 	}
 
@@ -161,8 +167,9 @@ public class DiaryServiceImpl implements DiaryService {
 	 * @throws FileNotFoundException
 	 */
 	public void modifyUser(User person, String name, String eMail,
-			Countries country, Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
-			throws FileNotFoundException, IOException {
+			Countries country, Gender gender, int yearOfBirth,
+			Months monthOfBirth, int dayOfBirth) throws FileNotFoundException,
+			IOException {
 		deleteUser(person);
 
 		if (name != null) {
@@ -262,14 +269,32 @@ public class DiaryServiceImpl implements DiaryService {
 	 */
 	@Override
 	public List<Article> findArticles(ArticleCriteria criteria) {
-		List <Article> allArticles = textRepository.getArticle();
-		List <Article> result = new ArrayList<Article>();
-		for (Article article : allArticles){
-			if (article.match(criteria)){
-			result.add(article);
+		List<Article> allArticles = textRepository.getArticle();
+		List<Article> result = new ArrayList<Article>();
+		for (Article article : allArticles) {
+			if (article.match(criteria)) {
+				result.add(article);
 			}
 		}
 		return result;
+
+	}
+
+	@Override
+	public void addPicture(Picture picture) throws SQLException {
+		pictureRepository.addPicture(picture);
+
+	}
+
+	@Override
+	public void deletePicture(Picture picture) {
+		pictureRepository.deletePicture(picture);
+
+	}
+
+	@Override
+	public void getPicture() {
+		pictureRepository.getPicture();
 
 	}
 

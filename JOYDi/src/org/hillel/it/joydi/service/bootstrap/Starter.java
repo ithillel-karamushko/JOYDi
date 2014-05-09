@@ -2,6 +2,7 @@ package org.hillel.it.joydi.service.bootstrap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -12,17 +13,20 @@ import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
+import org.hillel.it.joydi.persistance.repository.PictureRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
 public class Starter {
 	public static void main(String[] args) throws FileNotFoundException,
-			IOException {
+			IOException, SQLException {
 		TextRepository textRepository = new InMemoryTextRepository();
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
+		PictureRepository pictureRepository = new InMemoryPictureRepository();
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
-				personRepository);
+				personRepository, pictureRepository);
 		User user1 = new User(null, "email", Countries.Albania, Gender.MALE,
 				2004, Months.February, 29, "rretert");
 		User user2 = new User("Johny", "email", Countries.Armenia, Gender.MALE,
@@ -33,7 +37,6 @@ public class Starter {
 				1995, Months.May, 8, "rretert");
 		User user5 = new User("Lily", "email", Countries.Haiti, Gender.FEMALE,
 				1995, Months.May, 8, "rretert");
-
 		ds.saveUser(user1);
 		ds.saveUser(user2);
 		ds.saveUser(user3);

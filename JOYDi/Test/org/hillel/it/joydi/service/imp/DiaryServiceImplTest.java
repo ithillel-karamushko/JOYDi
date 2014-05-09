@@ -18,6 +18,7 @@ import org.hillel.it.joydi.model.search.ArticleCriteria;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
+import org.hillel.it.joydi.persistance.repository.PictureRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.junit.BeforeClass;
@@ -27,12 +28,13 @@ public class DiaryServiceImplTest {
 	private static DiaryServiceImpl ds;
 	private static TextRepository textRepository;
 	private static PersonRepository personRepository;
+	private static PictureRepository pictureRepository;
 
 	@BeforeClass
 	public static void before() {
 		textRepository = new InMemoryTextRepository();
 		personRepository = new InMemoryPersonFileRepository();
-		ds = new DiaryServiceImpl(textRepository, personRepository);
+		ds = new DiaryServiceImpl(textRepository, personRepository, pictureRepository);
 	}
 
 	@Test

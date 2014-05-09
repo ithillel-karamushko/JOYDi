@@ -7,15 +7,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.hillel.it.joydi.connection.pool.ReUsableConnectionPool;
 import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.persistance.repository.PictureRepository;
 
 public class InMemoryPictureRepository implements PictureRepository {
 
+	private ReUsableConnectionPool rc;
+	private Connection connection;
+
+	/*
+	 * ¬€«Œ¬  ŒÕ—“–” “Œ–¿ ¡≈« CONNECTIONPOOL!!!
+	 * 
+	 * public InMemoryPictureRepository() throws SQLException { try (Connection
+	 * connection = DriverManager
+	 * .getConnection("jdbc:derby:DerbyDb;create=true")) { try (Statement st =
+	 * connection.createStatement()) { st.executeUpdate("" +
+	 * "create table Pictures(" +
+	 * "id int primary key , fileUrl varchar(1024), creatingDate datetime))"); }
+	 * } }
+	 */
+
+	// ¬€«Œ¬ — CONNECTIONPOOL
+
+	public InMemoryPictureRepository() throws SQLException {
+		rc = new ReUsableConnectionPool();
+		connection = rc.getConnection();
+		try (Statement st = connection.createStatement()) {
+			st.executeUpdate(""
+					+ "create table Pictures("
+					+ "id int primary key , fileUrl varchar(1024), creatingDate datetime))");
+		}
+	}
+
 	@Override
-	public void addPicture(Picture picture) {
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+	public void addPicture(Picture picture) throws SQLException {
+		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
 					.prepareStatement("INSERT INTO PICTURES(fileUrl) VALUES(?)")) {
 				try {
@@ -28,15 +55,12 @@ public class InMemoryPictureRepository implements PictureRepository {
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}
-		} catch (SQLException e3) {
-			e3.printStackTrace();
 		}
 	}
 
 	@Override
 	public void deletePicture(Picture picture) {
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
 					.prepareStatement("delete from PICTURES where fileUrl = ?")) {
 				st.setString(1, "http//hala-bala");
@@ -51,8 +75,7 @@ public class InMemoryPictureRepository implements PictureRepository {
 	}
 
 	public void getPicture() {
-		try (Connection connection = DriverManager
-				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+		try (Connection connection = rc.getConnection()) {
 			try (Statement st = connection.createStatement()) {
 				ResultSet rs = st.executeQuery("SELECT * FROM Pictures");
 				while (!rs.next()) {
