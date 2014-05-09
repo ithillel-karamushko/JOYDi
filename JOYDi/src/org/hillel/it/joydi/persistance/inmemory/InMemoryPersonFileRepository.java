@@ -17,7 +17,6 @@ import org.hillel.it.joydi.model.entities.InputException;
 import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
-import org.hillel.it.joydi.model.entities.InputException;
 
 public class InMemoryPersonFileRepository implements PersonRepository {
 
@@ -121,15 +120,13 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 		for (String bDayPerson : bDayPersons) {
 			i++;
 			System.out.print(bDayPerson);
-			
-			if (i < bDayPersons.size()-2) {
+
+			if (i < bDayPersons.size() - 2) {
 				System.out.print(", ");
-			}
-			else if (i == bDayPersons.size()-2) {
+			} else if (i == bDayPersons.size() - 2) {
 				System.out.print(" and ");
 			}
-			
-			
+
 		}
 		System.out
 				.print(" all the best. \n May all your dreams come true! Happy Birthday! \n ");

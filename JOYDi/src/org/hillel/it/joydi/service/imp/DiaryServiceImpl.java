@@ -273,10 +273,4 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
-	// неправильно реализованный метод
-	// public List<Article> findArticles(ArticleCriteria criteria) {
-	// List<Article> result = criteria.match(criteria);
-	// return result;
-	//
-	// }
 }

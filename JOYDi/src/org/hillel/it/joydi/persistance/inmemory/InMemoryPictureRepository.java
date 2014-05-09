@@ -1,33 +1,71 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.persistance.repository.PictureRepository;
 
 public class InMemoryPictureRepository implements PictureRepository {
-	
-	private List<Picture> picture;
-	
-	public InMemoryPictureRepository (){
-		this.picture = new ArrayList<Picture>();
-	}
 
 	@Override
 	public void addPicture(Picture picture) {
-		this.picture.add(picture);
-
+		try (Connection connection = DriverManager
+				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+			try (PreparedStatement st = connection
+					.prepareStatement("INSERT INTO PICTURES(fileUrl) VALUES(?)")) {
+				try {
+					st.setString(1, "http//hala-bala");
+					int rows = st.executeUpdate();
+					System.out.println("Rows " + rows);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		} catch (SQLException e3) {
+			e3.printStackTrace();
+		}
 	}
 
 	@Override
 	public void deletePicture(Picture picture) {
-		this.picture.remove(picture);
-
+		try (Connection connection = DriverManager
+				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+			try (PreparedStatement st = connection
+					.prepareStatement("delete from PICTURES where fileUrl = ?")) {
+				st.setString(1, "http//hala-bala");
+				int rows = st.executeUpdate();
+				System.out.println("Rows " + rows);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void getPicture() {
-		System.out.println(picture);
+		try (Connection connection = DriverManager
+				.getConnection("jdbc:derby:DerbyDb;create=true")) {
+			try (Statement st = connection.createStatement()) {
+				ResultSet rs = st.executeQuery("SELECT * FROM Pictures");
+				while (!rs.next()) {
+					int id = rs.getInt(rs.findColumn("id"));
+					String name = rs.getString(rs.findColumn("fileUrl"));
+					System.out.println("Id=" + id + ",fileUrl=" + name);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 }
