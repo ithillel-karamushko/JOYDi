@@ -31,12 +31,15 @@ public class InMemoryPictureRepository implements PictureRepository {
 	// ÂÛÇÎÂ Ñ CONNECTIONPOOL
 
 	public InMemoryPictureRepository() throws SQLException {
-		rc = new ReUsableConnectionPool();
-		connection = rc.getConnection();
-		try (Statement st = connection.createStatement()) {
-			st.executeUpdate(""
-					+ "create table Pictures("
-					+ "id int primary key , fileUrl varchar(1024), creatingDate datetime))");
+		try {
+			rc = new ReUsableConnectionPool();
+			connection = rc.getConnection();
+			try (Statement st = connection.createStatement()) {
+				st.executeUpdate("create table Pictures("
+						+ "id int, fileUrl varchar(1024), creatingDate varchar(1024))");
+			}
+		} catch (Exception e) {
+			e.getMessage();
 		}
 	}
 

@@ -20,22 +20,16 @@ public class ReUsableConnectionPool implements ConnectionPool {
 
 	public ReUsableConnectionPool() {
 		connections = new ArrayList<>();
-		this.maxConnections = Integer.valueOf(
-				config.getPropertie("maxConnections")).intValue();
+		this.maxConnections = 10;
 		available = true;
 		config = Configuration.getInstance();
 		this.url = config.getPropertie("url");
 
 	}
 
-	private Connection connectionCreate() {
-		ReUseableConnection connection = null;
-		try {
-			connection = (ReUseableConnection) DriverManager
-					.getConnection(url);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	private Connection connectionCreate() throws SQLException {
+		Connection con = DriverManager.getConnection(url);
+		ReUseableConnection connection = new ReUseableConnection(con);
 		connections.add(connection);
 		return connection;
 
