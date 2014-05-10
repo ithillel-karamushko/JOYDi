@@ -36,7 +36,8 @@ public class InMemoryPictureRepository implements PictureRepository {
 			connection = rc.getConnection();
 			try (Statement st = connection.createStatement()) {
 				st.executeUpdate("create table Pictures("
-						+ "id int, fileUrl varchar(1024), creatingDate varchar(1024))");
+						+ "id integer not null primary key GENERATED ALWAYS AS IDENTITY" + 
+                " (START WITH 1, INCREMENT BY 1), fileUrl varchar(1024), creatingDate timestamp)");
 			}
 		} catch (Exception e) {
 			e.getMessage();
