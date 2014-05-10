@@ -45,7 +45,6 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	@Override
 	public void modifyUser(User person) throws FileNotFoundException,
 			IOException {
-		this.persons.remove(person);
 		this.persons.add(person);
 		serialize(this.persons);
 
@@ -62,16 +61,16 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	public void saveAdmin(Admin person) throws FileNotFoundException,
 			IOException {
 		this.persons.add(person);
-//		try {
-//			test(person);
+		try {
+			test(person);
 			serialize(this.persons);
-//		} catch (InputException ce) {
-//			deleteAdmin(person);
-//			System.out
-//					.println("Please, complete all fields and try register again! "
-//							+ ce);
-//
-//		}
+		} catch (InputException ce) {
+			deleteAdmin(person);
+			System.out
+				.println("Please, complete all fields and try register again! "
+							+ ce);
+
+		}
 	}
 
 	@Override

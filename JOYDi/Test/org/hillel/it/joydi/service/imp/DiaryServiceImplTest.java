@@ -34,13 +34,14 @@ public class DiaryServiceImplTest {
 	public static void before() {
 		textRepository = new InMemoryTextRepository();
 		personRepository = new InMemoryPersonFileRepository();
-		ds = new DiaryServiceImpl(textRepository, personRepository, pictureRepository);
+		ds = new DiaryServiceImpl(textRepository, personRepository,
+				pictureRepository);
 	}
 
 	@Test
 	public void testSaveArticle() {
 		int i = ds.getTextRepository().getArticle().size() + 1;
-		Article article = new Article("Hanna", "Java", "I like Java.","Java");
+		Article article = new Article("Hanna", "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
@@ -49,7 +50,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteArticle() {
-		Article article = new Article("Mary", "Java", "I like Java.","Java");
+		Article article = new Article("Mary", "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size() - 1;
 		ds.deleteArticle(article);
@@ -60,7 +61,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyArticle() {
-		Article article = new Article("Mike", "Java", "I like Java.","Java");
+		Article article = new Article("Mike", "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size();
 		ds.modifyArticle(article, "Java", "I don't like Java");
@@ -71,61 +72,80 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Australia, Gender.MALE, 1990, Months.March ,07, "asf45");
+		long lengthBeforeSave;
+		long lengthAfterSave;
+		File file = new File("d:\\test\\user.dat");
+		User user = new User("John", "email", Countries.Australia, Gender.MALE,
+				1990, Months.March, 07, "asf45");
+		lengthBeforeSave = file.length();
 		ds.saveUser(user);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
+		lengthAfterSave = file.length();
+		assertTrue(lengthBeforeSave < lengthAfterSave);
 	}
 
 	@Test
 	public void testSaveAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", Countries.Australia, Gender.FEMALE, 1990, Months.March ,07, "asf45");
+		long lengthBeforeSave;
+		long lengthAfterSave;
+		File file = new File("d:\\test\\user.dat");
+		Admin admin = new Admin("Helen", "email", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March, 07, "asf45");
+		lengthBeforeSave = file.length();
 		ds.saveAdmin(admin);
-		File file = new File("D://" + admin.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
+		lengthAfterSave = file.length();
+		assertTrue(lengthBeforeSave != lengthAfterSave);
 	}
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Australia, Gender.MALE, 1990, Months.March ,07, "asf45");
-		ds.saveUser(user);
-		ds.deleteUser(user);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertFalse(isExist);
+		long lengthBeforeDelete;
+		long lengthAfterDelete;
+		File file = new File("d:\\test\\user.dat");
+		User user2 = new User("John", "email", Countries.Bahamas, Gender.MALE,
+				1990, Months.December, 07, "asf45");
+		ds.saveUser(user2);
+		lengthBeforeDelete = file.length();
+		ds.deleteUser(user2);
+		lengthAfterDelete = file.length();
+		assertTrue(lengthBeforeDelete > lengthAfterDelete);
 
 	}
 
 	@Test
 	public void testModifyUser() throws FileNotFoundException, IOException {
-		User user = new User("John", "email", Countries.Australia, Gender.MALE, 1990, Months.March ,07, "asf45");
+		long lengthBeforeModify;
+		long lengthAfterModify;
+		File file = new File("d:\\test\\user.dat");
+		User user = new User("John", "email", Countries.Australia, Gender.MALE,
+				1990, Months.March, 07, "asf45");
 		ds.saveUser(user);
-		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March ,07);
-		File file = new File("D://" + user.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertTrue(isExist);
+		lengthBeforeModify = file.length();
+		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March, 07);
+		lengthAfterModify = file.length();
+		assertTrue(lengthBeforeModify != lengthAfterModify);
 		assertEquals("Incorrect", "Leo", user.getName());
-		assertEquals("Incorrect", "ukraine", user.getCountry());
-		
+		assertEquals("Incorrect", "mail", user.geteMail());
 
 	}
 
 	@Test
 	public void testDeleteAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Helen", "email", Countries.Australia, Gender.FEMALE, 1990, Months.March ,07, "fsfsd");
-		ds.saveAdmin(admin);
-		ds.deleteAdmin(admin);
-		File file = new File("D://" + admin.getName() + ".txt");
-		boolean isExist = file.exists();
-		assertFalse(isExist);
+		long lengthBeforeDelete;
+		long lengthAfterDelete;
+		File file = new File("d:\\test\\user.dat");
+		Admin admin1 = new Admin("Helen", "email", Countries.Ukraine,
+				Gender.FEMALE, 1990, Months.March, 07, "asf45");
+		ds.saveAdmin(admin1);
+		lengthBeforeDelete = file.length();
+		ds.deleteAdmin(admin1);
+		lengthAfterDelete = file.length();
+		assertTrue(lengthBeforeDelete > lengthAfterDelete);
 
 	}
 
 	@Test
 	public void testSaveComment() {
-		 Comment comment = new Comment("Hanna", "Nice words");
+		Comment comment = new Comment("Hanna", "Nice words");
 		int i = ds.getTextRepository().getComment().size() + 1;
 		ds.saveComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
@@ -140,7 +160,8 @@ public class DiaryServiceImplTest {
 		int i = ds.getTextRepository().getComment().size() - 1;
 		ds.deleteComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
-		assertEquals("Incorrect", false, ds.getTextRepository().getComment().contains(comment));
+		assertEquals("Incorrect", false, ds.getTextRepository().getComment()
+				.contains(comment));
 	}
 
 	@Test
@@ -150,12 +171,13 @@ public class DiaryServiceImplTest {
 		int i = ds.getTextRepository().getComment().size();
 		ds.modifyComment(comment, "Bad words");
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
-		assertEquals("Incorrect", true, ds.getTextRepository().getComment().contains(comment));
+		assertEquals("Incorrect", true, ds.getTextRepository().getComment()
+				.contains(comment));
 	}
 
 	@Test
 	public void testPushLike() {
-		Article article = new Article("Frank", "Java", "I like Java.","Java");
+		Article article = new Article("Frank", "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		ds.pushLike(article);
 		assertEquals("Incorrect", 1, article.getLike());
@@ -163,7 +185,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushDisLike() {
-		Article article = new Article("John", "Java", "I like Java.","Java");
+		Article article = new Article("John", "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		ds.pushDisLike(article);
 		assertEquals("Incorrect", 1, article.getDisLike());
@@ -171,16 +193,21 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void findArticles() {
-		Article article = new Article("John", "Java", "I  don't like Java.","Java");
+		Article article = new Article("John", "Java", "I  don't like Java.",
+				"Java");
 		ds.saveArticle(article);
-		Article article2 = new Article("John", "Java", "I  don't like Java.","Java 2");
+		Article article2 = new Article("John", "Java", "I  don't like Java.",
+				"Java 2");
 		ds.saveArticle(article2);
-		ArticleCriteria ac = new ArticleCriteria("Java", "John", "Java", textRepository);
-		for (Article art : ds.findArticles(ac)){
-		assertEquals("Incorrect", art.getAuthorName(), ac.getAuthor());
-		assertEquals("Incorrect", art.getThemeOfTheArticle(), ac.getThemeOfArticle());
-		assertEquals("Incorrect", true, art.getTags().contains(ac.getTag()));
-		assertEquals("Incorrect", true, ds.getTextRepository().getArticle().contains(art));
+		ArticleCriteria ac = new ArticleCriteria("Java", "John", "Java",
+				textRepository);
+		for (Article art : ds.findArticles(ac)) {
+			assertEquals("Incorrect", art.getAuthorName(), ac.getAuthor());
+			assertEquals("Incorrect", art.getThemeOfTheArticle(),
+					ac.getThemeOfArticle());
+			assertEquals("Incorrect", true, art.getTags().contains(ac.getTag()));
+			assertEquals("Incorrect", true, ds.getTextRepository().getArticle()
+					.contains(art));
 		}
-}
+	}
 }

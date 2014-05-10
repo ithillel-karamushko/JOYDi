@@ -29,25 +29,21 @@ public class Starter {
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
 
-		// User user1 = new User(null, "email", Countries.Albania, Gender.MALE,
-		// 2004, Months.February, 29, "rretert");
-		// User user2 = new User("Johny", "email", Countries.Armenia,
-		// Gender.MALE,
-		// 1990, Months.February, 29, "rre56");
-		// User user3 = new User("Andrew", "email", Countries.Haiti,
-		// Gender.MALE,
-		// 1990, Months.May, 8, "rretert");
-		// User user4 = new User("Mary", "email", Countries.Haiti,
-		// Gender.FEMALE,
-		// 1995, Months.May, 8, "rretert");
-		// User user5 = new User("Lily", "email", Countries.Haiti,
-		// Gender.FEMALE,
-		// 1995, Months.May, 8, "rretert");
-		// ds.saveUser(user1);
-		// ds.saveUser(user2);
-		// ds.saveUser(user3);
-		// ds.saveUser(user4);
-		// ds.saveUser(user5);
+		User user1 = new User(null, "email", Countries.Albania, Gender.MALE,
+				2004, Months.February, 29, "rretert");
+		User user2 = new User("Johny", "email", Countries.Armenia, Gender.MALE,
+				1990, Months.February, 29, "rre56");
+		User user3 = new User("Andrew", "email", Countries.Haiti, Gender.MALE,
+				1990, Months.May, 8, "rretert");
+		User user4 = new User("Mary", "email", Countries.Haiti, Gender.FEMALE,
+				1995, Months.May, 8, "rretert");
+		User user5 = new User("Lily", "email", Countries.Haiti, Gender.FEMALE,
+				1995, Months.May, 8, "rretert");
+		ds.saveUser(user1);
+		ds.saveUser(user2);
+		ds.saveUser(user3);
+		ds.saveUser(user4);
+		ds.saveUser(user5);
 
 		// System.out.println("user1 "+user1.getAge());
 		// System.out.println("user2 "+user2.getAge());
@@ -73,8 +69,8 @@ public class Starter {
 		// System.out.println(ds.findArticles(ac));
 		// System.out.println(article.getTextOfTheArticle());
 		// ds.saveUser(user1);
-		// ds.modifyUser(user2, "Andrew", "email", Countries.Haiti, Gender.MALE,
-		// 1990, Months.May, 8);
+		ds.modifyUser(user2, "Andrew", "email", Countries.Haiti, Gender.MALE,
+				1990, Months.May, 8);
 		// ds.saveUser(user2);
 		// ds.saveUser(user3);
 		// ds.deleteUser(user1);
