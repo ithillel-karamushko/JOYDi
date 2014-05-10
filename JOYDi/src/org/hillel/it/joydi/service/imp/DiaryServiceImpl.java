@@ -280,6 +280,44 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
+	public List<Article> newArticles() {
+		List<Article> allArticles = textRepository.getArticle();
+		List<Article> newArticles = new ArrayList<Article>();
+		int count = 0;
+		if (allArticles.size() > 10) {
+			count = 10;
+		} else {
+			count = allArticles.size() - 1;
+		}
+		for (int i = count; i > 0; i--) {
+			newArticles.add(allArticles.get(allArticles.size() - count));
+		}
+		return newArticles;
+	}
+
+	public void topArticles() {
+		List<Article> allArticles = textRepository.getArticle();
+		int count = allArticles.size() - 1;
+		Article article;
+		int k;
+		for (int i = 0; i <= count; i++) {
+			for (int j = count; j > 0; j--) {
+				k=j-1;
+				if (allArticles.get(j).getRatingOfTheArticle() < allArticles
+						.get(k).getRatingOfTheArticle()) {
+					article = allArticles.get(j);
+					allArticles.set(j, allArticles.get(k));
+					allArticles.set(k, article);
+				}
+			}
+		}
+		System.out.println("Top articles");
+		for (int i = count; i >= 0; i--) {
+			System.out.println(count-i+". "+allArticles.get(i).getAuthorName() +" " +allArticles.get(i).getThemeOfTheArticle() + " "
+					+ allArticles.get(i).getRatingOfTheArticle());
+		}
+	}
+
 	@Override
 	public void addPicture(Picture picture) throws SQLException {
 		pictureRepository.addPicture(picture);

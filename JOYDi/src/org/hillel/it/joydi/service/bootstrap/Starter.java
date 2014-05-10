@@ -54,12 +54,32 @@ public class Starter {
 				Gender.MALE, 1980, Months.April, 23, "kejk");
 		// Admin admin2 = new Admin("Helen", "email", "poland", Gender.FEMALE,
 		// 23);
-		// Article article1 = new Article("John", "Java", "Java is good.",
-		// "Java");
-		// Article article = new Article("John", "IT", "Shitty C++.", "Java");
-		// ds.saveArticle(article1);
-		// ds.saveArticle(article);
-		//
+		 Article article1 = new Article("John", "Java", "Java is good.",
+		 "Java");
+		 Article article = new Article("John", "IT1", "Super C++.", "Java");
+		 Article article2 = new Article("Mary", "IT2", "I like Java", "Java");
+		 Article article3 = new Article("Lily", "IT3", "I like Java", "Java");
+		ds.saveArticle(article);
+		ds.saveArticle(article1);
+		ds.saveArticle(article2);
+		ds.saveArticle(article3);
+		ds.pushLike(article2);
+		ds.pushLike(article2);
+		ds.pushLike(article2);
+		ds.pushLike(article2);
+		ds.pushLike(article2);
+		ds.pushLike(article);
+		ds.pushLike(article);
+		ds.pushLike(article);
+		ds.pushLike(article1);
+		ds.pushLike(article1);
+		ds.pushLike(article1);
+		ds.pushLike(article1);
+		ds.pushLike(article3);
+		ds.pushDisLike(article3);
+		ds.topArticles();
+		
+		
 		// Comment comment = new Comment("John", "Nice shit");
 		// ds.saveComment(comment);
 		// // System.out.println(article.getTextOfTheArticle());

@@ -46,6 +46,8 @@ public class Article extends TextEntity {
 		this.setLike(0);
 		this.setDisLike(0);
 		this.tags = tags;
+		ratingOfTheArticle = 0;
+
 	}
 
 	/**
@@ -155,6 +157,7 @@ public class Article extends TextEntity {
 	 */
 
 	public int getRatingOfTheArticle() {
+		ratingOfTheArticle= like - disLike;
 		return ratingOfTheArticle;
 	}
 
@@ -264,4 +267,6 @@ public class Article extends TextEntity {
 		}
 		return match;
 	}
+	
+
 }
