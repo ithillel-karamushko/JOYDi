@@ -50,7 +50,13 @@ public class ReUsableConnectionPool implements ConnectionPool {
 	}
 
 	@Override
-	public void destroy() {
+	public void destroyAllConnections() throws SQLException {
+		for (ReUseableConnection rc : connections) {
+			if (rc.isBusy()){
+				rc.rollback(); // rollback() cancel all queries
+				rc.close();
+			}
+		}
 
 	}
 
