@@ -78,6 +78,7 @@ public class Starter {
 		ds.pushLike(article3);
 		ds.pushDisLike(article3);
 		ds.topArticles();
+		System.out.println(ds.newArticles());
 		
 		
 		// Comment comment = new Comment("John", "Nice shit");

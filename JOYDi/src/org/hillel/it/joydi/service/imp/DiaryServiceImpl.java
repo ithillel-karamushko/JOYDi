@@ -289,8 +289,9 @@ public class DiaryServiceImpl implements DiaryService {
 		} else {
 			count = allArticles.size() - 1;
 		}
-		for (int i = count; i > 0; i--) {
+		for (int i = count; i >= 0; i--) {
 			newArticles.add(allArticles.get(allArticles.size() - count));
+			System.out.println();
 		}
 		return newArticles;
 	}

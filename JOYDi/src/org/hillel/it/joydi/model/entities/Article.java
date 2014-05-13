@@ -222,35 +222,7 @@ public class Article extends TextEntity {
 	 * @param criteria
 	 * @return result of matching
 	 */
-	public boolean matchUncorrect(ArticleCriteria criteria) {
-		boolean match = false;
-		String author;
-		String theme;
-		String tag;
-		if (criteria.getAuthor() == null) {
-			author = authorName;
-		} else {
-			author = criteria.getAuthor();
-		}
-		if (criteria.getThemeOfArticle() == null) {
-			theme = themeOfTheArticle;
-		} else {
-			theme = criteria.getThemeOfArticle();
-		}
-		if (criteria.getTag() == null) {
-			tag = tags;
-		} else {
-			tag = criteria.getTag();
-		}
-		if (authorName == author && themeOfTheArticle == theme
-				&& (tags.contains(tag))) {
-			match = true;
-		} else {
-			match = false;
-		}
-		return match;
-	}
-
+	
 	public boolean match(ArticleCriteria criteria) {
 		boolean match = false;
 		boolean author = criteria.getAuthor() == null
