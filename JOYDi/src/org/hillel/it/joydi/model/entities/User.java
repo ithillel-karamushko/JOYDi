@@ -8,6 +8,9 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.validator.routines.EmailValidator;
+
 public class User extends Person {
 
 	/**
@@ -19,7 +22,11 @@ public class User extends Person {
 			int yearOfBirth, Months monthOfBirth, int dayOfBirth,
 			String password) {
 		this.name = name;
-		this.eMail = eMail;
+		if (EmailValidator.getInstance().isValid(eMail)) {
+			this.eMail = eMail;
+		} else {
+			System.out.println("Please, type a correct mail");
+		}
 		this.country = country;
 		this.gender = gender;
 		GregorianCalendar cal = new GregorianCalendar();
@@ -69,5 +76,4 @@ public class User extends Person {
 		}
 
 	}
-
 }

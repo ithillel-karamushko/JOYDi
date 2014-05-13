@@ -5,13 +5,24 @@ import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 public class Admin extends Person {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5730593394953354304L;
 
 	public Admin(String name, String eMail, Countries country, Gender gender,
 			int yearOfBirth, Months monthOfBirth, int dayOfBirth,
 			String password) {
 		this.name = name;
-		this.eMail = eMail;
+		if (EmailValidator.getInstance().isValid(eMail)) {
+			this.eMail = eMail;
+		} else {
+			System.out.println("Please, type a correct mail");
+		}
 		this.country = country;
 		this.gender = gender;
 		this.dateOfBirth = new GregorianCalendar(yearOfBirth,
