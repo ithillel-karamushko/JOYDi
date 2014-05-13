@@ -22,12 +22,17 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 
 	private List<Person> persons;
 
+	public List<Person> getPersons() {
+		return persons;
+	}
+
 	public InMemoryPersonFileRepository() {
 		this.persons = new ArrayList<Person>();
 	}
 
 	@Override
-	public void saveUser(User person) throws FileNotFoundException, IOException {
+	public synchronized void saveUser(User person)
+			throws FileNotFoundException, IOException {
 		this.persons.add(person);
 		try {
 			test(person);
@@ -43,23 +48,23 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	}
 
 	@Override
-	public void modifyUser(User person) throws FileNotFoundException,
-			IOException {
+	public synchronized void modifyUser(User person)
+			throws FileNotFoundException, IOException {
 		this.persons.add(person);
 		serialize(this.persons);
 
 	}
 
 	@Override
-	public void deleteUser(User person) throws IOException {
+	public synchronized void deleteUser(User person) throws IOException {
 		this.persons.remove(person);
 		serialize(this.persons);
 
 	}
 
 	@Override
-	public void saveAdmin(Admin person) throws FileNotFoundException,
-			IOException {
+	public synchronized void saveAdmin(Admin person)
+			throws FileNotFoundException, IOException {
 		this.persons.add(person);
 		try {
 			test(person);
@@ -67,14 +72,14 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 		} catch (InputException ce) {
 			deleteAdmin(person);
 			System.out
-				.println("Please, complete all fields and try register again! "
+					.println("Please, complete all fields and try register again! "
 							+ ce);
 
 		}
 	}
 
 	@Override
-	public void deleteAdmin(Admin person) throws IOException {
+	public synchronized void deleteAdmin(Admin person) throws IOException {
 		this.persons.remove(person);
 		serialize(this.persons);
 

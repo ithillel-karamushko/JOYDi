@@ -34,14 +34,6 @@ public class Configuration {
 		return instance;
 	}
 
-	// public String getPropertie(String key) {
-	// for (String line : lines) {
-	// String[] propertie = line.split
-	// properties.put(propertie[0], propertie[1]);
-	// }
-	// return properties.get(key);
-	// }
-
 	public String getPropertie(String key) {
 		for (String line : lines) {
 			properties.put(line.substring(0, line.indexOf('=')),

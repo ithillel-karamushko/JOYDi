@@ -20,54 +20,54 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment = new ArrayList<Comment>();
 	}
 
-	public List<Article> getArticle() {
+	public synchronized List<Article> getArticle() {
 		return article;
 	}
 
-	public List<Comment> getComment() {
+	public synchronized List<Comment> getComment() {
 		return comment;
 	}
 
 	@Override
-	public void saveArticle(Article article) {
+	public synchronized void saveArticle(Article article) {
 		article.setTextOfTheArticle(censoring(article));
 		this.article.add(article);
 
 	}
 
-	public void modifyArticle(Article article) {
+	public synchronized void modifyArticle(Article article) {
 		this.article.remove(article);
 		this.article.add(article);
 
 	}
 
 	@Override
-	public void deleteArticle(Article article) {
+	public synchronized void deleteArticle(Article article) {
 		this.article.remove(article);
 
 	}
 
 	@Override
-	public void saveComment(Comment comment) {
+	public synchronized void saveComment(Comment comment) {
 		comment.setCommentText(censoring(comment));
 		this.comment.add(comment);
 
 	}
 
 	@Override
-	public void deleteComment(Comment comment) {
+	public synchronized void deleteComment(Comment comment) {
 		this.comment.remove(comment);
 
 	}
 
-	public void modifyComment(Comment comment) {
+	public synchronized void modifyComment(Comment comment) {
 		this.comment.remove(comment);
 		this.comment.add(comment);
 	}
 /**
  * This method finds the words, that must be censored, and chanches them for the symbols "***".
  * @param object
- * @return chanched text
+ * @return changed text
  */
 	public <T extends TextEntity> String censoring(T object) {
 		String[] words = { "shit", "fuck", "damn", "bitch" };

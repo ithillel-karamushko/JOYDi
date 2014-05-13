@@ -31,56 +31,44 @@ public class InMemoryPersonRepositoryTest {
 	@Test
 	public void saveUserTest() throws FileNotFoundException, IOException,
 			ClassNotFoundException {
-		long lengthBeforeSave;
-		long lengthAfterSave;
-		File file = new File("d:\\test\\user.dat");
-		User user = new User("John", "email", Countries.Ukraine, Gender.MALE,
-				1990, Months.March, 07, "asf45");
-		lengthBeforeSave = file.length();
+		User user = new User("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		int beforeSave = pr.getPersons().size();
 		pr.saveUser(user);
-		lengthAfterSave = file.length();
-		assertTrue(lengthBeforeSave < lengthAfterSave);
+		int afterSave = pr.getPersons().size();
+		assertTrue(afterSave > beforeSave);
 	}
 
 	@Test
 	public void deleteUserTest() throws FileNotFoundException, IOException {
-		long lengthBeforeDelete;
-		long lengthAfterDelete;
-		File file = new File("d:\\test\\user.dat");
-		User user1 = new User("John", "email", Countries.Ukraine, Gender.MALE,
-				1990, Months.March, 07, "asf45");
-		pr.saveUser(user1);
-		lengthBeforeDelete = file.length();
-		pr.deleteUser(user1);
-		lengthAfterDelete = file.length();
-		assertTrue(lengthBeforeDelete > lengthAfterDelete);
+		User user = new User ("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		pr.saveUser(user);
+		int beforeDelete = pr.getPersons().size();
+		pr.deleteUser(user);
+		int afterDelete = pr.getPersons().size();
+		assertTrue(afterDelete < beforeDelete);
 	}
 
 	@Test
 	public void saveAdminTest() throws FileNotFoundException, IOException {
-		long lengthBeforeSave;
-		long lengthAfterSave;
-		File file = new File("d:\\test\\user.dat");
-		Admin admin = new Admin("Helen", "email", Countries.Ukraine,
-				Gender.FEMALE, 1990, Months.March, 07, "asf45");
-		lengthBeforeSave = file.length();
+		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		int beforeSave = pr.getPersons().size();
 		pr.saveAdmin(admin);
-		lengthAfterSave = file.length();
-		assertTrue(lengthBeforeSave != lengthAfterSave);
+		int afterSave = pr.getPersons().size();
+		assertTrue(afterSave > beforeSave);
 	}
 
 	@Test
 	public void deleteAdminTest() throws FileNotFoundException, IOException {
-		long lengthBeforeDelete;
-		long lengthAfterDelete;
-		File file = new File("d:\\test\\user.dat");
-		Admin admin1 = new Admin("Helen", "email", Countries.Ukraine,
-				Gender.FEMALE, 1990, Months.March, 07, "asf45");
-		pr.saveAdmin(admin1);
-		lengthBeforeDelete = file.length();
-		pr.deleteAdmin(admin1);
-		lengthAfterDelete = file.length();
-		assertTrue(lengthBeforeDelete > lengthAfterDelete);
+		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		pr.saveAdmin(admin);
+		int beforeDelete = pr.getPersons().size();
+		pr.deleteAdmin(admin);
+		int afterDelete = pr.getPersons().size();
+		assertTrue(afterDelete < beforeDelete);
 	}
 
 	@Test

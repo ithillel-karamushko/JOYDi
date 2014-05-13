@@ -72,42 +72,34 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
-		long lengthBeforeSave;
-		long lengthAfterSave;
-		File file = new File("d:\\test\\user.dat");
-		User user = new User("John", "email", Countries.Australia, Gender.MALE,
-				1990, Months.March, 07, "asf45");
-		lengthBeforeSave = file.length();
+		User user = new User("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		int beforeSave = personRepository.getPersons().size();
 		ds.saveUser(user);
-		lengthAfterSave = file.length();
-		assertTrue(lengthBeforeSave < lengthAfterSave);
+		int afterSave = personRepository.getPersons().size();
+		assertTrue(afterSave > beforeSave);
 	}
 
 	@Test
 	public void testSaveAdmin() throws FileNotFoundException, IOException {
-		long lengthBeforeSave;
-		long lengthAfterSave;
-		File file = new File("d:\\test\\user.dat");
-		Admin admin = new Admin("Helen", "email", Countries.Ukraine,
-				Gender.FEMALE, 1990, Months.March, 07, "asf45");
-		lengthBeforeSave = file.length();
+		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		int beforeSave = personRepository.getPersons().size();
 		ds.saveAdmin(admin);
-		lengthAfterSave = file.length();
-		assertTrue(lengthBeforeSave != lengthAfterSave);
+		int afterSave = personRepository.getPersons().size();
+		assertTrue(afterSave > beforeSave);
+
 	}
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		long lengthBeforeDelete;
-		long lengthAfterDelete;
-		File file = new File("d:\\test\\user.dat");
-		User user2 = new User("John", "email", Countries.Bahamas, Gender.MALE,
-				1990, Months.December, 07, "asf45");
-		ds.saveUser(user2);
-		lengthBeforeDelete = file.length();
-		ds.deleteUser(user2);
-		lengthAfterDelete = file.length();
-		assertTrue(lengthBeforeDelete > lengthAfterDelete);
+		User user = new User ("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		ds.saveUser(user);
+		int beforeDelete = personRepository.getPersons().size();
+		ds.deleteUser(user);
+		int afterDelete = personRepository.getPersons().size();
+		assertTrue(afterDelete < beforeDelete);
 
 	}
 
@@ -130,16 +122,13 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteAdmin() throws FileNotFoundException, IOException {
-		long lengthBeforeDelete;
-		long lengthAfterDelete;
-		File file = new File("d:\\test\\user.dat");
-		Admin admin1 = new Admin("Helen", "email", Countries.Ukraine,
-				Gender.FEMALE, 1990, Months.March, 07, "asf45");
-		ds.saveAdmin(admin1);
-		lengthBeforeDelete = file.length();
-		ds.deleteAdmin(admin1);
-		lengthAfterDelete = file.length();
-		assertTrue(lengthBeforeDelete > lengthAfterDelete);
+		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+				Gender.MALE, 1989, Months.December, 23, "hwebryg");
+		ds.saveAdmin(admin);
+		int beforeDelete = personRepository.getPersons().size();
+		ds.deleteAdmin(admin);
+		int afterDelete = personRepository.getPersons().size();
+		assertTrue(afterDelete < beforeDelete);
 
 	}
 

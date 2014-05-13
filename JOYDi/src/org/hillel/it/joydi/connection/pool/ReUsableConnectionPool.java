@@ -12,7 +12,6 @@ import org.hillel.it.joydi.infra.config.Configuration;
 
 public class ReUsableConnectionPool implements ConnectionPool {
 
-	private boolean available;
 	private int maxConnections;
 	private String url;
 	private List<ReUseableConnection> connections;
@@ -21,13 +20,12 @@ public class ReUsableConnectionPool implements ConnectionPool {
 	public ReUsableConnectionPool() {
 		connections = new ArrayList<>();
 		this.maxConnections = 10;
-		available = true;
 		config = Configuration.getInstance();
 		this.url = config.getPropertie("url");
 
 	}
 
-	private Connection connectionCreate() throws SQLException {
+	private Connection createConnection() throws SQLException  {
 		Connection con = DriverManager.getConnection(url);
 		ReUseableConnection connection = new ReUseableConnection(con);
 		connections.add(connection);
@@ -36,14 +34,14 @@ public class ReUsableConnectionPool implements ConnectionPool {
 	}
 
 	@Override
-	public Connection getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException, RuntimeException {
 		for (ReUseableConnection rc : connections) {
 			if (!rc.isBusy()) {
 				return rc;
 			}
 		}
 		if (maxConnections > connections.size()) {
-			return connectionCreate();
+			return createConnection();
 		} else {
 			throw new RuntimeException("Connection limit reached");
 		}
