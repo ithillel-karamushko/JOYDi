@@ -45,6 +45,8 @@ public class Starter {
 		ds.saveArticle(article2);
 		ds.pushLike(article2);
 		ds.pushLike(article1);
+		ds.pushLike(article1);
+		ds.pushLike(article1);
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {

@@ -24,7 +24,7 @@ public class TopArticles implements Runnable {
 		for (int i = 0; i <= count; i++) {
 			for (int j = count; j > 0; j--) {
 				k = j - 1;
-				if (allArticles.get(j).getRatingOfTheArticle() < allArticles
+				if (allArticles.get(j).getRatingOfTheArticle() > allArticles
 						.get(k).getRatingOfTheArticle()) {
 					article = allArticles.get(j);
 					allArticles.set(j, allArticles.get(k));
