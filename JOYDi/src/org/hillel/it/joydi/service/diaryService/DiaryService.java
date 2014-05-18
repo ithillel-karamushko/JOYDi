@@ -47,8 +47,6 @@ public interface DiaryService {
 
 	List<Article> findArticles(ArticleCriteria criteria);
 	
-	List<Article> newArticles();
-	
 	void savePicture(Picture picture) throws SQLException;
 
 	void deletePicture(Picture picture);

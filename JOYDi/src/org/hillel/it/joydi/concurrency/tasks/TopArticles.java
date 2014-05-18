@@ -1,7 +1,6 @@
 package org.hillel.it.joydi.concurrency.tasks;
 
 import java.util.List;
-
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 

@@ -280,22 +280,7 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
-	public List<Article> newArticles() {
-		List<Article> allArticles = textRepository.getArticle();
-		List<Article> newArticles = new ArrayList<Article>();
-		int count = 0;
-		if (allArticles.size() > 10) {
-			count = 10;
-		} else {
-			count = allArticles.size() - 1;
-		}
-		for (int i = count; i >= 0; i--) {
-			newArticles.add(allArticles.get(allArticles.size() - count));
-			System.out.println();
-		}
-		return newArticles;
-	}
-
+	
 	@Override
 	public void savePicture(Picture picture) throws SQLException {
 		pictureRepository.addPicture(picture);
