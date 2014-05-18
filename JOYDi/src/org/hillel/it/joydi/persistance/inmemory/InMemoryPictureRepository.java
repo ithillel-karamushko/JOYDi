@@ -1,6 +1,7 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,9 +36,10 @@ public class InMemoryPictureRepository implements PictureRepository {
 			rc = new ReUsableConnectionPool();
 			connection = rc.getConnection();
 			try (Statement st = connection.createStatement()) {
-				st.executeUpdate("create table Pictures("
-						+ "id integer not null primary key GENERATED ALWAYS AS IDENTITY" + 
-                " (START WITH 1, INCREMENT BY 1), fileUrl varchar(1024), creatingDate timestamp)");
+				st.executeUpdate("CREATE DATABASE IF NOT EXISTS JoydiPictures;");
+				st.executeUpdate("USE JoydiPictures;");
+				st.executeUpdate("CREATE TABLE IF NOT EXISTS Pictures (id integer not null auto_increment,"
+						+ " creatingDate Date, fileUrl varchar(256), primary key(id));");
 			}
 		} catch (Exception e) {
 			e.getMessage();
@@ -48,17 +50,17 @@ public class InMemoryPictureRepository implements PictureRepository {
 	public void addPicture(Picture picture) throws SQLException {
 		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
-					.prepareStatement("INSERT INTO PICTURES(fileUrl) VALUES(?)")) {
+					.prepareStatement("INSERT INTO Pictures (creatingDate, fileUrl) VALUE (? ,?)")) {
 				try {
-					st.setString(1, "http//hala-bala");
-					int rows = st.executeUpdate();
-					System.out.println("Rows " + rows);
+					st.setString(1, picture.getCreatingDate());
+					st.setString(2, picture.getFileUrl());
+					st.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			} catch (SQLException e2) {
-				e2.printStackTrace();
 			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
@@ -66,15 +68,14 @@ public class InMemoryPictureRepository implements PictureRepository {
 	public void deletePicture(Picture picture) {
 		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
-					.prepareStatement("delete from PICTURES where fileUrl = ?")) {
-				st.setString(1, "http//hala-bala");
-				int rows = st.executeUpdate();
-				System.out.println("Rows " + rows);
-			} catch (Exception e) {
+					.prepareStatement("DELETE FROM Pictures WHERE fileUrl=?")) {
+				st.setString(1, picture.getFileUrl());
+				st.executeUpdate();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
@@ -87,11 +88,11 @@ public class InMemoryPictureRepository implements PictureRepository {
 					String name = rs.getString(rs.findColumn("fileUrl"));
 					System.out.println("Id=" + id + ",fileUrl=" + name);
 				}
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 

@@ -26,7 +26,7 @@ public class ReUsableConnectionPool implements ConnectionPool {
 	}
 
 	private Connection createConnection() throws SQLException  {
-		Connection con = DriverManager.getConnection(url);
+		Connection con = DriverManager.getConnection(url, "root", "joydi");
 		ReUseableConnection connection = new ReUseableConnection(con);
 		connections.add(connection);
 		return connection;

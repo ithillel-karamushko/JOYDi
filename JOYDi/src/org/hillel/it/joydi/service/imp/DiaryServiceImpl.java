@@ -297,7 +297,7 @@ public class DiaryServiceImpl implements DiaryService {
 	}
 
 	@Override
-	public void addPicture(Picture picture) throws SQLException {
+	public void savePicture(Picture picture) throws SQLException {
 		pictureRepository.addPicture(picture);
 
 	}

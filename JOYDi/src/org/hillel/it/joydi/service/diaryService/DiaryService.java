@@ -49,7 +49,7 @@ public interface DiaryService {
 	
 	List<Article> newArticles();
 	
-	void addPicture(Picture picture) throws SQLException;
+	void savePicture(Picture picture) throws SQLException;
 
 	void deletePicture(Picture picture);
 
