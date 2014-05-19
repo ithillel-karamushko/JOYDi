@@ -1,7 +1,12 @@
 package org.hillel.it.joydi.concurrency.tasks;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
+
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
@@ -14,29 +19,30 @@ public class TheNewestArticles implements Runnable {
 		thread.start();
 	}
 
-	void findnewArticles() {
+	public void newArticles() {
 		List<Article> allArticles = textRepository.getArticle();
-		List<Article> newArticles = new ArrayList<Article>();
-		int count = allArticles.size();
-		if (textRepository.getArticle().size() > 10) {
-			count = 10;
+		List<Article> newArticles = new ArrayList<>();
+		if (allArticles.size() < 10) {
+			for (int i = allArticles.size() - 1; i >= 0; i--) {
+				newArticles.add(allArticles.get(i));
+			}
 		} else {
-			count = textRepository.getArticle().size() - 1;
+			for (int i = allArticles.size() - 1; i >= allArticles.size() - 10; i--) {
+				newArticles.add(allArticles.get(i));
+			}
 		}
-		for (int i = count; i >= 0; i--) {
-			newArticles.add(allArticles.get(count - i));
+		for (Article a : newArticles) {
+			System.out.println(a.getAuthorName() + " - "
+					+ a.getThemeOfTheArticle());
 		}
-
-		for (Article article : newArticles) {
-			System.out.println(article.getThemeOfTheArticle());
-		}
+		System.out.println("____________");
 
 	}
 
 	@Override
 	public void run() {
 		do {
-			findnewArticles();
+			newArticles();
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e) {
