@@ -82,7 +82,11 @@ public class DiaryServiceImpl implements DiaryService {
 	 */
 	@Override
 	public void deleteArticle(Article article) {
-		textRepository.deleteArticle(article);
+		if (article.getAuthor().isEnter()) {
+			textRepository.deleteArticle(article);
+		} else
+			System.out
+					.println("Please login or register, we can't save your article!");
 
 	}
 
@@ -98,16 +102,21 @@ public class DiaryServiceImpl implements DiaryService {
 	 */
 	public void modifyArticle(Article article, String textOfTheArticle,
 			String themeOfTheArticle) {
+		if (article.getAuthor().isEnter()) {
+			if (textOfTheArticle != null) {
+				article.setTextOfTheArticle(textOfTheArticle);
+			}
 
-		if (textOfTheArticle != null) {
-			article.setTextOfTheArticle(textOfTheArticle);
+			if (themeOfTheArticle != null) {
+				article.setThemeOfTheArticle(themeOfTheArticle);
+			}
+
+			textRepository.modifyArticle(article);
 		}
 
-		if (themeOfTheArticle != null) {
-			article.setThemeOfTheArticle(themeOfTheArticle);
-		}
-
-		textRepository.modifyArticle(article);
+		else
+			System.out
+					.println("Please login or register, we can't save your article!");
 	}
 
 	/**
@@ -218,7 +227,11 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public void saveComment(Comment comment) {
-		textRepository.saveComment(comment);
+		if (comment.getAuthor().isEnter()) {
+			textRepository.saveComment(comment);
+		} else
+			System.out
+					.println("Please login or register, we can't save your article!");
 
 	}
 
@@ -230,7 +243,11 @@ public class DiaryServiceImpl implements DiaryService {
 	 */
 	@Override
 	public void deleteComment(Comment comment) {
-		textRepository.deleteComment(comment);
+		if (comment.getAuthor().isEnter()) {
+			textRepository.deleteComment(comment);
+		} else
+			System.out
+					.println("Please login or register, we can't save your article!");
 	}
 
 	/**
@@ -242,8 +259,12 @@ public class DiaryServiceImpl implements DiaryService {
 	 *            is a new text of the comment
 	 */
 	public void modifyComment(Comment comment, String commentText) {
-		comment.setCommentText(commentText);
-		textRepository.modifyComment(comment);
+		if (comment.getAuthor().isEnter()) {
+			comment.setCommentText(commentText);
+			textRepository.modifyComment(comment);
+		} else
+			System.out
+					.println("Please login or register, we can't save your article!");
 	}
 
 	/**

@@ -31,9 +31,7 @@ public class InMemoryTextRepository implements TextRepository {
 	@Override
 	public synchronized void saveArticle(Article article) {
 		article.setTextOfTheArticle(censoring(article));
-		if (article.getAuthor().isEnter()) {
 			this.article.add(article);
-		}
 
 	}
 

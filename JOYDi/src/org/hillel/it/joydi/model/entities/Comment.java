@@ -14,7 +14,7 @@ public class Comment extends TextEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = -6765453702641087954L;
-	private String authorName;
+	private Person author;
 	private int likes;
 	private int dislikes;
 	private String commentText;
@@ -29,8 +29,8 @@ public class Comment extends TextEntity {
 	 * @param commentText
 	 */
 
-	public Comment(String authorName, String commentText) {
-		this.authorName = authorName;
+	public Comment(Person author, String commentText) {
+		this.author = author;
 		this.commentText = commentText;
 		date = new Date();
 
@@ -41,6 +41,13 @@ public class Comment extends TextEntity {
 	 * 
 	 * @return Date
 	 */
+	public Person getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Person author) {
+		this.author = author;
+	}
 
 	public Date getDate() {
 		return date;
@@ -50,26 +57,7 @@ public class Comment extends TextEntity {
 
 	// I don`t know if we need this part
 
-	/**
-	 * Getter for field AuthorName
-	 * 
-	 * @return field authorName
-	 */
-
-	public String getAuthorName() {
-		return authorName;
-	}
-
-	/**
-	 * Setter for authorName modify authorName
-	 * 
-	 * @param authorName
-	 */
-
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
-
+	
 	/**
 	 * Getter for likes
 	 * 

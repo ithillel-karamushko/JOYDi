@@ -37,12 +37,9 @@ public class Starter {
 		User user1 = new User("John", "email@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
-		System.out.println(user1.isEnter());
 		ds.enter("email@gmail.com", "rretert");
-		System.out.println(user1.isEnter());
 		User user2 = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
-		ds.saveUser(user2);
 		ds.enter("email2@gmail.com", "rretert");
 		//
 		Article article = new Article(user1, "IT", "Java rules", "Java, IT");

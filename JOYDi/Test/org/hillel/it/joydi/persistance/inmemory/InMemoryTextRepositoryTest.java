@@ -61,8 +61,11 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testSaveComment() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
 		int i = tr.getComment().size() + 1;
-		Comment comment = new Comment("Hanna", "Nice words");
+		Comment comment = new Comment(user, "Nice words");
 		tr.saveComment(comment);
 		assertEquals("Incorrect value", i, tr.getComment().size());
 		assertEquals("Incorrect value", true, tr.getComment().contains(comment));
@@ -70,7 +73,10 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteComment() {
-		Comment comment = new Comment("Hanna", "Nice words");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
+		Comment comment = new Comment(user, "Nice words");
 		tr.saveComment(comment);
 		int i = tr.getComment().size() - 1;
 		tr.deleteComment(comment);
@@ -81,7 +87,10 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testModifyComment() {
-		Comment comment = new Comment("Hanna", "Nice words");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
+		Comment comment = new Comment(user, "Nice words");
 		tr.saveComment(comment);
 		int i = tr.getComment().size();
 		tr.modifyComment(comment);

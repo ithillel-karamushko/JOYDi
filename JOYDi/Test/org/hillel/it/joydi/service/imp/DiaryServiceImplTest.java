@@ -143,7 +143,10 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveComment() {
-		Comment comment = new Comment("Hanna", "Nice words");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
+		Comment comment = new Comment(user, "Nice words");
 		int i = ds.getTextRepository().getComment().size() + 1;
 		ds.saveComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
@@ -153,7 +156,10 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteComment() {
-		Comment comment = new Comment("Suzy", "Nice words");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
+		Comment comment = new Comment(user, "Nice words");
 		ds.saveComment(comment);
 		int i = ds.getTextRepository().getComment().size() - 1;
 		ds.deleteComment(comment);
@@ -164,7 +170,10 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyComment() {
-		Comment comment = new Comment("Frank", "Nice words");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
+		Comment comment = new Comment(user, "Nice words");
 		ds.saveComment(comment);
 		int i = ds.getTextRepository().getComment().size();
 		ds.modifyComment(comment, "Bad words");
