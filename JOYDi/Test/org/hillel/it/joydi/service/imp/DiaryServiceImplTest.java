@@ -40,8 +40,10 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveArticle() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
 		int i = ds.getTextRepository().getArticle().size() + 1;
-		Article article = new Article("Hanna", "Java", "I like Java.", "Java");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
 		assertEquals("Incorrect value", true, ds.getTextRepository()
@@ -50,7 +52,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteArticle() {
-		Article article = new Article("Mary", "Java", "I like Java.", "Java");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size() - 1;
 		ds.deleteArticle(article);
@@ -61,7 +65,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testModifyArticle() {
-		Article article = new Article("Mike", "Java", "I like Java.", "Java");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size();
 		ds.modifyArticle(article, "Java", "I don't like Java");
@@ -166,7 +172,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushLike() {
-		Article article = new Article("Frank", "Java", "I like Java.", "Java");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		ds.pushLike(article);
 		assertEquals("Incorrect", 1, article.getLike());
@@ -174,7 +182,9 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushDisLike() {
-		Article article = new Article("John", "Java", "I like Java.", "Java");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		ds.pushDisLike(article);
 		assertEquals("Incorrect", 1, article.getDisLike());
@@ -182,16 +192,18 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void findArticles() {
-		Article article = new Article("John", "Java", "I  don't like Java.",
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I  don't like Java.",
 				"Java");
 		ds.saveArticle(article);
-		Article article2 = new Article("John", "Java", "I  don't like Java.",
+		Article article2 = new Article(user, "Java", "I  don't like Java.",
 				"Java 2");
 		ds.saveArticle(article2);
 		ArticleCriteria ac = new ArticleCriteria("Java", "John", "Java",
 				textRepository);
 		for (Article art : ds.findArticles(ac)) {
-			assertEquals("Incorrect", art.getAuthorName(), ac.getAuthor());
+			assertEquals("Incorrect", art.getAuthor().getName(), ac.getAuthor());
 			assertEquals("Incorrect", art.getThemeOfTheArticle(),
 					ac.getThemeOfArticle());
 			assertEquals("Incorrect", true, art.getTags().contains(ac.getTag()));

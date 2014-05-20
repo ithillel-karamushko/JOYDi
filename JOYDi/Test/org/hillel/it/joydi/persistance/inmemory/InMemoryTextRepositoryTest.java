@@ -1,8 +1,13 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
 import static org.junit.Assert.*;
+
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Countries;
+import org.hillel.it.joydi.model.entities.Gender;
+import org.hillel.it.joydi.model.entities.Months;
+import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.junit.Test;
@@ -18,8 +23,10 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testSaveArticle() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
 		int i = tr.getArticle().size() + 1;
-		Article article = new Article("Hanna", "Java", "I like Java.", "Java");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
 		assertEquals("Incorrect value", true, tr.getArticle().contains(article));
@@ -27,8 +34,10 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testModifyArticle() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
 		int i = tr.getArticle().size() + 1;
-		Article article = new Article("Mary", "Java", "I like Java.", "Java");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		tr.modifyArticle(article);
 		assertEquals("Incorrect value", i, tr.getArticle().size());
@@ -37,7 +46,9 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteArticle() {
-		Article article = new Article("Mary", "Java", "I like Java.", "Java");
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		Article article = new Article(user, "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
 		int i = tr.getArticle().size() - 1;
 		tr.deleteArticle(article);
