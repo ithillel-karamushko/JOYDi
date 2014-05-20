@@ -25,6 +25,7 @@ public class InMemoryTextRepositoryTest {
 	public void testSaveArticle() {
 		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
 		int i = tr.getArticle().size() + 1;
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		tr.saveArticle(article);
@@ -49,6 +50,7 @@ public class InMemoryTextRepositoryTest {
 		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		Article article = new Article(user, "Java", "I like Java.", "Java");
+		user.setEnter(true);
 		tr.saveArticle(article);
 		int i = tr.getArticle().size() - 1;
 		tr.deleteArticle(article);
