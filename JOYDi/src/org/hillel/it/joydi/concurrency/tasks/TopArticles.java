@@ -1,6 +1,8 @@
 package org.hillel.it.joydi.concurrency.tasks;
 
+import java.util.Collections;
 import java.util.List;
+
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
@@ -17,20 +19,21 @@ public class TopArticles implements Runnable {
 
 	public void findTopArticles() {
 		List<Article> allArticles = textRepository.getArticle();
-		int count = allArticles.size() - 1;
-		Article article;
-		int k;
-		for (int i = 0; i <= count; i++) {
-			for (int j = count; j > 0; j--) {
-				k = j - 1;
-				if (allArticles.get(j).getRatingOfTheArticle() > allArticles
-						.get(k).getRatingOfTheArticle()) {
-					article = allArticles.get(j);
-					allArticles.set(j, allArticles.get(k));
-					allArticles.set(k, article);
-				}
-			}
-		}
+		Collections.sort(allArticles, new MyComparator());
+		// int count = allArticles.size() - 1;
+		// Article article;
+		// int k;
+		// for (int i = 0; i <= count; i++) {
+		// for (int j = count; j > 0; j--) {
+		// k = j - 1;
+		// if (allArticles.get(j).getRatingOfTheArticle() > allArticles
+		// .get(k).getRatingOfTheArticle()) {
+		// article = allArticles.get(j);
+		// allArticles.set(j, allArticles.get(k));
+		// allArticles.set(k, article);
+		// }
+		// }
+		// }
 		for (Article art : allArticles) {
 			System.out.println(art.getAuthorName() + " - "
 					+ art.getThemeOfTheArticle() + ", "
