@@ -40,21 +40,24 @@ public class Starter {
 		System.out.println(user1.isEnter());
 		ds.enter("email@gmail.com",  "rretert");
 		System.out.println(user1.isEnter());
+		User user2 = new User("Mary", "email2@gmail.com", Countries.Albania,
+				 Gender.MALE, 2004, Months.February, 28, "rretert");
+				ds.saveUser(user1);
 		//
-		Article article = new Article("John", "IT", "Java rules", "Java, IT");
-		Article article1 = new Article("John", "Java", "Java rules", "Java, IT");
-		Article article2 = new Article("John", "My Java", "Java rules",
+		Article article = new Article(user1, "IT", "Java rules", "Java, IT");
+		Article article1 = new Article(user1, "Java", "Java rules", "Java, IT");
+		Article article2 = new Article(user1, "My Java", "Java rules",
 				"Java, IT");
-		Article article3 = new Article("John", "IT3", "Java rules", "Java, IT");
-		Article article4= new Article("John", "IT4", "Java rules", "Java, IT");
-		Article article5 = new Article("John", "IT5", "Java rules", "Java, IT");
-		Article article6 = new Article("John", "IT6", "Java rules", "Java, IT");
-		Article article7 = new Article("John", "IT7", "Java rules", "Java, IT");
-		Article article8 = new Article("John", "IT8", "Java rules", "Java, IT");
-		Article article9 = new Article("John", "IT9", "Java rules", "Java, IT");
-		Article article10 = new Article("John", "IT10", "Java rules", "Java, IT");
-		Article article11 = new Article("John", "IT11", "Java rules", "Java, IT");
-		Article article12 = new Article("John", "IT12", "Java rules", "Java, IT");
+		Article article3 = new Article(user2, "IT3", "Java rules", "Java, IT");
+		Article article4= new Article(user1, "IT4", "Java rules", "Java, IT");
+		Article article5 = new Article(user2, "IT5", "Java rules", "Java, IT");
+		Article article6 = new Article(user1, "IT6", "Java rules", "Java, IT");
+		Article article7 = new Article(user2, "IT7", "Java rules", "Java, IT");
+		Article article8 = new Article(user1, "IT8", "Java rules", "Java, IT");
+		Article article9 = new Article(user1, "IT9", "Java rules", "Java, IT");
+		Article article10 = new Article(user1, "IT10", "Java rules", "Java, IT");
+		Article article11 = new Article(user2, "IT11", "Java rules", "Java, IT");
+		Article article12 = new Article(user1, "IT12", "Java rules", "Java, IT");
 		
 
 		ds.saveArticle(article);
@@ -84,7 +87,7 @@ public class Starter {
 			e.printStackTrace();
 		}
 
-		Article article13 = new Article("John", "Last Article", "Java rules",
+		Article article13 = new Article(user2, "Last Article", "Java rules",
 				"Java, IT");
 		ds.saveArticle(article13);
 	}

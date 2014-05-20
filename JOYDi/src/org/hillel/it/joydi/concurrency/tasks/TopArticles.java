@@ -35,7 +35,7 @@ public class TopArticles implements Runnable {
 		// }
 		// }
 		for (Article art : allArticles) {
-			System.out.println(art.getAuthorName() + " - "
+			System.out.println(art.getAuthor().getName() + " - "
 					+ art.getThemeOfTheArticle() + ", "
 					+ art.getRatingOfTheArticle() + " likes");
 		}

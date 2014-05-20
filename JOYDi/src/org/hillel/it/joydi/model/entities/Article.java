@@ -18,7 +18,7 @@ public class Article extends TextEntity {
 	 */
 	private static final long serialVersionUID = -1020794148833096658L;
 	private String textOfTheArticle;
-	private String authorName;
+	private Person author;
 	private String themeOfTheArticle;
 	private int ratingOfTheArticle;
 	private String tags;
@@ -58,6 +58,10 @@ public class Article extends TextEntity {
 
 	public Date getDate() {
 		return date;
+	}
+
+	public Person getAuthor() {
+		return author;
 	}
 
 	/**
@@ -210,6 +214,7 @@ public class Article extends TextEntity {
 	 */
 	
 	public boolean match(ArticleCriteria criteria) {
+		String authorName =author.getName();
 		boolean match = false;
 		boolean author = criteria.getAuthor() == null
 				|| authorName.equalsIgnoreCase(criteria.getAuthor());

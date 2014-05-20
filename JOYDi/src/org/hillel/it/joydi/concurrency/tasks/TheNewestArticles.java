@@ -32,7 +32,7 @@ public class TheNewestArticles implements Runnable {
 			}
 		}
 		for (Article a : newArticles) {
-			System.out.println(a.getAuthorName() + " - "
+			System.out.println(a.getAuthor().getName() + " - "
 					+ a.getThemeOfTheArticle());
 		}
 		System.out.println("____________");
