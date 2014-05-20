@@ -29,7 +29,7 @@ public class Starter {
 		TextRepository textRepository = new InMemoryTextRepository();
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		PictureRepository pictureRepository = new InMemoryPictureRepository();
-		// TopArticles ta = new TopArticles(textRepository);
+		TopArticles ta = new TopArticles(textRepository);
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
 		TheNewestArticles na = new TheNewestArticles(textRepository);
@@ -67,6 +67,11 @@ public class Starter {
 		ds.saveArticle(article10);
 		ds.saveArticle(article11);
 		ds.saveArticle(article12);
+		
+		ds.pushLike(article7);
+		ds.pushLike(article7);
+		ds.pushLike(article3);
+
 
 		try {
 			Thread.sleep(10000);
