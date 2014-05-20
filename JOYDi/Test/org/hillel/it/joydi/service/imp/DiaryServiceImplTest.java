@@ -42,6 +42,7 @@ public class DiaryServiceImplTest {
 	public void testSaveArticle() {
 		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
 		int i = ds.getTextRepository().getArticle().size() + 1;
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
@@ -54,6 +55,7 @@ public class DiaryServiceImplTest {
 	public void testDeleteArticle() {
 		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size() - 1;
@@ -67,6 +69,7 @@ public class DiaryServiceImplTest {
 	public void testModifyArticle() {
 		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
+		user.setEnter(true);
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
 		int i = ds.getTextRepository().getArticle().size();
