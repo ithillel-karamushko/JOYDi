@@ -38,7 +38,7 @@ public class Article extends TextEntity {
 	 */
 
 	public Article(Person author, String themeOfTheArticle,
-			String textOfTheArticle, String tags){
+			String textOfTheArticle, String tags) {
 		date = new Date();
 		this.author = author;
 		this.themeOfTheArticle = themeOfTheArticle;
@@ -147,7 +147,7 @@ public class Article extends TextEntity {
 	 */
 
 	public int getRatingOfTheArticle() {
-		ratingOfTheArticle= like - disLike;
+		ratingOfTheArticle = like - disLike;
 		return ratingOfTheArticle;
 	}
 
@@ -212,9 +212,9 @@ public class Article extends TextEntity {
 	 * @param criteria
 	 * @return result of matching
 	 */
-	
+
 	public boolean match(ArticleCriteria criteria) {
-		String authorName =author.getName();
+		String authorName = author.getName();
 		boolean match = false;
 		boolean author = criteria.getAuthor() == null
 				|| authorName.equalsIgnoreCase(criteria.getAuthor());
@@ -230,6 +230,5 @@ public class Article extends TextEntity {
 		}
 		return match;
 	}
-	
 
 }

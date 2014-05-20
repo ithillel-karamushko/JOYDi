@@ -31,7 +31,9 @@ public class InMemoryTextRepository implements TextRepository {
 	@Override
 	public synchronized void saveArticle(Article article) {
 		article.setTextOfTheArticle(censoring(article));
-		this.article.add(article);
+		if (article.getAuthor().isEnter()) {
+			this.article.add(article);
+		}
 
 	}
 
@@ -64,11 +66,14 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment.remove(comment);
 		this.comment.add(comment);
 	}
-/**
- * This method finds the words, that must be censored, and chanches them for the symbols "***".
- * @param object
- * @return changed text
- */
+
+	/**
+	 * This method finds the words, that must be censored, and chanches them for
+	 * the symbols "***".
+	 * 
+	 * @param object
+	 * @return changed text
+	 */
 	public <T extends TextEntity> String censoring(T object) {
 		String[] words = { "shit", "fuck", "damn", "bitch" };
 		String text = object.getText();

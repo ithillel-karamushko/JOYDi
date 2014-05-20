@@ -67,10 +67,11 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public void saveArticle(Article article) {
-		if (article.getAuthor().isEnter()){
-		textRepository.saveArticle(article);
-		}
-		else System.out.println("Please login or register, we can't save your article!");
+		if (article.getAuthor().isEnter()) {
+			textRepository.saveArticle(article);
+		} else
+			System.out
+					.println("Please login or register, we can't save your article!");
 	}
 
 	/**
@@ -283,7 +284,6 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
-	
 	@Override
 	public void savePicture(Picture picture) throws SQLException {
 		pictureRepository.addPicture(picture);
@@ -301,14 +301,15 @@ public class DiaryServiceImpl implements DiaryService {
 		pictureRepository.getPicture();
 
 	}
-	
-	public void  enter(String email,String password){
-		List <Person> allPersons = personRepository.getPersons();
-		for (Person person : allPersons){
-			if (person.geteMail() == email && person.getPassword() == password){
-				person.setEnter(true);				
+
+	public void enter(String email, String password) {
+		List<Person> allPersons = personRepository.getPersons();
+		for (Person person : allPersons) {
+			if (person.geteMail().equals(email)
+					&& person.getPassword().equals(password)) {
+				person.setEnter(true);
 			}
 		}
-		}
+	}
 
 }

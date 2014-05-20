@@ -19,6 +19,7 @@ abstract public class Person extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 371819977920264704L;
 	protected String name;
+
 	public String getPassword() {
 		return password;
 	}
@@ -163,6 +164,5 @@ abstract public class Person extends BaseEntity {
 			throw new InputException();
 
 	}
-	
-	
+
 }
