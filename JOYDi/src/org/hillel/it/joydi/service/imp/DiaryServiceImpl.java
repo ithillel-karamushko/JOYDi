@@ -12,6 +12,7 @@ import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
+import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
@@ -298,5 +299,14 @@ public class DiaryServiceImpl implements DiaryService {
 		pictureRepository.getPicture();
 
 	}
+	
+	public void  enter(String email,String password){
+		List <Person> allPersons = personRepository.getPersons();
+		for (Person person : allPersons){
+			if (person.geteMail() == email && person.getPassword() == password){
+				person.setEnter(true);				
+			}
+		}
+		}
 
 }

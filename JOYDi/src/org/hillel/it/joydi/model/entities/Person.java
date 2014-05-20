@@ -19,12 +19,29 @@ abstract public class Person extends BaseEntity {
 	 */
 	private static final long serialVersionUID = 371819977920264704L;
 	protected String name;
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	protected String eMail;
 	protected Countries country;
 	protected Gender gender;
 	protected GregorianCalendar dateOfBirth;
 	protected int age;
 	protected String password;
+	protected boolean isEnter = false;
+
+	public boolean isEnter() {
+		return isEnter;
+	}
+
+	public void setEnter(boolean isEnter) {
+		this.isEnter = isEnter;
+	}
 
 	public GregorianCalendar getDateOfBirth() {
 		return dateOfBirth;

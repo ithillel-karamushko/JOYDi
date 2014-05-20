@@ -37,10 +37,10 @@ public class Article extends TextEntity {
 	 * @param textOfTheArticle
 	 */
 
-	public Article(String authorName, String themeOfTheArticle,
-			String textOfTheArticle, String tags) {
+	public Article(Person author, String themeOfTheArticle,
+			String textOfTheArticle, String tags){
 		date = new Date();
-		this.authorName = authorName;
+		this.author = author;
 		this.themeOfTheArticle = themeOfTheArticle;
 		this.textOfTheArticle = textOfTheArticle;
 		this.setLike(0);
@@ -115,20 +115,6 @@ public class Article extends TextEntity {
 	 * 
 	 * @return field authorName
 	 */
-
-	public String getAuthorName() {
-		return authorName;
-	}
-
-	/**
-	 * Setter for setAuthorName modify field setAuthorName
-	 * 
-	 * @param authorName
-	 */
-
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
 
 	/**
 	 * Getter for themeOfArticle

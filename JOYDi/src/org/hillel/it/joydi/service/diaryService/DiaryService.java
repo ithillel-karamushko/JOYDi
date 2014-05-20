@@ -52,4 +52,6 @@ public interface DiaryService {
 	void deletePicture(Picture picture);
 
 	void getPicture();
+	
+	void enter(String email,String password);
 }
