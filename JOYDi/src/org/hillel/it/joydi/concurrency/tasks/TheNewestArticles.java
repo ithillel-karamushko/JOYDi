@@ -28,21 +28,11 @@ public class TheNewestArticles implements Runnable {
 		} else {
 			result = allArticles;
 		}
-		// List<Article> allArticles = textRepository.getArticle();
-		// List<Article> newArticles = new ArrayList<>();
-		// if (allArticles.size() < 10) {
-		// for (int i = allArticles.size() - 1; i >= 0; i--) {
-		// newArticles.add(allArticles.get(i));
-		// }
-		// } else {
-		// for (int i = allArticles.size() - 1; i >= allArticles.size() - 10;
-		// i--) {
-		// newArticles.add(allArticles.get(i));
-		// }
-		// }
+
 		for (Article a : result) {
 			System.out.println(a.getAuthor().getName() + " - "
-					+ a.getThemeOfTheArticle());
+					+ a.getThemeOfTheArticle()+ " - "
+					+ a.getDate());
 		}
 		System.out.println(" _ _ _ _   _ _ _ _ _ _ _   _ _ _ _ _ _ ");
 

@@ -25,20 +25,7 @@ public class TopArticles implements Runnable {
 		} else {
 			result = allArticles;
 		}
-		// int count = allArticles.size() - 1;
-		// Article article;
-		// int k;
-		// for (int i = 0; i <= count; i++) {
-		// for (int j = count; j > 0; j--) {
-		// k = j - 1;
-		// if (allArticles.get(j).getRatingOfTheArticle() > allArticles
-		// .get(k).getRatingOfTheArticle()) {
-		// article = allArticles.get(j);
-		// allArticles.set(j, allArticles.get(k));
-		// allArticles.set(k, article);
-		// }
-		// }
-		// }
+
 		for (Article art : result) {
 			System.out.println(art.getAuthor().getName() + " - "
 					+ art.getThemeOfTheArticle() + ", "

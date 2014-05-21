@@ -102,7 +102,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User ("Johny", "e@gmail.com", Countries.Austria,
+		User user = new User("Johny", "e@gmail.com", Countries.Austria,
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		ds.saveUser(user);
 		int beforeDelete = personRepository.getPersons().size();
@@ -222,5 +222,23 @@ public class DiaryServiceImplTest {
 			assertEquals("Incorrect", true, ds.getTextRepository().getArticle()
 					.contains(art));
 		}
+	}
+
+	public void testEnter() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		ds.exit(user);
+		ds.enter("email2@gmail.com", "rretert");
+		assertEquals("Incorrect", true, user.isEnter());
+
+	}
+
+	public void testClose() {
+		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert");
+		ds.enter("email2@gmail.com", "rretert");
+		ds.exit(user);
+		assertEquals("Incorrect", false, user.isEnter());
+
 	}
 }
