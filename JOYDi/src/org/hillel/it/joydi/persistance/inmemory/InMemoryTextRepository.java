@@ -20,11 +20,11 @@ public class InMemoryTextRepository implements TextRepository {
 		this.comment = new ArrayList<Comment>();
 	}
 
-	public synchronized List<Article> getArticle() {
+	public List<Article> getArticle() {
 		return article;
 	}
 
-	public synchronized List<Comment> getComment() {
+	public List<Comment> getComment() {
 		return comment;
 	}
 

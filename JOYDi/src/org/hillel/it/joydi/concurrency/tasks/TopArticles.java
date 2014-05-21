@@ -10,7 +10,6 @@ public class TopArticles implements Runnable {
 
 	private TextRepository textRepository;
 
-
 	public TopArticles(TextRepository textRepository) {
 		this.textRepository = textRepository;
 		Thread thread = new Thread(this);
@@ -19,7 +18,13 @@ public class TopArticles implements Runnable {
 
 	public void findTopArticles() {
 		List<Article> allArticles = textRepository.getArticle();
-		Collections.sort(allArticles, new MyComparator());
+		List<Article> result;
+		Collections.sort(allArticles, new MyComparatorForRaiting());
+		if (allArticles.size()>10){
+			result = allArticles.subList(0, 10);
+		} else {
+			result = allArticles;
+		}
 		// int count = allArticles.size() - 1;
 		// Article article;
 		// int k;
@@ -34,11 +39,12 @@ public class TopArticles implements Runnable {
 		// }
 		// }
 		// }
-		for (Article art : allArticles) {
+		for (Article art : result) {
 			System.out.println(art.getAuthor().getName() + " - "
 					+ art.getThemeOfTheArticle() + ", "
 					+ art.getRatingOfTheArticle() + " likes");
-		}
+		}System.out.println("_____________________");
+
 	}
 
 	@Override

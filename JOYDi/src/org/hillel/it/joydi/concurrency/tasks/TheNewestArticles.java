@@ -21,21 +21,30 @@ public class TheNewestArticles implements Runnable {
 
 	public void newArticles() {
 		List<Article> allArticles = textRepository.getArticle();
-		List<Article> newArticles = new ArrayList<>();
-		if (allArticles.size() < 10) {
-			for (int i = allArticles.size() - 1; i >= 0; i--) {
-				newArticles.add(allArticles.get(i));
-			}
+		List<Article> result;
+		Collections.sort(allArticles, new MyComparatorForDate());
+		if (allArticles.size() > 10) {
+			result = allArticles.subList(0, 10);
 		} else {
-			for (int i = allArticles.size() - 1; i >= allArticles.size() - 10; i--) {
-				newArticles.add(allArticles.get(i));
-			}
+			result = allArticles;
 		}
-		for (Article a : newArticles) {
+		// List<Article> allArticles = textRepository.getArticle();
+		// List<Article> newArticles = new ArrayList<>();
+		// if (allArticles.size() < 10) {
+		// for (int i = allArticles.size() - 1; i >= 0; i--) {
+		// newArticles.add(allArticles.get(i));
+		// }
+		// } else {
+		// for (int i = allArticles.size() - 1; i >= allArticles.size() - 10;
+		// i--) {
+		// newArticles.add(allArticles.get(i));
+		// }
+		// }
+		for (Article a : result) {
 			System.out.println(a.getAuthor().getName() + " - "
 					+ a.getThemeOfTheArticle());
 		}
-		System.out.println("____________");
+		System.out.println(" _ _ _ _   _ _ _ _ _ _ _   _ _ _ _ _ _ ");
 
 	}
 
