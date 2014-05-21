@@ -333,4 +333,9 @@ public class DiaryServiceImpl implements DiaryService {
 		}
 	}
 
+	@Override
+	public void exit(Person person) {
+		person.setEnter(false);
+	}
+
 }

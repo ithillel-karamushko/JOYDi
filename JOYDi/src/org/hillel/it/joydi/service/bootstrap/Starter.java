@@ -38,9 +38,16 @@ public class Starter {
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
 		ds.enter("email@gmail.com", "rretert");
-		User user2 = new User("Mary", "email2@gmail.com", Countries.Albania,
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		ds.enter("email2@gmail.com", "rretert");
+		User user2 = new User("Mary", "myemail@gmail.com", Countries.Albania,
+				Gender.MALE, 2004, Months.February, 28, "rretert12");
+		ds.saveUser(user2);
+		ds.enter("myemail@gmail.com", "rretert12");
+		System.out.println(user1.isEnter());
+		System.out.println(user2.isEnter());
+		ds.exit(user1);
+		System.out.println(user1.isEnter());
+		ds.enter("email@gmail.com", "rretert");
+		System.out.println(user1.isEnter());
 		//
 		Article article = new Article(user1, "IT", "Java rules", "Java, IT");
 		Article article1 = new Article(user1, "Java", "Java rules", "Java, IT");
@@ -79,7 +86,7 @@ public class Starter {
 		ds.pushLike(article12);
 
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

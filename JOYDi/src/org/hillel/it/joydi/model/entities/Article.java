@@ -1,8 +1,6 @@
 package org.hillel.it.joydi.model.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 
@@ -50,12 +48,6 @@ public class Article extends TextEntity {
 
 	}
 
-	/**
-	 * Getter for date
-	 * 
-	 * @return field date
-	 */
-
 	public Date getDate() {
 		return date;
 	}
@@ -64,138 +56,54 @@ public class Article extends TextEntity {
 		return author;
 	}
 
-	/**
-	 * Setter for date modify field date
-	 * 
-	 * @param date
-	 */
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	/**
-	 * Getter for tags
-	 * 
-	 * @return field tags
-	 */
 
 	public String getTags() {
 		return tags;
 	}
 
-	/**
-	 * Setter for tags modify field tags
-	 * 
-	 * @param tags
-	 */
-
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
-
-	/**
-	 * Getter for textOfTheArticle
-	 * 
-	 * @return field textOfTheArticle
-	 */
 
 	public String getTextOfTheArticle() {
 		return textOfTheArticle;
 	}
 
-	/**
-	 * Setter for textOfTheArticle modify field textOfTheArticle
-	 * 
-	 * @param textOfTheArticle
-	 */
-
 	public void setTextOfTheArticle(String textOfTheArticle) {
 		this.textOfTheArticle = textOfTheArticle;
 	}
-
-	/**
-	 * Getter for authorName
-	 * 
-	 * @return field authorName
-	 */
-
-	/**
-	 * Getter for themeOfArticle
-	 * 
-	 * @return field themeOfArticle
-	 */
 
 	public String getThemeOfTheArticle() {
 		return themeOfTheArticle;
 	}
 
-	/**
-	 * Setter of themeOfArticle modify field themeOfArfticle
-	 * 
-	 * @param themeOfTheArticle
-	 */
-
 	public void setThemeOfTheArticle(String themeOfTheArticle) {
 		this.themeOfTheArticle = themeOfTheArticle;
 	}
-
-	/**
-	 * Getter for ratingOfArticle
-	 * 
-	 * @return field ratingOfArticle
-	 */
 
 	public int getRatingOfTheArticle() {
 		ratingOfTheArticle = like - disLike;
 		return ratingOfTheArticle;
 	}
 
-	/**
-	 * Setter for ratingOfArticle modify field ratingOfArticle
-	 * 
-	 * @param ratingOfTheArticle
-	 */
-
 	public void setRatingOfTheArticle(int ratingOfTheArticle) {
 		this.ratingOfTheArticle = ratingOfTheArticle;
 	}
-
-	/**
-	 * Getter for like
-	 * 
-	 * @return field like
-	 */
 
 	public int getLike() {
 		return like;
 	}
 
-	/**
-	 * Setter for like modify field like
-	 * 
-	 * @param like
-	 */
-
 	public void setLike(int like) {
 		this.like = like;
 	}
 
-	/**
-	 * Getter for disLike
-	 * 
-	 * @return field disLike
-	 */
-
 	public int getDisLike() {
 		return disLike;
 	}
-
-	/**
-	 * Setter for disLike modify field disLike
-	 * 
-	 * @param disLike
-	 */
 
 	public void setDisLike(int disLike) {
 		this.disLike = disLike;
