@@ -3,10 +3,10 @@ package org.hillel.it.joydi.connection.pool;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 import org.hillel.it.joydi.infra.config.Configuration;
 

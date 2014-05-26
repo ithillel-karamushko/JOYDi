@@ -8,7 +8,6 @@ import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 import org.junit.Test;
 import org.junit.BeforeClass;

@@ -1,10 +1,10 @@
 package org.hillel.it.joydi.concurrency.tasks;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
+
+
+
 import java.util.Collections;
-import java.util.Deque;
+
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Article;
@@ -15,7 +15,7 @@ public class TheNewestArticles implements Runnable {
 
 	public TheNewestArticles(TextRepository textRepository) {
 		this.textRepository = textRepository;
-		Thread thread = new Thread(this);
+		Thread thread = new Thread(this, "NewArticles");
 		thread.start();
 	}
 

@@ -5,7 +5,7 @@ body
 	color: #333333;
 	text-align: center;
 	background-color: #c0c0c0;
-	font: normal 12px "Trebuchet MS", "Lucida Grande", verdana, georgia, sans-serif;
+	font: normal 12px sans-serif, "Trebuchet MS", "Lucida Grande", verdana, georgia;
 }
 
 /* Links */
@@ -40,7 +40,7 @@ h6 { font-size: 16px; }
 
 ul, ol, blockquote, pre
 {
-	color: #555555;
+	color: #226c0e;
 	margin: 20px;
 	padding: 20px;
 	line-height: 1.8em;
@@ -162,7 +162,7 @@ abbr, acronym { cursor: help; }
 
 #sidebar li { margin: 0; padding: 0; color: #eeeeee; border-bottom: 1px solid #777777; }
 
-#sidebar li.title { margin: 0 5px 10px; text-transform: uppercase; border-bottom-color: #666666; color: #888888; }
+#sidebar li.title { margin: 5 3px 10px; text-transform: uppercase; border-bottom-color: #777777; color: #60af4b; font-weight:bold;  }
 
 #sidebar li a:link, 
 #sidebar li a:visited
@@ -184,7 +184,7 @@ abbr, acronym { cursor: help; }
 
 #footer p { margin: 0; padding: 0 10px 10px; }
 
-#footer a:link, #footer a:visited { color: #999999; border-bottom-color: #999999; }
+#footer a:link, #footer a:visited { color: #60af4b; border-bottom-color: #999999; }
 
 #footer a:hover, #footer a:active { color: #bbbbbb; border-bottom-color: #bbbbbb; }
 

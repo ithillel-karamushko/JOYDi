@@ -1,6 +1,6 @@
 package org.hillel.it.joydi.model.entities;
 
-import java.io.Serializable;
+
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,7 +67,7 @@ public class Admin extends Person {
 
 		Matcher m = p.matcher(password);
 		boolean b = m.matches();
-		if (b == true) {
+		if (b) {
 			this.password = password;
 		} else {
 			System.out

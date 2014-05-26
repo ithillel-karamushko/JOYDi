@@ -4,11 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.hillel.it.joydi.concurrency.tasks.TheNewestArticles;
-import org.hillel.it.joydi.concurrency.tasks.TopArticles;
-import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
-import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.Picture;
@@ -29,11 +25,10 @@ public class Starter {
 		TextRepository textRepository = new InMemoryTextRepository();
 		PersonRepository personRepository = new InMemoryPersonFileRepository();
 		PictureRepository pictureRepository = new InMemoryPictureRepository();
-		TopArticles ta = new TopArticles(textRepository);
+		// TopArticles ta = new TopArticles(textRepository);
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
-		 TheNewestArticles na = new TheNewestArticles(textRepository);
-		// 
+		// TheNewestArticles na = new TheNewestArticles(textRepository);
 		User user1 = new User("John", "email@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
@@ -44,10 +39,11 @@ public class Starter {
 		ds.enter("email2@gmail.com", "rretert");
 		//
 		Article article = new Article(user1, "IT", "Java rules", "Java, IT");
-		Article article1 = new Article(user1, "Java", "Java rules", "Java, IT");
+		Article article1 = new Article(user1, "IT", "Java rules", "Java, IT");
 		Article article2 = new Article(user1, "My Java", "Java rules",
 				"Java, IT");
-		Article article3 = new Article(user2, "IT3", "Java rules", "Java, IT");
+		Article article3 = new Article(user2, "IT3",
+				"Damned, C++ is fucking shit", "Java, IT");
 		Article article4 = new Article(user1, "IT4", "Java rules", "Java, IT");
 		Article article5 = new Article(user2, "IT5", "Java rules", "Java, IT");
 		Article article6 = new Article(user1, "IT6", "Java rules", "Java, IT");
@@ -79,12 +75,6 @@ public class Starter {
 		ds.pushLike(article12);
 		ds.pushLike(article12);
 
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
 		Article article13 = new Article(user2, "Last Article", "Java rules",
 				"Java, IT");
 		ds.saveArticle(article13);
@@ -93,5 +83,10 @@ public class Starter {
 		ds.pushLike(article13);
 		ds.pushLike(article13);
 		ds.pushLike(article13);
+
+		Picture p = new Picture("uhweiuhwe");
+		ds.savePicture(p);
+		
+		
 	}
 }

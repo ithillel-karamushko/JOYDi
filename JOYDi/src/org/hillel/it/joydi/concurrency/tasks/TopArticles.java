@@ -12,7 +12,7 @@ public class TopArticles implements Runnable {
 
 	public TopArticles(TextRepository textRepository) {
 		this.textRepository = textRepository;
-		Thread thread = new Thread(this);
+		Thread thread = new Thread(this, "TopArticles");
 		thread.start();
 	}
 

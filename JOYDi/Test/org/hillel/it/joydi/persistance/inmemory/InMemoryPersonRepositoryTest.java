@@ -3,10 +3,8 @@ package org.hillel.it.joydi.persistance.inmemory;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Countries;
@@ -14,7 +12,6 @@ import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
 import org.junit.Test;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.junit.BeforeClass;
 
@@ -77,7 +74,7 @@ public class InMemoryPersonRepositoryTest {
 		long lengthAfterModify;
 		File file = new File("d:\\test\\user.dat");
 		User user3 = new User("John", "email", Countries.Ukraine, Gender.MALE,
-				1990, Months.March, 07, "asf45");
+				1990, Months.March, 7, "asf45");
 		pr.saveUser(user3);
 		lengthBeforeModify = file.length();
 		pr.modifyUser(user3);

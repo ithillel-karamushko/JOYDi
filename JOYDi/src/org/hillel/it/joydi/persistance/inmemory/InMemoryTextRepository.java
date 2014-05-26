@@ -79,7 +79,7 @@ public class InMemoryTextRepository implements TextRepository {
 			Pattern pattern = Pattern.compile("(?i)" + word + "*");
 			Matcher matcher = pattern.matcher(text);
 			while (matcher.find()) {
-				text = text.replaceAll("(?i)" + matcher.group(), "***");
+				text = text.replaceAll("(?i)" + matcher.group(), "[CENSORED]");
 			}
 		}
 		return text;

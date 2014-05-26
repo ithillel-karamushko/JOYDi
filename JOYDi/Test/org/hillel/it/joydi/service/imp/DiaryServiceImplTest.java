@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
@@ -20,7 +19,6 @@ import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.PictureRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
-import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -118,10 +116,10 @@ public class DiaryServiceImplTest {
 		long lengthAfterModify;
 		File file = new File("d:\\test\\user.dat");
 		User user = new User("John", "email", Countries.Australia, Gender.MALE,
-				1990, Months.March, 07, "asf45");
+				1990, Months.March, 7, "asf45");
 		ds.saveUser(user);
 		lengthBeforeModify = file.length();
-		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March, 07);
+		ds.modifyUser(user, "Leo", "mail", null, null, 1990, Months.March, 7);
 		lengthAfterModify = file.length();
 		assertTrue(lengthBeforeModify != lengthAfterModify);
 		assertEquals("Incorrect", "Leo", user.getName());

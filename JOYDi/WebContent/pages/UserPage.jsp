@@ -13,13 +13,13 @@
 			<hr />
 			<img src="images/heather1.png" width="50%"> <img
 				src="images/logogreen.png" width="15%">
-			<hr />
+					<hr />
 		</div>
 		<div id="wrapper">
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>Last of the Books</dt>
+						<dt>3D Printers</dt>
 						<dd>
 							<p class="img">
 								<img src="images/sample.png" width="250px" height="171px"
