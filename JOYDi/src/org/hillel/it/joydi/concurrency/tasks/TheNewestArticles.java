@@ -1,8 +1,5 @@
 package org.hillel.it.joydi.concurrency.tasks;
 
-
-
-
 import java.util.Collections;
 import java.util.List;
 
@@ -30,10 +27,8 @@ public class TheNewestArticles implements Runnable {
 
 		for (Article a : result) {
 			System.out.println(a.getAuthor().getName() + " - "
-					+ a.getThemeOfTheArticle()+ " - "
-					+ a.getDate());
+					+ a.getThemeOfTheArticle() + " - " + a.getDate());
 		}
-		System.out.println(" _ _ _ _   _ _ _ _ _ _ _   _ _ _ _ _ _ ");
 
 	}
 
@@ -48,5 +43,5 @@ public class TheNewestArticles implements Runnable {
 			}
 		} while (true);
 	}
-	
+
 }

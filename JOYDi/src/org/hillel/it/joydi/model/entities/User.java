@@ -1,13 +1,8 @@
 package org.hillel.it.joydi.model.entities;
 
-
-
-
-
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 import org.apache.commons.validator.routines.EmailValidator;
 

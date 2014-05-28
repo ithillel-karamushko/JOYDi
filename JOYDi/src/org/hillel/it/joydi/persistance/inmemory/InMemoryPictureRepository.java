@@ -15,20 +15,7 @@ public class InMemoryPictureRepository implements PictureRepository {
 
 	private ReUsableConnectionPool rc;
 	private Connection connection;
-
-	/*
-	 * ¬€«Œ¬  ŒÕ—“–” “Œ–¿ ¡≈« CONNECTIONPOOL!!!
-	 * 
-	 * public InMemoryPictureRepository() throws SQLException { try (Connection
-	 * connection = DriverManager
-	 * .getConnection("jdbc:derby:DerbyDb;create=true")) { try (Statement st =
-	 * connection.createStatement()) { st.executeUpdate("" +
-	 * "create table Pictures(" +
-	 * "id int primary key , fileUrl varchar(1024), creatingDate datetime))"); }
-	 * } }
-	 */
-
-	// ¬€«Œ¬ — CONNECTIONPOOL
+	private int idCount;
 
 	public InMemoryPictureRepository() throws SQLException {
 		try {
@@ -41,12 +28,13 @@ public class InMemoryPictureRepository implements PictureRepository {
 						+ " creatingDate Date, fileUrl varchar(256), primary key(id));");
 			}
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
 
 	@Override
-	public void addPicture(Picture picture) throws SQLException {
+	public void savePicture(Picture picture) throws SQLException {
+		picture.setId(idCount++);
 		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
 					.prepareStatement("INSERT INTO Pictures (creatingDate, fileUrl) VALUE (? ,?)")) {

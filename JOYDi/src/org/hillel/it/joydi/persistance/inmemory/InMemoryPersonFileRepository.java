@@ -21,6 +21,7 @@ import org.hillel.it.joydi.persistance.repository.PersonRepository;
 public class InMemoryPersonFileRepository implements PersonRepository {
 
 	private List<Person> persons;
+	private int idCount = 0;
 
 	public List<Person> getPersons() {
 		return persons;
@@ -33,6 +34,7 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	@Override
 	public synchronized void saveUser(User person)
 			throws FileNotFoundException, IOException {
+		person.setId(idCount++);
 		this.persons.add(person);
 		try {
 			test(person);
@@ -65,6 +67,7 @@ public class InMemoryPersonFileRepository implements PersonRepository {
 	@Override
 	public synchronized void saveAdmin(Admin person)
 			throws FileNotFoundException, IOException {
+		person.setId(idCount++);
 		this.persons.add(person);
 		try {
 			test(person);

@@ -40,20 +40,10 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
-	/**
-	 * Getter for field textRepository
-	 * 
-	 * @return field textRepository
-	 */
 	public TextRepository getTextRepository() {
 		return textRepository;
 	}
 
-	/**
-	 * Getter for field PersonRepository
-	 * 
-	 * @return field PersonRepository
-	 */
 	public PersonRepository getPersonRepository() {
 		return personRepository;
 	}
@@ -161,24 +151,6 @@ public class DiaryServiceImpl implements DiaryService {
 
 	}
 
-	/**
-	 * Method that calls other method, modify users data and save changes
-	 * 
-	 * @param person
-	 *            is a reference to the Object User
-	 * @param name
-	 *            is a new name of the User
-	 * @param eMail
-	 *            is a new email of the User
-	 * @param country
-	 *            is a new country of the User
-	 * @param age
-	 *            is a new age of the User
-	 * @param gender
-	 *            is a reference to the Gender Object
-	 * @throws IOException
-	 * @throws FileNotFoundException
-	 */
 	public void modifyUser(User person, String name, String eMail,
 			Countries country, Gender gender, int yearOfBirth,
 			Months monthOfBirth, int dayOfBirth) throws FileNotFoundException,
@@ -307,7 +279,7 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public void savePicture(Picture picture) throws SQLException {
-		pictureRepository.addPicture(picture);
+		pictureRepository.savePicture(picture);
 
 	}
 

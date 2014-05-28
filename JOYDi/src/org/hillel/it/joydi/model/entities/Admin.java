@@ -1,6 +1,5 @@
 package org.hillel.it.joydi.model.entities;
 
-
 import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,7 +58,6 @@ public class Admin extends Person {
 					monthOfBirth.getMonth(), dayOfBirth);
 			this.age = this.Age(dateOfBirth);
 		} catch (InputException ce) {
-
 			System.out.println("Enter the real date of birth! " + ce);
 		}
 

@@ -2,7 +2,7 @@ package org.hillel.it.joydi.model.entities;
 
 /**
  * 
- * @author Æåíÿ
+ * @author JOYDi
  * 
  */
 public enum Gender {
@@ -14,18 +14,10 @@ public enum Gender {
 
 	}
 
-	/**
-	 * Getter for field text
-	 * @return field text
-	 */
 	public String getText() {
 		return text;
 	}
 
-	/**
-	 * Setter for field text
-	 * @param text - String that we need to initialized in field text
-	 */
 	public void setText(String text) {
 		this.text = text;
 	}

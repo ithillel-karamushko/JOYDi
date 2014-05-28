@@ -14,6 +14,7 @@ public class InMemoryTextRepository implements TextRepository {
 
 	private List<Article> article;
 	private List<Comment> comment;
+	private int idCount;
 
 	public InMemoryTextRepository() {
 		this.article = new ArrayList<Article>();
@@ -31,7 +32,8 @@ public class InMemoryTextRepository implements TextRepository {
 	@Override
 	public synchronized void saveArticle(Article article) {
 		article.setTextOfTheArticle(censoring(article));
-			this.article.add(article);
+		article.setId(idCount++);
+		this.article.add(article);
 
 	}
 
@@ -50,6 +52,7 @@ public class InMemoryTextRepository implements TextRepository {
 	@Override
 	public synchronized void saveComment(Comment comment) {
 		comment.setCommentText(censoring(comment));
+		comment.setId(idCount++);
 		this.comment.add(comment);
 
 	}
@@ -66,7 +69,7 @@ public class InMemoryTextRepository implements TextRepository {
 	}
 
 	/**
-	 * This method finds the words, that must be censored, and chanches them for
+	 * This method finds the words, that must be censored, and changes them for
 	 * the symbols "***".
 	 * 
 	 * @param object

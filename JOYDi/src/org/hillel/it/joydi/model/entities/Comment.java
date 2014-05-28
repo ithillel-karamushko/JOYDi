@@ -1,11 +1,10 @@
 package org.hillel.it.joydi.model.entities;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * 
- * @author Îëÿ
+ * @author JOYDi
  * 
  */
 
@@ -36,11 +35,6 @@ public class Comment extends TextEntity {
 
 	}
 
-	/**
-	 * Getter for field Date
-	 * 
-	 * @return Date
-	 */
 	public Person getAuthor() {
 		return author;
 	}
@@ -53,46 +47,17 @@ public class Comment extends TextEntity {
 		return date;
 	}
 
-	SimpleDateFormat format1 = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-
-	// I don`t know if we need this part
-
-	
-	/**
-	 * Getter for likes
-	 * 
-	 * @return field likes
-	 */
-
 	public int getLikes() {
 		return likes;
 	}
-
-	/**
-	 * Getter for dislikes
-	 * 
-	 * @return dislikes
-	 */
 
 	public int getDislikes() {
 		return dislikes;
 	}
 
-	/**
-	 * Getter for commentText
-	 * 
-	 * @return commentText
-	 */
-
 	public String getCommentText() {
 		return commentText;
 	}
-
-	/**
-	 * Setter for commentText modify commentText
-	 * 
-	 * @param commentText
-	 */
 
 	public void setCommentText(String commentText) {
 		this.commentText = commentText;

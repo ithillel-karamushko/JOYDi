@@ -6,7 +6,7 @@ public abstract class TextEntity extends BaseEntity {
 	 */
 	private static final long serialVersionUID = -6830612610582816748L;
 
-	public String getText () {
+	public String getText() {
 		return null;
 	}
 }

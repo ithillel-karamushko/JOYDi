@@ -27,8 +27,9 @@ public interface DiaryService {
 
 	void saveUser(User person) throws FileNotFoundException, IOException;
 
-	void modifyUser(User person, String name, String eMail, Countries country, Gender gender,
-			int yearOfBirth, Months monthOfBirth, int dayOfBirth) throws FileNotFoundException, IOException;
+	void modifyUser(User person, String name, String eMail, Countries country,
+			Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
+			throws FileNotFoundException, IOException;
 
 	void deleteUser(User person) throws IOException;
 
@@ -47,14 +48,14 @@ public interface DiaryService {
 	void pushDisLike(Article article);
 
 	List<Article> findArticles(ArticleCriteria criteria);
-	
+
 	void savePicture(Picture picture) throws SQLException;
 
 	void deletePicture(Picture picture);
 
 	void getPicture();
-	
-	void enter(String email,String password);
-	
+
+	void enter(String email, String password);
+
 	void exit(Person person);
 }

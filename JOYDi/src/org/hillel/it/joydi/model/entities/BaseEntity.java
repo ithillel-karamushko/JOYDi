@@ -1,8 +1,9 @@
 package org.hillel.it.joydi.model.entities;
+
 import java.io.Serializable;
 import java.util.Date;
 
-public class BaseEntity implements Serializable{
+public class BaseEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -12,6 +13,13 @@ public class BaseEntity implements Serializable{
 	protected Date modified;
 	protected Person createdBy;
 	protected Person modifiedBy;
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }

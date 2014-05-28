@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.hillel.it.joydi.infra.config.Configuration;
 
 public class ReUsableConnectionPool implements ConnectionPool {
@@ -25,7 +24,7 @@ public class ReUsableConnectionPool implements ConnectionPool {
 
 	}
 
-	private Connection createConnection() throws SQLException  {
+	private Connection createConnection() throws SQLException {
 		Connection con = DriverManager.getConnection(url, "root", "joydi");
 		ReUseableConnection connection = new ReUseableConnection(con);
 		connections.add(connection);
@@ -50,8 +49,8 @@ public class ReUsableConnectionPool implements ConnectionPool {
 	@Override
 	public void destroyAllConnections() throws SQLException {
 		for (ReUseableConnection rc : connections) {
-			if (rc.isBusy()){
-				rc.rollback(); // rollback() cancel all queries
+			if (rc.isBusy()) {
+				rc.rollback();
 				rc.close();
 			}
 		}
