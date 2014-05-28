@@ -78,6 +78,7 @@
 				<div id="sidebar">
 					<ul>
 						<li class="title">My Diary</li>
+						<li><a href="#1">My Articles</a></li>
 						<li><a href="#1">Add new Article</a></li>
 						<li><a href="#2">Modify My Profile</a></li>
 						<li><a href="#3">Delete my Profile</a></li>
@@ -99,7 +100,7 @@
 		<div id="footer">
 			<p>Copyright &copy; 2014 JOYDi Inc. All rights reserved.</p>
 			<p>
-				Designed by <a href="http://vk.com/noctumodessa" title="TeamLeader">Karamushko
+				Designed by <a href="http://www.linkedin.com/pub/evgeniy-karamushko/94/78a/831" title="TeamLeader">Karamushko
 					Evgeniy</a>, <a href="http://vk.com/id20669962" title="Developer">Yulia
 					Brus</a> and <a href="" title="Developer and Tester">Olga Grygorian</a>
 			</p>

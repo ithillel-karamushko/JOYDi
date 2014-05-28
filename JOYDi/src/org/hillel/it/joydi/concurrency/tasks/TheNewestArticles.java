@@ -4,7 +4,6 @@ package org.hillel.it.joydi.concurrency.tasks;
 
 
 import java.util.Collections;
-
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Article;
@@ -43,11 +42,11 @@ public class TheNewestArticles implements Runnable {
 		do {
 			newArticles();
 			try {
-				Thread.sleep(1500);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		} while (true);
 	}
-
+	
 }

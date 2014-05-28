@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.hillel.it.joydi.concurrency.tasks.TheNewestArticles;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Months;
@@ -28,7 +29,7 @@ public class Starter {
 		// TopArticles ta = new TopArticles(textRepository);
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
-		// TheNewestArticles na = new TheNewestArticles(textRepository);
+		 TheNewestArticles na = new TheNewestArticles(textRepository);
 		User user1 = new User("John", "email@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
