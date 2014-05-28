@@ -6,9 +6,6 @@ import java.sql.SQLException;
 
 import org.hillel.it.joydi.concurrency.tasks.TheNewestArticles;
 import org.hillel.it.joydi.concurrency.tasks.TopArticles;
-import org.hillel.it.joydi.connection.pool.ReUsableConnectionPool;
-import org.hillel.it.joydi.connection.pool.ReUseableConnection;
-import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Months;
