@@ -25,10 +25,8 @@ public class Article extends TextEntity {
 	private int disLike;
 
 	/**
-	 * Kit of the class Article takes parameters authorName, themeOfTheArticle,
-	 * and String textOfTheArticle and sets their values in fields authorName,
-	 * themeOfTheArticle and String textOfTheArticle, also it set in field date
-	 * current date and time and in fields like and disLike values = 0
+	 * Kit of the class Article set in field date current date
+	 * and time and in fields like and disLike initial values = 0
 	 * 
 	 * @param authorName
 	 * @param themeOfTheArticle

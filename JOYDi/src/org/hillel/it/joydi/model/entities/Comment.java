@@ -20,8 +20,7 @@ public class Comment extends TextEntity {
 	Date date;
 
 	/**
-	 * Kit of the class Comment takes parameters authorName and commentText and
-	 * sets their values in fields authorName and commentText also it set in
+	 * Kit of the class Comment set in
 	 * field date current date and time
 	 * 
 	 * @param authorName
