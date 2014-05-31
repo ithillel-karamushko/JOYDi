@@ -29,14 +29,14 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	<%
-		out.println(user.getName());
-		out.println(user.geteMail());
-		out.println(user.getCountry());
-		out.println(user.getGender());
-		out.println(user.getPassword());
-		out.println(user.getAge());
-	%>
+	<div id="container">
+		<div id="log">
+			Congratulations! You are registered on JOYdi! Welcome,
+			<%
+			out.println(user.getName());
+		%> !
+		</div>
+	</div>
 	<jsp:include page="footer.jsp" />
 </body>
 </html>

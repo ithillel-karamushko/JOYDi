@@ -47,6 +47,10 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
+	public String printHello() {
+		return "Hello World";
+	}
+
 	public DiaryServiceImpl() {
 
 	}
