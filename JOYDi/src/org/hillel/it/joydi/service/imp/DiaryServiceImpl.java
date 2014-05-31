@@ -2,6 +2,7 @@ package org.hillel.it.joydi.service.imp;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,13 @@ import org.hillel.it.joydi.service.diaryService.DiaryService;
  * @author team JOYdi
  * 
  */
-public class DiaryServiceImpl implements DiaryService {
+public class DiaryServiceImpl implements DiaryService, Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2578361153123463872L;
+
 	private TextRepository textRepository;
 	private PersonRepository personRepository;
 	private PictureRepository pictureRepository;
@@ -38,6 +45,26 @@ public class DiaryServiceImpl implements DiaryService {
 		this.personRepository = personRepository;
 		this.pictureRepository = pictureRepository;
 
+	}
+
+	public DiaryServiceImpl() {
+
+	}
+
+	public PictureRepository getPictureRepository() {
+		return pictureRepository;
+	}
+
+	public void setPictureRepository(PictureRepository pictureRepository) {
+		this.pictureRepository = pictureRepository;
+	}
+
+	public void setTextRepository(TextRepository textRepository) {
+		this.textRepository = textRepository;
+	}
+
+	public void setPersonRepository(PersonRepository personRepository) {
+		this.personRepository = personRepository;
 	}
 
 	public TextRepository getTextRepository() {
