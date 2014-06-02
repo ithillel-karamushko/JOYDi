@@ -6,34 +6,21 @@
 <title>JOYDi</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
-<jsp:useBean id="personsList" scope="application"
+<jsp:useBean id="textList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
-<jsp:useBean id="person" scope="application"
+<jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository">
-	<jsp:setProperty property="persons" name="person"
-		value="${personsList}" />
+	<jsp:setProperty property="persons" name="person" value="${textList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 	<jsp:setProperty property="personRepository" name="service"
-		value="${person}" />
+		value="${text}" />
 </jsp:useBean>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-
-	<div id="container">
-		<div id="log">
-			<form action="loginCheck.jsp" method="post">
-				<br />Email:
-				<input type="text" name="email"> <br />Password:<input
-					type="password" name="password"> <br /> <input
-						type="submit" value="Enter"> <a
-							href="registrationForm.jsp">Click here if not registered</a> </input>
-			</form>
-		</div>
-	</div>
 
 	<jsp:include page="footer.jsp" />
 </body>

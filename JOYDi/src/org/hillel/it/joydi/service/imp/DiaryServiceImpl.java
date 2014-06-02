@@ -326,14 +326,17 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
-	public void enter(String email, String password) {
+	public boolean enter(String email, String password) {
+		boolean result = false;
 		List<Person> allPersons = personRepository.getPersons();
 		for (Person person : allPersons) {
 			if (person.geteMail().equals(email)
 					&& person.getPassword().equals(password)) {
 				person.setEnter(true);
+				result = true;
 			}
 		}
+		return result;
 	}
 
 	@Override

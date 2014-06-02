@@ -55,7 +55,7 @@ public interface DiaryService {
 
 	void getPicture();
 
-	void enter(String email, String password);
+	boolean enter(String email, String password);
 
 	void exit(Person person);
 }
