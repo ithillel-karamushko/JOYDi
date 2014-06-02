@@ -12,7 +12,7 @@ import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.service.imp.DiaryServiceImpl;
 import org.hillel.it.joydi.model.entities.Gender;
-import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository;
 import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
@@ -23,7 +23,7 @@ public class Starter {
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException, SQLException {
 		TextRepository textRepository = new InMemoryTextRepository();
-		PersonRepository personRepository = new InMemoryPersonFileRepository();
+		PersonRepository personRepository = new InMemoryPersonRepository();
 		PictureRepository pictureRepository = new InMemoryPictureRepository();
 		TopArticles ta = new TopArticles(textRepository);
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,

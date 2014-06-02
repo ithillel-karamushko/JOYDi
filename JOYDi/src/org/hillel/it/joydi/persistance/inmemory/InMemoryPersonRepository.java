@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -18,17 +19,41 @@ import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 
-public class InMemoryPersonFileRepository implements PersonRepository {
+public class InMemoryPersonRepository implements PersonRepository, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4307847716316565505L;
 	private List<Person> persons;
 	private int idCount = 0;
+
+	public InMemoryPersonRepository() {
+
+	}
+
+	// public InMemoryPersonRepository() {
+	// this.persons = new ArrayList<Person>();
+	// }
 
 	public List<Person> getPersons() {
 		return persons;
 	}
 
-	public InMemoryPersonFileRepository() {
-		this.persons = new ArrayList<Person>();
+	public int getIdCount() {
+		return idCount;
+	}
+
+	public void setIdCount(int idCount) {
+		this.idCount = idCount;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
 	}
 
 	@Override

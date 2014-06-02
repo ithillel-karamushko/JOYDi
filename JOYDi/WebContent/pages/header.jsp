@@ -1,7 +1,7 @@
 <%@page import="org.hillel.it.joydi.service.imp.DiaryServiceImpl"%>
 <%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository"%>
 <%@page import="org.hillel.it.joydi.persistance.repository.PictureRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonFileRepository"%>
+<%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
 <%@page import="org.hillel.it.joydi.persistance.repository.PersonRepository"%>
 <%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository"%>
 <%@page import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
@@ -18,7 +18,7 @@
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl" />
 <%
 	TextRepository tr = new InMemoryTextRepository();
-	PersonRepository pr = new InMemoryPersonFileRepository();
+	PersonRepository pr = new InMemoryPersonRepository();
 	PictureRepository picr = new InMemoryPictureRepository();
 	DiaryServiceImpl ds = new DiaryServiceImpl(tr, pr, picr);
 %>

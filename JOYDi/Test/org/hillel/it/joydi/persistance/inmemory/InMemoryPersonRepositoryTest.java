@@ -21,7 +21,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@BeforeClass
 	public static void before() {
-		pr = new InMemoryPersonFileRepository();
+		pr = new InMemoryPersonRepository();
 
 	}
 

@@ -1,7 +1,7 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
+import java.io.Serializable;
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,25 +11,61 @@ import org.hillel.it.joydi.connection.pool.ReUsableConnectionPool;
 import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.persistance.repository.PictureRepository;
 
-public class InMemoryPictureRepository implements PictureRepository {
+public class InMemoryPictureRepository implements PictureRepository,
+		Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7778698168546753795L;
 	private ReUsableConnectionPool rc;
 	private Connection connection;
 	private int idCount;
 
-	public InMemoryPictureRepository() throws SQLException {
-		try {
-			rc = new ReUsableConnectionPool();
-			connection = rc.getConnection();
-			try (Statement st = connection.createStatement()) {
-				st.executeUpdate("CREATE DATABASE IF NOT EXISTS JoydiPictures;");
-				st.executeUpdate("USE JoydiPictures;");
-				st.executeUpdate("CREATE TABLE IF NOT EXISTS Pictures (id integer not null auto_increment,"
-						+ " creatingDate Date, fileUrl varchar(256), primary key(id));");
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+	public InMemoryPictureRepository() {
+	}
+
+	// public InMemoryPictureRepository() throws SQLException {
+	// try {
+	// rc = new ReUsableConnectionPool();
+	// connection = rc.getConnection();
+	// try (Statement st = connection.createStatement()) {
+	// st.executeUpdate("CREATE DATABASE IF NOT EXISTS JoydiPictures;");
+	// st.executeUpdate("USE JoydiPictures;");
+	// st.executeUpdate("CREATE TABLE IF NOT EXISTS Pictures (id integer not null auto_increment,"
+	// + " creatingDate Date, fileUrl varchar(256), primary key(id));");
+	// }
+	// } catch (Exception e) {
+	// System.out.println(e.getMessage());
+	// }
+	// }
+
+	public ReUsableConnectionPool getRc() {
+		return rc;
+	}
+
+	public void setRc(ReUsableConnectionPool rc) {
+		this.rc = rc;
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
+	}
+
+	public int getIdCount() {
+		return idCount;
+	}
+
+	public void setIdCount(int idCount) {
+		this.idCount = idCount;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -10,15 +11,43 @@ import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.TextEntity;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
-public class InMemoryTextRepository implements TextRepository {
+public class InMemoryTextRepository implements TextRepository, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1566240092971695811L;
 	private List<Article> article;
 	private List<Comment> comment;
 	private int idCount;
 
 	public InMemoryTextRepository() {
-		this.article = new ArrayList<Article>();
-		this.comment = new ArrayList<Comment>();
+
+	}
+
+	// public InMemoryTextRepository() {
+	// this.article = new ArrayList<Article>();
+	// this.comment = new ArrayList<Comment>();
+	// }
+
+	public int getIdCount() {
+		return idCount;
+	}
+
+	public void setIdCount(int idCount) {
+		this.idCount = idCount;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setArticle(List<Article> article) {
+		this.article = article;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
 	}
 
 	public List<Article> getArticle() {
