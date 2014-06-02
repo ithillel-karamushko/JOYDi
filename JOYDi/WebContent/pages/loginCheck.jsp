@@ -27,7 +27,7 @@
 
 		if (service.enter(email, password)) {
 			session.setAttribute("email", email);
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("UserPage.jsp");
 		} else
 			response.sendRedirect("error.jsp");
 	%>

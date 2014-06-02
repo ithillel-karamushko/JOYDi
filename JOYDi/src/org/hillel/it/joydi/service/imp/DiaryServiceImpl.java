@@ -47,10 +47,6 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
-	public String printHello() {
-		return "Hello World";
-	}
-
 	public DiaryServiceImpl() {
 
 	}
@@ -342,6 +338,18 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	@Override
 	public void exit(Person person) {
 		person.setEnter(false);
+	}
+
+	@Override
+	public Person returnUserByEmail(String email) {
+		Person user = null;
+		List<Person> allPersons = personRepository.getPersons();
+		for (Person person : allPersons) {
+			if (person.geteMail().equals(email)) {
+				user = person;
+			}
+		}
+		return user;
 	}
 
 }

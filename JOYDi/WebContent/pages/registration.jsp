@@ -45,7 +45,7 @@
 			Congratulations! You are registered on JOYdi! Welcome,
 			<%
 			out.println(user.getName());
-		%>! Now you will be resend to login page!
+		%>! Now you will be resending to login page!
 			<meta http-equiv="Refresh" content="5;url=login.jsp" />
 
 		</div>

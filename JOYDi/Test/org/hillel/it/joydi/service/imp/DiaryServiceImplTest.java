@@ -32,8 +32,7 @@ public class DiaryServiceImplTest {
 	public static void before() {
 		textRepository = new InMemoryTextRepository();
 		personRepository = new InMemoryPersonRepository();
-		ds = new DiaryServiceImpl(textRepository, personRepository,
-				pictureRepository);
+		ds = new DiaryServiceImpl();
 	}
 
 	@Test
