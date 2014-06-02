@@ -1,10 +1,16 @@
 <%@page import="org.hillel.it.joydi.service.imp.DiaryServiceImpl"%>
-<%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.repository.PictureRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.repository.PersonRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository"%>
-<%@page import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.repository.PictureRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.repository.PersonRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,14 +20,6 @@
 <title></title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
-<jsp:useBean id="service" scope="application"
-	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl" />
-<%
-	TextRepository tr = new InMemoryTextRepository();
-	PersonRepository pr = new InMemoryPersonRepository();
-	PictureRepository picr = new InMemoryPictureRepository();
-	DiaryServiceImpl ds = new DiaryServiceImpl(tr, pr, picr);
-%>
 </head>
 <body>
 	<div id="container">
@@ -31,5 +29,6 @@
 				src="images/logogreen.png" width="15%">
 			<hr />
 		</div>
+	</div>
 </body>
 </html>
