@@ -50,14 +50,18 @@
 							<%=email%></dt>
 						<dd>
 							<%
-								for (Article article : list) {
-									if (user.geteMail().equals(email)) {
-										String theme = article.getThemeOfTheArticle();
-										int id = article.getId();
+								if (list.size() == 0) {
+									out.print("You doesnt have any articles");
+								} else {
+									for (Article article : list) {
+										if (user.geteMail().equals(email)) {
+											String theme = article.getThemeOfTheArticle();
+											int id = article.getId();
 							%>
 							<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
 							<%
 								}
+									}
 								}
 							%>
 

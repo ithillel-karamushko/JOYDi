@@ -58,8 +58,10 @@ public interface DiaryService {
 	boolean enter(String email, String password);
 
 	void exit(Person person);
-	
+
 	Person returnUserByEmail(String email);
-	
+
 	Article returnArticleById(int id);
+
+	void deleteArticleById(int id);
 }

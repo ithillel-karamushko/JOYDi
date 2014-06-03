@@ -116,4 +116,16 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		}
 		return text;
 	}
+
+	@Override
+	public synchronized void deleteArticleById(int id) {
+		List<Article> forModifying = article;
+		for (Article art : forModifying) {
+			if (art.getId() == id) {
+				article.remove(art);
+			}
+		}
+		article = forModifying;
+
+	}
 }

@@ -49,9 +49,19 @@
 
 							</p>
 							<p><%=article.getThemeOfTheArticle()%></p>
+							<hr>
 							<p><%=article.getTextOfTheArticle()%></p>
 							<p>
+							<hr>
+						<dd class="summary">
+							Posted By: <a href=""><%=article.getAuthor().getName()%></a> on
+							<%=article.getDate()%><br> | <a
+								href="actions.jsp?action=delete&id=<%=id%>">Delete Article</a> | <a
+								href="actions.jsp?action=modify&id=<%=id%>">Modify Article</a> | <a
+								href="actions.jsp?action=comment&id=<%=id%>">Add Comment</a> |
 						</dd>
+
+
 					</dl>
 				</div>
 			</div>

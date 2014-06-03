@@ -17,6 +17,7 @@ import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.Picture;
 import org.hillel.it.joydi.model.entities.User;
 import org.hillel.it.joydi.model.search.ArticleCriteria;
+import org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository;
 import org.hillel.it.joydi.persistance.repository.PersonRepository;
 import org.hillel.it.joydi.persistance.repository.PictureRepository;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
@@ -34,7 +35,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 */
 	private static final long serialVersionUID = 2578361153123463872L;
 
-	private TextRepository textRepository;
+	private TextRepository textRepository = new InMemoryTextRepository();
 	private PersonRepository personRepository;
 	private PictureRepository pictureRepository;
 
@@ -359,6 +360,12 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public void deleteArticleById(int id) {
+		textRepository.deleteArticleById(id);
+		
 	}
 
 }

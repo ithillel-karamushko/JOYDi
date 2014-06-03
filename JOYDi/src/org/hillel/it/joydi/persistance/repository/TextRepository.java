@@ -21,4 +21,6 @@ public interface TextRepository {
 	List<Article> getArticle();
 
 	List<Comment> getComment();
+
+	public void deleteArticleById(int id);
 }
