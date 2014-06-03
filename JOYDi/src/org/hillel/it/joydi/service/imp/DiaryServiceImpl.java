@@ -349,4 +349,16 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 		return user;
 	}
 
+	@Override
+	public Article returnArticleById(int id) {
+		Article result = null;
+		List<Article> allArticles = textRepository.getArticle();
+		for (Article article : allArticles) {
+			if (article.getId() == id) {
+				result = article;
+			}
+		}
+		return result;
+	}
+
 }

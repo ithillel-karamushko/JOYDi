@@ -60,4 +60,6 @@ public interface DiaryService {
 	void exit(Person person);
 	
 	Person returnUserByEmail(String email);
+	
+	Article returnArticleById(int id);
 }

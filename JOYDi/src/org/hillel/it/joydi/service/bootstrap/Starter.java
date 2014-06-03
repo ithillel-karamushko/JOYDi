@@ -25,10 +25,10 @@ public class Starter {
 		TextRepository textRepository = new InMemoryTextRepository();
 		PersonRepository personRepository = new InMemoryPersonRepository();
 		PictureRepository pictureRepository = new InMemoryPictureRepository();
-		TopArticles ta = new TopArticles(textRepository);
+		// TopArticles ta = new TopArticles(textRepository);
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
-		TheNewestArticles na = new TheNewestArticles(textRepository);
+		// TheNewestArticles na = new TheNewestArticles(textRepository);
 		User user1 = new User("John", "email@gmail.com", Countries.Albania,
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
@@ -78,7 +78,6 @@ public class Starter {
 		Article article13 = new Article(user2, "Last Article", "Java rules",
 				"Java, IT");
 		ds.saveArticle(article13);
-		ds.pushLike(article13);
 		ds.pushLike(article13);
 		ds.pushLike(article13);
 		ds.pushLike(article13);

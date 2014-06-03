@@ -1,5 +1,4 @@
-<%@page import="java.util.*"%>
-<%@page import="org.hillel.it.joydi.model.entities.*"%>
+<%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,28 +26,46 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
 </jsp:useBean>
-<%
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-	String theme = (String) request.getParameter("theme");
-	String textArticle = (String) request.getParameter("textArticle");
-	String tags = (String) request.getParameter("tags");
-	Article article = new Article(user, theme, textArticle, tags);
-	service.saveArticle(article);
-%>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%
+	int id = Integer.valueOf((String) request.getParameter("id"));
+	Article article = service.returnArticleById(id);
+%>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div id="container">
+		<div id="wrapper">
+			<div id="content-wrapper">
+				<div id="content">
+					<dl>
+						<dt>
+						<dd>
+							<p class="img">
+								<img src="images/sample.png" width="250px" height="171px"
+									alt="Sample Picture Here" />
 
-	<%
-		if (service.getTextRepository().getArticle().contains(article)) {
-	%><jsp:forward page="UserPage.jsp"></jsp:forward>
-	<%
-		} else {
-	%><jsp:forward page="error.jsp"></jsp:forward>
-	<%
-		}
-	%>
+							</p>
+							<p><%=article.getThemeOfTheArticle()%></p>
+							<p><%=article.getTextOfTheArticle()%></p>
+							<p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div id="sidebar-wrapper">
+				<div id="sidebar">
+					<ul>
+						<li class="title">Home Page</li>
+						<li><a href="myArticles.jsp">My Articles</a></li>
+						<li><a href="createArticle.jsp">Add new Article</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
