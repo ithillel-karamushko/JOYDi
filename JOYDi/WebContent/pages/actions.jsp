@@ -1,3 +1,4 @@
+<%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,9 +28,16 @@
 </jsp:useBean>
 <%
 	int id = Integer.valueOf((String) request.getParameter("id"));
+	Article a = service.returnArticleById(id);
 	String action = (String) request.getParameter("action");
 	if (action.equals("delete")) {
 		service.deleteArticleById(id);
+	}
+	if (action.equals("like")) {
+		service.pushLike(a);
+	}
+	if (action.equals("dislike")) {
+		service.pushDisLike(a);
 	}
 %>
 <jsp:forward page="myArticles.jsp"></jsp:forward>

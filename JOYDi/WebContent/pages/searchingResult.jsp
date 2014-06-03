@@ -1,9 +1,15 @@
-<%@page import="org.hillel.it.joydi.model.entities.Person"%>
+<%@page import="org.hillel.it.joydi.model.entities.Article"%>
+<%@page import="java.util.List"%>
+<%@page
+	import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
+<%@page import="org.hillel.it.joydi.model.search.ArticleCriteria"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSP Page</title>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -26,47 +32,61 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="<%=articles%>" />
 </jsp:useBean>
-<title>JOYDi</title>
-<link rel="stylesheet" type="text/css" media="screen,projection"
-	href="screen.css" />
 <%
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
+	String author = (String) request.getParameter("author");
+	if (author.equals("")) {
+		author = null;
+	}
+	String theme = (String) request.getParameter("theme");
+	if (theme.equals("")) {
+		theme = null;
+	}
+	String tags = (String) request.getParameter("tags");
+	if (tags.equals("")) {
+		tags = null;
+	}
+	TextRepository tr = service.getTextRepository();
+
+	ArticleCriteria ac = new ArticleCriteria(author, theme, tags, tr);
+	List<Article> result = service.findArticles(ac);
 %>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp"></jsp:include>
+
 	<div id="container">
 		<div id="wrapper">
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>Your personal information:</dt>
+						<dt>Next articles was found:</dt>
+						<hr>
 						<dd>
-							<p class="img">
-								<img src="images/avatar.png" width="250px" height="171px"
-									alt="Sample Picture Here" />
-							</p>
-
-						</dd>
+							<%
+								if (result.size() == 0) {
+									out.print("Nothing was founded");
+								} else {
+									for (Article article : result) {
+										int id = article.getId();
+							%>
+							<div id="sidebar">
+								<li><a href="showArticle.jsp?id=<%=id%>"><%=article.getThemeOfTheArticle()%></a></li>
+							</div>
+							<%
+								}
+								}
+							%>
+						
 					</dl>
-					Your name:
-					<%=user.getName()%>
-					<hr>
-						Your ages: <%=user.getAge()%><hr>
-							Your country: <%=user.getCountry()%><hr>
-								Your Email: <%=user.geteMail()%><hr>
-									Your Gender: <%=user.getGender()%><hr>
 				</div>
 			</div>
+
+
 			<div id="sidebar-wrapper">
 				<div id="sidebar">
 					<ul>
-						<li class="title">Home</li>
-						<li><a href="myArticles.jsp">My Articles</a></li>
-						<li><a href="createArticle.jsp">Add new Article</a></li>
-						<li><a href="searchingForm.jsp">Find Articles</a></li>
-						<li><a href="logout.jsp">Logout</a></li>
+						<li class="title">My Diary</li>
+						<li><a href="UserPage.jsp">Home</a></li>
 					</ul>
 					<ul>
 						<li class="title">Top Articles in JOYDi</li>
@@ -81,8 +101,6 @@
 
 				</div>
 			</div>
-		</div>
-		<jsp:include page="footer.jsp" />
-	</div>
+			<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -45,9 +45,8 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>
-							You logged as:
-							<%=email%></dt>
+						<dt>Your Articles:</dt>
+						<hr>
 						<dd>
 							<%
 								if (list.size() == 0) {
@@ -58,17 +57,19 @@
 											String theme = article.getThemeOfTheArticle();
 											int id = article.getId();
 							%>
-							<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
-							<%
-								}
-									}
-								}
-							%>
-
-
-
-							<p>
+							<div id="sidebar">
+								<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
+							</div>
+						<dd class="summary">
+							<a href="actions.jsp?action=delete&id=<%=id%>">Delete this
+								article</a>
 						</dd>
+						<%
+							}
+								}
+							}
+						%>
+
 					</dl>
 				</div>
 			</div>
@@ -78,11 +79,7 @@
 				<div id="sidebar">
 					<ul>
 						<li class="title">My Diary</li>
-						<li><a href="myArticles.jsp">My Articles</a></li>
-						<li><a href="createArticle.jsp">Add new Article</a></li>
-						<li><a href="logout.jsp">Logout</a></li>
-						<li><a href="#2">Modify My Profile</a></li>
-						<li><a href="#3">Delete my Profile</a></li>
+						<li><a href="UserPage.jsp">Home</a></li>
 					</ul>
 					<ul>
 						<li class="title">Top Articles in JOYDi</li>
@@ -97,6 +94,10 @@
 
 				</div>
 			</div>
-			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
+	</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
 </html>

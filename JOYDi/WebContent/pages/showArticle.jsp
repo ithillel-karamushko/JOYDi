@@ -54,11 +54,14 @@
 							<p>
 							<hr>
 						<dd class="summary">
-							Posted By: <a href=""><%=article.getAuthor().getName()%></a> on
-							<%=article.getDate()%><br> | <a
-								href="actions.jsp?action=delete&id=<%=id%>">Delete Article</a> | <a
-								href="actions.jsp?action=modify&id=<%=id%>">Modify Article</a> | <a
-								href="actions.jsp?action=comment&id=<%=id%>">Add Comment</a> |
+							Posted By: <%=article.getAuthor().getName()%></a> on
+							<%=article.getDate()%><br><%=article.getLike()%>
+							Likes |
+							<%=article.getDisLike()%>
+							Dislikes <br>  <a
+								href="actions.jsp?action=like&id=<%=id%>">I like this
+								article</a> | <a href="actions.jsp?action=dislike&id=<%=id%>">I
+								don`t like this article</a> 
 						</dd>
 
 
@@ -69,9 +72,8 @@
 				<div id="sidebar">
 					<ul>
 						<li class="title">Home Page</li>
-						<li><a href="myArticles.jsp">My Articles</a></li>
-						<li><a href="createArticle.jsp">Add new Article</a></li>
-						<li><a href="logout.jsp">Logout</a></li>
+						<li><a href="UserPage.jsp">Home</a></li>
+
 					</ul>
 				</div>
 			</div>
