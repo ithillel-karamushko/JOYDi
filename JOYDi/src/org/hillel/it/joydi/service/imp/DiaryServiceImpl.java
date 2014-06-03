@@ -84,11 +84,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public void saveArticle(Article article) {
-		if (article.getAuthor().isEnter()) {
-			textRepository.saveArticle(article);
-		} else
-			System.out
-					.println("Please login or register, we can't save your article!");
+
+		textRepository.saveArticle(article);
 	}
 
 	/**

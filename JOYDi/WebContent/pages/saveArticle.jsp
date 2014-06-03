@@ -1,6 +1,5 @@
-<%@page import="java.util.List"%>
-<%@page import="org.hillel.it.joydi.model.entities.Article"%>
-<%@page import="org.hillel.it.joydi.model.entities.Person"%>
+<%@page import="java.util.*"%>
+<%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,24 +8,24 @@
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
-<jsp:useBean id="textList" scope="application"
-	class="java.util.ArrayList">
-</jsp:useBean>
-<jsp:useBean id="articles" scope="application"
-	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
-	<jsp:setProperty property="article" name="articles" value="${textList}" />
-</jsp:useBean>
 <jsp:useBean id="person" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository">
 	<jsp:setProperty property="persons" name="person"
 		value="${personsList}" />
+</jsp:useBean>
+<jsp:useBean id="articlesList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
+<jsp:useBean id="text" scope="application"
+	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
+	<jsp:setProperty property="article" name="text" value="${articlesList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 	<jsp:setProperty property="personRepository" name="service"
 		value="${person}" />
 	<jsp:setProperty property="textRepository" name="service"
-		value="${articles}" />
+		value="${text}" />
 </jsp:useBean>
 <%
 	String email = (String) session.getAttribute("email");
@@ -42,9 +41,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 
-	<%=service.getTextRepository().getArticle()%>
-	<%=list.get(0).getTextOfTheArticle()%>
+	<%
+		for (Article a : list) {
+			out.println(a.getThemeOfTheArticle());
+			
+		}
+	%>
+
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

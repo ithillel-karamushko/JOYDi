@@ -1,4 +1,3 @@
-<%@page import="java.security.Provider.Service"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,10 +13,17 @@
 	<jsp:setProperty property="persons" name="person"
 		value="${personsList}" />
 </jsp:useBean>
+<jsp:useBean id="textList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
+<jsp:useBean id="articles" scope="application"
+	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
+	<jsp:setProperty property="article" name="articles" value="${textList}" />
+</jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
-	<jsp:setProperty property="personRepository" name="service"
-		value="${person}" />
+	<jsp:setProperty property="personRepository" name="service" value="<%=person%>" />
+	<jsp:setProperty property="textRepository" name="service" value="<%=articles%>" />
 </jsp:useBean>
 </head>
 <body>

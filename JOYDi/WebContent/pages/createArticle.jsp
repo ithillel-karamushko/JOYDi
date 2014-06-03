@@ -1,5 +1,3 @@
-<%@page import="org.hillel.it.joydi.model.entities.Person"%>
-<%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,18 +12,16 @@
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<form action="articleProcess.jsp" method="post">
+			<form action="saveArticle.jsp" method="post">
 				<p>
-					Theme of the article: <br>
-					<input type="article" name="theme">
+					Theme of the article: <br> <input type="article" name="theme">
 				</p>
 				<p>
-					Tags: <br>
-					<input type="tags" name="tags">
+					Tags: <br> <input type="tags" name="tags">
 				</p>
 				<p>
-					Text of the article:<br>
-					<textarea name="textArticle" rows="10" cols="50"></textarea>
+					Text of the article:<br> <textarea name="textArticle"
+							rows="10" cols="50"></textarea>
 				</p>
 				<input type="submit" value="Save article"> </input>
 			</form>

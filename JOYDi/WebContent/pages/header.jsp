@@ -1,16 +1,3 @@
-<%@page import="org.hillel.it.joydi.service.imp.DiaryServiceImpl"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.repository.PictureRepository"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.repository.PersonRepository"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

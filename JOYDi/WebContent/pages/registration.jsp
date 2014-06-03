@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<jsp:useBean id="personsList" scope="application"
+<jsp:useBean id="personsList" scope="application" 
 	class="java.util.ArrayList">
 </jsp:useBean>
 <jsp:useBean id="person" scope="application"
