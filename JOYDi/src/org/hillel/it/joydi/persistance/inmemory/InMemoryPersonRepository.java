@@ -57,8 +57,13 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 	}
 
 	@Override
-	public synchronized void saveUser(User person)
+	public synchronized boolean saveUser(User person)
 			throws FileNotFoundException, IOException {
+		for (Person allPerson : persons) {
+			if (allPerson.geteMail().equals(person.geteMail())) {
+				return false;
+			}
+		}
 		person.setId(idCount++);
 		this.persons.add(person);
 		try {
@@ -71,7 +76,7 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 							+ ce);
 
 		}
-
+		return true;
 	}
 
 	@Override
@@ -162,5 +167,25 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 		}
 		System.out
 				.print(" all the best. \n May all your dreams come true! Happy Birthday! \n ");
+	}
+
+	public Person enter(String email, String password) {
+		Person user = returnUserByEmail(email);
+		if (user.getPassword().equals(password)) {
+			return user;
+		} else {
+			return null;
+		}
+
+	}
+
+	public Person returnUserByEmail(String email) {
+		Person user = null;
+		for (Person person : persons) {
+			if (person.geteMail().equals(email)) {
+				user = person;
+			}
+		}
+		return user;
 	}
 }

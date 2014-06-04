@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<jsp:useBean id="personsList" scope="application" 
+<jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
 <jsp:useBean id="person" scope="application"
@@ -30,22 +30,25 @@
 	int year = Integer.parseInt(request.getParameter("yearOfBirth"));
 	int day = Integer.parseInt(request.getParameter("dayOfBirth"));
 	Countries country = Countries.valueOf(request
-			.getParameter("country"));
+	.getParameter("country"));
 	Months month = Months.valueOf(request.getParameter("monthOfBirth"));
 	Gender gender = Gender.valueOf(request.getParameter("gender"));
 	User user = new User(name, email, country, gender, year, month,
-			day, password);
-	service.saveUser(user);
+	day, password);
+	boolean reg = service.saveUser(user);
 %>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			Congratulations! You are registered on JOYdi! Welcome,
 			<%
-			out.println(user.getName());
-		%>! Now you will be resending to login page!
+				if (!reg){
+						out.print("Such email already exists, please type other mail!");
+					} else {
+						out.print("Congratulations! You are registered on JOYdi! Welcome, " + user.getName());
+					}
+			%>! Now you will be resending to login page!
 			<meta http-equiv="Refresh" content="5;url=login.jsp" />
 
 		</div>

@@ -35,7 +35,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 */
 	private static final long serialVersionUID = 2578361153123463872L;
 
-	private TextRepository textRepository = new InMemoryTextRepository();
+	private TextRepository textRepository;
 	private PersonRepository personRepository;
 	private PictureRepository pictureRepository;
 
@@ -143,8 +143,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @throws FileNotFoundException
 	 */
 	@Override
-	public void saveUser(User person) throws FileNotFoundException, IOException {
-		personRepository.saveUser(person);
+	public boolean saveUser(User person) throws FileNotFoundException, IOException {
+		return personRepository.saveUser(person);
 
 	}
 
@@ -320,17 +320,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
-	public boolean enter(String email, String password) {
-		boolean result = false;
-		List<Person> allPersons = personRepository.getPersons();
-		for (Person person : allPersons) {
-			if (person.geteMail().equals(email)
-					&& person.getPassword().equals(password)) {
-				person.setEnter(true);
-				result = true;
-			}
-		}
-		return result;
+	public Person enter(String email, String password) {
+		return personRepository.enter(email, password);
 	}
 
 	@Override
@@ -340,14 +331,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public Person returnUserByEmail(String email) {
-		Person user = null;
-		List<Person> allPersons = personRepository.getPersons();
-		for (Person person : allPersons) {
-			if (person.geteMail().equals(email)) {
-				user = person;
-			}
-		}
-		return user;
+		Person person = personRepository.returnUserByEmail(email);
+		return person;
 	}
 
 	@Override
@@ -365,7 +350,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	@Override
 	public void deleteArticleById(int id) {
 		textRepository.deleteArticleById(id);
-		
+
 	}
 
 }

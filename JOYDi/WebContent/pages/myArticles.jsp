@@ -1,4 +1,3 @@
-<%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

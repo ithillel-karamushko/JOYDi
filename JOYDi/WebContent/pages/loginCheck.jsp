@@ -31,7 +31,7 @@
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		if (service.enter(email, password)) {
+		if (service.enter(email, password) != null) {
 			session.setAttribute("email", email);
 			response.sendRedirect("UserPage.jsp");
 		} else

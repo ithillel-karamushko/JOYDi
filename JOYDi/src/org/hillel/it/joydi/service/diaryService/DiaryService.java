@@ -25,7 +25,7 @@ public interface DiaryService {
 
 	void deleteArticle(Article article);
 
-	void saveUser(User person) throws FileNotFoundException, IOException;
+	boolean saveUser(User person) throws FileNotFoundException, IOException;
 
 	void modifyUser(User person, String name, String eMail, Countries country,
 			Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
@@ -55,7 +55,7 @@ public interface DiaryService {
 
 	void getPicture();
 
-	boolean enter(String email, String password);
+	Person enter(String email, String password);
 
 	void exit(Person person);
 

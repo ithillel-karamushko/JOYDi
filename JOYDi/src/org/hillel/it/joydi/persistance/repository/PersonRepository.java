@@ -9,7 +9,7 @@ import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 
 public interface PersonRepository {
-	void saveUser(User person) throws FileNotFoundException, IOException;
+	boolean saveUser(User person) throws FileNotFoundException, IOException;
 
 	void modifyUser(User person) throws FileNotFoundException, IOException;
 
@@ -22,4 +22,8 @@ public interface PersonRepository {
 	void birthday();
 
 	List<Person> getPersons();
+
+	public Person enter(String email, String password);
+
+	public Person returnUserByEmail(String email);
 }
