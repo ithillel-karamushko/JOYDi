@@ -16,6 +16,7 @@
 				session.invalidate();
 			%>
 			<h1>Logout was done successfully.</h1>
+			<meta http-equiv="Refresh" content="5;url=login.jsp" />
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />
