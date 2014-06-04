@@ -15,9 +15,13 @@
 <jsp:useBean id="articlesList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
+<jsp:useBean id="commentsList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
 <jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
+	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
@@ -39,8 +43,10 @@
 	if (action.equals("dislike")) {
 		service.pushDisLike(a);
 	}
+	if (action.equals("comment")) {
+		response.sendRedirect("createComment.jsp");
+	}
 %>
-<jsp:forward page="myArticles.jsp"></jsp:forward>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>

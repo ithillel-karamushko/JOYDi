@@ -1,14 +1,10 @@
-<%@page import="org.hillel.it.joydi.model.entities.Person"%>
-<%@page import="org.hillel.it.joydi.model.entities.Article"%>
+<%@page import="java.util.*"%>
+<%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<title>JOYDi</title>
-<link rel="stylesheet" type="text/css" media="screen,projection"
-	href="screen.css" />
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -26,7 +22,7 @@
 <jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
-	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
+	<jsp:setProperty property="article" name="text" value="${commentsList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
@@ -36,18 +32,16 @@
 		value="${text}" />
 </jsp:useBean>
 <%
-	String email = session.getAttribute("email");
+	String email = (String) session.getAttribute("email");
 	Person user = service.returnUserByEmail(email);
-	Article article = new Article(user, "IT", "Java rules", "Java, IT");
+	String commentText = (String) request.getParameter("commentText");
+	Comment comment = new Comment(user, commentText);
+	service.saveComment(comment);
 %>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
-	<table>
-		<c:forEach var="num" items="${list}">
-			<p>${num}</p>
-		</c:forEach>
-	</table>
-	<jsp:include page="footer.jsp" />
+	<jsp:forward page="UserPage.jsp"></jsp:forward>
 </body>
 </html>

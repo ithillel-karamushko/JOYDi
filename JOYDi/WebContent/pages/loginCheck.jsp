@@ -13,17 +13,23 @@
 	<jsp:setProperty property="persons" name="person"
 		value="${personsList}" />
 </jsp:useBean>
-<jsp:useBean id="textList" scope="application"
+<jsp:useBean id="articlesList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
-<jsp:useBean id="articles" scope="application"
+<jsp:useBean id="commentsList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
+<jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
-	<jsp:setProperty property="article" name="articles" value="${textList}" />
+	<jsp:setProperty property="article" name="text" value="${articlesList}" />
+	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
-	<jsp:setProperty property="personRepository" name="service" value="<%=person%>" />
-	<jsp:setProperty property="textRepository" name="service" value="<%=articles%>" />
+	<jsp:setProperty property="personRepository" name="service"
+		value="${person}" />
+	<jsp:setProperty property="textRepository" name="service"
+		value="${text}" />
 </jsp:useBean>
 </head>
 <body>

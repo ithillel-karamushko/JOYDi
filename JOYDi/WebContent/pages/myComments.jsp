@@ -1,15 +1,10 @@
-<%@page import="org.hillel.it.joydi.model.entities.Article"%>
+<%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@page import="java.util.List"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.repository.TextRepository"%>
-<%@page import="org.hillel.it.joydi.model.search.ArticleCriteria"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -27,7 +22,7 @@
 <jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
-	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
+	<jsp:setProperty property="article" name="text" value="${commentsList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
@@ -36,23 +31,13 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
 </jsp:useBean>
-<%
-	String author = (String) request.getParameter("author");
-	if (author.equals("")) {
-		author = null;
-	}
-	String theme = (String) request.getParameter("theme");
-	if (theme.equals("")) {
-		theme = null;
-	}
-	String tags = (String) request.getParameter("tags");
-	if (tags.equals("")) {
-		tags = null;
-	}
-	TextRepository tr = service.getTextRepository();
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>JOYdi</title>
 
-	ArticleCriteria ac = new ArticleCriteria(author, theme, tags, tr);
-	List<Article> result = service.findArticles(ac);
+<%
+	String email = (String) session.getAttribute("email");
+	Person user = service.returnUserByEmail(email);
+	List<Comment> list = service.getTextRepository().getComment();
 %>
 </head>
 <body>
@@ -63,24 +48,27 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>Next articles was found:</dt>
+						<dt>Your Comments:</dt>
 						<hr>
 						<dd>
 							<%
-								if (result.size() == 0) {
-									out.print("Nothing was founded");
+								if (list.size() == 0) {
+									out.print("You doesnt have any comments");
 								} else {
-									for (Article article : result) {
-										int id = article.getId();
+									for (Comment comment : list) {
+										if (user.geteMail().equals(email)) {
+											String comm = comment.getCommentText();
+											int id = comment.getId();
 							%>
 							<div id="sidebar">
-								<li><a href="showArticle.jsp?id=<%=id%>"><%=article.getThemeOfTheArticle()%></a></li>
+								<li><a href="showArticle.jsp?id=<%=id%>"><%=comm%></a></li>
 							</div>
-							<%
+						<%
+							}
 								}
-								}
-							%>
-						
+							}
+						%>
+
 					</dl>
 				</div>
 			</div>
@@ -105,6 +93,10 @@
 
 				</div>
 			</div>
-			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
+	</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
 </html>

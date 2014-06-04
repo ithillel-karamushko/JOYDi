@@ -224,12 +224,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public void saveComment(Comment comment) {
-		if (comment.getAuthor().isEnter()) {
 			textRepository.saveComment(comment);
-		} else
-			System.out
-					.println("Please login or register, we can't save your article!");
-
 	}
 
 	/**

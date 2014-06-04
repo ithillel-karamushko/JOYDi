@@ -16,10 +16,23 @@
 	<jsp:setProperty property="persons" name="person"
 		value="${personsList}" />
 </jsp:useBean>
+<jsp:useBean id="articlesList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
+<jsp:useBean id="commentsList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
+<jsp:useBean id="text" scope="application"
+	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
+	<jsp:setProperty property="article" name="text" value="${articlesList}" />
+	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
+</jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 	<jsp:setProperty property="personRepository" name="service"
 		value="${person}" />
+	<jsp:setProperty property="textRepository" name="service"
+		value="${text}" />
 </jsp:useBean>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>JOYdi registration</title>
@@ -30,11 +43,11 @@
 	int year = Integer.parseInt(request.getParameter("yearOfBirth"));
 	int day = Integer.parseInt(request.getParameter("dayOfBirth"));
 	Countries country = Countries.valueOf(request
-	.getParameter("country"));
+			.getParameter("country"));
 	Months month = Months.valueOf(request.getParameter("monthOfBirth"));
 	Gender gender = Gender.valueOf(request.getParameter("gender"));
 	User user = new User(name, email, country, gender, year, month,
-	day, password);
+			day, password);
 	boolean reg = service.saveUser(user);
 %>
 </head>
@@ -43,11 +56,12 @@
 	<div id="container">
 		<div id="log">
 			<%
-				if (!reg){
-						out.print("Such email already exists, please type other mail!");
-					} else {
-						out.print("Congratulations! You are registered on JOYdi! Welcome, " + user.getName());
-					}
+				if (!reg) {
+					out.print("Such email already exists, please type other mail!");
+				} else {
+					out.print("Congratulations! You are registered on JOYdi! Welcome, "
+							+ user.getName());
+				}
 			%>! Now you will be resending to login page!
 			<meta http-equiv="Refresh" content="5;url=login.jsp" />
 

@@ -1,3 +1,4 @@
+<%@page import="org.hillel.it.joydi.model.entities.Comment"%>
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -15,9 +16,13 @@
 <jsp:useBean id="articlesList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
+<jsp:useBean id="commentsList" scope="application"
+	class="java.util.ArrayList">
+</jsp:useBean>
 <jsp:useBean id="text" scope="application"
 	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
+	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
 </jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
@@ -26,7 +31,6 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
 </jsp:useBean>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <%
@@ -54,17 +58,34 @@
 							<p>
 							<hr>
 						<dd class="summary">
-							Posted By: <%=article.getAuthor().getName()%></a> on
+							Posted By:
+							<%=article.getAuthor().getName()%></a> on
 							<%=article.getDate()%><br><%=article.getLike()%>
 							Likes |
 							<%=article.getDisLike()%>
-							Dislikes <br>  <a
-								href="actions.jsp?action=like&id=<%=id%>">I like this
-								article</a> | <a href="actions.jsp?action=dislike&id=<%=id%>">I
-								don`t like this article</a> 
+							Dislikes <br> <a href="actions.jsp?action=like&id=<%=id%>">I
+								like this article</a> | <a
+								href="actions.jsp?action=dislike&id=<%=id%>">I don`t like
+								this article</a> | <a href="actions.jsp?action=comment&id=<%=id%>">Post
+								a comment</a>
 						</dd>
+						<%
+							if (text.getComment() == null) {
+								out.print("No comments");
+							} else {
+								for (Comment c : text.getComment()) {
+						%><br>
+						<blockquote
+							style="background-color: #f9f9f9; border: 2px #555555 solid; padding: 14px; margin: 0px 0px 0px 0px; font: small-caps;">
+							<%
+								out.print(c.getCommentText());
+							%>
+						</blockquote>
 
-
+						<%
+							}
+							}
+						%>
 					</dl>
 				</div>
 			</div>
