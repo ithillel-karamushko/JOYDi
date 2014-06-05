@@ -13,6 +13,7 @@ public class Comment extends TextEntity {
 	 * 
 	 */
 	private static final long serialVersionUID = -6765453702641087954L;
+	private int articleId;
 	private Person author;
 	private int likes;
 	private int dislikes;
@@ -27,11 +28,28 @@ public class Comment extends TextEntity {
 	 * @param commentText
 	 */
 
+	public Comment(Person author, String commentText, int articleId) {
+		this.author = author;
+		this.commentText = commentText;
+		this.setArticleId(articleId);
+		date = new Date();
+		
+
+	}
+	
 	public Comment(Person author, String commentText) {
 		this.author = author;
 		this.commentText = commentText;
 		date = new Date();
 
+	}
+
+	public int getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
 	}
 
 	public Person getAuthor() {

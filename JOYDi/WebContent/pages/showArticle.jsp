@@ -45,7 +45,7 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>
+						<dt>Article:</dt>
 						<dd>
 							<p class="img">
 								<img src="images/sample.png" width="250px" height="171px"
@@ -69,11 +69,13 @@
 								this article</a> | <a href="actions.jsp?action=comment&id=<%=id%>">Post
 								a comment</a>
 						</dd>
+						<dt>Comments:</dt>
 						<%
 							if (text.getComment() == null) {
 								out.print("No comments");
 							} else {
 								for (Comment c : text.getComment()) {
+									if (c.getArticleId() == id) {
 						%><br>
 						<blockquote
 							style="background-color: #f9f9f9; border: 2px #555555 solid; padding: 14px; margin: 0px 0px 0px 0px; font: small-caps;">
@@ -84,6 +86,7 @@
 
 						<%
 							}
+								}
 							}
 						%>
 					</dl>

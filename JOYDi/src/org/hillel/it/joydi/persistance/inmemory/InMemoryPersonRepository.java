@@ -127,11 +127,12 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 		oos.close();
 	}
 
-	public void deserialize() throws FileNotFoundException, IOException {
+	public List<Person> deserialize() throws FileNotFoundException, IOException {
 		Configuration config = Configuration.getInstance();
 		FileInputStream fis = new FileInputStream(new File(
 				config.getPropertie("file.path")));
-		SerializationUtils.deserialize(fis);
+		persons = SerializationUtils.deserialize(fis);
+		return persons;
 	}
 
 	protected void test(Person person) throws InputException {
@@ -180,6 +181,13 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 	}
 
 	public Person returnUserByEmail(String email) {
+		try {
+			persons = deserialize();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Person user = null;
 		for (Person person : persons) {
 			if (person.geteMail().equals(email)) {

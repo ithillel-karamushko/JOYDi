@@ -32,16 +32,18 @@
 		value="${text}" />
 </jsp:useBean>
 <%
+	int articleId = Integer.valueOf((String) request
+			.getParameter("articleId"));
 	String email = (String) session.getAttribute("email");
 	Person user = service.returnUserByEmail(email);
 	String commentText = (String) request.getParameter("commentText");
-	Comment comment = new Comment(user, commentText);
+	Comment comment = new Comment(user, commentText, articleId);
 	service.saveComment(comment);
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="UserPage.jsp"></jsp:forward>
+	<jsp:forward page="myArticles.jsp"></jsp:forward>
 </body>
 </html>

@@ -47,7 +47,7 @@
 
 	<%
 		if (service.getTextRepository().getArticle().contains(article)) {
-	%><jsp:forward page="UserPage.jsp"></jsp:forward>
+	%><jsp:forward page="myArticles.jsp"></jsp:forward>
 	<%
 		} else {
 	%><jsp:forward page="error.jsp"></jsp:forward>

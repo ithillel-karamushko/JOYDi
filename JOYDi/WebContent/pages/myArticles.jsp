@@ -56,7 +56,7 @@
 									out.print("You doesnt have any articles");
 								} else {
 									for (Article article : list) {
-										if (user.geteMail().equals(email)) {
+										if (article.getAuthor().geteMail().equals(email)) {
 											String theme = article.getThemeOfTheArticle();
 											int id = article.getId();
 							%>

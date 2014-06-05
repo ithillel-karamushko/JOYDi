@@ -44,7 +44,8 @@
 		service.pushDisLike(a);
 	}
 	if (action.equals("comment")) {
-		response.sendRedirect("createComment.jsp");
+		String redirect = "createComment.jsp?articleId="+id;
+		response.sendRedirect(redirect);
 	}
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
