@@ -63,20 +63,6 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testModifyArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		user.setEnter(true);
-		Article article = new Article(user, "Java", "I like Java.", "Java");
-		ds.saveArticle(article);
-		int i = ds.getTextRepository().getArticle().size();
-		ds.modifyArticle(article, "Java", "I don't like Java");
-		assertEquals("Incorrect", i, ds.getTextRepository().getArticle().size());
-		assertEquals("Incorrect value", true, ds.getTextRepository()
-				.getArticle().contains(article));
-	}
-
-	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
 		User user = new User("Johny", "e@gmail.com", Countries.Austria,
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
@@ -162,20 +148,6 @@ public class DiaryServiceImplTest {
 		ds.deleteComment(comment);
 		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
 		assertEquals("Incorrect", false, ds.getTextRepository().getComment()
-				.contains(comment));
-	}
-
-	@Test
-	public void testModifyComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		user.setEnter(true);
-		Comment comment = new Comment(user, "Nice words");
-		ds.saveComment(comment);
-		int i = ds.getTextRepository().getComment().size();
-		ds.modifyComment(comment, "Bad words");
-		assertEquals("Incorrect", i, ds.getTextRepository().getComment().size());
-		assertEquals("Incorrect", true, ds.getTextRepository().getComment()
 				.contains(comment));
 	}
 

@@ -108,35 +108,6 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	}
 
 	/**
-	 * Method that calls other method, modify article and save changes
-	 * 
-	 * @param article
-	 *            is a reference to the Object Article
-	 * @param textOfTheArticle
-	 *            is a new text of the article
-	 * @param themeOfTheArticle
-	 *            is a new theme of the article
-	 */
-	public void modifyArticle(Article article, String textOfTheArticle,
-			String themeOfTheArticle) {
-		if (article.getAuthor().isEnter()) {
-			if (textOfTheArticle != null) {
-				article.setTextOfTheArticle(textOfTheArticle);
-			}
-
-			if (themeOfTheArticle != null) {
-				article.setThemeOfTheArticle(themeOfTheArticle);
-			}
-
-			textRepository.modifyArticle(article);
-		}
-
-		else
-			System.out
-					.println("Please login or register, we can't save your article!");
-	}
-
-	/**
 	 * Method that calls other method and save user to the repository
 	 * 
 	 * @param person
@@ -246,23 +217,6 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	}
 
 	/**
-	 * Method that calls other method, modify comment and save changes
-	 * 
-	 * @param comment
-	 *            is a reference to the Object Comment
-	 * @param commentText
-	 *            is a new text of the comment
-	 */
-	public void modifyComment(Comment comment, String commentText) {
-		if (comment.getAuthor().isEnter()) {
-			comment.setCommentText(commentText);
-			textRepository.modifyComment(comment);
-		} else
-			System.out
-					.println("Please login or register, we can't save your article!");
-	}
-
-	/**
 	 * Method that counts number of likes
 	 * 
 	 * @param article
@@ -351,6 +305,12 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
+	@Override
+	public void deleteCommentById(int id) {
+		textRepository.deleteCommentById(id);
+
+	}
+ 
 	public List<Article> newArticles() {
 		List<Article> result = textRepository.newArticles();
 		return result;

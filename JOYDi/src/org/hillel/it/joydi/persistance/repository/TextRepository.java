@@ -30,4 +30,6 @@ public interface TextRepository {
 	
 	public List<Article> topArticles();
 
+	public void deleteCommentById(int id);
+
 }

@@ -22,9 +22,6 @@ public interface DiaryService {
 
 	void saveArticle(Article article);
 
-	void modifyArticle(Article article, String textOfTheArticle,
-			String themeOfTheArticle);
-
 	void deleteArticle(Article article);
 
 	boolean saveUser(User person) throws FileNotFoundException, IOException;
@@ -42,8 +39,6 @@ public interface DiaryService {
 	void saveComment(Comment comment);
 
 	void deleteComment(Comment comment);
-
-	void modifyComment(Comment comment, String commentText);
 
 	void pushLike(Article article);
 
@@ -66,9 +61,11 @@ public interface DiaryService {
 	Article returnArticleById(int id);
 
 	void deleteArticleById(int id);
-	
+
 	public List<Article> newArticles();
-	
+
 	public List<Article> topArticles();
+
+	void deleteCommentById(int id);
 
 }

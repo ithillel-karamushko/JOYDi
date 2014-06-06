@@ -21,8 +21,7 @@ public class Comment extends TextEntity {
 	Date date;
 
 	/**
-	 * Kit of the class Comment set in
-	 * field date current date and time
+	 * Kit of the class Comment set in field date current date and time
 	 * 
 	 * @param authorName
 	 * @param commentText
@@ -33,10 +32,9 @@ public class Comment extends TextEntity {
 		this.commentText = commentText;
 		this.setArticleId(articleId);
 		date = new Date();
-		
 
 	}
-	
+
 	public Comment(Person author, String commentText) {
 		this.author = author;
 		this.commentText = commentText;
@@ -72,7 +70,7 @@ public class Comment extends TextEntity {
 		return dislikes;
 	}
 
-	public String getCommentText() {
+	public String commentId() {
 		return commentText;
 	}
 
@@ -83,5 +81,9 @@ public class Comment extends TextEntity {
 	public String getText() {
 		String result = getCommentText();
 		return result;
+	}
+
+	public String getCommentText() {
+		return commentText;
 	}
 }

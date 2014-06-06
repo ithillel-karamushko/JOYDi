@@ -120,18 +120,6 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		return text;
 	}
 
-	@Override
-	public synchronized void deleteArticleById(int id) {
-		List<Article> forModifying = article;
-		for (Article art : forModifying) {
-			if (art.getId() == id) {
-				article.remove(art);
-			}
-		}
-		article = forModifying;
-
-	}
-
 	public List<Article> newArticles() {
 		List<Article> result = article;
 		Collections.sort(result, new MyComparatorForDate());
@@ -150,5 +138,27 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 			top = top.subList(0, 10);
 		}
 		return top;
+	}
+
+	@Override
+	public void deleteCommentById(int id) {
+		int delete = 0;
+		for (Comment comm : comment) {
+			if (comm.getId() == id) {
+				delete = comment.indexOf(comm);
+			}
+		}
+		comment.remove(delete);
+	}
+
+	@Override
+	public synchronized void deleteArticleById(int id) {
+		int delete = 0;
+		for (Article art : article) {
+			if (art.getId() == id) {
+				delete = article.indexOf(art);
+			}
+		}
+		article.remove(delete);
 	}
 }

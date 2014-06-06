@@ -65,7 +65,8 @@
 							</div>
 						<dd class="summary">
 							<a href="actions.jsp?action=delete&id=<%=id%>">Delete this
-								article</a>
+								article</a> | <a href="actions.jsp?action=modify&id=<%=id%>">Modify
+								this article</a>
 						</dd>
 						<%
 							}

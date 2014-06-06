@@ -33,9 +33,8 @@
 		value="${text}" />
 </jsp:useBean>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>JOYDi</title>
 <%
-
 	int id = Integer.valueOf((String) request.getParameter("id"));
 	Article article = service.returnArticleById(id);
 %>
@@ -80,20 +79,21 @@
 									if (c.getArticleId() == id) {
 						%><br>
 						<blockquote
-							style="background-color: #f9f9f9; border: 2px #555555 solid; padding: 14px; margin: 0px 0px 0px 0px; font: small-caps;">
+							style="background-color: #f9f9f9; border: 2px #555555 solid; padding: 14px; margin: 0px 0px 0px 0px;">
 							<%
 								out.print(c.getCommentText());
+								int kill = c.getId();
 							%>
+							<dd class="summary">
+								<a href="actions.jsp?action=deleteComment&commentId=<%=kill%>&id=<%=id%>">Delete
+									comment</a>
+							</dd>
 						</blockquote>
-
 						<%
 							}
 								}
 							}
 						%>
-
-
-
 					</dl>
 				</div>
 			</div>
@@ -102,7 +102,6 @@
 					<ul>
 						<li class="title">Home Page</li>
 						<li><a href="UserPage.jsp">Home</a></li>
-
 					</ul>
 				</div>
 			</div>

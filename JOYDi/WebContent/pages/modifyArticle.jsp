@@ -1,8 +1,9 @@
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
@@ -32,41 +33,36 @@
 </jsp:useBean>
 <%
 	int id = Integer.valueOf((String) request.getParameter("id"));
-	Article a = service.returnArticleById(id);
-	String action = (String) request.getParameter("action");
-	if (action.equals("delete")) {
-		service.deleteArticleById(id);
-		response.sendRedirect("myArticles.jsp");
-	}
-	if (action.equals("like")) {
-		service.pushLike(a);
-		String redirect = "showArticle.jsp?id=" + id;
-		response.sendRedirect(redirect);
-	}
-	if (action.equals("dislike")) {
-		service.pushDisLike(a);
-		String redirect = "showArticle.jsp?id=" + id;
-		response.sendRedirect(redirect);
-	}
-	if (action.equals("comment")) {
-		String redirect = "createComment.jsp?articleId=" + id;
-		response.sendRedirect(redirect);
-	}
-	if (action.equals("modify")) {
-		String redirect = "modifyArticle.jsp?id=" + id;
-		response.sendRedirect(redirect);
-	}
-	if (action.equals("deleteComment")) {
-		int articleId = Integer.valueOf((String) request.getParameter("commentId"));
-		service.deleteCommentById(id);
-		String redirect = "showArticle.jsp?id=" + id;
-		response.sendRedirect(redirect);
-	}
+	Article article = service.returnArticleById(id);
+	String theme = article.getThemeOfTheArticle();
+	String articleText = article.getTextOfTheArticle();
+	String tag = article.getTags();
+	service.deleteArticleById(id);
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>JOYDi</title>
+<link rel="stylesheet" type="text/css" media="screen,projection"
+	href="screen.css" />
 </head>
 <body>
-
+	<jsp:include page="header.jsp" />
+	<div id="container">
+		<div id="log">
+			<form action="saveArticle.jsp" method="post">
+				<p>
+					Theme of the article: <br> <input type="article" name="theme" value="<%=theme%>">
+				</p>
+				<p>
+					Tags: <br> <input type="tags" name="tags" value="<%=tag%>">
+				</p>
+				<p>
+					Text of the article:<br>
+					<textarea name="textArticle" rows="10" cols="50"><%=articleText %></textarea>
+				</p>
+				<input type="submit" value="Save article">
+				</input>
+			</form>
+		</div>
+	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
