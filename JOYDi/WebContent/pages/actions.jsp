@@ -36,15 +36,20 @@
 	String action = (String) request.getParameter("action");
 	if (action.equals("delete")) {
 		service.deleteArticleById(id);
+		response.sendRedirect("myArticles.jsp");
 	}
 	if (action.equals("like")) {
 		service.pushLike(a);
+		String redirect = "showArticle.jsp?id=" + id;
+		response.sendRedirect(redirect);
 	}
 	if (action.equals("dislike")) {
 		service.pushDisLike(a);
+		String redirect = "showArticle.jsp?id=" + id;
+		response.sendRedirect(redirect);
 	}
 	if (action.equals("comment")) {
-		String redirect = "createComment.jsp?articleId="+id;
+		String redirect = "createComment.jsp?articleId=" + id;
 		response.sendRedirect(redirect);
 	}
 %>

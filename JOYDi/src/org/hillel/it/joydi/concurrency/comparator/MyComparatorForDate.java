@@ -1,4 +1,4 @@
-package org.hillel.it.joydi.concurrency.tasks;
+package org.hillel.it.joydi.concurrency.comparator;
 
 import java.util.Comparator;
 import java.util.Date;

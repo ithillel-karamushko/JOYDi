@@ -3,8 +3,10 @@ package org.hillel.it.joydi.service.diaryService;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
+import org.hillel.it.joydi.concurrency.comparator.MyComparatorForDate;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -64,4 +66,9 @@ public interface DiaryService {
 	Article returnArticleById(int id);
 
 	void deleteArticleById(int id);
+	
+	public List<Article> newArticles();
+	
+	public List<Article> topArticles();
+
 }

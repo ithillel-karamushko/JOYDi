@@ -3,9 +3,6 @@ package org.hillel.it.joydi.service.bootstrap;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.hillel.it.joydi.concurrency.tasks.TheNewestArticles;
-import org.hillel.it.joydi.concurrency.tasks.TopArticles;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Months;

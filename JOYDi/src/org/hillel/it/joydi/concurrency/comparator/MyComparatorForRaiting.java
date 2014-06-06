@@ -1,4 +1,4 @@
-package org.hillel.it.joydi.concurrency.tasks;
+package org.hillel.it.joydi.concurrency.comparator;
 
 import java.util.Comparator;
 
@@ -10,8 +10,8 @@ public class MyComparatorForRaiting implements Comparator<Article> {
 	public int compare(Article arg1, Article arg2) {
 		Integer like1;
 		Integer like2;
-		like1 = arg1.getLike();
-		like2 = arg2.getLike();
+		like1 = arg1.getRatingOfTheArticle();
+		like2 = arg2.getRatingOfTheArticle();
 		return like2.compareTo(like1);
 	}
 

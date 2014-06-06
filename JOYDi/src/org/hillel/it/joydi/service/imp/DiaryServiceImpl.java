@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import org.hillel.it.joydi.concurrency.comparator.MyComparatorForDate;
 import org.hillel.it.joydi.model.entities.Admin;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
@@ -143,7 +145,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @throws FileNotFoundException
 	 */
 	@Override
-	public boolean saveUser(User person) throws FileNotFoundException, IOException {
+	public boolean saveUser(User person) throws FileNotFoundException,
+			IOException {
 		return personRepository.saveUser(person);
 
 	}
@@ -224,7 +227,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public void saveComment(Comment comment) {
-			textRepository.saveComment(comment);
+		textRepository.saveComment(comment);
 	}
 
 	/**
@@ -348,4 +351,14 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
+	public List<Article> newArticles() {
+		List<Article> result = textRepository.newArticles();
+		return result;
+	}
+
+	@Override
+	public List<Article> topArticles() {
+		List<Article> result = textRepository.topArticles();
+		return result;
+	}
 }

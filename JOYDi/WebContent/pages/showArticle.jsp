@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="org.hillel.it.joydi.model.entities.Comment"%>
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -34,6 +35,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <%
+
 	int id = Integer.valueOf((String) request.getParameter("id"));
 	Article article = service.returnArticleById(id);
 %>
@@ -89,6 +91,9 @@
 								}
 							}
 						%>
+
+
+
 					</dl>
 				</div>
 			</div>

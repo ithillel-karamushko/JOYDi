@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -34,6 +36,7 @@
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
 <%
+	List<Article> newArticles = service.newArticles();
 	String email = (String) session.getAttribute("email");
 	Person user = service.returnUserByEmail(email);
 %>
@@ -73,16 +76,17 @@
 						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
 					<ul>
-						<li class="title">Top Articles in JOYDi</li>
-						<li><a href="#4">Java is good</a></li>
-						<li><a href="#5">HTML is not good</a></li>
-					</ul>
-					<ul>
 						<li class="title">Latest Articles in JOYDi</li>
-						<li><a href="#6">HTML makes me cry</a></li>
-						<li><a href="#7">IT Hillel</a></li>
+						<%
+							for (Article art : newArticles) {
+								String theme = art.getThemeOfTheArticle();
+								int id = art.getId();
+						%>
+						<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
+						<%
+							}
+						%>
 					</ul>
-
 				</div>
 			</div>
 		</div>

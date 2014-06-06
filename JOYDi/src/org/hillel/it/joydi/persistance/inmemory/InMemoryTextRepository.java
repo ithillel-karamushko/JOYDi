@@ -2,10 +2,13 @@ package org.hillel.it.joydi.persistance.inmemory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.hillel.it.joydi.concurrency.comparator.MyComparatorForDate;
+import org.hillel.it.joydi.concurrency.comparator.MyComparatorForRaiting;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
 import org.hillel.it.joydi.model.entities.TextEntity;
@@ -127,5 +130,25 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		}
 		article = forModifying;
 
+	}
+
+	public List<Article> newArticles() {
+		List<Article> result = article;
+		Collections.sort(result, new MyComparatorForDate());
+		if (result.size() > 10) {
+			result = result.subList(0, 10);
+		}
+		return result;
+
+	}
+
+	@Override
+	public List<Article> topArticles() {
+		List<Article> top = article;
+		Collections.sort(top, new MyComparatorForRaiting());
+		if (top.size() > 10) {
+			top = top.subList(0, 10);
+		}
+		return top;
 	}
 }
