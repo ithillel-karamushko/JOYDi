@@ -1,11 +1,5 @@
 package org.hillel.it.joydi.persistance.inmemory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,13 +7,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.SerializationUtils;
 import org.hillel.it.joydi.concurrency.comparator.MyComparatorForDate;
 import org.hillel.it.joydi.concurrency.comparator.MyComparatorForRaiting;
-import org.hillel.it.joydi.infra.config.Configuration;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
-import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.TextEntity;
 import org.hillel.it.joydi.persistance.repository.TextRepository;
 
@@ -63,11 +54,6 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 	}
 
 	public List<Article> getArticle() {
-		try {
-			this.article = deserialize();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		return article;
 	}
 
@@ -80,12 +66,6 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		article.setTextOfTheArticle(censoring(article));
 		article.setId(idCount++);
 		this.article.add(article);
-		try {
-			serialize(this.article);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 
 	}
 
@@ -174,42 +154,11 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 	@Override
 	public synchronized void deleteArticleById(int id) {
 		int delete = 0;
-		try {
-			article = deserialize();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		for (Article art : article) {
 			if (art.getId() == id) {
 				delete = article.indexOf(art);
 			}
 		}
 		article.remove(delete);
-		try {
-			serialize(article);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void serialize(List<Article> article) throws FileNotFoundException,
-			IOException {
-		Configuration config = Configuration.getInstance();
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(
-				config.getPropertie("text.path")));
-		oos.writeObject(article);
-		oos.close();
-	}
-
-	public List<Article> deserialize() throws FileNotFoundException, IOException {
-		Configuration config = Configuration.getInstance();
-		FileInputStream fis = new FileInputStream(new File(
-				config.getPropertie("text.path")));
-		article = SerializationUtils.deserialize(fis);
-		return article;
 	}
 }
