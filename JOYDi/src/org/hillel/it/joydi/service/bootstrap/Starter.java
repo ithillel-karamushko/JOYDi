@@ -79,6 +79,8 @@ public class Starter {
 		ds.pushLike(article13);
 		ds.pushLike(article13);
 		ds.pushLike(article13);
+		
+		System.out.println(ds.topArticles());
 
 	}
 }

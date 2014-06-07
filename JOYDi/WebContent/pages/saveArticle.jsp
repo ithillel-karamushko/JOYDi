@@ -44,8 +44,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%
+	<jsp:forward page="myArticles.jsp"></jsp:forward>
+	<%--	<%
 		if (service.getTextRepository().getArticle().contains(article)) {
 	%><jsp:forward page="myArticles.jsp"></jsp:forward>
 	<%
@@ -54,5 +54,6 @@
 	<%
 		}
 	%>
+	 --%>
 </body>
 </html>
