@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.hillel.it.joydi.connection.pool.ReUsableConnectionPool;
 import org.hillel.it.joydi.model.entities.Picture;
@@ -71,12 +72,19 @@ public class InMemoryPictureRepository implements PictureRepository,
 	@Override
 	public void savePicture(Picture picture) throws SQLException {
 		picture.setId(idCount++);
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		try (Connection connection = rc.getConnection()) {
 			try (PreparedStatement st = connection
-					.prepareStatement("INSERT INTO Pictures (creatingDate, fileUrl) VALUE (? ,?)")) {
+					.prepareStatement("INSERT INTO Pictures (id, creatingDate, fileUrl) VALUE (?, ? ,?)")) {
 				try {
-					st.setString(1, picture.getCreatingDate());
-					st.setString(2, picture.getFileUrl());
+					st.setInt(1, picture.getId());
+					st.setString(2, picture.getCreatingDate());
+					st.setString(3, picture.getFileUrl());
 					st.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -119,4 +127,23 @@ public class InMemoryPictureRepository implements PictureRepository,
 		}
 	}
 
+	@Override
+	public String returnPictureById(int id) {
+		String result = null;
+		try (Connection connection = rc.getConnection()) {
+			try (Statement st = connection.createStatement()) {
+				ResultSet rs = st
+						.executeQuery("SELECT fileUrl FROM Pictures where 'id'=?");
+				while (!rs.next()) {
+					String name = rs.getString(rs.findColumn("fileUrl"));
+					result = name;
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return result;
+	}
 }

@@ -11,4 +11,6 @@ public interface PictureRepository {
 
 	void getPicture();
 
+	String returnPictureById(int id);
+
 }

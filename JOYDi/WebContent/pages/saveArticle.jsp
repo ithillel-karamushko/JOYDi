@@ -1,3 +1,5 @@
+<%@page
+	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
 <%@page import="java.util.*"%>
 <%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -5,6 +7,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+	ReUsableConnectionPool rc = new ReUsableConnectionPool();
+%>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -24,12 +29,18 @@
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
 	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
 </jsp:useBean>
+<jsp:useBean id="picture" scope="application"
+	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository">
+	<jsp:setProperty property="rc" name="picture" value="<%=rc%>" />
+</jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 	<jsp:setProperty property="personRepository" name="service"
 		value="${person}" />
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
+	<jsp:setProperty property="pictureRepository" name="service"
+		value="${picture}" />
 </jsp:useBean>
 <%
 	String email = (String) session.getAttribute("email");
@@ -37,14 +48,16 @@
 	String theme = (String) request.getParameter("theme");
 	String textArticle = (String) request.getParameter("textArticle");
 	String tags = (String) request.getParameter("tags");
-	Article article = new Article(user, theme, textArticle, tags);
+	String url = (String) request.getParameter("pics");
+	Picture pic = new Picture(url);
+	Article article = new Article(user, theme, textArticle, tags, pic);
 	service.saveArticle(article);
+	service.savePicture(pic);
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%
 		if (service.getTextRepository().getArticle().contains(article)) {
 	%><jsp:forward page="myArticles.jsp"></jsp:forward>

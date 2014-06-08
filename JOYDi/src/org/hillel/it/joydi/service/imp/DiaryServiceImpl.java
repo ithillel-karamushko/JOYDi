@@ -310,7 +310,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 		textRepository.deleteCommentById(id);
 
 	}
- 
+
 	public List<Article> newArticles() {
 		List<Article> result = textRepository.newArticles();
 		return result;
@@ -321,4 +321,10 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 		List<Article> result = textRepository.topArticles();
 		return result;
 	}
+
+	@Override
+	public String returnPictureById(int id) {
+		return pictureRepository.returnPictureById(id);
+	}
+
 }

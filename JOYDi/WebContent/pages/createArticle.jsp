@@ -23,6 +23,9 @@
 					Text of the article:<br> <textarea name="textArticle"
 							rows="10" cols="50"></textarea>
 				</p>
+				<p>
+					Picture: <br> <input type="text" name="pics">
+				</p>
 				<input type="submit" value="Save article"> </input>
 			</form>
 		</div>

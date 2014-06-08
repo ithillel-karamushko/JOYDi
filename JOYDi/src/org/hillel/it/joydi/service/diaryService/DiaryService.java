@@ -67,5 +67,7 @@ public interface DiaryService {
 	public List<Article> topArticles();
 
 	void deleteCommentById(int id);
+	
+	String returnPictureById(int id);
 
 }

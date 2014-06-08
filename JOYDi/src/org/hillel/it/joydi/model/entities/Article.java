@@ -23,6 +23,7 @@ public class Article extends TextEntity {
 	private Date date;
 	private int like;
 	private int disLike;
+	private Picture picture;
 
 	/**
 	 * Kit of the class Article set in field date current date
@@ -34,6 +35,20 @@ public class Article extends TextEntity {
 	 */
 
 	public Article(Person author, String themeOfTheArticle,
+			String textOfTheArticle, String tags, Picture picture) {
+		date = new Date();
+		this.author = author;
+		this.themeOfTheArticle = themeOfTheArticle;
+		this.textOfTheArticle = textOfTheArticle;
+		this.setLike(0);
+		this.setDisLike(0);
+		this.tags = tags;
+		ratingOfTheArticle = 0;
+		this.picture = picture;
+
+	}
+	
+	public Article(Person author, String themeOfTheArticle,
 			String textOfTheArticle, String tags) {
 		date = new Date();
 		this.author = author;
@@ -43,7 +58,6 @@ public class Article extends TextEntity {
 		this.setDisLike(0);
 		this.tags = tags;
 		ratingOfTheArticle = 0;
-
 	}
 
 	public Date getDate() {
@@ -105,6 +119,14 @@ public class Article extends TextEntity {
 
 	public void setDisLike(int disLike) {
 		this.disLike = disLike;
+	}
+
+	public Picture getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Picture picture) {
+		this.picture = picture;
 	}
 
 	public String getText() {
