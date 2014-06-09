@@ -57,7 +57,8 @@
 		response.sendRedirect(redirect);
 	}
 	if (action.equals("deleteComment")) {
-		int articleId = Integer.valueOf((String) request.getParameter("commentId"));
+		int articleId = Integer.valueOf((String) request
+				.getParameter("commentId"));
 		service.deleteCommentById(id);
 		String redirect = "showArticle.jsp?id=" + id;
 		response.sendRedirect(redirect);

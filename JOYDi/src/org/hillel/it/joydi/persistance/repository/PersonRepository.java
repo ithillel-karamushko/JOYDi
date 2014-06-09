@@ -23,7 +23,10 @@ public interface PersonRepository {
 
 	List<Person> getPersons();
 
-	public Person enter(String email, String password);
+	Person enter(String email, String password);
 
-	public Person returnUserByEmail(String email);
+	Person returnUserByEmail(String email);
+
+	void changePassword(String oldPassword, String newPassword,
+			String confirmPassword, String email);
 }

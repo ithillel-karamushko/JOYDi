@@ -327,4 +327,10 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 		return pictureRepository.returnPictureById(id);
 	}
 
+	@Override
+	public void changePassword(String oldPassword, String newPassword,
+			String confirmPassword, String email) {
+		personRepository.changePassword(oldPassword, newPassword, confirmPassword, email);
+	}
+
 }

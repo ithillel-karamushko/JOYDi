@@ -1,13 +1,16 @@
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@page
-	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
-<%@page import="org.hillel.it.joydi.model.entities.*"%>
+	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<%
+	ReUsableConnectionPool rc = new ReUsableConnectionPool();
+%>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -27,45 +30,40 @@
 	<jsp:setProperty property="article" name="text" value="${articlesList}" />
 	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
 </jsp:useBean>
+<jsp:useBean id="picture" scope="application"
+	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository">
+	<jsp:setProperty property="rc" name="picture" value="<%=rc%>" />
+</jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 	<jsp:setProperty property="personRepository" name="service"
 		value="${person}" />
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
+	<jsp:setProperty property="pictureRepository" name="service"
+		value="${picture}" />
 </jsp:useBean>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>JOYdi registration</title>
 <%
-	String name = request.getParameter("name");
-	String email = request.getParameter("email");
-	String password = request.getParameter("password");
-	int year = Integer.parseInt(request.getParameter("yearOfBirth"));
-	int day = Integer.parseInt(request.getParameter("dayOfBirth"));
-	Countries country = Countries.valueOf(request
-			.getParameter("country"));
-	Months month = Months.valueOf(request.getParameter("monthOfBirth"));
-	Gender gender = Gender.valueOf(request.getParameter("gender"));
-	User user = new User(name, email, country, gender, year, month,
-			day, password);
-
-	boolean reg = service.saveUser(user);
+	String email = (String) session.getAttribute("email");
+	Person user = service.returnUserByEmail(email);
 %>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<%
-				if (!reg) {
-					out.print("Such email already exists, please type other mail!");
-				} else {
-					out.print("Congratulations! You are registered on JOYdi! Welcome, "
-							+ user.getName());
-				}
-			%>! Now you will be redirected to login page!
-			<meta http-equiv="Refresh" content="3;url=login.jsp" />
-
+			<form action="changePassword.jsp">
+				<p>
+					<input type="password" name="oldPassword" required size="25" /> <small>Type old password</small>
+				</p>
+				<p>
+					<input type="password" name="newPassword" required size="25" /> <small>Type new password</small>
+				</p>
+				<p>
+					<input type="password" name="confirmPassword" required size="25" /> <small>Confirm new password</small>
+				</p>
+				<input type="submit" value="Change password" />
+			</form>
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />

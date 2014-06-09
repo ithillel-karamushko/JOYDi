@@ -58,6 +58,8 @@
 							<hr>
 							<p><%=article.getTextOfTheArticle()%></p>
 							<p>
+							<p><%=article.getPicture().getFileUrl()%></p>
+							<p>
 							<hr>
 						<dd class="summary">
 							Posted By:

@@ -72,7 +72,8 @@
 						<li class="title">Home</li>
 						<li><a href="myArticles.jsp">My Articles</a></li>
 						<li><a href="createArticle.jsp">Add new Article</a></li>
-						<li><a href="searchingForm.jsp">Find Articles</a></li>
+						<li><a href="searchingForm.jsp">Find Articles</a></li>  
+						<li><a href="modifyUser.jsp">Account settings</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
 					<ul>
@@ -90,7 +91,7 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="footer.jsp" />
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>

@@ -136,7 +136,6 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 	}
 
 	protected void test(Person person) throws InputException {
-
 		if (person.getCountry() == null || person.getDateOfBirth() == null
 				|| person.geteMail() == null || person.getGender() == null
 				|| person.getName() == null) {
@@ -172,6 +171,9 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 
 	public Person enter(String email, String password) {
 		Person user = returnUserByEmail(email);
+		if (user == null) {
+			return null;
+		}
 		if (user.getPassword().equals(password)) {
 			return user;
 		} else {
@@ -195,5 +197,29 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 			}
 		}
 		return user;
+	}
+
+	@Override
+	public void changePassword(String oldPassword, String newPassword,
+			String confirmPassword, String email) {
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Person user = returnUserByEmail(email);
+		if (user.getPassword().equals(oldPassword)
+				&& newPassword.equals(confirmPassword)) {
+			user.setPassword(newPassword);
+		}
+		try {
+			serialize(persons);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

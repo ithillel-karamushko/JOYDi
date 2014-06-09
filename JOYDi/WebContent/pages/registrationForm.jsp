@@ -40,13 +40,13 @@
 		<div id="log">
 			<form action="registration.jsp">
 				<p>
-					<input type="text" name="name" size="25" /> <small>Name</small>
+					<input type="text" name="name" required size="25" /> <small>Name</small>
 				</p>
 				<p>
-					<input type="text" name="email" size="25" /> <small>Email</small>
+					<input type="email" name="email" required size="25" /> <small>Email</small>
 				</p>
 				<p>
-					<select name="country" size="1">
+					<select name="country" required size="1">
 						<option value="Ukraine">Ukraine</option>
 						<option value="Germany">Germany</option>
 						<option value="Russia">Russia</option>
@@ -59,7 +59,7 @@
 					<input type="radio" name="gender" value="FEMALE" /> <small>FEMALE</small>
 				</p>
 				<p>
-					<input type="text" name="yearOfBirth" size="25" /> <small>Year
+					<input type="number" name="yearOfBirth" required size="25" /> <small>Year
 						Of Birth</small>
 				</p>
 				<p>
@@ -79,11 +79,11 @@
 					</select><small>Month of Birth</small>
 				</p>
 				<p>
-					<input type="text" name="dayOfBirth" size="25" /> <small>Day
+					<input type="number" name="dayOfBirth" required size="25" /> <small>Day
 						Of Birth</small>
 				</p>
 				<p>
-					<input type="password" name="password" size="25" /> <small>Password</small>
+					<input type="password" name="password" required size="25" /> <small>Password</small>
 				</p>
 
 				<input type="submit" value="Register" />

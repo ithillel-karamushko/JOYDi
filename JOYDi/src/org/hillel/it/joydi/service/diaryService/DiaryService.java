@@ -70,4 +70,7 @@ public interface DiaryService {
 	
 	String returnPictureById(int id);
 
+	void changePassword(String oldPassword, String newPassword,
+			String confirmPassword, String email);
+
 }

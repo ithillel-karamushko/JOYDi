@@ -10,7 +10,7 @@
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<h1>Error. Please try again</h1>
+			<h1>Error. Incorrect mail or password. Please, try again.</h1>
 			<meta http-equiv="Refresh" content="2;url=login.jsp" />
 		</div>
 	</div>
