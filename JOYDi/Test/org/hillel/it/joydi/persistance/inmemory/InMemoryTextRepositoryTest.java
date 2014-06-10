@@ -22,7 +22,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testSaveArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		int i = tr.getArticle().size() + 1;
@@ -34,7 +34,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testModifyArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		int i = tr.getArticle().size() + 1;
 		Article article = new Article(user, "Java", "I like Java.", "Java");
@@ -46,7 +46,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		user.setEnter(true);
@@ -60,7 +60,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testSaveComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		int i = tr.getComment().size() + 1;
@@ -72,7 +72,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testDeleteComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		Comment comment = new Comment(user, "Nice words");
@@ -86,7 +86,7 @@ public class InMemoryTextRepositoryTest {
 
 	@Test
 	public void testModifyComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		Comment comment = new Comment(user, "Nice words");

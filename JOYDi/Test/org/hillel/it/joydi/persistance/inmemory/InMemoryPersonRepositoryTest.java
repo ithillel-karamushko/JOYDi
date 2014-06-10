@@ -28,7 +28,7 @@ public class InMemoryPersonRepositoryTest {
 	@Test
 	public void saveUserTest() throws FileNotFoundException, IOException,
 			ClassNotFoundException {
-		User user = new User("Johny", "e@gmail.com", Countries.Austria,
+		User user = new User("Johny", "e@gmail.com", "Austria",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		int beforeSave = pr.getPersons().size();
 		pr.saveUser(user);
@@ -38,7 +38,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void deleteUserTest() throws FileNotFoundException, IOException {
-		User user = new User ("Johny", "e@gmail.com", Countries.Austria,
+		User user = new User ("Johny", "e@gmail.com", "Austria",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		pr.saveUser(user);
 		int beforeDelete = pr.getPersons().size();
@@ -49,7 +49,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void saveAdminTest() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+		Admin admin = new Admin("Johny", "e@gmail.com", "Austria",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		int beforeSave = pr.getPersons().size();
 		pr.saveAdmin(admin);
@@ -59,7 +59,7 @@ public class InMemoryPersonRepositoryTest {
 
 	@Test
 	public void deleteAdminTest() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+		Admin admin = new Admin("Johny", "e@gmail.com", "Austria",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		pr.saveAdmin(admin);
 		int beforeDelete = pr.getPersons().size();
@@ -73,7 +73,7 @@ public class InMemoryPersonRepositoryTest {
 		long lengthBeforeModify;
 		long lengthAfterModify;
 		File file = new File("d:\\test\\user.dat");
-		User user3 = new User("John", "email", Countries.Ukraine, Gender.MALE,
+		User user3 = new User("John", "email", "Austria", Gender.MALE,
 				1990, Months.March, 7, "asf45");
 		pr.saveUser(user3);
 		lengthBeforeModify = file.length();

@@ -32,10 +32,6 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 
 	}
 
-	// public InMemoryPersonRepository() {
-	// this.persons = new ArrayList<Person>();
-	// }
-
 	public List<Person> getPersons() {
 		return persons;
 	}
@@ -222,4 +218,45 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void changeName(String name, String email) {
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Person user = returnUserByEmail(email);
+		user.setName(name);
+		try {
+			serialize(persons);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void changeCountry(String country, String email) {
+		try {
+			deserialize();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Person user = returnUserByEmail(email);
+		user.setCountry(country);
+		try {
+			serialize(persons);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

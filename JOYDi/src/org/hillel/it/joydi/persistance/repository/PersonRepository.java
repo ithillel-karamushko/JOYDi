@@ -29,4 +29,8 @@ public interface PersonRepository {
 
 	void changePassword(String oldPassword, String newPassword,
 			String confirmPassword, String email);
+
+	void changeName(String name, String email);
+
+	void changeCountry(String country, String email);
 }

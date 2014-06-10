@@ -37,7 +37,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		int i = ds.getTextRepository().getArticle().size() + 1;
@@ -50,7 +50,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteArticle() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		Article article = new Article(user, "Java", "I like Java.", "Java");
@@ -64,7 +64,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveUser() throws FileNotFoundException, IOException {
-		User user = new User("Johny", "e@gmail.com", Countries.Austria,
+		User user = new User("Johny", "e@gmail.com", "Albania",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		int beforeSave = personRepository.getPersons().size();
 		ds.saveUser(user);
@@ -74,7 +74,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+		Admin admin = new Admin("Johny", "e@gmail.com", "Albania",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		int beforeSave = personRepository.getPersons().size();
 		ds.saveAdmin(admin);
@@ -85,7 +85,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteUser() throws FileNotFoundException, IOException {
-		User user = new User("Johny", "e@gmail.com", Countries.Austria,
+		User user = new User("Johny", "e@gmail.com", "Albania",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		ds.saveUser(user);
 		int beforeDelete = personRepository.getPersons().size();
@@ -100,7 +100,7 @@ public class DiaryServiceImplTest {
 		long lengthBeforeModify;
 		long lengthAfterModify;
 		File file = new File("d:\\test\\user.dat");
-		User user = new User("John", "email", Countries.Australia, Gender.MALE,
+		User user = new User("John", "email", "Albania", Gender.MALE,
 				1990, Months.March, 7, "asf45");
 		ds.saveUser(user);
 		lengthBeforeModify = file.length();
@@ -114,7 +114,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteAdmin() throws FileNotFoundException, IOException {
-		Admin admin = new Admin("Johny", "e@gmail.com", Countries.Austria,
+		Admin admin = new Admin("Johny", "e@gmail.com", "Albania",
 				Gender.MALE, 1989, Months.December, 23, "hwebryg");
 		ds.saveAdmin(admin);
 		int beforeDelete = personRepository.getPersons().size();
@@ -126,7 +126,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testSaveComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		Comment comment = new Comment(user, "Nice words");
@@ -139,7 +139,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testDeleteComment() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		user.setEnter(true);
 		Comment comment = new Comment(user, "Nice words");
@@ -153,7 +153,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushLike() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
@@ -163,7 +163,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void testPushDisLike() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		Article article = new Article(user, "Java", "I like Java.", "Java");
 		ds.saveArticle(article);
@@ -173,7 +173,7 @@ public class DiaryServiceImplTest {
 
 	@Test
 	public void findArticles() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		Article article = new Article(user, "Java", "I  don't like Java.",
 				"Java");
@@ -194,7 +194,7 @@ public class DiaryServiceImplTest {
 	}
 
 	public void testEnter() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.exit(user);
 		ds.enter("email2@gmail.com", "rretert");
@@ -203,7 +203,7 @@ public class DiaryServiceImplTest {
 	}
 
 	public void testClose() {
-		User user = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.enter("email2@gmail.com", "rretert");
 		ds.exit(user);

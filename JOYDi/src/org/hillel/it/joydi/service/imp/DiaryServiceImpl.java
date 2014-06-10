@@ -151,7 +151,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	}
 
 	public void modifyUser(User person, String name, String eMail,
-			Countries country, Gender gender, int yearOfBirth,
+			String country, Gender gender, int yearOfBirth,
 			Months monthOfBirth, int dayOfBirth) throws FileNotFoundException,
 			IOException {
 		deleteUser(person);
@@ -330,7 +330,19 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	@Override
 	public void changePassword(String oldPassword, String newPassword,
 			String confirmPassword, String email) {
-		personRepository.changePassword(oldPassword, newPassword, confirmPassword, email);
+		personRepository.changePassword(oldPassword, newPassword,
+				confirmPassword, email);
 	}
 
+	@Override
+	public void changeName(String name, String email) {
+		personRepository.changeName(name, email);
+
+	}
+
+	@Override
+	public void changeCountry(String country, String email) {
+	personRepository.changeCountry(country, email);
+		
+	}
 }

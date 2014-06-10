@@ -16,7 +16,7 @@ abstract public class Person extends BaseEntity {
 	private static final long serialVersionUID = 371819977920264704L;
 	protected String name;
 	protected String eMail;
-	protected Countries country;
+	protected String country;
 	protected Gender gender;
 	protected GregorianCalendar dateOfBirth;
 	protected int age;
@@ -73,13 +73,6 @@ abstract public class Person extends BaseEntity {
 		this.eMail = eMail;
 	}
 
-	public Countries getCountry() {
-		return country;
-	}
-
-	public void setCountry(Countries country) {
-		this.country = country;
-	}
 
 	public int getAge() {
 		age = Age(dateOfBirth);
@@ -106,6 +99,14 @@ abstract public class Person extends BaseEntity {
 		if (value < theLowestLimit || value > theHighestLimit)
 			throw new InputException();
 
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 }

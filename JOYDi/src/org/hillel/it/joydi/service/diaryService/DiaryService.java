@@ -26,7 +26,7 @@ public interface DiaryService {
 
 	boolean saveUser(User person) throws FileNotFoundException, IOException;
 
-	void modifyUser(User person, String name, String eMail, Countries country,
+	void modifyUser(User person, String name, String eMail, String country,
 			Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
 			throws FileNotFoundException, IOException;
 
@@ -67,10 +67,14 @@ public interface DiaryService {
 	public List<Article> topArticles();
 
 	void deleteCommentById(int id);
-	
+
 	String returnPictureById(int id);
 
 	void changePassword(String oldPassword, String newPassword,
 			String confirmPassword, String email);
+
+	void changeName(String name, String email);
+	
+	void changeCountry(String country, String email);
 
 }

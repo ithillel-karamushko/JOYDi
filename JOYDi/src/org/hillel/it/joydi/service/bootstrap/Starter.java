@@ -26,11 +26,11 @@ public class Starter {
 		DiaryServiceImpl ds = new DiaryServiceImpl(textRepository,
 				personRepository, pictureRepository);
 		// TheNewestArticles na = new TheNewestArticles(textRepository);
-		User user1 = new User("John", "email@gmail.com", Countries.Albania,
+		User user1 = new User("John", "email@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user1);
 		ds.enter("email@gmail.com", "rretert");
-		User user2 = new User("Mary", "email2@gmail.com", Countries.Albania,
+		User user2 = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user2);
 		ds.enter("email2@gmail.com", "rretert");

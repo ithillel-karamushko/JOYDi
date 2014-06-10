@@ -92,17 +92,6 @@
 						<li class="title">My Diary</li>
 						<li><a href="UserPage.jsp">Home</a></li>
 					</ul>
-					<ul>
-						<li class="title">Top Articles in JOYDi</li>
-						<li><a href="#4">Java is good</a></li>
-						<li><a href="#5">HTML is not good</a></li>
-					</ul>
-					<ul>
-						<li class="title">Latest Articles in JOYDi</li>
-						<li><a href="#6">HTML makes me cry</a></li>
-						<li><a href="#7">IT Hillel</a></li>
-					</ul>
-
 				</div>
 			</div>
 			<jsp:include page="footer.jsp"></jsp:include>

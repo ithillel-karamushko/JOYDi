@@ -13,7 +13,7 @@ public class User extends Person {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public User(String name, String eMail, Countries country, Gender gender,
+	public User(String name, String eMail, String country, Gender gender,
 			int yearOfBirth, Months monthOfBirth, int dayOfBirth,
 			String password) {
 		this.name = name;

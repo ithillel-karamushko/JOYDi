@@ -13,7 +13,7 @@ public class Admin extends Person {
 	 */
 	private static final long serialVersionUID = -5730593394953354304L;
 
-	public Admin(String name, String eMail, Countries country, Gender gender,
+	public Admin(String name, String eMail, String country, Gender gender,
 			int yearOfBirth, Months monthOfBirth, int dayOfBirth,
 			String password) {
 		this.name = name;

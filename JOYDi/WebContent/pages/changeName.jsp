@@ -31,16 +31,14 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
 </jsp:useBean>
-<title>JOYDi registration</title>
+<title>Changing name</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
 <%
-	String oldPassword = request.getParameter("oldPassword");
-	String newPassword = request.getParameter("newPassword");
-	String confirmPassword = request.getParameter("confirmPassword");
+	String name = request.getParameter("newName");
 	String email = (String) session.getAttribute("email");
-	service.changePassword(oldPassword, newPassword, confirmPassword, email);
-	response.sendRedirect("logout.jsp");
+	service.changeName(name, email); 
+	response.sendRedirect("UserPage.jsp");
 %>
 </head>
 <body>

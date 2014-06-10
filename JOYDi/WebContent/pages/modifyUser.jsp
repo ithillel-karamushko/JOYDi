@@ -54,16 +54,35 @@
 		<div id="log">
 			<form action="changePassword.jsp">
 				<p>
-					<input type="password" name="oldPassword" required size="25" /> <small>Type old password</small>
+					<input type="password" name="oldPassword" required size="25" /> <small>Type
+						old password</small>
 				</p>
 				<p>
-					<input type="password" name="newPassword" required size="25" /> <small>Type new password</small>
+					<input type="password" name="newPassword" required size="25" /> <small>Type
+						new password</small>
 				</p>
 				<p>
-					<input type="password" name="confirmPassword" required size="25" /> <small>Confirm new password</small>
+					<input type="password" name="confirmPassword" required size="25" />
+					<small>Confirm new password</small>
 				</p>
 				<input type="submit" value="Change password" />
 			</form>
+
+			<form action="changeName.jsp">
+				<p>
+					<input type="text" name="newName" required size="25" /> <small>Type
+						new Name</small>
+				</p>
+				<input type="submit" value="Change name" />
+			</form>
+
+			<form action="changeCountry.jsp">
+				<p>
+					<input type="text" name="country" required size="25" /> <small>Type Country</small>
+				</p>
+				<input type="submit" value="Change country" />
+			</form>
+
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />

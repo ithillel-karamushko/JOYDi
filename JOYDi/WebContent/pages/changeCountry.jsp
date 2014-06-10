@@ -1,13 +1,10 @@
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page
-	import="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository"%>
-<%@page import="org.hillel.it.joydi.model.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 <jsp:useBean id="personsList" scope="application"
 	class="java.util.ArrayList">
 </jsp:useBean>
@@ -34,39 +31,17 @@
 	<jsp:setProperty property="textRepository" name="service"
 		value="${text}" />
 </jsp:useBean>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>JOYdi registration</title>
+<title>Changing name</title>
+<link rel="stylesheet" type="text/css" media="screen,projection"
+	href="screen.css" />
 <%
-	String name = request.getParameter("name");
-	String email = request.getParameter("email");
-	String password = request.getParameter("password");
-	int year = Integer.parseInt(request.getParameter("yearOfBirth"));
-	int day = Integer.parseInt(request.getParameter("dayOfBirth"));
 	String country = request.getParameter("country");
-	Months month = Months.valueOf(request.getParameter("monthOfBirth"));
-	Gender gender = Gender.valueOf(request.getParameter("gender"));
-	User user = new User(name, email, country, gender, year, month,
-	day, password);
-
-	boolean reg = service.saveUser(user);
+	String email = (String) session.getAttribute("email");
+	service.changeCountry(country, email); 
+	response.sendRedirect("UserPage.jsp");
 %>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
-	<div id="container">
-		<div id="log">
-			<%
-				if (!reg) {
-						out.print("Such email already exists, please type other mail!");
-					} else {
-						out.print("Congratulations! You are registered on JOYdi! Welcome, "
-								+ user.getName());
-					}
-			%>! Now you will be redirected to login page!
-			<meta http-equiv="Refresh" content="3;url=login.jsp" />
 
-		</div>
-	</div>
-	<jsp:include page="footer.jsp" />
 </body>
 </html>

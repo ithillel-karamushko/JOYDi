@@ -11,12 +11,12 @@ public class UserTest {
 	@Test
 	public void testUser() {
 
-		User u = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect name", "Yulia", u.getName());
 		assertEquals("Incorrect email", "yulia@google.com", u.geteMail());
-		assertEquals("Incorrect country", Countries.Ukraine, u.getCountry());
+		assertEquals("Incorrect country", "Ukraine", u.getCountry());
 		assertEquals("Incorrect gender", Gender.FEMALE, u.getGender());
 		assertEquals("Incorrect year", 1990,
 				u.getDateOfBirth().get(Calendar.YEAR));
@@ -28,9 +28,9 @@ public class UserTest {
 	@Test
 	public void testGetGender() {
 
-		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.MALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect get gender", Gender.FEMALE, u1.getGender());
@@ -40,7 +40,7 @@ public class UserTest {
 
 	@Test
 	public void testSetGender() {
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 		u2.setGender(Gender.FEMALE);
 		assertEquals("Incorrect set gender", Gender.FEMALE, u2.getGender());
@@ -49,7 +49,7 @@ public class UserTest {
 
 	@Test
 	public void testGetName() {
-		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect get name", "Yulia", u1.getName());
@@ -58,7 +58,7 @@ public class UserTest {
 
 	@Test
 	public void testSetName() {
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 		u2.setName("Yulia");
 
@@ -67,7 +67,7 @@ public class UserTest {
 
 	@Test
 	public void testGeteMail() {
-		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect get email", "yulia@google.com", u1.geteMail());
@@ -76,7 +76,7 @@ public class UserTest {
 
 	@Test
 	public void testSeteMail() {
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 		u2.seteMail("yulia@google.com");
 
@@ -85,7 +85,7 @@ public class UserTest {
 
 	@Test
 	public void testGetCountry() {
-		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect get country", Countries.Ukraine,
@@ -94,9 +94,9 @@ public class UserTest {
 
 	@Test
 	public void testSetCountry() {
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com","Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
-		u2.setCountry(Countries.Ukraine);
+		u2.setCountry("Ukraine");
 
 		assertEquals("Incorrect set country", Countries.Ukraine,
 				u2.getCountry());
@@ -105,7 +105,7 @@ public class UserTest {
 
 	@Test
 	public void testGetDateOfBirth() {
-		User u1 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
 		assertEquals("Incorrect year", 1990,
@@ -117,7 +117,7 @@ public class UserTest {
 
 	@Test
 	public void testSetDateOfBirth() {
-		User u2 = new User("Yulia", "yulia@google.com", Countries.Ukraine,
+		User u2 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 		u2.setDateOfBirth(1995, Months.March, 15);
 

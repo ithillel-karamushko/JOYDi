@@ -46,13 +46,7 @@
 					<input type="email" name="email" required size="25" /> <small>Email</small>
 				</p>
 				<p>
-					<select name="country" required size="1">
-						<option value="Ukraine">Ukraine</option>
-						<option value="Germany">Germany</option>
-						<option value="Russia">Russia</option>
-						<option value="England">England</option>
-						<option value="China">China</option>
-					</select> <small>Country</small>
+					<input type="text" name="country" required size="25" /> <small>Country</small>
 				</p>
 				<p>
 					<input type="radio" name="gender" value="MALE" /> <small>MALE</small>

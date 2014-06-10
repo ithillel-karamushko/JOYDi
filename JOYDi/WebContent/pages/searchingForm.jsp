@@ -21,12 +21,11 @@
 				<p>
 					Tags: <input type="text" name="tags">
 				</p>
-				<input type="submit" value="Find">
-				<a href="registrationForm.jsp"></input>
+				<input type="submit" value="Find"> <a
+					href="registrationForm.jsp"></input>
 			</form>
 		</div>
 	</div>
-
 	<jsp:include page="footer.jsp" />
 </body>
 </html>
