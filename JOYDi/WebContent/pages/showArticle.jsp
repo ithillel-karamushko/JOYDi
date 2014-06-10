@@ -1,3 +1,4 @@
+<%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hillel.it.joydi.model.entities.Comment"%>
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
@@ -38,6 +39,8 @@
 	int id = Integer.valueOf((String) request.getParameter("id"));
 	Article article = service.returnArticleById(id);
 	String url = article.getPicture().getFileUrl();
+	String email = (String) session.getAttribute("email");
+	Person user = service.returnUserByEmail(email);
 %>
 </head>
 <body>
@@ -57,8 +60,6 @@
 							<p><%=article.getThemeOfTheArticle()%></p>
 							<hr>
 							<p><%=article.getTextOfTheArticle()%></p>
-							<p>
-							<p><%=article.getPicture().getFileUrl()%></p>
 							<p>
 							<hr>
 						<dd class="summary">
@@ -87,14 +88,30 @@
 								out.print(c.getCommentText());
 											int kill = c.getId();
 							%>
-							<dd class="summary">
-								<a
-									href="actions.jsp?action=deleteComment&commentId=<%=kill%>&id=<%=id%>">Delete
-									comment</a>
-							</dd>
 						</blockquote>
 						<%
+							if (user.geteMail().equals(c.getAuthor().geteMail())
+												|| user.geteMail().equals(
+														article.getAuthor().geteMail())) {
+						%>
+						<dd class="summary">
+							Posted by <a
+								href="otherUserProfile.jsp?email=<%=c.getAuthor().geteMail()%>"><%=c.getAuthor().getName()%></a>
+							| <a
+								href="actions.jsp?action=deleteComment&commentId=
+									<%=kill%>&id=<%=id%>">Delete
+								comment</a>
+						</dd>
+						<%
+							} else {
+						%>
+						<dd class="summary">
+							Posted by <a
+								href="otherUserProfile.jsp?email=<%=c.getAuthor().geteMail()%>"><%=c.getAuthor().getName()%></a>
+						</dd>
+						<%
 							}
+									}
 								}
 							}
 						%>

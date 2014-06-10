@@ -39,11 +39,12 @@
 	String commentText = (String) request.getParameter("commentText");
 	Comment comment = new Comment(user, commentText, articleId);
 	service.saveComment(comment);
+	String send = "showArticle.jsp?id="+articleId;
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="myArticles.jsp"></jsp:forward>
+	<jsp:forward page="<%=send%>"></jsp:forward>
 </body>
 </html>

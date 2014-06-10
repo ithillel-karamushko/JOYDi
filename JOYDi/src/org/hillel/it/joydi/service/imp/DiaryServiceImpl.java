@@ -342,7 +342,13 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public void changeCountry(String country, String email) {
-	personRepository.changeCountry(country, email);
-		
+		personRepository.changeCountry(country, email);
+
+	}
+
+	@Override
+	public List <Article> findUserArticles(String email) {
+		return textRepository.findUserArticles(email);
+
 	}
 }

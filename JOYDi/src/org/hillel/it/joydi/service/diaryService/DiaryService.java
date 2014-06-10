@@ -77,4 +77,6 @@ public interface DiaryService {
 	
 	void changeCountry(String country, String email);
 
+	List<Article> findUserArticles(String email);
+
 }

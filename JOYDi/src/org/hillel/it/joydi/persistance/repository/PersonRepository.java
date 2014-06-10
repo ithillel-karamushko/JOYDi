@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.hillel.it.joydi.model.entities.Admin;
+import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Person;
 import org.hillel.it.joydi.model.entities.User;
 
@@ -33,4 +34,5 @@ public interface PersonRepository {
 	void changeName(String name, String email);
 
 	void changeCountry(String country, String email);
+
 }

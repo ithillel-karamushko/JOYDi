@@ -161,4 +161,15 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		}
 		article.remove(delete);
 	}
+
+	@Override
+	public List<Article> findUserArticles(String email) {
+		List<Article> result = new ArrayList<>();
+		for (Article art : article){
+			if (art.getAuthor().geteMail().equals(email)){
+				result.add(art);
+			}
+		}
+		return result;
+	}
 }

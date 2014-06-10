@@ -32,4 +32,6 @@ public interface TextRepository {
 
 	public void deleteCommentById(int id);
 
+	public List<Article> findUserArticles(String email);
+
 }
