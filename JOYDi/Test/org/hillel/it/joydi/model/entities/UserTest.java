@@ -88,7 +88,7 @@ public class UserTest {
 		User u1 = new User("Yulia", "yulia@google.com", "Ukraine",
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 
-		assertEquals("Incorrect get country", Countries.Ukraine,
+		assertEquals("Incorrect get country", "Ukraine",
 				u1.getCountry());
 	}
 
@@ -98,7 +98,7 @@ public class UserTest {
 				Gender.FEMALE, 1990, Months.March, 7, "asf45");
 		u2.setCountry("Ukraine");
 
-		assertEquals("Incorrect set country", Countries.Ukraine,
+		assertEquals("Incorrect set country", "Ukraine",
 				u2.getCountry());
 
 	}

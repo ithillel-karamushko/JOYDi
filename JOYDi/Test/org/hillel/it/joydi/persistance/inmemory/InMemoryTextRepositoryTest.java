@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
-import org.hillel.it.joydi.model.entities.Countries;
 import org.hillel.it.joydi.model.entities.Gender;
 import org.hillel.it.joydi.model.entities.Months;
 import org.hillel.it.joydi.model.entities.User;
