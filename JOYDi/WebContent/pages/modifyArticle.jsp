@@ -37,7 +37,6 @@
 	String theme = article.getThemeOfTheArticle();
 	String articleText = article.getTextOfTheArticle();
 	String tag = article.getTags();
-	service.deleteArticleById(id);
 %>
 <title>JOYDi</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
@@ -47,7 +46,7 @@
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<form action="saveArticle.jsp" method="post">
+			<form action="modifyArticleProcess.jsp?id=<%=id%>" method="post">
 				<p>
 					Theme of the article: <br> <input type="article" name="theme" value="<%=theme%>">
 				</p>
@@ -58,7 +57,7 @@
 					Text of the article:<br>
 					<textarea name="textArticle" rows="10" cols="50"><%=articleText %></textarea>
 				</p>
-				<input type="submit" value="Save article">
+				<input type="submit" value="Save modified article">
 				</input>
 			</form>
 		</div>

@@ -32,18 +32,6 @@ public class InMemoryTextRepositoryTest {
 	}
 
 	@Test
-	public void testModifyArticle() {
-		User user = new User("Mary", "email2@gmail.com", "Albania",
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		int i = tr.getArticle().size() + 1;
-		Article article = new Article(user, "Java", "I like Java.", "Java");
-		tr.saveArticle(article);
-		tr.modifyArticle(article);
-		assertEquals("Incorrect value", i, tr.getArticle().size());
-		assertEquals("Incorrect value", true, tr.getArticle().contains(article));
-	}
-
-	@Test
 	public void testDeleteArticle() {
 		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");

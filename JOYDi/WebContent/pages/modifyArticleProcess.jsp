@@ -1,12 +1,13 @@
 <%@page
 	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
-<%@page import="java.util.*"%>
-<%@page import="org.hillel.it.joydi.model.entities.*"%>
+<%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
 <%
 	ReUsableConnectionPool rc = new ReUsableConnectionPool();
 %>
@@ -43,25 +44,16 @@
 		value="${picture}" />
 </jsp:useBean>
 <%
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-	String theme = (String) request.getParameter("theme");
-	String textArticle = (String) request.getParameter("textArticle");
-	String tags = (String) request.getParameter("tags");
-	String url = (String) request.getParameter("pics");
-	if (url.equals("")) {
-		url = "images/sample.png";
-	}
-	Picture pic = new Picture(url);
-	Article article = new Article(user, theme, textArticle, tags, pic);
-	service.saveArticle(article);
-	service.savePicture(pic);
+	int id = Integer.valueOf((String) request.getParameter("id"));
+	String theme = request.getParameter("theme");
+	String articleText = request.getParameter("textArticle");
+	String tag = request.getParameter("tags");
+	service.modifyArticle(id, theme, articleText, tag);
+	String redirect = "showArticle.jsp?id="+id;
+	response.sendRedirect(redirect);
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="myArticles.jsp"></jsp:forward>
 
 </body>
 </html>

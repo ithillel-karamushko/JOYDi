@@ -221,9 +221,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @param article
 	 *            is a reference to Article Object
 	 */
-	public void pushLike(Article article) {
-		article.setLike(article.getLike() + 1);
-
+	public void pushLike(int id) {
+		textRepository.pushLike(id);
 	}
 
 	/**
@@ -232,8 +231,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @param article
 	 *            is a reference to Article Object
 	 */
-	public void pushDisLike(Article article) {
-		article.setDisLike(article.getDisLike() + 1);
+	public void pushDisLike(int id) {
+		textRepository.pushDisLike(id);
 	}
 
 	/**
@@ -288,14 +287,7 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	@Override
 	public Article returnArticleById(int id) {
-		Article result = null;
-		List<Article> allArticles = textRepository.getArticle();
-		for (Article article : allArticles) {
-			if (article.getId() == id) {
-				result = article;
-			}
-		}
-		return result;
+		return textRepository.returnArticleById(id);
 	}
 
 	@Override
@@ -346,8 +338,14 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	}
 
 	@Override
-	public List <Article> findUserArticles(String email) {
+	public List<Article> findUserArticles(String email) {
 		return textRepository.findUserArticles(email);
 
+	}
+
+	@Override
+	public void modifyArticle(int id, String theme, String text, String tag) {
+		textRepository.modifyArticle(id, theme, text, tag);
+		
 	}
 }

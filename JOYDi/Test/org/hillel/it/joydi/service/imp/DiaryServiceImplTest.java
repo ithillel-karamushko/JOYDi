@@ -151,26 +151,6 @@ public class DiaryServiceImplTest {
 	}
 
 	@Test
-	public void testPushLike() {
-		User user = new User("Mary", "email2@gmail.com", "Albania",
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		Article article = new Article(user, "Java", "I like Java.", "Java");
-		ds.saveArticle(article);
-		ds.pushLike(article);
-		assertEquals("Incorrect", 1, article.getLike());
-	}
-
-	@Test
-	public void testPushDisLike() {
-		User user = new User("Mary", "email2@gmail.com", "Albania",
-				Gender.MALE, 2004, Months.February, 28, "rretert");
-		Article article = new Article(user, "Java", "I like Java.", "Java");
-		ds.saveArticle(article);
-		ds.pushDisLike(article);
-		assertEquals("Incorrect", 1, article.getDisLike());
-	}
-
-	@Test
 	public void findArticles() {
 		User user = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");

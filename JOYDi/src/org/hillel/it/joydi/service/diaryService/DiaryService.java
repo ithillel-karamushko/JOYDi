@@ -39,9 +39,9 @@ public interface DiaryService {
 
 	void deleteComment(Comment comment);
 
-	void pushLike(Article article);
+	void pushLike(int id);
 
-	void pushDisLike(Article article);
+	void pushDisLike(int id);
 
 	List<Article> findArticles(ArticleCriteria criteria);
 
@@ -73,9 +73,11 @@ public interface DiaryService {
 			String confirmPassword, String email);
 
 	void changeName(String name, String email);
-	
+
 	void changeCountry(String country, String email);
 
 	List<Article> findUserArticles(String email);
+
+	void modifyArticle(int id, String theme, String text, String tag);
 
 }

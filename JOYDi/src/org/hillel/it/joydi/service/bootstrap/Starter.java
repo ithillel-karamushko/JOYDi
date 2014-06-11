@@ -64,20 +64,6 @@ public class Starter {
 		ds.saveArticle(article11);
 		ds.saveArticle(article12);
 
-		ds.pushLike(article7);
-		ds.pushLike(article7);
-		ds.pushLike(article3);
-		ds.pushLike(article12);
-		ds.pushLike(article12);
-		ds.pushLike(article12);
-
-		Article article13 = new Article(user2, "Last Article", "Java rules",
-				"Java, IT");
-		ds.saveArticle(article13);
-		ds.pushLike(article13);
-		ds.pushLike(article13);
-		ds.pushLike(article13);
-		ds.pushLike(article13);
 
 	}
 }

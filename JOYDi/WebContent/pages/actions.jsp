@@ -39,12 +39,12 @@
 		response.sendRedirect("myArticles.jsp");
 	}
 	if (action.equals("like")) {
-		service.pushLike(a);
+		service.pushLike(id);
 		String redirect = "showArticle.jsp?id=" + id;
 		response.sendRedirect(redirect);
 	}
 	if (action.equals("dislike")) {
-		service.pushDisLike(a);
+		service.pushDisLike(id);
 		String redirect = "showArticle.jsp?id=" + id;
 		response.sendRedirect(redirect);
 	}

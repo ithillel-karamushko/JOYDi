@@ -10,7 +10,7 @@ import org.hillel.it.joydi.model.entities.Comment;
 public interface TextRepository {
 	public void saveArticle(Article article);
 
-	void modifyArticle(Article article);
+	void modifyArticle(int id, String theme, String text, String tag);
 
 	public void deleteArticle(Article article);
 
@@ -24,14 +24,20 @@ public interface TextRepository {
 
 	List<Comment> getComment();
 
-	public void deleteArticleById(int id);
-	
-	public List<Article> newArticles();
-	
-	public List<Article> topArticles();
+	void deleteArticleById(int id);
 
-	public void deleteCommentById(int id);
+	List<Article> newArticles();
 
-	public List<Article> findUserArticles(String email);
+	List<Article> topArticles();
+
+	void deleteCommentById(int id);
+
+	List<Article> findUserArticles(String email);
+
+	Article returnArticleById(int id);
+
+	void pushLike(int id);
+
+	void pushDisLike(int id);
 
 }

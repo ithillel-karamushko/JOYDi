@@ -50,21 +50,20 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>Article:</dt>
+						<dt><%=article.getThemeOfTheArticle()%></dt>
 						<dd>
 							<p class="img">
 								<img src="<%=url%>" width="250px" height="171px"
 									alt="Sample Picture Here" />
 
 							</p>
-							<p><%=article.getThemeOfTheArticle()%></p>
-							<hr>
 							<p><%=article.getTextOfTheArticle()%></p>
 							<p>
 							<hr>
 						<dd class="summary">
-							Posted By:
-							<%=article.getAuthor().getName()%></a> on
+							Posted By: <a
+								href="otherUserProfile.jsp?email=<%=article.getAuthor().geteMail()%>"><%=article.getAuthor().getName()%></a>
+							on
 							<%=article.getDate()%><br><%=article.getLike()%>
 							Likes |
 							<%=article.getDisLike()%>
