@@ -80,4 +80,6 @@ public interface DiaryService {
 
 	void modifyArticle(int id, String theme, String text, String tag);
 
+	void deletePictureById(int id);
+
 }

@@ -15,9 +15,6 @@ import org.hillel.it.joydi.persistance.repository.PictureRepository;
 public class InMemoryPictureRepository implements PictureRepository,
 		Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7778698168546753795L;
 	private ReUsableConnectionPool rc;
 	private Connection connection;
@@ -89,7 +86,8 @@ public class InMemoryPictureRepository implements PictureRepository,
 	@Override
 	public void savePicture(Picture picture) throws SQLException {
 		createDatabase();
-		picture.setId(idCount++);	
+		picture.setId(idCount);
+		idCount++;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -162,5 +160,20 @@ public class InMemoryPictureRepository implements PictureRepository,
 			ex.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void deletePictureById(int id) {
+		try (Connection connection = rc.getConnection()) {
+			try (PreparedStatement st = connection
+					.prepareStatement("DELETE FROM Pictures WHERE id = ?;")) {
+				st.setInt(1, id);
+				st.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }

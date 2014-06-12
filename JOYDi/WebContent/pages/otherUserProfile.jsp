@@ -9,40 +9,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>JOYDi</title>
-<%
-	ReUsableConnectionPool rc = new ReUsableConnectionPool();
-%>
-<jsp:useBean id="personsList" scope="application"
-	class="java.util.ArrayList">
-</jsp:useBean>
-<jsp:useBean id="person" scope="application"
-	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPersonRepository">
-	<jsp:setProperty property="persons" name="person"
-		value="${personsList}" />
-</jsp:useBean>
-<jsp:useBean id="articlesList" scope="application"
-	class="java.util.ArrayList">
-</jsp:useBean>
-<jsp:useBean id="commentsList" scope="application"
-	class="java.util.ArrayList">
-</jsp:useBean>
-<jsp:useBean id="text" scope="application"
-	class="org.hillel.it.joydi.persistance.inmemory.InMemoryTextRepository">
-	<jsp:setProperty property="article" name="text" value="${articlesList}" />
-	<jsp:setProperty property="comment" name="text" value="${commentsList}" />
-</jsp:useBean>
-<jsp:useBean id="picture" scope="application"
-	class="org.hillel.it.joydi.persistance.inmemory.InMemoryPictureRepository">
-	<jsp:setProperty property="rc" name="picture" value="<%=rc%>" />
-</jsp:useBean>
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
-	<jsp:setProperty property="personRepository" name="service"
-		value="${person}" />
-	<jsp:setProperty property="textRepository" name="service"
-		value="${text}" />
-	<jsp:setProperty property="pictureRepository" name="service"
-		value="${picture}" />
 </jsp:useBean>
 <%
 	String email = (String) request.getParameter("email");
@@ -101,8 +69,12 @@
 			<div id="sidebar-wrapper">
 				<div id="sidebar">
 					<ul>
-						<li class="title">My Diary</li>
-						<li><a href="UserPage.jsp">Home</a></li>
+						<li class="title">Actions</li>
+						<li><a href="myArticles.jsp">My Articles</a></li>
+						<li><a href="createArticle.jsp">Add new Article</a></li>
+						<li><a href="searchingForm.jsp">Find Articles</a></li>
+						<li><a href="modifyUser.jsp">Account settings</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
 				</div>
 			</div>

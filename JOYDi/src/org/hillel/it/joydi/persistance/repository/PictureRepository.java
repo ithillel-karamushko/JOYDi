@@ -15,4 +15,6 @@ public interface PictureRepository {
 
 	void getPicture();
 
+	void deletePictureById(int id);
+
 }

@@ -70,9 +70,9 @@
 							Dislikes <br> <a
 								href="actions.jsp?action=like&id=<%=id%>&userEmail=<%=email%>">I
 								like this article</a> | <a
-								href="actions.jsp?action=dislike&id=<%=id%>&userEmail=<%=email%>">I don`t like
-								this article</a> | <a href="actions.jsp?action=comment&id=<%=id%>">Post
-								a comment</a>
+								href="actions.jsp?action=dislike&id=<%=id%>&userEmail=<%=email%>">I
+								don`t like this article</a> | <a
+								href="actions.jsp?action=comment&id=<%=id%>">Post a comment</a>
 						</dd>
 						<dt>Comments:</dt>
 						<%
@@ -121,8 +121,12 @@
 			<div id="sidebar-wrapper">
 				<div id="sidebar">
 					<ul>
-						<li class="title">Home Page</li>
-						<li><a href="UserPage.jsp">Home</a></li>
+						<li class="title">Actions</li>
+						<li><a href="myArticles.jsp">My Articles</a></li>
+						<li><a href="createArticle.jsp">Add new Article</a></li>
+						<li><a href="searchingForm.jsp">Find Articles</a></li>
+						<li><a href="modifyUser.jsp">Account settings</a></li>
+						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
 				</div>
 			</div>

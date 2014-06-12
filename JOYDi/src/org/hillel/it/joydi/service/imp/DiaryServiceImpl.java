@@ -348,4 +348,10 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 		textRepository.modifyArticle(id, theme, text, tag);
 		
 	}
+
+	@Override
+	public void deletePictureById(int id) {
+		pictureRepository.deletePictureById(id);
+		
+	}
 }
