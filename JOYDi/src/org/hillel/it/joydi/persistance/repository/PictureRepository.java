@@ -7,10 +7,12 @@ import org.hillel.it.joydi.model.entities.Picture;
 public interface PictureRepository {
 	void savePicture(Picture picture) throws SQLException;
 
+	String returnPictureById(int id);
+	
+	void createDatabase() throws SQLException;
+
 	void deletePicture(Picture picture);
 
 	void getPicture();
-
-	String returnPictureById(int id);
 
 }

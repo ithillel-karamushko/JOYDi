@@ -70,12 +70,29 @@ public class InMemoryPictureRepository implements PictureRepository,
 	}
 
 	@Override
+	public void createDatabase() throws SQLException {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			try (Connection connection = rc.getConnection()) {
+				try (Statement st = connection.createStatement()) {
+					st.executeUpdate("CREATE DATABASE IF NOT EXISTS JoydiPictures;");
+					st.executeUpdate("USE JoydiPictures;");
+					st.executeUpdate("CREATE TABLE IF NOT EXISTS Pictures (id integer not null auto_increment,"
+							+ " creatingDate Date, fileUrl varchar(256), primary key(id));");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void savePicture(Picture picture) throws SQLException {
-		picture.setId(idCount++);
+		createDatabase();
+		picture.setId(idCount++);	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try (Connection connection = rc.getConnection()) {
