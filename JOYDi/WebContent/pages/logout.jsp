@@ -11,7 +11,7 @@
 	<div id="container">
 		<div id="log">
 			<%
-				session.removeAttribute("email");
+				session.removeAttribute("email"); 
 				session.removeAttribute("password");
 				session.invalidate();
 			%>

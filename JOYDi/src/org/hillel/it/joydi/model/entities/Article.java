@@ -1,12 +1,14 @@
 package org.hillel.it.joydi.model.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hillel.it.joydi.model.search.ArticleCriteria;
 
 /**
  * 
- * @author Îëÿ
+ * @author JOYDi
  * 
  */
 
@@ -24,10 +26,12 @@ public class Article extends TextEntity {
 	private int like;
 	private int disLike;
 	private Picture picture;
+	private List<String> whoLike;
+	private List<String> whoDoesntLike;
 
 	/**
-	 * Kit of the class Article set in field date current date
-	 * and time and in fields like and disLike initial values = 0
+	 * Kit of the class Article set in field date current date and time and in
+	 * fields like and disLike initial values = 0
 	 * 
 	 * @param authorName
 	 * @param themeOfTheArticle
@@ -45,9 +49,11 @@ public class Article extends TextEntity {
 		this.tags = tags;
 		ratingOfTheArticle = 0;
 		this.picture = picture;
+		whoLike = new ArrayList<String>();
+		whoDoesntLike = new ArrayList<String>();
 
 	}
-	
+
 	public Article(Person author, String themeOfTheArticle,
 			String textOfTheArticle, String tags) {
 		date = new Date();
@@ -157,6 +163,42 @@ public class Article extends TextEntity {
 			match = false;
 		}
 		return match;
+	}
+
+	public List<String> getWhoLike() {
+		return whoLike;
+	}
+
+	public void setWhoLike(List<String> whoLiked) {
+		this.whoLike = whoLiked;
+	}
+
+	public List<String> getWhoDoesntLike() {
+		return whoDoesntLike;
+	}
+
+	public void setWhoDoesntLike(List<String> whoDoesntLike) {
+		this.whoDoesntLike = whoDoesntLike;
+	}
+
+	public boolean isInWhoLike(String email) {
+		boolean result = false;
+		if (whoLike.contains(email)) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean isInWhoDoesntLike(String email) {
+		boolean result = false;
+		if (whoDoesntLike.contains(email)) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
 	}
 
 }

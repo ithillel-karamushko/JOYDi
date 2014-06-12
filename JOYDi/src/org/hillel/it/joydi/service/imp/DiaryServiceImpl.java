@@ -221,8 +221,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @param article
 	 *            is a reference to Article Object
 	 */
-	public void pushLike(int id) {
-		textRepository.pushLike(id);
+	public void pushLike(int id, String email) {
+		textRepository.pushLike(id, email);
 	}
 
 	/**
@@ -231,8 +231,8 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 	 * @param article
 	 *            is a reference to Article Object
 	 */
-	public void pushDisLike(int id) {
-		textRepository.pushDisLike(id);
+	public void pushDisLike(int id, String email) {
+		textRepository.pushDisLike(id, email);
 	}
 
 	/**

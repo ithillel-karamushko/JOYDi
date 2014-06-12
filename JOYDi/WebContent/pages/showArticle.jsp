@@ -67,9 +67,10 @@
 							<%=article.getDate()%><br><%=article.getLike()%>
 							Likes |
 							<%=article.getDisLike()%>
-							Dislikes <br> <a href="actions.jsp?action=like&id=<%=id%>">I
+							Dislikes <br> <a
+								href="actions.jsp?action=like&id=<%=id%>&userEmail=<%=email%>">I
 								like this article</a> | <a
-								href="actions.jsp?action=dislike&id=<%=id%>">I don`t like
+								href="actions.jsp?action=dislike&id=<%=id%>&userEmail=<%=email%>">I don`t like
 								this article</a> | <a href="actions.jsp?action=comment&id=<%=id%>">Post
 								a comment</a>
 						</dd>

@@ -52,6 +52,7 @@
 	if (url.equals("")) {
 		url = "images/sample.png";
 	}
+
 	Picture pic = new Picture(url);
 	Article article = new Article(user, theme, textArticle, tags, pic);
 	service.saveArticle(article);

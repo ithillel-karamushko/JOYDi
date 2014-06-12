@@ -39,9 +39,9 @@ public interface DiaryService {
 
 	void deleteComment(Comment comment);
 
-	void pushLike(int id);
+	void pushLike(int id, String email);
 
-	void pushDisLike(int id);
+	void pushDisLike(int id, String email);
 
 	List<Article> findArticles(ArticleCriteria criteria);
 

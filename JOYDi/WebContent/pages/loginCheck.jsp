@@ -1,3 +1,4 @@
+<%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@page
 	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

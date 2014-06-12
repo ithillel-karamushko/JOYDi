@@ -291,7 +291,7 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 	}
 
 	@Override
-	public void pushLike(int id) {
+	public void pushLike(int id, String email) {
 		try {
 			deserialize();
 		} catch (FileNotFoundException e) {
@@ -300,7 +300,13 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 			e.printStackTrace();
 		}
 		Article art = returnArticleById(id);
-		art.setLike(art.getLike() + 1);
+		if (!art.isInWhoLike(email)) {
+			art.setLike(art.getLike() + 1);
+			art.getWhoLike().add(email);
+		} else {
+			art.setLike(art.getLike() - 1);
+			art.getWhoLike().remove(email);
+		}
 		try {
 			serialize(article);
 		} catch (FileNotFoundException e) {
@@ -311,7 +317,7 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 	}
 
 	@Override
-	public void pushDisLike(int id) {
+	public void pushDisLike(int id, String email) {
 		try {
 			deserialize();
 		} catch (FileNotFoundException e) {
@@ -320,7 +326,13 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 			e.printStackTrace();
 		}
 		Article art = returnArticleById(id);
-		art.setDisLike(art.getDisLike() + 1);
+		if (!art.isInWhoDoesntLike(email)) {
+			art.setDisLike(art.getDisLike() + 1);
+			art.getWhoDoesntLike().add(email);
+		} else {
+			art.setDisLike(art.getDisLike() - 1);
+			art.getWhoDoesntLike().remove(email);
+		}
 		try {
 			serialize(article);
 		} catch (FileNotFoundException e) {

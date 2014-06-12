@@ -1,3 +1,4 @@
+<%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -32,6 +33,7 @@
 </jsp:useBean>
 <%
 	int id = Integer.valueOf((String) request.getParameter("id"));
+	String email = (String) session.getAttribute("email");
 	Article a = service.returnArticleById(id);
 	String action = (String) request.getParameter("action");
 	if (action.equals("delete")) {
@@ -39,12 +41,12 @@
 		response.sendRedirect("myArticles.jsp");
 	}
 	if (action.equals("like")) {
-		service.pushLike(id);
+		service.pushLike(id, email);  
 		String redirect = "showArticle.jsp?id=" + id;
 		response.sendRedirect(redirect);
 	}
 	if (action.equals("dislike")) {
-		service.pushDisLike(id);
+		service.pushDisLike(id, email);
 		String redirect = "showArticle.jsp?id=" + id;
 		response.sendRedirect(redirect);
 	}

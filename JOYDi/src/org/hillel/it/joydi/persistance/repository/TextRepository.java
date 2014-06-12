@@ -6,6 +6,7 @@ import java.util.List;
 import org.hillel.it.joydi.concurrency.comparator.MyComparatorForDate;
 import org.hillel.it.joydi.model.entities.Article;
 import org.hillel.it.joydi.model.entities.Comment;
+import org.hillel.it.joydi.model.entities.Person;
 
 public interface TextRepository {
 	public void saveArticle(Article article);
@@ -36,8 +37,8 @@ public interface TextRepository {
 
 	Article returnArticleById(int id);
 
-	void pushLike(int id);
+	void pushLike(int id, String email);
 
-	void pushDisLike(int id);
+	void pushDisLike(int id, String email);
 
 }
