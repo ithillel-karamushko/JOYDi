@@ -3,6 +3,8 @@
 	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,16 +47,16 @@
 </jsp:useBean>
 </head>
 <body>
-	<%
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-
-		if (service.enter(email, password) != null) {
-			session.setAttribute("email", email);
-			response.sendRedirect("UserPage.jsp");
-		} else {
-			response.sendRedirect("error.jsp");
-		}
-	%>
+	<c:set var="email" value="${param.email}"></c:set>
+	<c:set var="password" value="${param.password}"></c:set>
+	<c:choose>
+		<c:when test="${service.enter(email,password)!=null}">
+			<c:set var="email" value="${param.email}" scope="session"></c:set>
+			<c:redirect url="UserPage.jsp"></c:redirect>
+		</c:when>
+		<c:otherwise>
+			<c:redirect url="error.jsp"></c:redirect>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
