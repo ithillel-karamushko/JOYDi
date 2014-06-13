@@ -4,6 +4,7 @@
 	import="org.hillel.it.joydi.connection.pool.ReUsableConnectionPool"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,15 +13,13 @@
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 </jsp:useBean>
-<%
-	String email = (String) request.getParameter("email");
-	String emailSession = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-	List<Article> result = service.findUserArticles(email);
-	if (email.equals(emailSession)) {
-		response.sendRedirect("myArticles.jsp");
-	}
-%>
+<c:set var="emailSession" value="${sessionScope.email}"></c:set>
+<c:set var="email" value="${param.email}"></c:set>
+<c:set var="user" value="${service.returnUserByEmail(email)}"></c:set>
+<c:set var="result" value="${service.findUserArticles(email)}"></c:set>
+<c:if test="${email==emailSession}">
+	<c:redirect url="myArticles.jsp"></c:redirect>
+</c:if>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -29,8 +28,7 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt><%=user.getName()%>
-							Personal information and Articles :
+						<dt>${user.name}PersonalinformationandArticles:
 						<dd>
 							<p class="img">
 								<img src="images/avatar.png" width="250px" height="171px"
@@ -38,32 +36,28 @@
 							</p>
 						</dd>
 					</dl>
-					Name:
-					<%=user.getName()%>
+					Name: ${user.name}
 					<hr>
-					Ages:
-					<%=user.getAge()%><hr>
-					Country:
-					<%=user.getCountry()%><hr>
-					Email:
-					<%=user.geteMail()%><hr>
-					Gender:
-					<%=user.getGender()%><hr>
-					<dd>
-						<%
-							if (result.size() == 0) {
-								out.print("This user doesnt have any articles");
-							} else {
-								for (Article a : result) {
-						%>
-						<div id="sidebar">
-							<li><a href="showArticle.jsp?id=<%=a.getId()%>"><%=a.getThemeOfTheArticle()%></a></li>
-						</div>
-						<%
-							}
-							}
-						%>
-						</dl>
+					Ages: ${user.age}
+					<hr>
+					Country: ${user.country}
+					<hr>
+					Email: ${user.eMail}
+					<hr>
+					Gender: ${user.gender}
+					<hr>
+					<c:choose>
+						<c:when test="${result.size()==0}">
+							<c:out value="This user doesnt have any articles"></c:out>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${result}" var="art">
+								<div id="sidebar">
+									<li><a href="showArticle.jsp?id=${art.id}">${art.themeOfTheArticle}</a></li>
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 			<div id="sidebar-wrapper">
