@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,12 +11,9 @@
 </jsp:useBean>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
-<%
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-	List<Article> list = service.getTextRepository().getArticle();
-%>
+<c:set var="email" value="${sessionScope.email}"></c:set>
+<c:set var="user" value="${service.returnUserByEmail(email)}"></c:set>
+<c:set var="list" value="${service.getTextRepository().getArticle()}"></c:set>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -28,29 +26,27 @@
 						<dt>Your Articles:</dt>
 						<hr>
 						<dd>
-							<%
-								if (list.size() == 0) {
-									out.print("You doesnt have any articles");
-								} else {
-									for (Article article : list) {
-										if (article.getAuthor().geteMail().equals(email)) {
-											String theme = article.getThemeOfTheArticle();
-											int id = article.getId();
-							%>
-							<div id="sidebar">
-								<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
-							</div>
-						<dd class="summary">
-							<a href="actions.jsp?action=delete&id=<%=id%>">Delete this
-								article</a> | <a href="actions.jsp?action=modify&id=<%=id%>">Modify
-								this article</a>
+							<c:choose>
+								<c:when test="${list.size()==0}">
+									<c:out value="You doesnt have any articles"></c:out>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${list}" var="art">
+										<c:if test="${art.author.eMail==email}">
+											<div id="sidebar">
+												<li><a href="showArticle.jsp?id=${art.id}">${art.themeOfTheArticle}</a></li>
+											</div>
+											<dd class="summary">
+												<a href="actions.jsp?action=delete&id=${art.id}">Delete
+													this article</a> | <a
+													href="actions.jsp?action=modify&id=${art.id}">Modify
+													this article</a>
+											</dd>
+										</c:if>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</dd>
-						<%
-							}
-								}
-							}
-						%>
-
 					</dl>
 				</div>
 			</div>
@@ -69,7 +65,8 @@
 				</div>
 			</div>
 		</div>
-	</div>	<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
