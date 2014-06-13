@@ -3,6 +3,7 @@
 <%@page import="org.hillel.it.joydi.model.entities.Person"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -12,11 +13,8 @@
 <title>JOYDi</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
-<%
-	List<Article> newArticles = service.newArticles();
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-%>
+<c:set var="email" value="${sessionScope.email}"></c:set>
+<c:set var="user" value="${service.returnUserByEmail(email)}"></c:set>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
@@ -34,13 +32,12 @@
 
 						</dd>
 					</dl>
-					Your name:
-					<%=user.getName()%>
+					Your name: ${user.name}
+					<hr>Your ages: ${user.age}</hr>
+					<hr>Your country: ${user.country}</hr>
+					<hr>Your Email: ${user.eMail}</hr>
+					<hr>Your Gender: ${user.gender}</hr>
 					<hr>
-						Your ages: <%=user.getAge()%><hr>
-							Your country: <%=user.getCountry()%><hr>
-								Your Email: <%=user.geteMail()%><hr>
-									Your Gender: <%=user.getGender()%><hr>
 				</div>
 			</div>
 			<div id="sidebar-wrapper">
@@ -55,15 +52,9 @@
 					</ul>
 					<ul>
 						<li class="title">Latest Articles in JOYDi</li>
-						<%
-							for (Article art : newArticles) {
-								String theme = art.getThemeOfTheArticle();
-								int id = art.getId();
-						%>
-						<li><a href="showArticle.jsp?id=<%=id%>"><%=theme%></a></li>
-						<%
-							}
-						%>
+						<c:forEach items="${service.newArticles()}" var="article">
+							<li><a href="showArticle.jsp?id=${article.id}">${article.themeOfTheArticle}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
