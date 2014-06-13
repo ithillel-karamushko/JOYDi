@@ -67,6 +67,7 @@
 				<div id="sidebar">
 					<ul>
 						<li class="title">Actions</li>
+						<li><a href="UserPage.jsp">Home</a></li>
 						<li><a href="myArticles.jsp">My Articles</a></li>
 						<li><a href="createArticle.jsp">Add new Article</a></li>
 						<li><a href="searchingForm.jsp">Find Articles</a></li>
