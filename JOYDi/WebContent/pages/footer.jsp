@@ -21,7 +21,7 @@
 			<p>
 				Our partners <a href="http://itschool-hillel.org">Hillel IT
 					School</a> | <a href="http://magellanportal.com/">MagellanPortal</a>
-			<p>Contact us: joydi@gmail.com</p>
+			<p>Contact us: karamushko.evgeniy@gmail.com</p>
 		</div>
 	</div>
 </body>
