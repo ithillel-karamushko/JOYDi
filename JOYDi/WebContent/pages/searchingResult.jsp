@@ -56,7 +56,8 @@
 							<%
 								}
 								}
-							%>						
+							%>
+						
 					</dl>
 				</div>
 			</div>
@@ -75,6 +76,12 @@
 						<li class="title">Latest Articles in JOYDi</li>
 						<c:forEach items="${service.newArticles()}" var="article">
 							<li><a href="showArticle.jsp?id=${article.id}">${article.themeOfTheArticle}</a></li>
+						</c:forEach>
+					</ul>
+					<ul>
+						<li class="title">Highest rated articles in JOYDi</li>
+						<c:forEach items="${service.topArticles()}" var="art">
+							<li><a href="showArticle.jsp?id=${art.id}">${art.themeOfTheArticle}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
