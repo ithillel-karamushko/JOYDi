@@ -28,7 +28,7 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>${user.name}PersonalinformationandArticles:
+						<dt>${user.name} Personal information and Articles:
 						<dd>
 							<p class="img">
 								<img src="images/avatar.png" width="250px" height="171px"

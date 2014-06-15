@@ -15,9 +15,8 @@
 			<p>
 				Designed by <a
 					href="http://www.linkedin.com/pub/evgeniy-karamushko/94/78a/831"
-					title="TeamLeader">Karamushko Evgeniy</a>, <a
-					href="http://vk.com/id20669962" title="Developer">Yulia Brus</a>
-				and <a href="" title="Developer and Tester">Olga Grygorian</a>
+					title="TeamLeader">Karamushko Evgeniy</a>, <a href="">Yulia
+					Brus</a> and <a href="">Olga Grygorian</a>
 			</p>
 			<p>
 				Our partners <a href="http://itschool-hillel.org">Hillel IT
