@@ -8,9 +8,6 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 public class Admin extends Person {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5730593394953354304L;
 
 	public Admin(String name, String eMail, String country, Gender gender,

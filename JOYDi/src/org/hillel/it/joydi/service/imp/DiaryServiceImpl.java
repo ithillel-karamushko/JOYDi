@@ -149,32 +149,6 @@ public class DiaryServiceImpl implements DiaryService, Serializable {
 
 	}
 
-	public void modifyUser(User person, String name, String eMail,
-			String country, Gender gender, int yearOfBirth,
-			Months monthOfBirth, int dayOfBirth) throws FileNotFoundException,
-			IOException {
-		deleteUser(person);
-
-		if (name != null) {
-			person.setName(name);
-		}
-
-		if (eMail != null) {
-			person.seteMail(eMail);
-		}
-
-		if (country != null) {
-			person.setCountry(country);
-		}
-
-		if (gender != null) {
-			person.setGender(gender);
-		}
-
-		person.setDateOfBirth(yearOfBirth, monthOfBirth, dayOfBirth);
-		personRepository.modifyUser(person);
-	}
-
 	/**
 	 * Method that calls other method and delete admin from the repository
 	 * 

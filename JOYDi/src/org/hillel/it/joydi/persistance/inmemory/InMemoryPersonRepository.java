@@ -76,14 +76,6 @@ public class InMemoryPersonRepository implements PersonRepository, Serializable 
 	}
 
 	@Override
-	public synchronized void modifyUser(User person)
-			throws FileNotFoundException, IOException {
-		this.persons.add(person);
-		serialize(this.persons);
-
-	}
-
-	@Override
 	public synchronized void deleteUser(User person) throws IOException {
 		this.persons.remove(person);
 		serialize(this.persons);

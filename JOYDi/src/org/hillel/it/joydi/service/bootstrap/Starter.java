@@ -32,37 +32,5 @@ public class Starter {
 		User user2 = new User("Mary", "email2@gmail.com", "Albania",
 				Gender.MALE, 2004, Months.February, 28, "rretert");
 		ds.saveUser(user2);
-		ds.enter("email2@gmail.com", "rretert");
-		//
-		Article article = new Article(user1, "IT", "Java rules", "Java, IT");
-		Article article1 = new Article(user1, "IT", "Java rules", "Java, IT");
-		Article article2 = new Article(user1, "My Java", "Java rules",
-				"Java, IT");
-		Article article3 = new Article(user2, "IT3",
-				"Damned, C++ is fucking shit", "Java, IT");
-		Article article4 = new Article(user1, "IT4", "Java rules", "Java, IT");
-		Article article5 = new Article(user2, "IT5", "Java rules", "Java, IT");
-		Article article6 = new Article(user1, "IT6", "Java rules", "Java, IT");
-		Article article7 = new Article(user2, "IT7", "Java rules", "Java, IT");
-		Article article8 = new Article(user1, "IT8", "Java rules", "Java, IT");
-		Article article9 = new Article(user1, "IT9", "Java rules", "Java, IT");
-		Article article10 = new Article(user1, "IT10", "Java rules", "Java, IT");
-		Article article11 = new Article(user2, "IT11", "Java rules", "Java, IT");
-		Article article12 = new Article(user1, "IT12", "Java rules", "Java, IT");
-
-		ds.saveArticle(article);
-		ds.saveArticle(article1);
-		ds.saveArticle(article2);
-		ds.saveArticle(article3);
-		ds.saveArticle(article4);
-		ds.saveArticle(article5);
-		ds.saveArticle(article6);
-		ds.saveArticle(article7);
-		ds.saveArticle(article8);
-		ds.saveArticle(article9);
-		ds.saveArticle(article10);
-		ds.saveArticle(article11);
-		ds.saveArticle(article12);
-
 	}
 }

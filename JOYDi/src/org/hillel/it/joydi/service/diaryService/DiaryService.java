@@ -25,10 +25,6 @@ public interface DiaryService {
 
 	boolean saveUser(User person) throws FileNotFoundException, IOException;
 
-	void modifyUser(User person, String name, String eMail, String country,
-			Gender gender, int yearOfBirth, Months monthOfBirth, int dayOfBirth)
-			throws FileNotFoundException, IOException;
-
 	void deleteUser(User person) throws IOException;
 
 	void saveAdmin(Admin person) throws FileNotFoundException, IOException;
