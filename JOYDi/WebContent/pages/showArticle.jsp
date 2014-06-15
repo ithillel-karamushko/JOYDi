@@ -36,19 +36,15 @@
 </jsp:useBean>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>JOYDi</title>
-<%--
-	int id = Integer.valueOf((String) request.getParameter("id"));
-	Article article = service.returnArticleById(id);
-	String url = article.getPicture().getFileUrl();
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
---%>
 
 <c:set var="id" value="${param.id}"></c:set>
 <c:set var="article" value="${service.returnArticleById(id)}"></c:set>
 <c:set var="url" value="${article.picture.fileUrl}"></c:set>
 <c:set var="email" value="${sessionScope.email}"></c:set>
 <c:set var="user" value="${service.returnUserByEmail(email)}"></c:set>
+<c:set var="like" value="${article.whoLike}"></c:set>
+<c:set var="dislike" value="${article.whoDoesntLike}"></c:set>
+
 
 </head>
 <body>
@@ -72,7 +68,17 @@
 							Posted By: <a
 								href="otherUserProfile.jsp?email=${article.author.eMail}">${article.author.name}</a>
 							on ${article.date }<br>${article.like} Likes |
-							${article.disLike } Dislikes <br> <a
+							${article.disLike } Dislikes <br> This article liked by:
+							<c:forEach items="${like}" var="mail">
+								<a href="otherUserProfile.jsp?email=${mail}">${service.returnUserByEmail(mail).name}
+									| </a>
+							</c:forEach>
+							<br> This article disliked by:
+							<c:forEach items="${dislike}" var="mail">
+								<a href="otherUserProfile.jsp?email=${mail}">${service.returnUserByEmail(mail).name}
+									| </a>
+							</c:forEach>
+							<br> <a
 								href="actions.jsp?action=like&id=${id}&userEmail=${email}">I
 								like this article</a> | <a
 								href="actions.jsp?action=dislike&id=${id}&userEmail=${email}">I
