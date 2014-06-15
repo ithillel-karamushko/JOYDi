@@ -35,7 +35,6 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
 	<div id="container">
 		<div id="wrapper">
 			<div id="content-wrapper">
@@ -57,13 +56,10 @@
 							<%
 								}
 								}
-							%>
-						
+							%>						
 					</dl>
 				</div>
 			</div>
-
-
 			<div id="sidebar-wrapper">
 				<div id="sidebar">
 					<ul>
