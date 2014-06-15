@@ -62,6 +62,12 @@
 						<li><a href="modifyUser.jsp">Account settings</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
 					</ul>
+					<ul>
+						<li class="title">Latest Articles in JOYDi</li>
+						<c:forEach items="${service.newArticles()}" var="article">
+							<li><a href="showArticle.jsp?id=${article.id}">${article.themeOfTheArticle}</a></li>
+						</c:forEach>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -28,7 +28,7 @@
 			<div id="content-wrapper">
 				<div id="content">
 					<dl>
-						<dt>${user.name} Personal information and Articles:
+						<dt>${user.name}Personal information and Articles:
 						<dd>
 							<p class="img">
 								<img src="images/avatar.png" width="250px" height="171px"
@@ -69,6 +69,12 @@
 						<li><a href="searchingForm.jsp">Find Articles</a></li>
 						<li><a href="modifyUser.jsp">Account settings</a></li>
 						<li><a href="logout.jsp">Logout</a></li>
+					</ul>
+					<ul>
+						<li class="title">Latest Articles in JOYDi</li>
+						<c:forEach items="${service.newArticles()}" var="article">
+							<li><a href="showArticle.jsp?id=${article.id}">${article.themeOfTheArticle}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
