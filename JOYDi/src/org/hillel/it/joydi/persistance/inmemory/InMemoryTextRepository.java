@@ -148,7 +148,7 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 
 	/**
 	 * This method finds the words, that must be censored, and changes them for
-	 * the symbols "***".
+	 * the symbols "[CENSORED]".
 	 * 
 	 * @param object
 	 * @return changed text
@@ -300,6 +300,9 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 			e.printStackTrace();
 		}
 		Article art = returnArticleById(id);
+		if (art.isInWhoDoesntLike(email)) {
+			return;
+		}
 		if (!art.isInWhoLike(email)) {
 			art.setLike(art.getLike() + 1);
 			art.getWhoLike().add(email);
@@ -326,6 +329,9 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 			e.printStackTrace();
 		}
 		Article art = returnArticleById(id);
+		if (art.isInWhoLike(email)) {
+			return;
+		}
 		if (!art.isInWhoDoesntLike(email)) {
 			art.setDisLike(art.getDisLike() + 1);
 			art.getWhoDoesntLike().add(email);
