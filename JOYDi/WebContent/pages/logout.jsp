@@ -15,8 +15,8 @@
 				session.removeAttribute("password");
 				session.invalidate();
 			%>
-			<h1>Logout was done successfully.</h1>
-			<meta http-equiv="Refresh" content="5;url=login.jsp" />
+			<h1>Logout was done successfully. You will be redirected to login page.</h1>
+			<meta http-equiv="Refresh" content="3;url=login.jsp" />
 		</div>
 	</div>
 	<jsp:include page="footer.jsp" />

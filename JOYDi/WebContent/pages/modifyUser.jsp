@@ -11,10 +11,6 @@
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 </jsp:useBean>
-<%
-	String email = (String) session.getAttribute("email");
-	Person user = service.returnUserByEmail(email);
-%>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
