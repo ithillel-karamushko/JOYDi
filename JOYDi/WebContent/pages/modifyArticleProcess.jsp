@@ -3,6 +3,7 @@
 <%@page import="org.hillel.it.joydi.model.entities.Article"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,15 +12,12 @@
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 </jsp:useBean>
-<%
-	int id = Integer.valueOf((String) request.getParameter("id"));
-	String theme = request.getParameter("theme");
-	String articleText = request.getParameter("textArticle");
-	String tag = request.getParameter("tags");
-	service.modifyArticle(id, theme, articleText, tag);
-	String redirect = "showArticle.jsp?id="+id;
-	response.sendRedirect(redirect);
-%>
+<c:set var="id" value="${param.id}"></c:set>
+<c:set var="theme" value="${param.theme}"></c:set>
+<c:set var="articleText" value="${param.textArticle}"></c:set>
+<c:set var="tag" value="${param.tags}"></c:set>
+${service.modifyArticle(id,theme,articleText,tag)}
+<c:redirect url="showArticle.jsp?id=${id}"></c:redirect>
 </head>
 <body>
 

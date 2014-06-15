@@ -8,13 +8,11 @@
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 </jsp:useBean>
-<%
-	int id = Integer.valueOf((String) request.getParameter("id"));
-	Article article = service.returnArticleById(id);
-	String theme = article.getThemeOfTheArticle();
-	String articleText = article.getTextOfTheArticle();
-	String tag = article.getTags();
-%>
+<c:set var="id" value="${param.id}"></c:set>
+<c:set var="article" value="${service.returnArticleById(id)}"></c:set>
+<c:set var="theme" value="${article.themeOfTheArticle}"></c:set>
+<c:set var="articleText" value="${article.textOfTheArticle}"></c:set>
+<c:set var="tag" value="${article.tags}"></c:set>
 <title>JOYDi</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
@@ -23,19 +21,19 @@
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<form action="modifyArticleProcess.jsp?id=<%=id%>" method="post">
+			<form action="modifyArticleProcess.jsp?id=${id}" method="post">
 				<p>
-					Theme of the article: <br> <input type="article" name="theme" value="<%=theme%>">
+					Theme of the article: <br> <input type="article" name="theme"
+						value="${theme}">
 				</p>
 				<p>
-					Tags: <br> <input type="tags" name="tags" value="<%=tag%>">
+					Tags: <br> <input type="tags" name="tags" value="${tag}">
 				</p>
 				<p>
-					Text of the article:<br>
-					<textarea name="textArticle" rows="10" cols="50"><%=articleText %></textarea>
+					Text of the article:<br> <textarea name="textArticle"
+							rows="10" cols="50">${articleText}</textarea>
 				</p>
-				<input type="submit" value="Save modified article">
-				</input>
+				<input type="submit" value="Save modified article"> </input>
 			</form>
 		</div>
 	</div>
