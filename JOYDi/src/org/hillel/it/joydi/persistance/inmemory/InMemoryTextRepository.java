@@ -176,8 +176,8 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		}
 		List<Article> result = article;
 		Collections.sort(result, new MyComparatorForDate());
-		if (result.size() > 10) {
-			result = result.subList(0, 10);
+		if (result.size() > 5) {
+			result = result.subList(0, 5);
 		}
 		return result;
 
@@ -194,8 +194,8 @@ public class InMemoryTextRepository implements TextRepository, Serializable {
 		}
 		List<Article> top = article;
 		Collections.sort(top, new MyComparatorForRaiting());
-		if (top.size() > 10) {
-			top = top.subList(0, 10);
+		if (top.size() > 5) {
+			top = top.subList(0, 5);
 		}
 		return top;
 	}
