@@ -8,11 +8,6 @@
 <jsp:useBean id="service" scope="application"
 	class="org.hillel.it.joydi.service.imp.DiaryServiceImpl">
 </jsp:useBean>
-
-
-
-
-
 <%
 	int id = Integer.valueOf((String) request.getParameter("id"));
 	String email = (String) session.getAttribute("email");

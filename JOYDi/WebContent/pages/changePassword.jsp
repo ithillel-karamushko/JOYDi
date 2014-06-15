@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,14 +12,13 @@
 <title>JOYDi registration</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />
-<%
-	String oldPassword = request.getParameter("oldPassword");
-	String newPassword = request.getParameter("newPassword");
-	String confirmPassword = request.getParameter("confirmPassword");
-	String email = (String) session.getAttribute("email");
-	service.changePassword(oldPassword, newPassword, confirmPassword, email);
-	response.sendRedirect("logout.jsp");
-%>
+<c:set var="oldPassword" value="${param.oldPassword}"></c:set>
+<c:set var="newPassword" value="${param.newPassword}"></c:set>
+<c:set var="confirmPassword" value="${param.confirmPassword}"></c:set>
+<c:set var="email" value="${sessionScope.email}"></c:set>
+${service.changePassword(oldPassword, newPassword, confirmPassword,
+			email)}
+<c:redirect url="logout.jsp"></c:redirect>
 </head>
 <body>
 
