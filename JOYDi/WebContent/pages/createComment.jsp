@@ -5,10 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <c:set var="articleId" value="${param.articleId}"></c:set>
-<%
-	int articleId = Integer.valueOf((String) request
-			.getParameter("articleId"));
-%>
 <title>JOYDi</title>
 <link rel="stylesheet" type="text/css" media="screen,projection"
 	href="screen.css" />

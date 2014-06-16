@@ -5,17 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<%
+	session.removeAttribute("email");
+	session.removeAttribute("password");
+	session.invalidate();
+%>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div id="container">
 		<div id="log">
-			<%
-				session.removeAttribute("email"); 
-				session.removeAttribute("password");
-				session.invalidate();
-			%>
-			<h1>Logout was done successfully. You will be redirected to login page.</h1>
+
+			<h1>Logout was done successfully.</h1>
+			<h1>You will be redirected to login page.</h1>
 			<meta http-equiv="Refresh" content="3;url=login.jsp" />
 		</div>
 	</div>
